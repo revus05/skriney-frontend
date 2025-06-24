@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --color-bg-neutral-primary: hsl(0, 8%, 95%);
+  --color-bg-neutral-secondary: hsl(27, 30%, 93%);
+  --color-bg-neutral-tertiary: hsl(30, 16%, 83%);
+
+  --color-bg-brand-primary: hsl(29, 43%, 55%);
+  --color-bg-brand-secondary: hsl(29, 100%, 84%);
+  --color-bg-brand-tertiary: hsl(29, 100%, 91%);
+
+
+  --color-border-neutral-primary: hsla(28, 9%, 65%, 50%);
+
+
+  --color-text-neutral-primary: hsl(27, 10%, 21%);
+  --color-text-neutral-secondary: hsl(30, 9%, 30%);
+  --color-text-neutral-tertiary: hsl(26, 8%, 38%);
+
+  --color-text-brand-primary: hsl(29, 46%, 27%);
+  --color-text-brand-inverse: hsl(30, 100%, 98%);
+
+
+  --color-icon-neutral-primary: hsl(27, 10%, 21%);
+  --color-icon-neutral-secondary: hsl(30, 9%, 30%);
+  --color-icon-neutral-tertiary: hsl(26, 8%, 38%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-neutral-primary: hsl(27, 10%, 21%);
+    --color-bg-neutral-secondary: hsl(30, 9%, 30%);
+    --color-bg-neutral-tertiary: hsl(26, 8%, 38%);
+
+    --color-bg-brand-primary: hsl(29, 59%, 65%);
+    --color-bg-brand-secondary: hsl(29, 42%, 36%);
+    --color-bg-brand-tertiary: hsl(29, 46%, 27%);
+
+
+    --color-border-neutral-primary: hsla(28, 8%, 56%, 50%);
+
+
+    --color-text-neutral-primary: hsl(0, 4%, 95%);
+    --color-text-neutral-secondary: hsl(27, 30%, 93%);
+    --color-text-neutral-tertiary: hsl(30, 16%, 83%);
+
+    --color-text-brand-primary: hsl(29, 100%, 91%);
+    --color-text-brand-inverse: hsl(29, 49%, 19%);
+
+
+    --color-icon-neutral-primary: hsl(0, 4%, 95%);
+    --color-icon-neutral-secondary: hsl(27, 30%, 93%);
+    --color-icon-neutral-tertiary: hsl(30, 16%, 83%);
+  }
+}
+
+:root {
+
+}
+
+@layer base {
+  body {
+    @apply text-text-neutral-primary bg-bg-neutral-primary text-sm;
+  }
+
+  svg {
+    @apply fill-icon-neutral-primary;
+  }
+}
