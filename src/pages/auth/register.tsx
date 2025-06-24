@@ -3,7 +3,7 @@
 import { Button, Input } from 'shared/ui'
 import { useState } from 'react'
 
-const HomePage = () => {
+const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showRepeatPassword, setShowRepeatPassword] = useState(false)
 
@@ -41,4 +41,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default RegisterPage
