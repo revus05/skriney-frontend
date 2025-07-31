@@ -18,6 +18,7 @@ type InputProps = ComponentProps<'input'> & {
   value?: string
   onValueChange?: (newValue: string) => void
   onIconEndClick?: (e: React.MouseEvent) => void
+  inputClassName?: string
 }
 
 export const Input: FC<InputProps> = ({
@@ -28,6 +29,7 @@ export const Input: FC<InputProps> = ({
   onValueChange,
   type = 'text',
   className,
+  inputClassName,
   ...props
 }) => {
   const [innerValue, setInnerValue] = useState<string>(value || '')
@@ -47,6 +49,7 @@ export const Input: FC<InputProps> = ({
         'border-border-neutral-primary hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border ' +
           'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold transition will-change-transform active:scale-[0.98]',
         iconEnd ? 'py-1' : 'py-2',
+        className,
       )}
     >
       <div className={'flex grow items-center gap-4'}>
@@ -62,7 +65,7 @@ export const Input: FC<InputProps> = ({
           type={type}
           className={cn(
             'placeholder:text-text-neutral-tertiary grow outline-none',
-            className,
+            inputClassName,
           )}
           onChange={(e) => setInnerValue(e.target.value)}
           {...props}
