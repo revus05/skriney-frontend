@@ -23,10 +23,10 @@ export const Aside = () => {
       href: '/statistics',
     },
     {
-      id: 'target',
+      id: 'goal',
       label: 'Цели',
-      icon: 'target',
-      href: '/targets',
+      icon: 'goal',
+      href: '/goals',
     },
     'divide',
     {
