@@ -17,6 +17,8 @@
 
   --color-border-neutral-primary: hsla(28, 9%, 65%, 50%);
 
+  --color-border-semantic-error-primary: hsla(8, 60%, 70%, 100%);
+
 
   --color-text-neutral-primary: hsl(27, 10%, 21%);
   --color-text-neutral-secondary: hsl(30, 9%, 30%);
@@ -24,6 +26,9 @@
 
   --color-text-brand-primary: hsl(29, 46%, 27%);
   --color-text-brand-inverse: hsl(30, 100%, 98%);
+
+
+  --color-text-semantic-error-primary: hsla(8, 60%, 70%, 100%);
 
 
   --color-icon-neutral-primary: hsl(27, 10%, 21%);

@@ -19,6 +19,7 @@ type InputProps = ComponentProps<'input'> & {
   onValueChange?: (newValue: string) => void
   onIconEndClick?: (e: React.MouseEvent) => void
   inputClassName?: string
+  errorMessage?: string | null
 }
 
 export const Input: FC<InputProps> = ({
@@ -30,6 +31,7 @@ export const Input: FC<InputProps> = ({
   type = 'text',
   className,
   inputClassName,
+  errorMessage,
   ...props
 }) => {
   const [innerValue, setInnerValue] = useState<string>(value || '')
@@ -43,43 +45,51 @@ export const Input: FC<InputProps> = ({
   }, [innerValue, onValueChange])
 
   return (
-    <div
-      onClick={() => containerRef.current?.focus()}
-      className={cn(
-        'border-border-neutral-primary hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border ' +
-          'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold transition will-change-transform active:scale-[0.98]',
-        iconEnd ? 'py-1' : 'py-2',
-        className,
-      )}
-    >
-      <div className={'flex grow items-center gap-4'}>
-        {iconStart &&
-          createElement(Icons[iconStart], {
-            className: cn(
-              'fill-icon-neutral-tertiary transition size-5',
-              innerValue && 'fill-icon-neutral-primary',
-            ),
-          })}
-        <input
-          ref={containerRef}
-          type={type}
-          className={cn(
-            'placeholder:text-text-neutral-tertiary grow outline-none',
-            inputClassName,
-          )}
-          onChange={(e) => setInnerValue(e.target.value)}
-          {...props}
-        />
+    <div>
+      <div
+        onClick={() => containerRef.current?.focus()}
+        className={cn(
+          'border-border-neutral-primary hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border ' +
+            'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold transition will-change-transform active:scale-[0.98]',
+          iconEnd ? 'py-1' : 'py-2',
+          errorMessage && 'border-border-semantic-error-primary',
+          className,
+        )}
+      >
+        <div className={'flex grow items-center gap-4'}>
+          {iconStart &&
+            createElement(Icons[iconStart], {
+              className: cn(
+                'fill-icon-neutral-tertiary transition size-5',
+                innerValue && 'fill-icon-neutral-primary',
+              ),
+            })}
+          <input
+            ref={containerRef}
+            type={type}
+            className={cn(
+              'placeholder:text-text-neutral-tertiary grow outline-none',
+              inputClassName,
+            )}
+            onChange={(e) => setInnerValue(e.target.value)}
+            {...props}
+          />
+        </div>
+        {iconEnd && (
+          <Button variant="icon" onClick={onIconEndClick} tabIndex={-1}>
+            {createElement(Icons[iconEnd], {
+              className: cn(
+                'fill-icon-neutral-tertiary transition size-5',
+                innerValue && 'fill-icon-neutral-primary',
+              ),
+            })}
+          </Button>
+        )}
       </div>
-      {iconEnd && (
-        <Button variant="icon" onClick={onIconEndClick} tabIndex={-1}>
-          {createElement(Icons[iconEnd], {
-            className: cn(
-              'fill-icon-neutral-tertiary transition size-5',
-              innerValue && 'fill-icon-neutral-primary',
-            ),
-          })}
-        </Button>
+      {errorMessage && (
+        <span className={'text-text-semantic-error-primary'}>
+          {errorMessage}
+        </span>
       )}
     </div>
   )
