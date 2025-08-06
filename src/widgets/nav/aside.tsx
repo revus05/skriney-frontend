@@ -24,7 +24,7 @@ export const Aside = () => {
     },
     {
       id: 'goal',
-      label: 'Цели',
+      label: 'Цели и лимиты',
       icon: 'goal',
       href: '/goals',
     },
