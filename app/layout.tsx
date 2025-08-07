@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
+import { Providers } from 'app/providers'
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} min-h-screen p-2.5 antialiased`}>
-        {children}
+        <Providers>{children}</Providers>
         <div className={'absolute top-0 left-0 -z-[9999] h-full w-full'}>
           <div className={'relative h-full w-full overflow-hidden'}>
             <div
