@@ -1,9 +1,9 @@
 import { createEffect } from 'effector'
 import { api, ApiError, ApiResponse, handleApiError } from 'shared/api'
-import { SignUpUserRequest, UserDTO } from 'shared/api/api-client'
+import { SignUpUserRequestDTO, UserDTO } from 'shared/api/api-client'
 
 export const signUpUserFx = createEffect<
-  SignUpUserRequest,
+  SignUpUserRequestDTO,
   ApiResponse<UserDTO>,
   ApiError
 >(async (form) => {

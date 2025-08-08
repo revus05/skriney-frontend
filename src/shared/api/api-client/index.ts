@@ -3,8 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export { CreateAccountRequestDTO } from './models/CreateAccountRequestDTO';
+export {CreateBankAccountRequestDTO} from './models/CreateBankAccountRequestDTO';
 export type {CreateCategoryRequestDTO} from './models/CreateCategoryRequestDTO';
-export type {SignUpUserRequest} from './models/SignUpUserRequest';
-export type {SingInUserRequest} from './models/SingInUserRequest';
+export type {SignUpUserRequestDTO} from './models/SignUpUserRequestDTO';
+export type {SingInUserRequestDTO} from './models/SingInUserRequestDTO';
 export type { UserDTO } from './models/UserDTO';

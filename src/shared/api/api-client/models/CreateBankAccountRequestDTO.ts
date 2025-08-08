@@ -2,21 +2,21 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type CreateAccountRequestDTO = {
+export type CreateBankAccountRequestDTO = {
     /**
-     * Initial account balance
+     * Initial bank account balance
      */
     balance?: number;
     /**
-     * Account currency
+     * Bank account currency
      */
-    currency?: CreateAccountRequestDTO.currency;
+    currency?: CreateBankAccountRequestDTO.currency;
     /**
-     * Account title
+     * Bank account title
      */
     title: string;
     /**
-     * Account's card colour
+     * Bank account's card color
      */
     color?: string;
     /**
@@ -29,9 +29,9 @@ export type CreateAccountRequestDTO = {
     image?: string;
     inTotalBalance?: boolean;
 };
-export namespace CreateAccountRequestDTO {
+export namespace CreateBankAccountRequestDTO {
     /**
-     * Account currency
+     * Bank account currency
      */
     export enum currency {
         USD = 'USD',
