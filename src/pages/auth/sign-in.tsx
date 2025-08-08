@@ -1,14 +1,14 @@
 'use client'
 
-import { SignUpForm } from 'features/auth/sign-up'
+import { SignInForm } from 'features/auth/sign-in'
 import { withAuthLayout } from 'widgets/layouts/auth'
 
-const SignUpPage = () => {
+const SignInPage = () => {
   return (
     <main className="flex min-h-screen grow items-center justify-center">
-      <SignUpForm />
+      <SignInForm />
     </main>
   )
 }
 
-export default withAuthLayout(SignUpPage)
+export default withAuthLayout(SignInPage)

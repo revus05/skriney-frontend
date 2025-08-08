@@ -2,7 +2,7 @@
 
 import { Button, Input } from 'shared/ui'
 import { useForm } from '@effector-reform/react'
-import { signUpUserModel } from 'features/auth/sign-up'
+import { signUpUserModel } from './model'
 import { useUnit } from 'effector-react'
 import { sessionModel } from 'entities/session'
 

@@ -3,8 +3,8 @@ import { createField, createForm } from '@effector-reform/core'
 import { z } from 'zod'
 import { zodAdapter } from '@effector-reform/zod'
 import { createEvent, createStore, sample } from 'effector'
-import { sessionModel } from 'entities/session'
 import { ApiError } from 'shared/api'
+import { sessionModel } from 'entities/session'
 
 export const signUpUserModel = atom(() => {
   const showPasswordChanged = createEvent<boolean>()

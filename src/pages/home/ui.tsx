@@ -1,3 +1,5 @@
+'use client'
+
 import { CategoryCard } from 'entities/category'
 import { TotalBalance } from 'widgets/home/total-balance'
 import { GoalCard } from 'entities/goal'
