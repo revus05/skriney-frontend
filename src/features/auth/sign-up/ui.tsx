@@ -2,31 +2,31 @@
 
 import { Button, Input } from 'shared/ui'
 import { useForm } from '@effector-reform/react'
-import { registerUserModel } from 'features/auth/register'
+import { signUpUserModel } from 'features/auth/sign-up'
 import { useUnit } from 'effector-react'
 import { sessionModel } from 'entities/session'
 
-export const RegisterForm = () => {
-  const { values, fields, errors, onSubmit } = useForm(registerUserModel.form)
+export const SignUpForm = () => {
+  const { values, fields, errors, onSubmit } = useForm(signUpUserModel.form)
 
   const [
     showPassword,
     showRepeatPassword,
     showPasswordChanged,
     showRepeatPasswordChanged,
-    registrationPending,
+    isSignUpPending,
   ] = useUnit([
-    registerUserModel.$showPassword,
-    registerUserModel.$showRepeatPassword,
-    registerUserModel.showPasswordChanged,
-    registerUserModel.showRepeatPasswordChanged,
-    sessionModel.registerUser.pending,
+    signUpUserModel.$showPassword,
+    signUpUserModel.$showRepeatPassword,
+    signUpUserModel.showPasswordChanged,
+    signUpUserModel.showRepeatPasswordChanged,
+    sessionModel.signUpUser.pending,
   ])
 
   return (
     <form
       onSubmit={onSubmit}
-      className="bg-bg-neutral-primary/70 border-border-neutral-primary flex w-[400px] flex-col gap-6 rounded-2xl border p-8"
+      className="bg-bg-neutral-primary/70 border-border-neutral-primary flex w-[400px] flex-col gap-6 rounded-2xl border p-8 backdrop-blur-[32px]"
     >
       <h2 className="text-xl font-semibold">Создать новый аккаунт:</h2>
       <div className="flex flex-col gap-4">
@@ -75,7 +75,7 @@ export const RegisterForm = () => {
         <Button
           className={'mx-auto'}
           type={'submit'}
-          disabled={registrationPending}
+          disabled={isSignUpPending}
         >
           Зарегистрироваться
         </Button>

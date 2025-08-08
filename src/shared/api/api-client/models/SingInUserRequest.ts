@@ -2,11 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type RegisterRequestDTO = {
-    /**
-     * Username
-     */
-    username: string;
+export type SingInUserRequest = {
     /**
      * Email address
      */

@@ -12,13 +12,13 @@ export type CreateAccountRequestDTO = {
      */
     currency?: CreateAccountRequestDTO.currency;
     /**
-     * Account name
+     * Account title
      */
-    name: string;
+    title: string;
     /**
      * Account's card colour
      */
-    colour?: string;
+    color?: string;
     /**
      * Optional user's description
      */

@@ -2,7 +2,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type LoginRequestDTO = {
+export type SignUpUserRequest = {
+    /**
+     * Username
+     */
+    username: string;
     /**
      * Email address
      */

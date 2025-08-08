@@ -6,7 +6,7 @@ import { createEvent, createStore, sample } from 'effector'
 import { sessionModel } from 'entities/session'
 import { ApiError } from 'shared/api'
 
-export const registerUserModel = atom(() => {
+export const signUpUserModel = atom(() => {
   const showPasswordChanged = createEvent<boolean>()
   const showRepeatPasswordChanged = createEvent<boolean>()
 
@@ -58,11 +58,11 @@ export const registerUserModel = atom(() => {
       email: values.email,
       password: values.password,
     }),
-    target: sessionModel.registerUser,
+    target: sessionModel.signUpUser,
   })
 
   sample({
-    clock: sessionModel.registerUser.failData,
+    clock: sessionModel.signUpUser.failData,
     source: { formValues: form.$values, formErrors: form.$errors },
     fn: ({ formValues, formErrors }, error: ApiError) => {
       const errors = error.data as Record<string, string>
