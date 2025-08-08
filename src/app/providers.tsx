@@ -6,5 +6,9 @@ type ProvidersProps = {
 }
 
 export const Providers: FC<ProvidersProps> = ({ children }) => {
-  return <HeroUIProvider>{children}</HeroUIProvider>
+  return (
+    <div className={'z-[1]'}>
+      <HeroUIProvider>{children}</HeroUIProvider>
+    </div>
+  )
 }

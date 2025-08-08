@@ -1,3 +1,7 @@
 export { Button } from './button'
 export { Icons } from './icons'
 export { Input } from './input'
+export { Balance } from './balance'
+export { EmojiTitle } from './emoji-title'
+export { Progress } from './progress'
+export { Card } from './card'

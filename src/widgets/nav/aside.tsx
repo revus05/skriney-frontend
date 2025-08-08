@@ -23,6 +23,12 @@ export const Aside = () => {
       href: '/statistics',
     },
     {
+      id: 'categories',
+      label: 'Категории',
+      icon: 'categories',
+      href: '/category',
+    },
+    {
       id: 'goal',
       label: 'Цели и лимиты',
       icon: 'goal',
@@ -40,7 +46,7 @@ export const Aside = () => {
   return (
     <aside
       className={
-        'bg-bg-neutral-primary/70 border-border-neutral-primary/70 rounded-2xl border px-4 py-2'
+        'bg-bg-neutral-primary/70 border-border-neutral-primary/70 h-fit rounded-2xl border px-4 py-2'
       }
     >
       <nav>
@@ -61,11 +67,11 @@ export const Aside = () => {
                 >
                   {createElement(Icons[item.icon], {
                     className:
-                      'fill-icon-neutral-tertiary group-hover:fill-icon-neutral-primary transition',
+                      'fill-icon-neutral-tertiary group-hover:fill-icon-neutral-primary transition shrink-0',
                   })}
                   <span
                     className={
-                      'text-text-neutral-tertiary group-hover:text-text-neutral-primary text-base font-semibold transition select-none'
+                      'text-text-neutral-tertiary group-hover:text-text-neutral-primary text-base font-semibold whitespace-nowrap transition select-none'
                     }
                   >
                     {item.label}

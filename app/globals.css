@@ -18,6 +18,9 @@
   --color-bg-brand-secondary: hsl(29, 100%, 84%);
   --color-bg-brand-tertiary: hsl(29, 100%, 91%);
 
+    --color-bg-neutral-inverse-primary: hsl(0, 4%, 95%);
+    --color-bg-neutral-inverse-tertiary: hsl(28, 11%, 74%);
+
   --color-bg-semantic-success-primary: hsl(80, 100%, 91%, 100%);
 
 
@@ -91,5 +94,7 @@
 
 @keyframes fly {
   from {transform: translate(0, 0) rotate(-10deg) }
-  to {transform: translate(100%, 200px) rotate(10deg) scale(1.2);}
+    to {
+        transform: translate(400px, 200px) rotate(10deg) scale(1.2);
+    }
 }

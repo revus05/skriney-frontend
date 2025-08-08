@@ -13,7 +13,6 @@
     "@effector-reform/core": "^0.16.0",
     "@effector-reform/react": "^0.16.0",
     "@effector-reform/zod": "^0.16.0",
-    "@heroui/button": "^2.2.24",
     "@heroui/react": "^2.8.2",
     "@heroui/system": "^2.4.20",
     "@heroui/theme": "^2.4.20",

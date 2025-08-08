@@ -1,6 +1,8 @@
 import { Header } from 'widgets/nav/header'
 import { Aside } from 'widgets/nav/aside'
-import { Icons } from 'shared/ui'
+import { CategoryCard } from 'entities/category'
+import { TotalBalance } from 'widgets/home/total-balance'
+import { GoalCard } from 'entities/goal'
 
 const HomePage = () => {
   return (
@@ -8,95 +10,73 @@ const HomePage = () => {
       <Header />
       <div className="mt-8 flex gap-8">
         <Aside />
-        <div className={'flex gap-4'}>
-          <div
-            className={
-              'border-border-neutral-primary bg-bg-neutral-tertiary/70 flex h-fit gap-4 rounded-3xl border px-6 py-4 backdrop-blur-[32px]'
-            }
-          >
-            <Icons.dollarCircle className={'fill-icon-neutral-tertiary'} />
-            <div className={'flex flex-col gap-2'}>
-              <div className={'flex flex-col gap-1'}>
-                <span className={'text-text-neutral-tertiary'}>Баланс</span>
-                <span
-                  className={'text-text-neutral-primary text-base font-bold'}
-                >
-                  430.04{' '}
-                  <span
-                    className={'text-text-neutral-tertiary text-sm font-normal'}
-                  >
-                    BYN
-                  </span>
-                </span>
-              </div>
-              <div className={'flex items-center gap-2'}>
-                <Icons.trendingUp
-                  className={'fill-icon-semantic-success-primary'}
-                />
-                <span className={'text-text-semantic-success-primary'}>
-                  +14.08%
-                </span>
-              </div>
+        <div className={'flex flex-col gap-6'}>
+          <div className={'flex gap-4'}>
+            <TotalBalance
+              type={'balance'}
+              sum={430.04}
+              currency={'BYN'}
+              changePercent={14.08}
+            />
+            <TotalBalance
+              type={'income'}
+              sum={60.02}
+              currency={'BYN'}
+              changePercent={-8.56}
+            />
+            <TotalBalance
+              type={'expenses'}
+              sum={60.02}
+              currency={'BYN'}
+              changePercent={-8.56}
+            />
+          </div>
+          <div className={'flex flex-col gap-4'}>
+            <h2 className={'text-xl font-bold'}>Категории за 30 дней</h2>
+            <div className={'flex gap-4'}>
+              <CategoryCard
+                title={'Продукты'}
+                emoji={'🍎'}
+                sum={430.09}
+                currency={'BYN'}
+              />
+              <CategoryCard
+                title={'Такси'}
+                emoji={'🚕'}
+                sum={120.93}
+                currency={'BYN'}
+              />
+              <CategoryCard
+                title={'Развлечения'}
+                sum={430.09}
+                currency={'BYN'}
+              />
             </div>
           </div>
-          <div
-            className={
-              'border-border-neutral-primary bg-bg-neutral-tertiary/70 flex h-fit gap-4 rounded-3xl border px-6 py-4 backdrop-blur-[32px]'
-            }
-          >
-            <Icons.arrowBottomLeft className={'fill-icon-neutral-tertiary'} />
-            <div className={'flex flex-col gap-2'}>
-              <div className={'flex flex-col gap-1'}>
-                <span className={'text-text-neutral-tertiary'}>Получено</span>
-                <span
-                  className={'text-text-neutral-primary text-base font-bold'}
-                >
-                  60.02{' '}
-                  <span
-                    className={'text-text-neutral-tertiary text-sm font-normal'}
-                  >
-                    BYN
-                  </span>
-                </span>
-              </div>
-              <div className={'flex items-center gap-2'}>
-                <Icons.trendingDown
-                  className={'fill-icon-semantic-error-primary'}
-                />
-                <span className={'text-text-semantic-error-primary'}>
-                  -8.56%
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className={
-              'border-border-neutral-primary bg-bg-neutral-tertiary/70 flex h-fit gap-4 rounded-3xl border px-6 py-4 backdrop-blur-[32px]'
-            }
-          >
-            <Icons.arrowTopRight className={'fill-icon-neutral-tertiary'} />
-            <div className={'flex flex-col gap-2'}>
-              <div className={'flex flex-col gap-1'}>
-                <span className={'text-text-neutral-tertiary'}>Потрачено</span>
-                <span
-                  className={'text-text-neutral-primary text-base font-bold'}
-                >
-                  60.02{' '}
-                  <span
-                    className={'text-text-neutral-tertiary text-sm font-normal'}
-                  >
-                    BYN
-                  </span>
-                </span>
-              </div>
-              <div className={'flex items-center gap-2'}>
-                <Icons.trendingDown
-                  className={'fill-icon-semantic-success-primary'}
-                />
-                <span className={'text-text-semantic-success-primary'}>
-                  -8.56%
-                </span>
-              </div>
+          <div className={'flex flex-col gap-4'}>
+            <h2 className={'text-xl font-bold'}>Цели</h2>
+            <div className={'flex gap-4'}>
+              <GoalCard
+                title={'Поездка в Италию'}
+                emoji={'✈️'}
+                currency={'BYN'}
+                goalSum={1200}
+                currentSum={602.87}
+              />
+              <GoalCard
+                title={'PlayStation 5'}
+                emoji={'🎮'}
+                currency={'BYN'}
+                goalSum={2000}
+                currentSum={1000}
+              />
+              <GoalCard
+                title={'iPhone 16 pro'}
+                emoji={'📱'}
+                currency={'BYN'}
+                goalSum={3500}
+                currentSum={120}
+              />
             </div>
           </div>
         </div>
