@@ -1,8 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { authApi, authSlice } from 'entities/session'
+import { signUpFormSlice } from 'features/auth/sign-up'
+import { signInFormSlice } from 'features/auth/sign-in'
 
 const rootReducer = {
   authSlice,
+  signUpFormSlice,
+  signInFormSlice,
   [authApi.reducerPath]: authApi.reducer,
 }
 

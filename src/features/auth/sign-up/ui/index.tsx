@@ -1,10 +1,25 @@
 import { Button, Input } from 'shared/ui'
-import { useSignUpForm, useSignUpSubmit } from '../model'
+import {
+  setShowPassword,
+  setShowRepeatPassword,
+  useSignUpForm,
+  useSignUpSubmit,
+} from '../model'
+import { useAppDispatch, useAppSelector } from 'shared/hooks'
 
 export const SignUpForm = () => {
+  const dispatch = useAppDispatch()
+
   const form = useSignUpForm()
 
   const onSubmit = useSignUpSubmit(form.setError)
+
+  const showPassword = useAppSelector(
+    (state) => state.signUpFormSlice.showPassword,
+  )
+  const showRepeatPassword = useAppSelector(
+    (state) => state.signUpFormSlice.showRepeatPassword,
+  )
 
   const {
     register,
@@ -38,12 +53,24 @@ export const SignUpForm = () => {
           errorMessage={errors.password?.message}
           placeholder="Пароль"
           iconStart="lock"
+          type={showPassword ? 'text' : 'password'}
+          iconEnd={showPassword ? 'eyeSlash' : 'eye'}
+          onIconEndClick={(e) => {
+            e.stopPropagation()
+            dispatch(setShowPassword(!showPassword))
+          }}
         />
         <Input
           {...register('repeatPassword')}
           errorMessage={errors.repeatPassword?.message}
           placeholder="Повторите пароль"
           iconStart="lock"
+          type={showRepeatPassword ? 'text' : 'password'}
+          iconEnd={showRepeatPassword ? 'eyeSlash' : 'eye'}
+          onIconEndClick={(e) => {
+            e.stopPropagation()
+            dispatch(setShowRepeatPassword(!showRepeatPassword))
+          }}
         />
         <Button className={'mx-auto'} type={'submit'}>
           Зарегистрироваться

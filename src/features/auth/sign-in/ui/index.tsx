@@ -1,7 +1,10 @@
 import { Button, Input } from 'shared/ui'
-import { useSignInForm, useSignInSubmit } from '../model'
+import { setShowPassword, useSignInForm, useSignInSubmit } from '../model'
+import { useAppDispatch, useAppSelector } from 'shared/hooks'
 
 export const SignInForm = () => {
+  const dispatch = useAppDispatch()
+
   const {
     register,
     handleSubmit,
@@ -9,6 +12,10 @@ export const SignInForm = () => {
   } = useSignInForm()
 
   const onSubmit = useSignInSubmit()
+
+  const showPassword = useAppSelector(
+    (state) => state.signInFormSlice.showPassword,
+  )
 
   return (
     <form
@@ -27,9 +34,14 @@ export const SignInForm = () => {
         <Input
           {...register('password')}
           errorMessage={errors.password?.message}
-          type="password"
           placeholder="Пароль"
           iconStart="lock"
+          type={showPassword ? 'text' : 'password'}
+          iconEnd={showPassword ? 'eyeSlash' : 'eye'}
+          onIconEndClick={(e) => {
+            e.stopPropagation()
+            dispatch(setShowPassword(!showPassword))
+          }}
         />
         <Button className={'mx-auto'} type={'submit'}>
           Войти
