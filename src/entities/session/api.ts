@@ -1,48 +1,30 @@
-import { createEffect } from 'effector'
-import { api, ApiError, ApiResponse, handleApiError } from 'shared/api'
-import {
-  SignInUserRequestDTO,
-  SignUpUserRequestDTO,
-  UserDTO,
-} from 'shared/api/api-client'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { ApiResponse } from 'shared/api'
+import { SignInUserRequestDTO, UserDTO } from 'shared/api/api-client'
 
-export const signUpUserFx = createEffect<
-  SignUpUserRequestDTO,
-  ApiResponse<UserDTO>,
-  ApiError
->(async (form) => {
-  try {
-    const response = await api.post('/users/sign-up', form)
-    return response.data
-  } catch (error) {
-    throw handleApiError(error)
-  }
+const authApi = createApi({
+  reducerPath: 'authApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/users`,
+  }),
+  endpoints: (builder) => ({
+    signUpUser: builder.mutation<ApiResponse<UserDTO>, SignInUserRequestDTO>({
+      query: (body) => ({
+        url: '/sign-up',
+        method: 'POST',
+        body,
+      }),
+    }),
+    signInUser: builder.mutation<ApiResponse<UserDTO>, SignInUserRequestDTO>({
+      query: (body) => ({
+        url: '/sign-in',
+        method: 'POST',
+        credentials: 'include',
+        body,
+      }),
+    }),
+  }),
 })
 
-export const signInUserFx = createEffect<
-  SignInUserRequestDTO,
-  ApiResponse<UserDTO>,
-  ApiError
->(async (form) => {
-  try {
-    const response = await api.post('/users/sign-in', form, {
-      withCredentials: true,
-    })
-    return response.data
-  } catch (error) {
-    throw handleApiError(error)
-  }
-})
-
-export const getMeWithJwtFx = createEffect<
-  void,
-  ApiResponse<UserDTO>,
-  ApiError
->(async () => {
-  try {
-    const response = await api.get('/users/me', { withCredentials: true })
-    return response.data
-  } catch (error) {
-    throw handleApiError(error)
-  }
-})
+export default authApi
+export const { useSignInUserMutation, useSignUpUserMutation } = authApi

@@ -1,42 +1,50 @@
-'use client'
-
 import { Header } from 'widgets/nav/header'
 import { Aside } from 'widgets/nav/aside'
 import React, { FC, ReactNode, useEffect, useState } from 'react'
-import { useGate, useUnit } from 'effector-react'
-import { sessionModel } from 'entities/session'
+import { Providers } from 'app/providers'
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
-import { navigationModel } from 'shared/navigation'
+import { paths } from 'shared/navigation'
 
 type HomeLayoutType = {
   children: ReactNode
 }
 
 const HomeLayout: FC<HomeLayoutType> = ({ children }) => {
-  const router = useRouter()
-  useGate(navigationModel.RouterGate, { router })
-  useGate(sessionModel.SessionGate)
-
-  const jwtCookie = useUnit(sessionModel.$jwtCookie)
-
   const [isClient, setIsClient] = useState(false)
+  const [isAuthChecked, setIsAuthChecked] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     setIsClient(true)
   }, [])
 
-  if (!isClient || !jwtCookie) {
+  useEffect(() => {
+    if (!isClient) return
+
+    const jwt = Cookies.get('jwt')
+
+    if (!jwt) {
+      router.replace(paths.signIn)
+    } else {
+      setIsAuthChecked(true)
+    }
+  }, [isClient, router])
+
+  if (!isClient || !isAuthChecked) {
     return null
   }
 
   return (
-    <main>
-      <Header />
-      <div className="mt-8 flex gap-8">
-        <Aside />
-        {children}
-      </div>
-    </main>
+    <Providers>
+      <main className={'p-2.5'}>
+        <Header />
+        <div className="mt-8 flex gap-8">
+          <Aside />
+          {children}
+        </div>
+      </main>
+    </Providers>
   )
 }
 

@@ -1,20 +1,16 @@
-'use client'
-
+import { Providers } from 'app/providers'
 import React, { FC, ReactNode } from 'react'
-import { useGate } from 'effector-react'
-import { sessionModel } from 'entities/session'
-import { navigationModel } from 'shared/navigation'
-import { useRouter } from 'next/navigation'
 
 type AuthLayoutType = {
   children: ReactNode
 }
 
 const AuthLayout: FC<AuthLayoutType> = ({ children }) => {
-  const router = useRouter()
-  useGate(navigationModel.RouterGate, { router })
-  useGate(sessionModel.SessionGate)
-  return <main>{children}</main>
+  return (
+    <Providers>
+      <main>{children}</main>
+    </Providers>
+  )
 }
 
 export const withAuthLayout = (Component: React.FC) => {

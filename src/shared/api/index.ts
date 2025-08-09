@@ -1,45 +1,54 @@
-import axios, { AxiosError, AxiosInstance } from 'axios'
-
 export type ApiResponse<T> = {
   status: number
   message: string
   data: T
 }
 
-export const api: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:8080',
-})
-
-export type BaseError = {
+export type BaseError<T> = {
   status: number
   message: string
-  data: unknown
+  data: T | null
 }
 
-export class ApiError extends Error {
+export class ApiError<T> extends Error {
   status: number
-  message: string
-  data: unknown
+  data: T | null
 
-  constructor(response: BaseError) {
+  constructor(response: BaseError<T>) {
     super(response.message || 'An error occurred')
     this.status = response.status
-    this.message = response.message
-    this.data = response.data || null
+    this.data = response.data ?? null
   }
 }
 
-export const handleApiError = (error: unknown): ApiError => {
-  if (axios.isAxiosError(error)) {
-    const axiosError = error as AxiosError<BaseError>
-    if (axiosError.response && axiosError.response.data) {
-      return new ApiError(axiosError.response.data)
-    }
+export const getApiError = <T = unknown>(e: unknown): ApiError<T> => {
+  const safeError = (msg: string) =>
+    new ApiError<T>({ status: 500, message: msg, data: null })
+
+  const isObjectWithData = (obj: unknown): obj is { data: unknown } =>
+    typeof obj === 'object' && obj !== null && 'data' in obj
+
+  if (!isObjectWithData(e)) {
+    return safeError(
+      e instanceof Error ? e.message : 'Произошла неизвестная ошибка',
+    )
   }
-  return new ApiError({
-    status: 500,
-    message:
-      error instanceof Error ? error.message : 'Произошла неизвестная ошибка',
-    data: null,
+
+  if (!isObjectWithData(e.data)) {
+    return safeError(
+      e.data instanceof Error ? e.data.message : 'Произошла неизвестная ошибка',
+    )
+  }
+
+  const errObj = e.data as {
+    status: number | string
+    data?: T
+    error?: string
+  }
+
+  return new ApiError<T>({
+    status: Number(errObj.status) || 500,
+    message: errObj.error || 'Ошибка запроса',
+    data: errObj.data ?? null,
   })
 }
