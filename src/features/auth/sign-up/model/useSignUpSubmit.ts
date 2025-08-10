@@ -1,3 +1,5 @@
+'use client'
+
 import { useSignUpUserMutation } from 'entities/session'
 import { useRouter } from 'next/navigation'
 import { paths } from 'shared/navigation'

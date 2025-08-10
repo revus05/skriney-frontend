@@ -26,6 +26,8 @@
 
   --color-border-neutral-primary: hsla(28, 9%, 65%, 50%);
 
+    --color-border-neutral-inverse-primary: hsla(30, 16%, 83%, 100%);
+
   --color-border-semantic-error-primary: hsla(8, 60%, 70%, 100%);
 
 

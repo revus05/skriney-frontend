@@ -10,7 +10,7 @@ const initialState: InitialState = {
 }
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'authSlice',
   initialState,
   reducers: {
     signIn: (state, action: PayloadAction<UserDTO>) => {

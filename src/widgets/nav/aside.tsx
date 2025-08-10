@@ -26,7 +26,7 @@ export const Aside = () => {
       id: 'categories',
       label: 'Категории',
       icon: 'categories',
-      href: '/category',
+      href: '/categories',
     },
     {
       id: 'goal',

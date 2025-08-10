@@ -1,3 +1,5 @@
+'use client'
+
 import { signIn, useSignInUserMutation } from 'entities/session'
 import { useAppDispatch } from 'shared/hooks'
 import { useRouter } from 'next/navigation'
@@ -6,6 +8,7 @@ import { addToast } from '@heroui/toast'
 import { createElement } from 'react'
 import { Icons } from 'shared/ui'
 import { SignInFormValues } from './schema'
+import { paths } from 'shared/navigation'
 
 export function useSignInSubmit() {
   const [signInUser] = useSignInUserMutation()
@@ -17,7 +20,7 @@ export function useSignInSubmit() {
       const res = await signInUser(values).unwrap()
       if (res && res.data) {
         dispatch(signIn(res.data))
-        router.replace('/')
+        router.replace(paths.home)
       }
     } catch (error) {
       const err = getApiError<Record<string, string>>(error)

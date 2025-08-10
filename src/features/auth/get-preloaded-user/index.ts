@@ -1,0 +1,1 @@
+export { getPreloadedUser } from './model'

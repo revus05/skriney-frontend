@@ -12,11 +12,16 @@ const rootReducer = {
 
 const mainReducer = combineReducers(rootReducer)
 
-export const store = configureStore({
-  reducer: mainReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware),
-})
+export type RootState = ReturnType<typeof mainReducer>
 
-export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
+export const makeStore = (preloadedState?: Partial<RootState>) => {
+  return configureStore({
+    reducer: mainReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(authApi.middleware),
+    preloadedState,
+  })
+}
+
+export type AppStore = ReturnType<typeof makeStore>
+export type AppDispatch = AppStore['dispatch']

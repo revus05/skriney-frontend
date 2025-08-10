@@ -1,50 +1,31 @@
 import { Header } from 'widgets/nav/header'
 import { Aside } from 'widgets/nav/aside'
-import React, { FC, ReactNode, useEffect, useState } from 'react'
-import { Providers } from 'app/providers'
-import Cookies from 'js-cookie'
-import { useRouter } from 'next/navigation'
+import React, { FC, ReactNode } from 'react'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import { paths } from 'shared/navigation'
 
 type HomeLayoutType = {
   children: ReactNode
 }
 
-const HomeLayout: FC<HomeLayoutType> = ({ children }) => {
-  const [isClient, setIsClient] = useState(false)
-  const [isAuthChecked, setIsAuthChecked] = useState(false)
-  const router = useRouter()
+const HomeLayout: FC<HomeLayoutType> = async ({ children }) => {
+  const cookiesObj = await cookies()
 
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const jwt = cookiesObj.get('jwt')?.value
 
-  useEffect(() => {
-    if (!isClient) return
-
-    const jwt = Cookies.get('jwt')
-
-    if (!jwt) {
-      router.replace(paths.signIn)
-    } else {
-      setIsAuthChecked(true)
-    }
-  }, [isClient, router])
-
-  if (!isClient || !isAuthChecked) {
-    return null
+  if (!jwt) {
+    redirect(paths.signIn)
   }
 
   return (
-    <Providers>
-      <main className={'p-2.5'}>
-        <Header />
-        <div className="mt-8 flex gap-8">
-          <Aside />
-          {children}
-        </div>
-      </main>
-    </Providers>
+    <main className={'p-2.5'}>
+      <Header />
+      <div className="mt-8 flex gap-8">
+        <Aside />
+        {children}
+      </div>
+    </main>
   )
 }
 

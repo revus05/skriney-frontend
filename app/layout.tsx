@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
 import React from 'react'
+import { Providers } from 'app/providers'
+import { getPreloadedUser } from 'features/auth/get-preloaded-user'
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -13,17 +15,19 @@ export const metadata: Metadata = {
   description: 'App to track expenses',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const preloadedState = await getPreloadedUser()
+
   return (
     <html lang="en">
       <body
         className={`${roboto.variable} relative z-0 min-h-screen antialiased`}
       >
-        {children}
+        <Providers preloadedState={preloadedState}>{children}</Providers>
         <div className={'absolute top-0 left-0 z-[-1] h-full w-full'}>
           <div className={'relative h-full w-full overflow-hidden'}>
             <div

@@ -5,5 +5,3 @@ import { twMerge } from 'tailwind-merge'
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs))
 }
-
-export const atom = <T>(factory: () => T) => factory()

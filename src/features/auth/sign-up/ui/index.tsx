@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, Input } from 'shared/ui'
 import {
   setShowPassword,

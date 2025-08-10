@@ -4,6 +4,7 @@
     "": {
       "name": "skriney-frontend",
       "dependencies": {
+        "@heroui/popover": "^2.3.24",
         "@heroui/react": "^2.8.2",
         "@heroui/system": "^2.4.20",
         "@heroui/theme": "^2.4.20",

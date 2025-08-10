@@ -1,42 +1,22 @@
-import { Providers } from 'app/providers'
-import React, { FC, ReactNode, useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import React, { FC, ReactNode } from 'react'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import { paths } from 'shared/navigation'
-import Cookies from 'js-cookie'
 
 type AuthLayoutType = {
   children: ReactNode
 }
 
-const AuthLayout: FC<AuthLayoutType> = ({ children }) => {
-  const [isClient, setIsClient] = useState(false)
-  const [isAuthChecked, setIsAuthChecked] = useState(false)
-  const router = useRouter()
+const AuthLayout: FC<AuthLayoutType> = async ({ children }) => {
+  const cookiesObj = await cookies()
 
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const jwt = cookiesObj.get('jwt')?.value
 
-  useEffect(() => {
-    if (!isClient) return
-
-    const jwt = Cookies.get('jwt')
-
-    if (jwt) {
-      router.replace(paths.home)
-      setIsAuthChecked(true)
-    }
-  }, [isClient, router])
-
-  if (!isClient || isAuthChecked) {
-    return null
+  if (jwt) {
+    redirect(paths.home)
   }
 
-  return (
-    <Providers>
-      <main>{children}</main>
-    </Providers>
-  )
+  return <main>{children}</main>
 }
 
 export const withAuthLayout = (Component: React.FC) => {

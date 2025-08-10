@@ -1,13 +1,11 @@
-'use client'
-
 import { SignUpForm } from 'features/auth/sign-up'
 import { withAuthLayout } from 'widgets/layouts/auth'
 
 const SignUpPage = () => {
   return (
-    <main className="flex min-h-screen grow items-center justify-center">
+    <div className="flex min-h-screen grow items-center justify-center">
       <SignUpForm />
-    </main>
+    </div>
   )
 }
 

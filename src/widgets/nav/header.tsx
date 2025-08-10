@@ -1,7 +1,12 @@
+'use client'
+
 import { Icons, Input } from 'shared/ui'
 import Link from 'next/link'
+import { useAppSelector } from 'shared/hooks'
 
 export const Header = () => {
+  const user = useAppSelector((state) => state.authSlice.user)
+
   return (
     <header
       className={
@@ -17,7 +22,7 @@ export const Header = () => {
         iconStart={'search'}
       />
       <div className={'flex items-center gap-2'}>
-        <span className={'font-semibold'}>Максим</span>
+        <span className={'font-semibold'}>{user?.username}</span>
         <div className={'size-8 rounded-full bg-gray-700'}></div>
       </div>
     </header>
