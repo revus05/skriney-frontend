@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ApiResponse } from 'shared/api'
-import { CategoryDTO, CreateCategoryRequestDTO } from 'shared/api/api-client'
+import {
+  CategoryDTO,
+  CreateCategoryRequestDTO,
+  DeleteCategoryRequestDTO,
+} from 'shared/api/api-client'
 
 const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
@@ -26,9 +30,23 @@ const categoriesApi = createApi({
         body,
       }),
     }),
+    deleteCategory: builder.mutation<
+      ApiResponse<CategoryDTO>,
+      DeleteCategoryRequestDTO
+    >({
+      query: (body) => ({
+        url: '/delete',
+        method: 'DELETE',
+        credentials: 'include',
+        body,
+      }),
+    }),
   }),
 })
 
 export default categoriesApi
-export const { useGetCategoriesMutation, useCreateCategoryMutation } =
-  categoriesApi
+export const {
+  useGetCategoriesMutation,
+  useCreateCategoryMutation,
+  useDeleteCategoryMutation,
+} = categoriesApi

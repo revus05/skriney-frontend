@@ -1,7 +1,6 @@
-import { useGetCategoriesMutation } from 'entities/category/api'
+import { setCategories, useGetCategoriesMutation } from 'entities/category'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/hooks'
-import { setCategories } from 'entities/category'
 
 export const useGetCategories = () => {
   const [getCategories] = useGetCategoriesMutation()

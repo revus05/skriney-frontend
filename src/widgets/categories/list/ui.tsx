@@ -11,6 +11,7 @@ export const CategoriesList = () => {
       {categories.map((category) => (
         <CategoryListItem
           key={category.uuid}
+          uuid={category.uuid}
           title={category.title}
           emoji={category.emoji}
           sum={430}

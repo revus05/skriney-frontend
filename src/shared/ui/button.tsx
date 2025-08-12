@@ -11,13 +11,14 @@ type ButtonProps = ComponentProps<'button'> &
   }
 
 const buttonVariants = cva(
-  'cursor-pointer w-fit rounded-lg py-2 px-8 font-semibold text-text-brand-inverse transition active:scale-[0.98] will-change-transform',
+  'cursor-pointer w-fit rounded-lg py-2 px-8 font-semibold text-text-brand-inverse transition active:scale-[0.98] will-change-transform flex gap-2.5 items-center',
   {
     variants: {
       variant: {
         primary:
           'bg-bg-brand-primary/70 hover:bg-bg-brand-secondary hover:text-text-brand-primary',
         icon: 'p-1 hover:bg-border-neutral-primary rounded-md',
+        ghost: 'bg-none hover:bg-border-neutral-primary',
       },
     },
     defaultVariants: {
@@ -43,12 +44,12 @@ export const Button: FC<ButtonProps> = ({
     >
       {iconStart &&
         createElement(Icons[iconStart], {
-          className: 'fill-icon-neutral-tertiary',
+          className: 'fill-icon-neutral-tertiary size-5',
         })}
       {children}
       {iconEnd &&
         createElement(Icons[iconEnd], {
-          className: 'fill-icon-neutral-tertiary',
+          className: 'fill-icon-neutral-tertiary size-5',
         })}
     </button>
   )

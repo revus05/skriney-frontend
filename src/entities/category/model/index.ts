@@ -19,8 +19,14 @@ const categorySlice = createSlice({
     addCategory: (state, action: PayloadAction<CategoryDTO>) => {
       state.categories.push(action.payload)
     },
+    deleteCategory: (state, action: PayloadAction<CategoryDTO>) => {
+      state.categories = state.categories.filter(
+        (category) => category.uuid !== action.payload.uuid,
+      )
+    },
   },
 })
 
-export const { setCategories, addCategory } = categorySlice.actions
+export const { setCategories, addCategory, deleteCategory } =
+  categorySlice.actions
 export default categorySlice.reducer
