@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export type {CategoryDTO} from './models/CategoryDTO';
 export {CreateBankAccountRequestDTO} from './models/CreateBankAccountRequestDTO';
 export type {CreateCategoryRequestDTO} from './models/CreateCategoryRequestDTO';
 export type {SignInUserRequestDTO} from './models/SignInUserRequestDTO';

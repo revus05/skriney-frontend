@@ -11,6 +11,7 @@
     "generate-api": "npx openapi-typescript-codegen --input http://localhost:8080/api-docs --output ./src/shared/api/api-client --client axios --exportCore false --exportServices false"
   },
   "dependencies": {
+    "@heroui/modal": "^2.2.21",
     "@heroui/popover": "^2.3.24",
     "@heroui/react": "^2.8.2",
     "@heroui/system": "^2.4.20",

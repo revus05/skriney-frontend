@@ -11,7 +11,7 @@ type ButtonProps = ComponentProps<'button'> &
   }
 
 const buttonVariants = cva(
-  'cursor-pointer w-fit rounded-lg py-3 px-8 font-semibold text-text-brand-inverse transition active:scale-[0.98] will-change-transform',
+  'cursor-pointer w-fit rounded-lg py-2 px-8 font-semibold text-text-brand-inverse transition active:scale-[0.98] will-change-transform',
   {
     variants: {
       variant: {
