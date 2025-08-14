@@ -47,6 +47,6 @@ const categoriesApi = createApi({
 export default categoriesApi
 export const {
   useGetCategoriesMutation,
-  useCreateCategoryMutation,
+  useCreateCategoryMutation: useCreateTransactionMutation,
   useDeleteCategoryMutation,
 } = categoriesApi

@@ -11,7 +11,7 @@ import {
 } from '@heroui/react'
 import { useCreateCategoryForm, useCreateCategorySubmit } from '../model'
 
-export const CreateCategoriesButton = () => {
+export const CreateCategoryButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const {
     register,

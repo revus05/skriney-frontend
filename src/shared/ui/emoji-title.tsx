@@ -1,17 +1,26 @@
 'use client'
 
-import { FC } from 'react'
+import { ComponentProps, FC } from 'react'
 import { Icons } from 'shared/ui/icons'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
+import { cn } from 'shared/lib'
 
-type EmojiTitleType = {
+interface EmojiTitleType extends ComponentProps<'div'> {
   emoji?: string
   title: string
 }
 
-export const EmojiTitle: FC<EmojiTitleType> = ({ emoji, title }) => {
+export const EmojiTitle: FC<EmojiTitleType> = ({
+  emoji,
+  title,
+  className,
+  ...props
+}) => {
   return (
-    <div className={'flex items-center gap-2 text-base leading-5'}>
+    <div
+      className={cn('flex items-center gap-2 text-base leading-5', className)}
+      {...props}
+    >
       {emoji && <span>{emoji}</span>}
       {!emoji && (
         <>

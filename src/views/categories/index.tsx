@@ -1,7 +1,7 @@
 import { Icons } from 'shared/ui'
 import { withHomeLayout } from 'widgets/layouts/home'
 import { CategoriesList } from 'widgets/categories/list'
-import { CreateCategoriesButton } from 'features/categories/create-category'
+import { CreateCategoryButton } from 'features/categories/create-category'
 
 const CategoriesPage = () => {
   return (
@@ -13,7 +13,7 @@ const CategoriesPage = () => {
           </h2>
           <Icons.info />
         </div>
-        <CreateCategoriesButton />
+        <CreateCategoryButton />
       </div>
       <CategoriesList />
     </div>

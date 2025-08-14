@@ -36,7 +36,7 @@ export const CategoryListItem: FC<CategoryCardType> = ({
         </PopoverTrigger>
         <PopoverContent
           className={
-            'border-border-neutral-primary bg-bg-neutral-primary rounded-2xl border p-2'
+            'border-border-neutral-primary bg-bg-neutral-primary rounded-2xl border p-1'
           }
         >
           <div className="flex items-center gap-2.5">
@@ -44,7 +44,7 @@ export const CategoryListItem: FC<CategoryCardType> = ({
               variant={'ghost'}
               iconStart={'trashBin'}
               className={
-                '[&_svg]:fill-icon-semantic-error-primary text-text-semantic-error-primary px-2 py-1 font-bold'
+                '[&_svg]:fill-icon-semantic-error-primary text-text-semantic-error-primary rounded-xl px-3 py-2 font-bold'
               }
               onClick={() => deleteCategory({ uuid })}
             >

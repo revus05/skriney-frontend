@@ -22,6 +22,8 @@
     --color-bg-neutral-inverse-tertiary: hsl(28, 11%, 74%);
 
   --color-bg-semantic-success-primary: hsl(80, 100%, 91%, 100%);
+    --color-bg-semantic-error-subtle: hsl(7, 35%, 31%, 100%);
+    --color-bg-semantic-success-subtle: hsl(79, 17%, 35%, 100%);
 
 
   --color-border-neutral-primary: hsla(28, 9%, 65%, 50%);

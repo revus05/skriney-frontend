@@ -3,11 +3,11 @@
 import { useAppDispatch } from 'shared/hooks'
 import { getApiError } from 'shared/api'
 import { CreateCategoryRequestDTO } from 'shared/api/api-client'
-import { useCreateCategoryMutation } from 'entities/category/api'
+import { useCreateTransactionMutation } from 'entities/category/api'
 import { addCategory } from 'entities/category'
 
 export function useCreateCategorySubmit() {
-  const [createCategory] = useCreateCategoryMutation()
+  const [createCategory] = useCreateTransactionMutation()
   const dispatch = useAppDispatch()
 
   return async (values: CreateCategoryRequestDTO) => {
