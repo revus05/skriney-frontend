@@ -4,7 +4,7 @@ export {
   default as categoriesApi,
   useCreateTransactionMutation,
   useGetCategoriesMutation,
-  useDeleteCategoryMutation,
+  useDeleteTransactionMutation,
 } from './api'
 export {
   default as categorySlice,

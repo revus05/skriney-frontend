@@ -40,13 +40,13 @@ export const Balance: FC<BalanceType> = ({
           )}
         >
           {signable && sum > 0 && '+'}
-          {sum}
+          {sum.toFixed(2)}
         </span>
         {goalSum && (
           <>
             <span className="text-text-neutral-tertiary leading-5"> / </span>
             <span className="text-text-neutral-primary text-base leading-5 font-bold">
-              {goalSum}
+              {goalSum.toFixed(2)}
             </span>
           </>
         )}

@@ -3,7 +3,7 @@ import { ApiResponse } from 'shared/api'
 import {
   CategoryDTO,
   CreateCategoryRequestDTO,
-  DeleteCategoryRequestDTO,
+  DeleteTransactionRequestDTO,
 } from 'shared/api/api-client'
 
 const categoriesApi = createApi({
@@ -32,7 +32,7 @@ const categoriesApi = createApi({
     }),
     deleteCategory: builder.mutation<
       ApiResponse<CategoryDTO>,
-      DeleteCategoryRequestDTO
+      DeleteTransactionRequestDTO
     >({
       query: (body) => ({
         url: '/delete',
@@ -48,5 +48,5 @@ export default categoriesApi
 export const {
   useGetCategoriesMutation,
   useCreateCategoryMutation: useCreateTransactionMutation,
-  useDeleteCategoryMutation,
+  useDeleteCategoryMutation: useDeleteTransactionMutation,
 } = categoriesApi
