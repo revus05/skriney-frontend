@@ -17,7 +17,7 @@ export type TransactionDTO = {
     /**
      * Transaction category
      */
-    currency: TransactionDTO.currency;
+    currency: 'USD' | 'EUR' | 'JPY' | 'GBP' | 'AUD' | 'CAD' | 'CHF' | 'CNY' | 'HKD' | 'NZD' | 'SEK' | 'KRW' | 'SGD' | 'NOK' | 'MXN' | 'INR' | 'RUB' | 'ZAR' | 'TRY' | 'BRL' | 'TWD' | 'DKK' | 'PLN' | 'THB' | 'MYR' | 'IDR' | 'HUF' | 'CZK' | 'ILS' | 'CLP' | 'PHP' | 'AED' | 'COP' | 'SAR' | 'RON' | 'BGN' | 'KZT' | 'BYN';
     /**
      * Optional user description
      */
@@ -39,49 +39,4 @@ export type TransactionDTO = {
      */
     category: CategoryDTO;
 };
-export namespace TransactionDTO {
-    /**
-     * Transaction category
-     */
-    export enum currency {
-        USD = 'USD',
-        EUR = 'EUR',
-        JPY = 'JPY',
-        GBP = 'GBP',
-        AUD = 'AUD',
-        CAD = 'CAD',
-        CHF = 'CHF',
-        CNY = 'CNY',
-        HKD = 'HKD',
-        NZD = 'NZD',
-        SEK = 'SEK',
-        KRW = 'KRW',
-        SGD = 'SGD',
-        NOK = 'NOK',
-        MXN = 'MXN',
-        INR = 'INR',
-        RUB = 'RUB',
-        ZAR = 'ZAR',
-        TRY = 'TRY',
-        BRL = 'BRL',
-        TWD = 'TWD',
-        DKK = 'DKK',
-        PLN = 'PLN',
-        THB = 'THB',
-        MYR = 'MYR',
-        IDR = 'IDR',
-        HUF = 'HUF',
-        CZK = 'CZK',
-        ILS = 'ILS',
-        CLP = 'CLP',
-        PHP = 'PHP',
-        AED = 'AED',
-        COP = 'COP',
-        SAR = 'SAR',
-        RON = 'RON',
-        BGN = 'BGN',
-        KZT = 'KZT',
-        BYN = 'BYN',
-    }
-}
 

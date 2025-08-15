@@ -5,6 +5,7 @@ import { signInFormSlice } from 'features/auth/sign-in'
 import { categoriesApi, categorySlice } from 'entities/category'
 import { transactionsApi, transactionSlice } from 'entities/transaction'
 import { bankAccountApi, bankAccountsSlice } from 'entities/bank-account'
+import { userSettingsApi, userSettingsSlice } from 'entities/user-settings'
 
 const rootReducer = {
   authSlice,
@@ -13,10 +14,12 @@ const rootReducer = {
   categorySlice,
   transactionSlice,
   bankAccountsSlice,
+  userSettingsSlice,
   [authApi.reducerPath]: authApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [transactionsApi.reducerPath]: transactionsApi.reducer,
   [bankAccountApi.reducerPath]: bankAccountApi.reducer,
+  [userSettingsApi.reducerPath]: userSettingsApi.reducer,
 }
 
 const mainReducer = combineReducers(rootReducer)
@@ -31,7 +34,8 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
         .concat(authApi.middleware)
         .concat(categoriesApi.middleware)
         .concat(transactionsApi.middleware)
-        .concat(bankAccountApi.middleware),
+        .concat(bankAccountApi.middleware)
+        .concat(userSettingsApi.middleware),
     preloadedState,
   })
 }

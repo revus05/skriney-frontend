@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type DeleteTransactionRequestDTO = {
+export type DeleteCategoryRequestDTO = {
     /**
      * Delete category uuid
      */

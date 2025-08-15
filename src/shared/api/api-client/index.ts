@@ -3,13 +3,16 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export {BankAccountDTO} from './models/BankAccountDTO';
+export type {BankAccountDTO} from './models/BankAccountDTO';
 export type {CategoryDTO} from './models/CategoryDTO';
-export {CreateBankAccountRequestDTO} from './models/CreateBankAccountRequestDTO';
+export type {CreateBankAccountRequestDTO} from './models/CreateBankAccountRequestDTO';
 export type {CreateCategoryRequestDTO} from './models/CreateCategoryRequestDTO';
-export {CreateTransactionRequestDTO} from './models/CreateTransactionRequestDTO';
-export type {DeleteTransactionRequestDTO} from './models/DeleteCategoryRequestDTO';
+export type {CreateTransactionRequestDTO} from './models/CreateTransactionRequestDTO';
+export type {DeleteCategoryRequestDTO} from './models/DeleteCategoryRequestDTO';
+export type {DeleteTransactionRequestDTO} from './models/DeleteTransactionRequestDTO';
 export type {SignInUserRequestDTO} from './models/SignInUserRequestDTO';
 export type {SignUpUserRequestDTO} from './models/SignUpUserRequestDTO';
-export {TransactionDTO} from './models/TransactionDTO';
+export type {TransactionDTO} from './models/TransactionDTO';
+export type {UpdateDefaultCurrencyRequestDTO} from './models/UpdateDefaultCurrencyRequestDTO';
 export type { UserDTO } from './models/UserDTO';
+export type {UserSettingsDTO} from './models/UserSettingsDTO';

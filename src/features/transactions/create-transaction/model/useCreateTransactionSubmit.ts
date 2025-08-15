@@ -4,8 +4,8 @@ import { useAppDispatch } from 'shared/hooks'
 import { getApiError } from 'shared/api'
 import { useCreateTransactionMutation } from 'entities/transaction/api'
 import { addTransaction } from 'entities/transaction'
-import { CreateTransactionRequestDTO } from 'shared/api/api-client'
 import { CreateTransactionFormValues } from './schema'
+import { CurrencyType } from 'entities/user-settings'
 
 export function useCreateTransactionSubmit() {
   const [createTransaction] = useCreateTransactionMutation()
@@ -14,7 +14,7 @@ export function useCreateTransactionSubmit() {
   return async (values: CreateTransactionFormValues) => {
     const data = {
       sum: values.sum,
-      currency: values.currency as CreateTransactionRequestDTO.currency,
+      currency: values.currency as CurrencyType,
       bankAccountUuid: values.bankAccount,
       categoryUuid: values.category,
     }

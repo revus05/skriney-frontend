@@ -10,7 +10,7 @@ export type CreateBankAccountRequestDTO = {
     /**
      * Bank account currency
      */
-    currency?: CreateBankAccountRequestDTO.currency;
+    currency?: 'USD' | 'EUR' | 'JPY' | 'GBP' | 'AUD' | 'CAD' | 'CHF' | 'CNY' | 'HKD' | 'NZD' | 'SEK' | 'KRW' | 'SGD' | 'NOK' | 'MXN' | 'INR' | 'RUB' | 'ZAR' | 'TRY' | 'BRL' | 'TWD' | 'DKK' | 'PLN' | 'THB' | 'MYR' | 'IDR' | 'HUF' | 'CZK' | 'ILS' | 'CLP' | 'PHP' | 'AED' | 'COP' | 'SAR' | 'RON' | 'BGN' | 'KZT' | 'BYN';
     /**
      * Bank account title
      */
@@ -29,49 +29,4 @@ export type CreateBankAccountRequestDTO = {
     image?: string;
     inTotalBalance?: boolean;
 };
-export namespace CreateBankAccountRequestDTO {
-    /**
-     * Bank account currency
-     */
-    export enum currency {
-        USD = 'USD',
-        EUR = 'EUR',
-        JPY = 'JPY',
-        GBP = 'GBP',
-        AUD = 'AUD',
-        CAD = 'CAD',
-        CHF = 'CHF',
-        CNY = 'CNY',
-        HKD = 'HKD',
-        NZD = 'NZD',
-        SEK = 'SEK',
-        KRW = 'KRW',
-        SGD = 'SGD',
-        NOK = 'NOK',
-        MXN = 'MXN',
-        INR = 'INR',
-        RUB = 'RUB',
-        ZAR = 'ZAR',
-        TRY = 'TRY',
-        BRL = 'BRL',
-        TWD = 'TWD',
-        DKK = 'DKK',
-        PLN = 'PLN',
-        THB = 'THB',
-        MYR = 'MYR',
-        IDR = 'IDR',
-        HUF = 'HUF',
-        CZK = 'CZK',
-        ILS = 'ILS',
-        CLP = 'CLP',
-        PHP = 'PHP',
-        AED = 'AED',
-        COP = 'COP',
-        SAR = 'SAR',
-        RON = 'RON',
-        BGN = 'BGN',
-        KZT = 'KZT',
-        BYN = 'BYN',
-    }
-}
 
