@@ -1,6 +1,6 @@
 'use client'
 
-import { UpdateDefaultCurrencySelect } from 'features/settings/update-default-currency'
+import { UpdateDefaultCurrencySelect } from 'features/user-settings/update-default-currency'
 
 export const SettingsList = () => {
   return (

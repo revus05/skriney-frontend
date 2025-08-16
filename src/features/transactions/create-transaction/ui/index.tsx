@@ -16,7 +16,7 @@ import { Controller } from 'react-hook-form'
 import { useGetCategories } from 'widgets/categories/list/model'
 import { useGetBankAccounts } from 'features/bank-accounts/get-bank-accounts'
 import { CurrencySymbols } from 'entities/user-settings'
-import { useGetUserSettings } from 'features/settings/get-settings'
+import { useGetUserSettings } from 'features/user-settings/get-settings'
 import { useEffect } from 'react'
 
 export const CreateTransactionButton = () => {

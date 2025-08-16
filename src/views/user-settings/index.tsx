@@ -1,5 +1,5 @@
 import { withHomeLayout } from 'widgets/layouts/home'
-import { SettingsList } from 'widgets/settings/list'
+import { SettingsList } from 'widgets/user-settings/list'
 
 const SettingsPage = () => {
   return (
