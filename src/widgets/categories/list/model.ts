@@ -1,3 +1,5 @@
+'use client'
+
 import { setCategories, useGetCategoriesMutation } from 'entities/category'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/hooks'

@@ -2,30 +2,31 @@
 
 import { Select, SelectItem, SharedSelection } from '@heroui/react'
 import { Icons } from 'shared/ui'
-import { CurrencySymbols, CurrencyType } from 'entities/user-settings'
 import { Key, useEffect, useState } from 'react'
 import { useGetUserSettings } from 'features/user-settings/get-settings'
-import { useUpdateDefaultCurrencySubmit } from '../model'
+import { useUpdateDefaultCategorySubmit } from '../model'
+import { useGetCategories } from 'widgets/categories/list'
 
-export const UpdateDefaultCurrencySelect = () => {
+export const UpdateDefaultCategorySelect = () => {
   const usersSettings = useGetUserSettings()
-  const updateDefaultCurrency = useUpdateDefaultCurrencySubmit()
+  const updateDefaultCategory = useUpdateDefaultCategorySubmit()
+  const categories = useGetCategories()
 
-  const [selectedCurrency, setSelectedCurrency] = useState<string>('')
+  const [selectedCategory, setSelectedCategory] = useState<string>('')
 
   useEffect(() => {
-    setSelectedCurrency(usersSettings?.defaultCurrency || '')
-  }, [usersSettings?.defaultCurrency])
+    setSelectedCategory(usersSettings?.defaultCategory.uuid || '')
+  }, [usersSettings?.defaultCategory.uuid])
 
   const handleSelectCurrencyChange = (keys: SharedSelection) => {
-    const firstKey = Array.from(keys as Set<Key>)[0] as CurrencyType
-    setSelectedCurrency(firstKey || '')
-    updateDefaultCurrency({ currency: firstKey })
+    const firstKey = Array.from(keys as Set<Key>)[0] as string
+    setSelectedCategory(firstKey || '')
+    updateDefaultCategory({ uuid: firstKey })
   }
 
   return (
     <Select
-      aria-label={'default-currency'}
+      aria-label={'default-category'}
       classNames={{
         trigger:
           'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] border-border-neutral-primary px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
@@ -36,18 +37,18 @@ export const UpdateDefaultCurrencySelect = () => {
       placeholder={'Валюта по умолчанию'}
       selectorIcon={<Icons.chevronDown />}
       size={'sm'}
-      selectedKeys={selectedCurrency ? [selectedCurrency] : []}
+      selectedKeys={selectedCategory ? [selectedCategory] : []}
       onSelectionChange={handleSelectCurrencyChange}
     >
-      {Object.entries(CurrencySymbols).map(([key, symbol]) => (
+      {categories.map((category) => (
         <SelectItem
-          key={key}
+          key={category.uuid}
           className={'outline-none'}
           classNames={{
             wrapper: 'hover:bg-red-300 active:bg-red-300',
           }}
         >
-          {symbol === key ? key : `${symbol} ${key}`}
+          {category.title}
         </SelectItem>
       ))}
     </Select>

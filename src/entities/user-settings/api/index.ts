@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ApiResponse } from 'shared/api'
 import {
+  UpdateDefaultCategoryRequestDTO,
   UpdateDefaultCurrencyRequestDTO,
   UserSettingsDTO,
 } from 'shared/api/api-client'
@@ -22,6 +23,17 @@ const userSettingsApi = createApi({
         body,
       }),
     }),
+    updateDefaultCategory: builder.mutation<
+      ApiResponse<UserSettingsDTO>,
+      UpdateDefaultCategoryRequestDTO
+    >({
+      query: (body) => ({
+        url: '/update-default-category',
+        method: 'POST',
+        credentials: 'include',
+        body,
+      }),
+    }),
     getUserSettings: builder.mutation<ApiResponse<UserSettingsDTO>, void>({
       query: () => ({
         url: '/settings',
@@ -33,5 +45,8 @@ const userSettingsApi = createApi({
 })
 
 export default userSettingsApi
-export const { useUpdateDefaultCurrencyMutation, useGetUserSettingsMutation } =
-  userSettingsApi
+export const {
+  useUpdateDefaultCurrencyMutation,
+  useGetUserSettingsMutation,
+  useUpdateDefaultCategoryMutation,
+} = userSettingsApi

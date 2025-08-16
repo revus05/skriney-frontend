@@ -4,5 +4,6 @@ export {
   default as userSettingsApi,
   useUpdateDefaultCurrencyMutation,
   useGetUserSettingsMutation,
+  useUpdateDefaultCategoryMutation,
 } from './api'
 export { default as userSettingsSlice, setUserSettings } from './model'

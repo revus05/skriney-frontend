@@ -13,6 +13,7 @@ export type {DeleteTransactionRequestDTO} from './models/DeleteTransactionReques
 export type {SignInUserRequestDTO} from './models/SignInUserRequestDTO';
 export type {SignUpUserRequestDTO} from './models/SignUpUserRequestDTO';
 export type {TransactionDTO} from './models/TransactionDTO';
+export type {UpdateDefaultCategoryRequestDTO} from './models/UpdateDefaultCategoryRequestDTO';
 export type {UpdateDefaultCurrencyRequestDTO} from './models/UpdateDefaultCurrencyRequestDTO';
 export type { UserDTO } from './models/UserDTO';
 export type {UserSettingsDTO} from './models/UserSettingsDTO';
