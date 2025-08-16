@@ -3,19 +3,20 @@
 import { Select, SelectItem, SharedSelection } from '@heroui/react'
 import { Icons } from 'shared/ui'
 import { CurrencySymbols, CurrencyType } from 'entities/user-settings'
-import { Key, useEffect, useState } from 'react'
-import { useGetUserSettings } from 'features/user-settings/get-settings'
+import { Key, useState } from 'react'
 import { useUpdateDefaultCurrencySubmit } from '../model'
+import { useAppSelector } from 'shared/hooks'
 
 export const UpdateDefaultCurrencySelect = () => {
-  const usersSettings = useGetUserSettings()
   const updateDefaultCurrency = useUpdateDefaultCurrencySubmit()
 
-  const [selectedCurrency, setSelectedCurrency] = useState<string>('')
+  const defaultCurrency =
+    useAppSelector(
+      (state) => state.userSettingsSlice.userSettings?.defaultCurrency,
+    ) || ''
 
-  useEffect(() => {
-    setSelectedCurrency(usersSettings?.defaultCurrency || '')
-  }, [usersSettings?.defaultCurrency])
+  const [selectedCurrency, setSelectedCurrency] =
+    useState<string>(defaultCurrency)
 
   const handleSelectCurrencyChange = (keys: SharedSelection) => {
     const firstKey = Array.from(keys as Set<Key>)[0] as CurrencyType

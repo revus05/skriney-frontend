@@ -16,8 +16,6 @@ import { Controller } from 'react-hook-form'
 import { useGetCategories } from 'widgets/categories/list/model'
 import { useGetBankAccounts } from 'features/bank-accounts/get-bank-accounts'
 import { CurrencySymbols } from 'entities/user-settings'
-import { useGetUserSettings } from 'features/user-settings/get-settings'
-import { useEffect } from 'react'
 
 export const CreateTransactionButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -26,7 +24,6 @@ export const CreateTransactionButton = () => {
     handleSubmit,
     control,
     formState: { errors },
-    setValue,
   } = useCreateTransactionForm()
 
   const onSubmit = useCreateTransactionSubmit()
@@ -42,12 +39,6 @@ export const CreateTransactionButton = () => {
     key: bankAccount.uuid,
     label: bankAccount.title,
   }))
-
-  const userSettings = useGetUserSettings()
-
-  useEffect(() => {
-    setValue('currency', userSettings?.defaultCurrency || '')
-  }, [isOpen, setValue, userSettings?.defaultCurrency])
 
   return (
     <>

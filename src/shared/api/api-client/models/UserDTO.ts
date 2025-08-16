@@ -2,6 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type {UserSettingsDTO} from './UserSettingsDTO';
+
 export type UserDTO = {
     /**
      * User UUID
@@ -19,6 +21,10 @@ export type UserDTO = {
      * Email address
      */
     email: string;
+    /**
+     * User settings
+     */
+    userSettings: UserSettingsDTO;
     /**
      * Creation timestamp
      */

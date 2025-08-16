@@ -2,27 +2,34 @@
 
 import { Select, SelectItem, SharedSelection } from '@heroui/react'
 import { Icons } from 'shared/ui'
-import { Key, useEffect, useState } from 'react'
-import { useGetUserSettings } from 'features/user-settings/get-settings'
+import { Key, useState } from 'react'
 import { useUpdateDefaultCategorySubmit } from '../model'
 import { useGetCategories } from 'widgets/categories/list'
+import { useAppSelector } from 'shared/hooks'
 
 export const UpdateDefaultCategorySelect = () => {
-  const usersSettings = useGetUserSettings()
   const updateDefaultCategory = useUpdateDefaultCategorySubmit()
   const categories = useGetCategories()
 
-  const [selectedCategory, setSelectedCategory] = useState<string>('')
+  const defaultCategory =
+    useAppSelector(
+      (state) => state.userSettingsSlice.userSettings?.defaultCategory,
+    ) || null
 
-  useEffect(() => {
-    setSelectedCategory(usersSettings?.defaultCategory.uuid || '')
-  }, [usersSettings?.defaultCategory.uuid])
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    defaultCategory?.uuid || '',
+  )
 
   const handleSelectCurrencyChange = (keys: SharedSelection) => {
     const firstKey = Array.from(keys as Set<Key>)[0] as string
     setSelectedCategory(firstKey || '')
     updateDefaultCategory({ uuid: firstKey })
   }
+
+  const displayCategories =
+    defaultCategory && !categories.some((c) => c.uuid === defaultCategory.uuid)
+      ? [...categories, defaultCategory]
+      : categories
 
   return (
     <Select
@@ -40,7 +47,7 @@ export const UpdateDefaultCategorySelect = () => {
       selectedKeys={selectedCategory ? [selectedCategory] : []}
       onSelectionChange={handleSelectCurrencyChange}
     >
-      {categories.map((category) => (
+      {displayCategories.map((category) => (
         <SelectItem
           key={category.uuid}
           className={'outline-none'}
