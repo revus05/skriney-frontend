@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Balance, Card, Icons } from 'shared/ui'
+import { Trend } from 'shared/ui/trend'
 
 type TotalBalanceType = {
   type: 'balance' | 'income' | 'expenses'
@@ -31,22 +32,6 @@ export const TotalBalance: FC<TotalBalanceType> = ({
 }) => {
   const { icon, title } = TYPE_CONFIG[type]
 
-  const isPositive = changePercent >= 0
-  const isExpenses = type === 'expenses'
-
-  const changeIconColor =
-    isPositive !== isExpenses
-      ? 'fill-icon-semantic-success-primary'
-      : 'fill-icon-semantic-error-primary'
-
-  const changeTextColor =
-    isPositive !== isExpenses
-      ? 'text-text-semantic-success-primary'
-      : 'text-text-semantic-error-primary'
-
-  const formattedPercent =
-    changePercent > 0 ? `+${changePercent}` : `${changePercent}`
-
   return (
     <Card className={'flex gap-4'}>
       <div className="fill-icon-neutral-tertiary">{icon}</div>
@@ -57,14 +42,7 @@ export const TotalBalance: FC<TotalBalanceType> = ({
           <Balance sum={sum} currency={currency} />
         </div>
 
-        <div className="flex items-center gap-2">
-          {isPositive ? (
-            <Icons.trendingUp className={changeIconColor} />
-          ) : (
-            <Icons.trendingDown className={changeIconColor} />
-          )}
-          <span className={changeTextColor}>{formattedPercent}%</span>
-        </div>
+        <Trend changePercent={changePercent} expense={type === 'expenses'} />
       </div>
     </Card>
   )

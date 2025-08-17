@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { ApiResponse } from 'shared/api'
 import {
   CreateTransactionRequestDTO,
-  DeleteTransactionRequestDTO,
+  DeleteBankAccountRequestDTO,
   TransactionDTO,
 } from 'shared/api/api-client'
 
@@ -32,7 +32,7 @@ const transactionsApi = createApi({
     }),
     deleteTransaction: builder.mutation<
       ApiResponse<TransactionDTO>,
-      DeleteTransactionRequestDTO
+      DeleteBankAccountRequestDTO
     >({
       query: (body) => ({
         url: '/delete',

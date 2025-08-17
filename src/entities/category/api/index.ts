@@ -3,7 +3,7 @@ import { ApiResponse } from 'shared/api'
 import {
   CategoryDTO,
   CreateCategoryRequestDTO,
-  DeleteTransactionRequestDTO,
+  DeleteBankAccountRequestDTO,
 } from 'shared/api/api-client'
 
 const categoriesApi = createApi({
@@ -32,7 +32,7 @@ const categoriesApi = createApi({
     }),
     deleteCategory: builder.mutation<
       ApiResponse<CategoryDTO>,
-      DeleteTransactionRequestDTO
+      DeleteBankAccountRequestDTO
     >({
       query: (body) => ({
         url: '/delete',

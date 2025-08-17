@@ -8,6 +8,7 @@ export type {CategoryDTO} from './models/CategoryDTO';
 export type {CreateBankAccountRequestDTO} from './models/CreateBankAccountRequestDTO';
 export type {CreateCategoryRequestDTO} from './models/CreateCategoryRequestDTO';
 export type {CreateTransactionRequestDTO} from './models/CreateTransactionRequestDTO';
+export type {DeleteBankAccountRequestDTO} from './models/DeleteBankAccountRequestDTO';
 export type {DeleteCategoryRequestDTO} from './models/DeleteCategoryRequestDTO';
 export type {DeleteTransactionRequestDTO} from './models/DeleteTransactionRequestDTO';
 export type {SignInUserRequestDTO} from './models/SignInUserRequestDTO';

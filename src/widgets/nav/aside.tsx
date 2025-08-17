@@ -29,6 +29,12 @@ export const Aside = () => {
       href: '/categories',
     },
     {
+      id: 'bank-accounts',
+      label: 'Счета',
+      icon: 'card',
+      href: '/bank-accounts',
+    },
+    {
       id: 'goal',
       label: 'Цели и лимиты',
       icon: 'goal',

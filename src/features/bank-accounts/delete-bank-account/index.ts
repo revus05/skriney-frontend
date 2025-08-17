@@ -1,0 +1,1 @@
+export { useDeleteBankAccount } from './model'

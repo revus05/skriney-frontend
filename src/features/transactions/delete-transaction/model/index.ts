@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from 'shared/hooks'
 import { getApiError } from 'shared/api'
-import { DeleteTransactionRequestDTO } from 'shared/api/api-client'
+import { DeleteBankAccountRequestDTO } from 'shared/api/api-client'
 import {
   deleteTransaction,
   useDeleteTransactionMutation,
@@ -12,7 +12,7 @@ export function useDeleteTransaction() {
   const [deleteTransactionFn] = useDeleteTransactionMutation()
   const dispatch = useAppDispatch()
 
-  return async (deleteTransactionUuid: DeleteTransactionRequestDTO) => {
+  return async (deleteTransactionUuid: DeleteBankAccountRequestDTO) => {
     try {
       const res = await deleteTransactionFn(deleteTransactionUuid).unwrap()
       if (res && res.data) {
