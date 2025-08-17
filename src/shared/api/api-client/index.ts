@@ -15,5 +15,6 @@ export type {SignUpUserRequestDTO} from './models/SignUpUserRequestDTO';
 export type {TransactionDTO} from './models/TransactionDTO';
 export type {UpdateDefaultCategoryRequestDTO} from './models/UpdateDefaultCategoryRequestDTO';
 export type {UpdateDefaultCurrencyRequestDTO} from './models/UpdateDefaultCurrencyRequestDTO';
+export type {UpdateThemeRequestDTO} from './models/UpdateThemeRequestDTO';
 export type { UserDTO } from './models/UserDTO';
 export type {UserSettingsDTO} from './models/UserSettingsDTO';

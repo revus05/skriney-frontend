@@ -22,8 +22,11 @@ export default async function RootLayout({
 }>) {
   const preloadedState = await getPreloadedUser()
 
+  const theme =
+    preloadedState.userSettingsSlice.userSettings?.userTheme || 'SYSTEM'
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme.toLowerCase()}>
       <body
         className={`${roboto.variable} relative z-0 min-h-screen antialiased`}
       >

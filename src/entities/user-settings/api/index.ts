@@ -3,6 +3,7 @@ import { ApiResponse } from 'shared/api'
 import {
   UpdateDefaultCategoryRequestDTO,
   UpdateDefaultCurrencyRequestDTO,
+  UpdateThemeRequestDTO,
   UserSettingsDTO,
 } from 'shared/api/api-client'
 
@@ -34,6 +35,17 @@ const userSettingsApi = createApi({
         body,
       }),
     }),
+    updateTheme: builder.mutation<
+      ApiResponse<UserSettingsDTO>,
+      UpdateThemeRequestDTO
+    >({
+      query: (body) => ({
+        url: '/update-theme',
+        method: 'POST',
+        credentials: 'include',
+        body,
+      }),
+    }),
     getUserSettings: builder.mutation<ApiResponse<UserSettingsDTO>, void>({
       query: () => ({
         url: '/settings',
@@ -49,4 +61,5 @@ export const {
   useUpdateDefaultCurrencyMutation,
   useGetUserSettingsMutation,
   useUpdateDefaultCategoryMutation,
+  useUpdateThemeMutation,
 } = userSettingsApi
