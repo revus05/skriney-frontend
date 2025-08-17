@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { BankAccountDTO } from 'shared/api/api-client'
+import { BankAccountDTO } from 'shared/api'
 
 type InitialState = {
   bankAccounts: BankAccountDTO[]

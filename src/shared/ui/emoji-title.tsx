@@ -29,9 +29,7 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
               <Icons.emojiPlaceholder className={'cursor-pointer'} />
             </PopoverTrigger>
             <PopoverContent
-              className={
-                'border-border-neutral-primary bg-bg-neutral-tertiary rounded-3xl border px-6 py-4'
-              }
+              className={'bg-bg-neutral-tertiary rounded-3xl border px-6 py-4'}
             >
               <div className="px-1 py-2">
                 <div className="text-small font-bold">Popover Content</div>

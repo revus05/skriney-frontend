@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TransactionDTO } from 'shared/api/api-client'
+import { TransactionDTO } from 'shared/api'
 
 type InitialState = {
   transactions: TransactionDTO[]

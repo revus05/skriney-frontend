@@ -5,7 +5,7 @@ export const Card: FC<ComponentProps<'div'>> = ({ children, className }) => {
   return (
     <div
       className={cn(
-        'border-border-neutral-primary bg-bg-neutral-tertiary/70 rounded-3xl border px-6 py-4 backdrop-blur-[32px]',
+        'bg-bg-neutral-tertiary/70 rounded-3xl border px-6 py-4 backdrop-blur-[32px]',
         className,
       )}
     >

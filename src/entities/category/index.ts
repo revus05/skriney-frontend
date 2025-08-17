@@ -1,5 +1,4 @@
 export { CategoryCard } from './ui/card'
-export { CategoryListItem } from './ui/list-item'
 export {
   default as categoriesApi,
   useCreateTransactionMutation,

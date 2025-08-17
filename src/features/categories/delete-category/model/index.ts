@@ -1,17 +1,16 @@
 'use client'
 
 import { useAppDispatch } from 'shared/hooks'
-import { getApiError } from 'shared/api'
-import { DeleteBankAccountRequestDTO } from 'shared/api/api-client'
+import { DeleteBankAccountRequestDTO, getApiError } from 'shared/api'
 import { deleteCategory, useDeleteTransactionMutation } from 'entities/category'
 
-export function useDeleteCategory() {
+export const useDeleteCategory = () => {
   const [deleteCategoryFn] = useDeleteTransactionMutation()
   const dispatch = useAppDispatch()
 
-  return async (deleteCategoryUuid: DeleteBankAccountRequestDTO) => {
+  return async (data: DeleteBankAccountRequestDTO) => {
     try {
-      const res = await deleteCategoryFn(deleteCategoryUuid).unwrap()
+      const res = await deleteCategoryFn(data).unwrap()
       if (res && res.data) {
         dispatch(deleteCategory(res.data))
       }

@@ -266,13 +266,17 @@
 }
 
 @layer base {
-  body {
-    @apply text-text-neutral-primary bg-bg-neutral-primary text-sm;
-  }
+    * {
+        @apply border-border-neutral-primary
+    }
 
-  svg {
-    @apply fill-icon-neutral-primary;
-  }
+    body {
+        @apply text-text-neutral-primary bg-bg-neutral-primary text-sm;
+    }
+
+    svg {
+        @apply fill-icon-neutral-primary;
+    }
 }
 
 @keyframes fly {

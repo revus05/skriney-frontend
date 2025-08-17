@@ -1,10 +1,11 @@
 'use client'
 
-import { useGetBankAccounts } from 'features/bank-accounts/get-bank-accounts'
-import { Balance, Button, Card, EmojiTitle } from 'shared/ui'
-import { Trend } from 'shared/ui/trend'
+import {
+  useDeleteBankAccount,
+  useGetBankAccounts,
+} from 'features/bank-accounts'
+import { Balance, Button, Card, EmojiTitle, Trend } from 'shared/ui'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
-import { useDeleteBankAccount } from 'features/bank-accounts/delete-bank-account'
 
 export const BankAccountsList = () => {
   const bankAccounts = useGetBankAccounts()
@@ -36,9 +37,7 @@ export const BankAccountsList = () => {
               />
             </PopoverTrigger>
             <PopoverContent
-              className={
-                'border-border-neutral-primary bg-bg-neutral-primary rounded-2xl border p-1'
-              }
+              className={'bg-bg-neutral-primary rounded-2xl border p-1'}
             >
               <div className="flex items-center gap-2.5">
                 <Button

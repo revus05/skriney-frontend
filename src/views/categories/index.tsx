@@ -1,7 +1,7 @@
 import { Icons } from 'shared/ui'
-import { withHomeLayout } from 'widgets/layouts/home'
-import { CategoriesList } from 'widgets/categories/list'
-import { CreateCategoryButton } from 'features/categories/create-category'
+import { withHomeLayout } from 'widgets/layouts'
+import { CategoriesList } from 'widgets/categories'
+import { CreateCategoryButton } from 'features/categories'
 
 const CategoriesPage = () => {
   return (

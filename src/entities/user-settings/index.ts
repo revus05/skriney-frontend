@@ -3,7 +3,6 @@ export type { CurrencyType } from './model/enums'
 export {
   default as userSettingsApi,
   useUpdateDefaultCurrencyMutation,
-  useGetUserSettingsMutation,
   useUpdateDefaultCategoryMutation,
 } from './api'
 export { default as userSettingsSlice, setUserSettings } from './model'

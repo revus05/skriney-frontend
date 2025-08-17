@@ -1,5 +1,4 @@
-import { Header } from 'widgets/nav/header'
-import { Aside } from 'widgets/nav/aside'
+import { Aside, Header } from 'widgets/nav'
 import React, { FC, ReactNode } from 'react'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'

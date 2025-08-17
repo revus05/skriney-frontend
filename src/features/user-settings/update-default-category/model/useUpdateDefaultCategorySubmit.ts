@@ -3,16 +3,15 @@ import {
   setUserSettings,
   useUpdateDefaultCategoryMutation,
 } from 'entities/user-settings'
-import { getApiError } from 'shared/api'
-import { UpdateDefaultCategoryRequestDTO } from 'shared/api/api-client'
+import { getApiError, UpdateDefaultCategoryRequestDTO } from 'shared/api'
 
 export const useUpdateDefaultCategorySubmit = () => {
   const [updateDefaultCategory] = useUpdateDefaultCategoryMutation()
   const dispatch = useAppDispatch()
 
-  return async (values: UpdateDefaultCategoryRequestDTO) => {
+  return async (data: UpdateDefaultCategoryRequestDTO) => {
     try {
-      const res = await updateDefaultCategory(values).unwrap()
+      const res = await updateDefaultCategory(data).unwrap()
       if (res && res.data) {
         dispatch(setUserSettings(res.data))
       }

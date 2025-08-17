@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CategoryDTO } from 'shared/api/api-client'
+import { CategoryDTO } from 'shared/api'
 
 type InitialState = {
   categories: CategoryDTO[]

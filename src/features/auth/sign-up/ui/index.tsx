@@ -34,7 +34,7 @@ export const SignUpForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-bg-neutral-primary/70 border-border-neutral-primary flex w-[400px] flex-col gap-6 rounded-2xl border p-8 backdrop-blur-[32px]"
+      className="bg-bg-neutral-primary/70 flex w-[400px] flex-col gap-6 rounded-2xl border p-8 backdrop-blur-[32px]"
     >
       <h2 className="text-xl font-semibold">Создать новый аккаунт:</h2>
       <div className="flex flex-col gap-6">

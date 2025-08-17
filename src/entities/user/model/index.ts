@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { UserDTO } from 'shared/api/api-client'
+import { UserDTO } from 'shared/api'
 
 type InitialState = {
   user: UserDTO | null
@@ -9,8 +9,8 @@ const initialState: InitialState = {
   user: null,
 }
 
-const authSlice = createSlice({
-  name: 'authSlice',
+const userSlice = createSlice({
+  name: 'userSlice',
   initialState,
   reducers: {
     signIn: (state, action: PayloadAction<UserDTO>) => {
@@ -19,5 +19,5 @@ const authSlice = createSlice({
   },
 })
 
-export const { signIn } = authSlice.actions
-export default authSlice.reducer
+export const { signIn } = userSlice.actions
+export default userSlice.reducer

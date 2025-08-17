@@ -1,22 +1,20 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ApiResponse } from 'shared/api'
+import { createApi } from '@reduxjs/toolkit/query/react'
 import {
+  ApiResponse,
+  baseQuery,
   CreateTransactionRequestDTO,
   DeleteBankAccountRequestDTO,
   TransactionDTO,
-} from 'shared/api/api-client'
+} from 'shared/api'
 
 const transactionsApi = createApi({
   reducerPath: 'transactionsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/transactions`,
-  }),
+  baseQuery: baseQuery('transactions'),
   endpoints: (builder) => ({
     getTransactions: builder.mutation<ApiResponse<TransactionDTO[]>, void>({
       query: () => ({
         url: '',
         method: 'GET',
-        credentials: 'include',
       }),
     }),
     createTransaction: builder.mutation<
@@ -26,7 +24,6 @@ const transactionsApi = createApi({
       query: (body) => ({
         url: '/create',
         method: 'POST',
-        credentials: 'include',
         body,
       }),
     }),
@@ -37,7 +34,6 @@ const transactionsApi = createApi({
       query: (body) => ({
         url: '/delete',
         method: 'DELETE',
-        credentials: 'include',
         body,
       }),
     }),

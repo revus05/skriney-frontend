@@ -26,7 +26,7 @@ export const Providers: FC<ProvidersProps> = ({ children, preloadedState }) => {
             placement={'bottom-center'}
             toastProps={{
               classNames: {
-                base: 'border-border-neutral-primary bg-bg-neutral-tertiary/70 rounded-3xl border px-6 py-4 backdrop-blur-[32px] !text-text-neutral-primary text-base',
+                base: 'bg-bg-neutral-tertiary/70 rounded-3xl border px-6 py-4 backdrop-blur-[32px] !text-text-neutral-primary text-base',
               },
             }}
           />

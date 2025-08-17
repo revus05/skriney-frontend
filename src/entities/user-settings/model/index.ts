@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { UserSettingsDTO } from 'shared/api/api-client'
+import { UserSettingsDTO } from 'shared/api'
 
 type InitialState = {
   userSettings: UserSettingsDTO | null

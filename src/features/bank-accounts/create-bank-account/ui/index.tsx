@@ -31,9 +31,7 @@ export const CreateBankAccountButton = () => {
       <Button onClick={onOpen} variant={'icon'} iconStart={'plus'} />
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
         <ModalContent
-          className={
-            'border-border-neutral-primary bg-bg-neutral-tertiary rounded-3xl border p-4'
-          }
+          className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}
         >
           {(onClose) => (
             <div className={'flex flex-col gap-4'}>
@@ -67,7 +65,7 @@ export const CreateBankAccountButton = () => {
                         classNames={{
                           mainWrapper: 'w-[120px]',
                           trigger:
-                            'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] border-border-neutral-primary px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
+                            'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
                           popoverContent: 'bg-bg-neutral-primary',
                           value: '!text-text-neutral-tertiary font-semibold',
                         }}

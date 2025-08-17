@@ -9,7 +9,7 @@ export const Progress: FC<ProgressType> = ({ value, className, ...props }) => {
   return (
     <div
       className={cn(
-        'bg-bg-neutral-tertiary/70 border-border-neutral-primary h-3 overflow-hidden rounded-full border backdrop-blur-[32px]',
+        'bg-bg-neutral-tertiary/70 h-3 overflow-hidden rounded-full border backdrop-blur-[32px]',
         className,
       )}
       {...props}

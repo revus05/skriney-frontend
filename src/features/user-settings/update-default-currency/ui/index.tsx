@@ -29,7 +29,7 @@ export const UpdateDefaultCurrencySelect = () => {
       aria-label={'default-currency'}
       classNames={{
         trigger:
-          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] border-border-neutral-primary px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
+          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
         popoverContent: 'bg-bg-neutral-primary',
         value: '!text-text-neutral-tertiary font-semibold',
       }}

@@ -7,6 +7,4 @@ export const createTransactionSchema = z.object({
   currency: z.string().trim(),
 })
 
-export type CreateTransactionFormValues = z.infer<
-  typeof createTransactionSchema
->
+export type CreateTransactionFormData = z.infer<typeof createTransactionSchema>

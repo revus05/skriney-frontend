@@ -1,7 +1,7 @@
 import { Icons } from 'shared/ui'
-import { withHomeLayout } from 'widgets/layouts/home'
-import { TransactionsList } from 'widgets/transactions/list'
-import { CreateTransactionButton } from 'features/transactions/create-transaction'
+import { withHomeLayout } from 'widgets/layouts'
+import { TransactionsList } from 'widgets/transactions'
+import { CreateTransactionButton } from 'features/transactions'
 
 const TransactionsPage = () => {
   return (

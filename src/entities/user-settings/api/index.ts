@@ -1,17 +1,16 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ApiResponse } from 'shared/api'
+import { createApi } from '@reduxjs/toolkit/query/react'
 import {
+  ApiResponse,
+  baseQuery,
   UpdateDefaultCategoryRequestDTO,
   UpdateDefaultCurrencyRequestDTO,
   UpdateThemeRequestDTO,
   UserSettingsDTO,
-} from 'shared/api/api-client'
+} from 'shared/api'
 
 const userSettingsApi = createApi({
   reducerPath: 'userSettingsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/users`,
-  }),
+  baseQuery: baseQuery('user-settings'),
   endpoints: (builder) => ({
     updateDefaultCurrency: builder.mutation<
       ApiResponse<UserSettingsDTO>,
@@ -20,7 +19,6 @@ const userSettingsApi = createApi({
       query: (body) => ({
         url: '/update-default-currency',
         method: 'POST',
-        credentials: 'include',
         body,
       }),
     }),
@@ -31,7 +29,6 @@ const userSettingsApi = createApi({
       query: (body) => ({
         url: '/update-default-category',
         method: 'POST',
-        credentials: 'include',
         body,
       }),
     }),
@@ -42,15 +39,7 @@ const userSettingsApi = createApi({
       query: (body) => ({
         url: '/update-theme',
         method: 'POST',
-        credentials: 'include',
         body,
-      }),
-    }),
-    getUserSettings: builder.mutation<ApiResponse<UserSettingsDTO>, void>({
-      query: () => ({
-        url: '/settings',
-        method: 'GET',
-        credentials: 'include',
       }),
     }),
   }),
@@ -59,7 +48,6 @@ const userSettingsApi = createApi({
 export default userSettingsApi
 export const {
   useUpdateDefaultCurrencyMutation,
-  useGetUserSettingsMutation,
   useUpdateDefaultCategoryMutation,
   useUpdateThemeMutation,
 } = userSettingsApi

@@ -37,7 +37,7 @@ export const UpdateThemeSegmentControl = () => {
         aria-label="Theme"
         classNames={{
           tabList:
-            'bg-bg-neutral-primary/70 border-border-neutral-primary rounded-xl border p-1 backdrop-blur-[32px] gap-1',
+            'bg-bg-neutral-primary/70 rounded-xl border p-1 backdrop-blur-[32px] gap-1',
           cursor: 'bg-bg-neutral-tertiary/70 outline-none',
           tab: 'p-1 rounded size-7',
         }}

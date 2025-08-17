@@ -26,9 +26,7 @@ export const CreateCategoryButton = () => {
       <Button onClick={onOpen} variant={'icon'} iconStart={'plus'} />
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
         <ModalContent
-          className={
-            'border-border-neutral-primary bg-bg-neutral-tertiary rounded-3xl border p-4'
-          }
+          className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}
         >
           {(onClose) => (
             <div className={'flex flex-col gap-4'}>

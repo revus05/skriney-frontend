@@ -1,22 +1,20 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ApiResponse } from 'shared/api'
+import { createApi } from '@reduxjs/toolkit/query/react'
 import {
+  ApiResponse,
+  baseQuery,
   CategoryDTO,
   CreateCategoryRequestDTO,
   DeleteBankAccountRequestDTO,
-} from 'shared/api/api-client'
+} from 'shared/api'
 
 const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/categories`,
-  }),
+  baseQuery: baseQuery('categories'),
   endpoints: (builder) => ({
     getCategories: builder.mutation<ApiResponse<CategoryDTO[]>, void>({
       query: () => ({
         url: '',
         method: 'GET',
-        credentials: 'include',
       }),
     }),
     createCategory: builder.mutation<
@@ -26,7 +24,6 @@ const categoriesApi = createApi({
       query: (body) => ({
         url: '/create',
         method: 'POST',
-        credentials: 'include',
         body,
       }),
     }),
@@ -37,7 +34,6 @@ const categoriesApi = createApi({
       query: (body) => ({
         url: '/delete',
         method: 'DELETE',
-        credentials: 'include',
         body,
       }),
     }),

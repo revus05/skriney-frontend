@@ -1,5 +1,7 @@
+'use server'
+
 import { cookies } from 'next/headers'
-import { UserDTO, UserSettingsDTO } from 'shared/api/api-client'
+import { UserDTO, UserSettingsDTO } from 'shared/api'
 
 export const getPreloadedUser = async (): Promise<{
   authSlice: { user: UserDTO | null }

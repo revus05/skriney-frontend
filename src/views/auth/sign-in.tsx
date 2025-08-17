@@ -1,5 +1,5 @@
-import { SignInForm } from 'features/auth/sign-in'
-import { withAuthLayout } from 'widgets/layouts/auth'
+import { SignInForm } from 'features/auth'
+import { withAuthLayout } from 'widgets/layouts'
 
 const SignInPage = async () => {
   return (

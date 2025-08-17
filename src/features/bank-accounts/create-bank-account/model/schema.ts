@@ -6,6 +6,4 @@ export const createBankAccountSchema = z.object({
   currency: z.string().trim(),
 })
 
-export type CreateBankAccountFormValues = z.infer<
-  typeof createBankAccountSchema
->
+export type CreateBankAccountFormData = z.infer<typeof createBankAccountSchema>

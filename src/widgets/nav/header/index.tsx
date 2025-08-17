@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <header
       className={
-        'bg-bg-neutral-primary/70 border-border-neutral-primary/70 flex items-center justify-between rounded-2xl border px-8 py-3'
+        'bg-bg-neutral-primary/70 flex items-center justify-between rounded-2xl border px-8 py-3'
       }
     >
       <Link href={'/'}>

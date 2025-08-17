@@ -1,16 +1,15 @@
 import { useAppDispatch } from 'shared/hooks'
 import { setUserSettings } from 'entities/user-settings'
-import { getApiError } from 'shared/api'
+import { getApiError, UpdateDefaultCurrencyRequestDTO } from 'shared/api'
 import { useUpdateDefaultCurrencyMutation } from 'entities/user-settings/api'
-import { UpdateDefaultCurrencyRequestDTO } from 'shared/api/api-client'
 
 export const useUpdateDefaultCurrencySubmit = () => {
   const [updateDefaultCurrency] = useUpdateDefaultCurrencyMutation()
   const dispatch = useAppDispatch()
 
-  return async (values: UpdateDefaultCurrencyRequestDTO) => {
+  return async (data: UpdateDefaultCurrencyRequestDTO) => {
     try {
-      const res = await updateDefaultCurrency(values).unwrap()
+      const res = await updateDefaultCurrency(data).unwrap()
       if (res && res.data) {
         dispatch(setUserSettings(res.data))
       }

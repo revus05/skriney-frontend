@@ -2,10 +2,10 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { CreateCategoryFormValues, createCategorySchema } from './schema'
+import { CreateCategoryFormData, createCategorySchema } from './schema'
 
-export function useCreateCategoryForm() {
-  return useForm<CreateCategoryFormValues>({
+export const useCreateCategoryForm = () => {
+  return useForm<CreateCategoryFormData>({
     resolver: zodResolver(createCategorySchema),
     defaultValues: {
       title: '',

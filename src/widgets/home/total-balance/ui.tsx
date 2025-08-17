@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import { Balance, Card, Icons } from 'shared/ui'
-import { Trend } from 'shared/ui/trend'
+import { Balance, Card, Icons, Trend } from 'shared/ui'
 
 type TotalBalanceType = {
   type: 'balance' | 'income' | 'expenses'

@@ -2,10 +2,10 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { SignInFormValues, signInSchema } from './schema'
+import { SignInFormData, signInSchema } from './schema'
 
-export function useSignInForm() {
-  return useForm<SignInFormValues>({
+export const useSignInForm = () => {
+  return useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       email: '',

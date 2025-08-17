@@ -1,7 +1,7 @@
 import { CategoryCard } from 'entities/category'
-import { TotalBalance } from 'widgets/home/total-balance'
+import { TotalBalance } from 'widgets/home'
 import { GoalCard } from 'entities/goal'
-import { withHomeLayout } from 'widgets/layouts/home'
+import { withHomeLayout } from 'widgets/layouts'
 
 const HomePage = () => {
   return (

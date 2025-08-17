@@ -1,21 +1,20 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { authApi, authSlice } from 'entities/session'
-import { signUpFormSlice } from 'features/auth/sign-up'
-import { signInFormSlice } from 'features/auth/sign-in'
+import { userApi, userSlice } from 'entities/user'
+import { signInFormSlice, signUpFormSlice } from 'features/auth'
 import { categoriesApi, categorySlice } from 'entities/category'
 import { transactionsApi, transactionSlice } from 'entities/transaction'
 import { bankAccountApi, bankAccountsSlice } from 'entities/bank-account'
 import { userSettingsApi, userSettingsSlice } from 'entities/user-settings'
 
 const rootReducer = {
-  authSlice,
+  authSlice: userSlice,
   signUpFormSlice,
   signInFormSlice,
   categorySlice,
   transactionSlice,
   bankAccountsSlice,
   userSettingsSlice,
-  [authApi.reducerPath]: authApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [transactionsApi.reducerPath]: transactionsApi.reducer,
   [bankAccountApi.reducerPath]: bankAccountApi.reducer,
@@ -31,7 +30,7 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
     reducer: mainReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
-        .concat(authApi.middleware)
+        .concat(userApi.middleware)
         .concat(categoriesApi.middleware)
         .concat(transactionsApi.middleware)
         .concat(bankAccountApi.middleware)

@@ -13,4 +13,4 @@ export const signUpSchema = z
     path: ['repeatPassword'],
   })
 
-export type SignUpFormValues = z.infer<typeof signUpSchema>
+export type SignUpFormData = z.infer<typeof signUpSchema>

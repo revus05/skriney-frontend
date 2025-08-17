@@ -3,7 +3,7 @@ import { Roboto } from 'next/font/google'
 import './globals.css'
 import React from 'react'
 import { Providers } from 'app/providers'
-import { getPreloadedUser } from 'features/auth/get-preloaded-user'
+import { getPreloadedUser } from 'entities/user'
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   description: 'App to track expenses',
 }
 
-export default async function RootLayout({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>) => {
   const preloadedState = await getPreloadedUser()
 
   const theme =
@@ -45,3 +45,5 @@ export default async function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

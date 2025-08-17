@@ -1,7 +1,7 @@
 import { Icons } from 'shared/ui'
-import { withHomeLayout } from 'widgets/layouts/home'
-import { CreateBankAccountButton } from 'features/bank-accounts/create-bank-account'
-import { BankAccountsList } from 'widgets/bank-accounts/list'
+import { withHomeLayout } from 'widgets/layouts'
+import { CreateBankAccountButton } from 'features/bank-accounts'
+import { BankAccountsList } from 'widgets/bank-accounts'
 
 const BankAccountsPage = () => (
   <div className={'flex w-[560px] flex-col gap-6'}>

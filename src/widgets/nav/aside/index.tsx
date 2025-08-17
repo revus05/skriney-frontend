@@ -51,9 +51,7 @@ export const Aside = () => {
 
   return (
     <aside
-      className={
-        'bg-bg-neutral-primary/70 border-border-neutral-primary/70 h-fit rounded-2xl border px-4 py-2'
-      }
+      className={'bg-bg-neutral-primary/70 h-fit rounded-2xl border px-4 py-2'}
     >
       <nav>
         <ul>

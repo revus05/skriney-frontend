@@ -1,10 +1,9 @@
 'use client'
 
-import { useGetTransactions } from './model'
 import { Balance, Button, Card, EmojiTitle } from 'shared/ui'
-import { TransactionDTO } from 'shared/api/api-client'
+import { TransactionDTO } from 'shared/api'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
-import { useDeleteTransaction } from 'features/transactions/delete-transaction'
+import { useDeleteTransaction, useGetTransactions } from 'features/transactions'
 
 export const TransactionsList = () => {
   const transactions = useGetTransactions()
@@ -34,11 +33,7 @@ export const TransactionsList = () => {
 
         return (
           <div key={date} className="flex flex-col gap-1">
-            <div
-              className={
-                'border-border-neutral-primary flex items-center gap-2.5 border-b pb-1 pl-2'
-              }
-            >
+            <div className={'flex items-center gap-2.5 border-b pb-1 pl-2'}>
               <span className="text-base font-bold">{date}</span>
               <span className="text-text-neutral-tertiary text-base font-bold">
                 •
@@ -88,9 +83,7 @@ export const TransactionsList = () => {
                       <Button variant="icon" iconStart="moreVertical" />
                     </PopoverTrigger>
                     <PopoverContent
-                      className={
-                        'border-border-neutral-primary bg-bg-neutral-primary rounded-2xl border p-1'
-                      }
+                      className={'bg-bg-neutral-primary rounded-2xl border p-1'}
                     >
                       <div className="flex items-center gap-2.5">
                         <Button

@@ -9,8 +9,7 @@ import React, {
   useState,
 } from 'react'
 import { cn } from 'shared/lib'
-import { Icons } from 'shared/ui'
-import { Button } from 'shared/ui'
+import { Button, Icons } from 'shared/ui'
 
 type InputProps = ComponentProps<'input'> & {
   iconStart?: string
@@ -49,7 +48,7 @@ export const Input: FC<InputProps> = ({
       <div
         onClick={() => containerRef.current?.focus()}
         className={cn(
-          'border-border-neutral-primary hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border ' +
+          'hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border ' +
             'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold transition will-change-transform active:scale-[0.98]',
           iconEnd ? 'py-1' : 'py-2',
           errorMessage && 'border-border-semantic-error-primary',

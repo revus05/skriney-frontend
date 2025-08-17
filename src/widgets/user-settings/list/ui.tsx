@@ -1,8 +1,10 @@
 'use client'
 
-import { UpdateDefaultCurrencySelect } from 'features/user-settings/update-default-currency'
-import { UpdateDefaultCategorySelect } from 'features/user-settings/update-default-category'
-import { UpdateThemeSegmentControl } from 'features/user-settings/update-theme'
+import {
+  UpdateDefaultCategorySelect,
+  UpdateDefaultCurrencySelect,
+  UpdateThemeSegmentControl,
+} from 'features/user-settings'
 
 export const SettingsList = () => {
   return (

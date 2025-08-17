@@ -1,18 +1,17 @@
 'use client'
 
 import { useAppDispatch } from 'shared/hooks'
-import { getApiError } from 'shared/api'
-import { CreateCategoryRequestDTO } from 'shared/api/api-client'
+import { CreateCategoryRequestDTO, getApiError } from 'shared/api'
 import { useCreateTransactionMutation } from 'entities/category/api'
 import { addCategory } from 'entities/category'
 
-export function useCreateCategorySubmit() {
+export const useCreateCategorySubmit = () => {
   const [createCategory] = useCreateTransactionMutation()
   const dispatch = useAppDispatch()
 
-  return async (values: CreateCategoryRequestDTO) => {
+  return async (data: CreateCategoryRequestDTO) => {
     try {
-      const res = await createCategory(values).unwrap()
+      const res = await createCategory(data).unwrap()
       if (res && res.data) {
         dispatch(addCategory(res.data))
       }
