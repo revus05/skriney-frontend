@@ -13,9 +13,9 @@ export const useCreateTransactionForm = () => {
   return useForm<CreateTransactionFormData>({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
-      category: userSettings?.defaultCategory.uuid,
+      category: userSettings?.defaultCategory?.uuid || '',
       bankAccount: '',
-      sum: 0,
+      amount: 0,
       currency: userSettings?.defaultCurrency,
     },
     mode: 'onSubmit',

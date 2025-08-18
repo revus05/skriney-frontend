@@ -3,11 +3,13 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export type {BalanceSummaryDTO} from './models/BalanceSummaryDTO';
 export type {BankAccountDTO} from './models/BankAccountDTO';
 export type {CategoryDTO} from './models/CategoryDTO';
 export type {CreateBankAccountRequestDTO} from './models/CreateBankAccountRequestDTO';
 export type {CreateCategoryRequestDTO} from './models/CreateCategoryRequestDTO';
 export type {CreateTransactionRequestDTO} from './models/CreateTransactionRequestDTO';
+export type {DailyBalanceDTO} from './models/DailyBalanceDTO';
 export type {DeleteBankAccountRequestDTO} from './models/DeleteBankAccountRequestDTO';
 export type {DeleteCategoryRequestDTO} from './models/DeleteCategoryRequestDTO';
 export type {DeleteTransactionRequestDTO} from './models/DeleteTransactionRequestDTO';

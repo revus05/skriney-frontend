@@ -5,19 +5,19 @@ type CategoryCardType = {
   emoji?: string
   title: string
   currency: string
-  sum: number
+  amount: number
 }
 
 export const CategoryCard: FC<CategoryCardType> = ({
   emoji,
   title,
   currency,
-  sum,
+  amount,
 }) => {
   return (
     <Card className={'flex flex-col gap-2'}>
       <EmojiTitle emoji={emoji} title={title} />
-      <Balance sum={sum} currency={currency} />
+      <Balance balance={amount} currency={currency} />
     </Card>
   )
 }

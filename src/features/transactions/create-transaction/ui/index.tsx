@@ -59,8 +59,8 @@ export const CreateTransactionButton = () => {
               >
                 <ModalBody className={'p-0'}>
                   <Input
-                    {...register('sum', { valueAsNumber: true })}
-                    errorMessage={errors.sum?.message}
+                    {...register('amount', { valueAsNumber: true })}
+                    errorMessage={errors.amount?.message}
                     placeholder={'Сумма'}
                     step="any"
                     type={'number'}

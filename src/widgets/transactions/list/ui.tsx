@@ -27,7 +27,7 @@ export const TransactionsList = () => {
     <Card className={'flex flex-col gap-4 rounded-2xl p-4'}>
       {Object.entries(grouped).map(([date, txs]) => {
         const totalDayDelta = txs.reduce(
-          (sum, transaction) => sum + transaction.sum,
+          (amount, transaction) => amount + transaction.amount,
           0,
         )
 
@@ -39,7 +39,7 @@ export const TransactionsList = () => {
                 •
               </span>
               <Balance
-                sum={totalDayDelta}
+                balance={totalDayDelta}
                 currency={txs[0].currency}
                 signable
                 withBackground
@@ -59,7 +59,7 @@ export const TransactionsList = () => {
                     />
                     <div className={'w-[20%]'}>
                       <Balance
-                        sum={tx.sum}
+                        balance={tx.amount}
                         currency={tx.currency}
                         signable
                         withColor

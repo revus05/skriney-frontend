@@ -1,3 +1,5 @@
+'use client'
+
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import { Button } from 'shared/ui'
 import { useDeleteCategory } from '../model'

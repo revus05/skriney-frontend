@@ -1,48 +1,32 @@
-import { FC } from 'react'
-import { Balance, Card, Icons, Trend } from 'shared/ui'
+'use client'
 
-type TotalBalanceType = {
-  type: 'balance' | 'income' | 'expenses'
-  sum: number
-  currency: string
-  changePercent: number
-}
+import { useGetBalanceSummary } from 'features/balance/get-balance-summary'
+import { TotalBalanceCard } from 'entities/balance/ui/card/ui'
+import { CurrencySymbols } from 'entities/user-settings'
 
-const TYPE_CONFIG = {
-  balance: {
-    icon: <Icons.dollarCircle />,
-    title: 'Баланс',
-  },
-  income: {
-    icon: <Icons.arrowBottomLeft />,
-    title: 'Получено',
-  },
-  expenses: {
-    icon: <Icons.arrowTopRight />,
-    title: 'Потрачено',
-  },
-} as const
-
-export const TotalBalance: FC<TotalBalanceType> = ({
-  type,
-  sum,
-  currency,
-  changePercent,
-}) => {
-  const { icon, title } = TYPE_CONFIG[type]
+export const TotalBalance = () => {
+  const balanceSummary = useGetBalanceSummary()
 
   return (
-    <Card className={'flex gap-4'}>
-      <div className="fill-icon-neutral-tertiary">{icon}</div>
-
-      <div className="flex flex-col gap-2">
-        <div className="flex flex-col gap-1">
-          <span className="text-text-neutral-tertiary">{title}</span>
-          <Balance sum={sum} currency={currency} />
-        </div>
-
-        <Trend changePercent={changePercent} expense={type === 'expenses'} />
-      </div>
-    </Card>
+    <div className={'flex gap-4'}>
+      <TotalBalanceCard
+        type={'balance'}
+        amount={balanceSummary?.totalBalance || 0}
+        currency={CurrencySymbols.BYN}
+        changePercent={14}
+      />
+      <TotalBalanceCard
+        type={'income'}
+        amount={balanceSummary?.totalIncome || 0}
+        currency={CurrencySymbols.BYN}
+        changePercent={14}
+      />
+      <TotalBalanceCard
+        type={'expenses'}
+        amount={balanceSummary?.totalExpense || 0}
+        currency={CurrencySymbols.BYN}
+        changePercent={14}
+      />
+    </div>
   )
 }

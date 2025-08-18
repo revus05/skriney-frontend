@@ -41,7 +41,7 @@ export const UpdateDefaultCategorySelect = () => {
         value: '!text-text-neutral-tertiary font-semibold',
       }}
       className={'w-[150px]'}
-      placeholder={'Валюта по умолчанию'}
+      placeholder={'Категория по умолчанию'}
       selectorIcon={<Icons.chevronDown />}
       size={'sm'}
       selectedKeys={selectedCategory ? [selectedCategory] : []}

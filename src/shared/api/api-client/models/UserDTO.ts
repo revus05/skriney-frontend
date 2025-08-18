@@ -6,7 +6,7 @@ import type {UserSettingsDTO} from './UserSettingsDTO';
 
 export type UserDTO = {
     /**
-     * User UUID
+     * User uuid
      */
     uuid: string;
     /**

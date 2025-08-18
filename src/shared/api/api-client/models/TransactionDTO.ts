@@ -7,13 +7,13 @@ import type {CategoryDTO} from './CategoryDTO';
 
 export type TransactionDTO = {
     /**
-     * Transaction UUID
+     * Transaction uuid
      */
     uuid: string;
     /**
-     * Transaction sum
+     * Transaction amount
      */
-    sum: number;
+    amount: number;
     /**
      * Transaction category
      */
@@ -21,7 +21,7 @@ export type TransactionDTO = {
     /**
      * Optional user description
      */
-    description?: string;
+    description: string;
     /**
      * Creation timestamp
      */

@@ -4,7 +4,7 @@
 /* eslint-disable */
 export type BankAccountDTO = {
     /**
-     * Bank Account UUID
+     * Bank Account uuid
      */
     uuid: string;
     /**
@@ -19,22 +19,6 @@ export type BankAccountDTO = {
      * Bank Account title
      */
     title: string;
-    /**
-     * Bank Account's card color
-     */
-    color?: string;
-    /**
-     * Percent of balance change
-     */
-    changePercent: number;
-    /**
-     * Optional user's description
-     */
-    description?: string;
-    /**
-     * Optional user's image
-     */
-    image?: string;
     /**
      * Creation timestamp
      */

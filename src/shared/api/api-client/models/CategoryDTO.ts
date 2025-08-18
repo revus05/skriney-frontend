@@ -4,7 +4,7 @@
 /* eslint-disable */
 export type CategoryDTO = {
     /**
-     * Category UUID
+     * Category uuid
      */
     uuid: string;
     /**
@@ -14,7 +14,7 @@ export type CategoryDTO = {
     /**
      * Category emoji
      */
-    emoji?: string;
+    emoji: string;
     /**
      * Creation timestamp
      */

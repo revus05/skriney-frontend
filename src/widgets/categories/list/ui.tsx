@@ -19,7 +19,7 @@ export const CategoriesList = () => {
             <span className={'text-text-neutral-tertiary text-base font-bold'}>
               •
             </span>
-            <Balance sum={430.03} currency={CurrencySymbols.BYN} />
+            <Balance balance={430.03} currency={CurrencySymbols.BYN} />
           </div>
           <DeleteCategoryButton uuid={category.uuid} />
         </Card>

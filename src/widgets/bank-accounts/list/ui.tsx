@@ -22,7 +22,7 @@ export const BankAccountsList = () => {
           <EmojiTitle title={bankAccount.title} />
           <div className={'flex items-center gap-2.5'}>
             <Balance
-              sum={bankAccount.balance}
+              balance={bankAccount.balance}
               currency={bankAccount.currency}
             />
             <Trend changePercent={7.62} />

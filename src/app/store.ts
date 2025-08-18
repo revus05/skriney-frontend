@@ -5,6 +5,7 @@ import { categoriesApi, categorySlice } from 'entities/category'
 import { transactionsApi, transactionSlice } from 'entities/transaction'
 import { bankAccountApi, bankAccountsSlice } from 'entities/bank-account'
 import { userSettingsApi, userSettingsSlice } from 'entities/user-settings'
+import { balanceApi, balanceSlice } from 'entities/balance'
 
 const rootReducer = {
   authSlice: userSlice,
@@ -14,11 +15,13 @@ const rootReducer = {
   transactionSlice,
   bankAccountsSlice,
   userSettingsSlice,
+  dailyBalanceSlice: balanceSlice,
   [userApi.reducerPath]: userApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [transactionsApi.reducerPath]: transactionsApi.reducer,
   [bankAccountApi.reducerPath]: bankAccountApi.reducer,
   [userSettingsApi.reducerPath]: userSettingsApi.reducer,
+  [balanceApi.reducerPath]: balanceApi.reducer,
 }
 
 const mainReducer = combineReducers(rootReducer)
@@ -34,7 +37,8 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
         .concat(categoriesApi.middleware)
         .concat(transactionsApi.middleware)
         .concat(bankAccountApi.middleware)
-        .concat(userSettingsApi.middleware),
+        .concat(userSettingsApi.middleware)
+        .concat(balanceApi.middleware),
     preloadedState,
   })
 }
