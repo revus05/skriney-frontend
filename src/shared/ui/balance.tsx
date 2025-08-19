@@ -7,7 +7,7 @@ type BalanceType = {
   currency: string
   withBackground?: boolean
   withColor?: boolean
-  signable?: boolean
+  signed?: boolean
 }
 
 export const Balance: FC<BalanceType> = ({
@@ -16,7 +16,7 @@ export const Balance: FC<BalanceType> = ({
   currency,
   withBackground,
   withColor,
-  signable = false,
+  signed = false,
 }) => {
   return (
     <div
@@ -39,7 +39,7 @@ export const Balance: FC<BalanceType> = ({
                 : 'text-text-semantic-success-primary'),
           )}
         >
-          {signable && balance > 0 && '+'}
+          {signed && balance > 0 && '+'}
           {balance.toFixed(2)}
         </span>
         {goalAmount && (

@@ -41,7 +41,7 @@ export const TransactionsList = () => {
               <Balance
                 balance={totalDayDelta}
                 currency={txs[0].currency}
-                signable
+                signed
                 withBackground
               />
             </div>
@@ -61,7 +61,7 @@ export const TransactionsList = () => {
                       <Balance
                         balance={tx.amount}
                         currency={tx.currency}
-                        signable
+                        signed
                         withColor
                       />
                     </div>

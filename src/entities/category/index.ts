@@ -1,13 +1,15 @@
 export { CategoryCard } from './ui/card'
 export {
   default as categoriesApi,
-  useCreateTransactionMutation,
+  useCreateCategoryMutation,
   useGetCategoriesMutation,
-  useDeleteTransactionMutation,
+  useDeleteCategoryMutation,
+  useGetCategoriesStatsMutation,
 } from './api'
 export {
   default as categorySlice,
   setCategories,
   addCategory,
   deleteCategory,
+  setCategoriesStats,
 } from './model'

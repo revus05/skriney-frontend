@@ -1,11 +1,16 @@
 'use client'
 
 import { Balance, Card, EmojiTitle } from 'shared/ui'
-import { DeleteCategoryButton, useGetCategories } from 'features/categories'
+import {
+  DeleteCategoryButton,
+  useGetCategories,
+  useGetCategoriesStats,
+} from 'features/categories'
 import { CurrencySymbols } from 'entities/user-settings'
 
 export const CategoriesList = () => {
   const categories = useGetCategories()
+  const categoriesStats = useGetCategoriesStats()
 
   return (
     <div className={'flex flex-col gap-2.5'}>
@@ -19,7 +24,15 @@ export const CategoriesList = () => {
             <span className={'text-text-neutral-tertiary text-base font-bold'}>
               •
             </span>
-            <Balance balance={430.03} currency={CurrencySymbols.BYN} />
+            <Balance
+              signed
+              withColor
+              balance={
+                categoriesStats.find((stat) => stat.uuid === category.uuid)
+                  ?.totalSpent || 0
+              }
+              currency={CurrencySymbols.BYN}
+            />
           </div>
           <DeleteCategoryButton uuid={category.uuid} />
         </Card>

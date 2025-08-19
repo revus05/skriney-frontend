@@ -3,6 +3,7 @@ import {
   ApiResponse,
   baseQuery,
   CategoryDTO,
+  CategoryStatDTO,
   CreateCategoryRequestDTO,
   DeleteBankAccountRequestDTO,
 } from 'shared/api'
@@ -37,12 +38,19 @@ const categoriesApi = createApi({
         body,
       }),
     }),
+    getCategoriesStats: builder.mutation<ApiResponse<CategoryStatDTO[]>, void>({
+      query: () => ({
+        url: '/stats',
+        method: 'GET',
+      }),
+    }),
   }),
 })
 
 export default categoriesApi
 export const {
   useGetCategoriesMutation,
-  useCreateCategoryMutation: useCreateTransactionMutation,
-  useDeleteCategoryMutation: useDeleteTransactionMutation,
+  useCreateCategoryMutation,
+  useDeleteCategoryMutation,
+  useGetCategoriesStatsMutation,
 } = categoriesApi

@@ -26,7 +26,7 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
         <>
           <Popover placement="right">
             <PopoverTrigger>
-              <Icons.emojiPlaceholder className={'cursor-pointer'} />
+              <Icons.emojiPlaceholder className={'shrink-0 cursor-pointer'} />
             </PopoverTrigger>
             <PopoverContent
               className={'bg-bg-neutral-tertiary rounded-3xl border px-6 py-4'}
