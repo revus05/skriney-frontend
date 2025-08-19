@@ -6,6 +6,7 @@ import {
   CategoryStatDTO,
   CreateCategoryRequestDTO,
   DeleteBankAccountRequestDTO,
+  UpdateCategoryRequestDTO,
 } from 'shared/api'
 
 const categoriesApi = createApi({
@@ -44,6 +45,16 @@ const categoriesApi = createApi({
         method: 'GET',
       }),
     }),
+    updateCategory: builder.mutation<
+      ApiResponse<CategoryDTO>,
+      { uuid: string; body: UpdateCategoryRequestDTO }
+    >({
+      query: ({ uuid, body }) => ({
+        url: `/${uuid}`,
+        method: 'PATCH',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -53,4 +64,5 @@ export const {
   useCreateCategoryMutation,
   useDeleteCategoryMutation,
   useGetCategoriesStatsMutation,
+  useUpdateCategoryMutation,
 } = categoriesApi

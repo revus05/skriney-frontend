@@ -38,9 +38,9 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
   }
 
   const handleSave = () => {
-    setTitle(tempValue)
     setIsEditing(false)
-    if (onTitleChange) {
+    if (onTitleChange && tempValue) {
+      setTitle(tempValue)
       onTitleChange(tempValue)
     }
   }
@@ -98,11 +98,11 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
           onChange={handleChange}
           onBlur={handleSave}
           onKeyDown={handleKeyDown}
-          className="h-5 w-[150px] rounded border border-gray-300 px-1 font-semibold outline-none"
+          className="h-5 w-fit rounded border border-gray-300 px-1 font-semibold outline-none"
         />
       ) : (
         <span
-          className="h-5 w-[150px] cursor-pointer font-semibold"
+          className="h-5 cursor-pointer font-semibold"
           onDoubleClick={handleDoubleClick}
         >
           {ttl}

@@ -5,12 +5,15 @@ import {
   DeleteCategoryButton,
   useGetCategories,
   useGetCategoriesStats,
+  useUpdateCategory,
 } from 'features/categories'
 import { CurrencySymbols } from 'entities/user-settings'
 
 export const CategoriesList = () => {
   const categories = useGetCategories()
   const categoriesStats = useGetCategoriesStats()
+
+  const updateCategory = useUpdateCategory()
 
   return (
     <div className={'flex flex-col gap-2.5'}>
@@ -20,7 +23,16 @@ export const CategoriesList = () => {
           key={category.uuid}
         >
           <div className={'flex items-center gap-2.5'}>
-            <EmojiTitle emoji={category.emoji} title={category.title} />
+            <EmojiTitle
+              emoji={category.emoji}
+              title={category.title}
+              onEmojiChange={(emoji) =>
+                updateCategory(category.uuid, { emoji })
+              }
+              onTitleChange={(title) =>
+                updateCategory(category.uuid, { title })
+              }
+            />
             <span className={'text-text-neutral-tertiary text-base font-bold'}>
               •
             </span>

@@ -1,5 +1,4 @@
-import { CategoryCard } from 'entities/category'
-import { TotalBalance } from 'widgets/home'
+import { CategoriesHome, TotalBalance } from 'widgets/home'
 import { GoalCard } from 'entities/goal'
 import { withHomeLayout } from 'widgets/layouts'
 
@@ -7,28 +6,7 @@ const HomePage = () => {
   return (
     <div className={'flex flex-col gap-6'}>
       <TotalBalance />
-      <div className={'flex flex-col gap-4'}>
-        <h2 className={'text-xl font-bold'}>Категории за 30 дней</h2>
-        <div className={'flex gap-4'}>
-          <CategoryCard
-            title={'Продукты'}
-            emoji={'🍎'}
-            amount={430.09}
-            currency={'BYN'}
-          />
-          <CategoryCard
-            title={'Такси'}
-            emoji={'🚕'}
-            amount={120.93}
-            currency={'BYN'}
-          />
-          <CategoryCard
-            title={'Развлечения'}
-            amount={430.09}
-            currency={'BYN'}
-          />
-        </div>
-      </div>
+      <CategoriesHome />
       <div className={'flex flex-col gap-4'}>
         <h2 className={'text-xl font-bold'}>Цели</h2>
         <div className={'flex gap-4'}>

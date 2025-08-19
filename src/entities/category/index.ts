@@ -5,6 +5,7 @@ export {
   useGetCategoriesMutation,
   useDeleteCategoryMutation,
   useGetCategoriesStatsMutation,
+  useUpdateCategoryMutation,
 } from './api'
 export {
   default as categorySlice,
@@ -12,4 +13,5 @@ export {
   addCategory,
   deleteCategory,
   setCategoriesStats,
+  updateCategory,
 } from './model'

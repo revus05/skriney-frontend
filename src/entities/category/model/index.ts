@@ -29,6 +29,11 @@ const categorySlice = createSlice({
     setCategoriesStats: (state, action: PayloadAction<CategoryStatDTO[]>) => {
       state.stats = action.payload
     },
+    updateCategory: (state, action: PayloadAction<CategoryDTO>) => {
+      state.categories = state.categories.map((category) =>
+        category.uuid === action.payload.uuid ? action.payload : category,
+      )
+    },
   },
 })
 
@@ -37,5 +42,6 @@ export const {
   addCategory,
   deleteCategory,
   setCategoriesStats,
+  updateCategory,
 } = categorySlice.actions
 export default categorySlice.reducer
