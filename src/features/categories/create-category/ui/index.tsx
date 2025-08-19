@@ -10,6 +10,7 @@ import {
   useDisclosure,
 } from '@heroui/react'
 import { useCreateCategoryForm, useCreateCategorySubmit } from '../model'
+import { CreateCategoryFormData } from '../model/schema'
 
 export const CreateCategoryButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -17,9 +18,10 @@ export const CreateCategoryButton = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useCreateCategoryForm()
 
-  const onSubmit = useCreateCategorySubmit()
+  const submitTransaction = useCreateCategorySubmit()
 
   return (
     <>
@@ -28,31 +30,37 @@ export const CreateCategoryButton = () => {
         <ModalContent
           className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}
         >
-          {(onClose) => (
-            <div className={'flex flex-col gap-4'}>
-              <ModalHeader className="flex items-center justify-between gap-1 p-0">
-                <h2>Создать категорию:</h2>
-                <Button variant="icon" iconStart={'x'} onClick={onClose} />
-              </ModalHeader>
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className={'flex flex-col gap-4'}
-              >
-                <ModalBody className={'p-0'}>
-                  <Input
-                    {...register('title')}
-                    errorMessage={errors.title?.message}
-                    placeholder={'Название'}
-                  />
-                </ModalBody>
-                <ModalFooter className={'flex justify-center p-0'}>
-                  <Button type={'submit'} onClick={onClose}>
-                    Создать
-                  </Button>
-                </ModalFooter>
-              </form>
-            </div>
-          )}
+          {(onClose) => {
+            const onSubmit = async (data: CreateCategoryFormData) => {
+              await submitTransaction(data)
+              onClose()
+              reset()
+            }
+
+            return (
+              <div className={'flex flex-col gap-4'}>
+                <ModalHeader className="flex items-center justify-between gap-1 p-0">
+                  <h2>Создать категорию:</h2>
+                  <Button variant="icon" iconStart={'x'} onClick={onClose} />
+                </ModalHeader>
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className={'flex flex-col gap-4'}
+                >
+                  <ModalBody className={'p-0'}>
+                    <Input
+                      {...register('title')}
+                      errorMessage={errors.title?.message}
+                      placeholder={'Название'}
+                    />
+                  </ModalBody>
+                  <ModalFooter className={'flex justify-center p-0'}>
+                    <Button type={'submit'}>Создать</Button>
+                  </ModalFooter>
+                </form>
+              </div>
+            )
+          }}
         </ModalContent>
       </Modal>
     </>

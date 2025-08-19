@@ -2,11 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  CreateTransactionFormData,
-  CreateTransactionRawData,
-  createTransactionSchema,
-} from './schema'
+import { CreateTransactionFormData, createTransactionSchema } from './schema'
 import { useAppSelector } from 'shared/hooks'
 
 export const useCreateTransactionForm = () => {
@@ -14,11 +10,7 @@ export const useCreateTransactionForm = () => {
     (state) => state.userSettingsSlice.userSettings,
   )
 
-  return useForm<
-    CreateTransactionRawData,
-    CreateTransactionRawData,
-    CreateTransactionFormData
-  >({
+  return useForm<CreateTransactionFormData>({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
       category: userSettings?.defaultCategory?.uuid || '',

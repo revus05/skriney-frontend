@@ -16,7 +16,7 @@ export const createTransactionSchema = z.object({
       ctx.addIssue({ code: 'custom', message: 'Сумма не может быть равна 0' })
       return z.NEVER
     }
-    return num
+    return trimmed
   }),
   category: z.string().trim().nonempty('Категория обязательна'),
   bankAccount: z.string().trim().nonempty('Счет обязателен'),
@@ -24,10 +24,3 @@ export const createTransactionSchema = z.object({
 })
 
 export type CreateTransactionFormData = z.infer<typeof createTransactionSchema>
-
-export type CreateTransactionRawData = {
-  amount: string
-  category: string
-  bankAccount: string
-  currency: string
-}

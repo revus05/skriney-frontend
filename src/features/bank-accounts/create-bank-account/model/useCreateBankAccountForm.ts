@@ -14,7 +14,7 @@ export const useCreateBankAccountForm = () => {
     resolver: zodResolver(createBankAccountSchema),
     defaultValues: {
       title: '',
-      balance: 0,
+      balance: '',
       currency: defaultCurrency || '',
     },
     mode: 'onSubmit',

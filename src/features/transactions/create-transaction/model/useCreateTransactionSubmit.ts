@@ -13,7 +13,7 @@ export const useCreateTransactionSubmit = () => {
 
   return async (data: CreateTransactionFormData) => {
     const formattedData = {
-      amount: data.amount,
+      amount: +data.amount,
       currency: data.currency as CurrencyType,
       bankAccountUuid: data.bankAccount,
       categoryUuid: data.category,

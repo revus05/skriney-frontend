@@ -1,25 +1,24 @@
 'use client'
 
 import { useAppDispatch } from 'shared/hooks'
-import { CreateBankAccountRequestDTO, getApiError } from 'shared/api'
+import { getApiError } from 'shared/api'
 import {
   addBankAccount,
   useCreateBankAccountMutation,
 } from 'entities/bank-account'
 import { CurrencyType } from 'entities/user-settings'
+import { CreateBankAccountFormData } from 'features/bank-accounts/create-bank-account/model/schema'
 
 export const useCreateBankAccountSubmit = () => {
   const [createBankAccount] = useCreateBankAccountMutation()
   const dispatch = useAppDispatch()
-  type FormDate = Omit<CreateBankAccountRequestDTO, 'currency'> & {
-    currency: string
-  }
 
-  return async (data: FormDate) => {
+  return async (data: CreateBankAccountFormData) => {
     try {
       const res = await createBankAccount({
-        ...data,
+        title: data.title,
         currency: data.currency as CurrencyType,
+        balance: +data.balance,
       }).unwrap()
       if (res && res.data) {
         dispatch(addBankAccount(res.data))

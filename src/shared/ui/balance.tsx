@@ -21,6 +21,7 @@ export const Balance: FC<BalanceType> = ({
   return (
     <div
       className={cn(
+        'whitespace-nowrap',
         withBackground &&
           'flex w-fit shrink-0 flex-nowrap rounded-md px-1 py-0.5 backdrop-blur-[32px]',
         withBackground &&

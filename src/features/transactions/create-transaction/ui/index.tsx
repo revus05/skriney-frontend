@@ -17,7 +17,7 @@ import { useGetBankAccounts } from 'features/bank-accounts'
 import { CurrencySymbols } from 'entities/user-settings'
 import { useGetCategories } from 'features/categories'
 import { cn } from 'shared/lib'
-import { CreateTransactionFormData } from 'features/transactions/create-transaction/model/schema'
+import { CreateTransactionFormData } from '../model/schema'
 
 export const CreateTransactionButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -53,8 +53,8 @@ export const CreateTransactionButton = () => {
           {(onClose) => {
             const onSubmit = async (data: CreateTransactionFormData) => {
               await submitTransaction(data)
-              reset()
               onClose()
+              reset()
             }
 
             return (
