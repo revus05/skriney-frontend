@@ -24,9 +24,18 @@ const bankAccountsSlice = createSlice({
         (bankAccount) => bankAccount.uuid !== action.payload.uuid,
       )
     },
+    updateBankAccount: (state, action: PayloadAction<BankAccountDTO>) => {
+      state.bankAccounts = state.bankAccounts.map((bankAccount) =>
+        bankAccount.uuid === action.payload.uuid ? action.payload : bankAccount,
+      )
+    },
   },
 })
 
-export const { setBankAccounts, addBankAccount, deleteBankAccount } =
-  bankAccountsSlice.actions
+export const {
+  setBankAccounts,
+  addBankAccount,
+  deleteBankAccount,
+  updateBankAccount,
+} = bankAccountsSlice.actions
 export default bankAccountsSlice.reducer

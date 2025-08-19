@@ -20,6 +20,10 @@ export type BankAccountDTO = {
      */
     title: string;
     /**
+     * Bank Account emoji
+     */
+    emoji: string;
+    /**
      * Creation timestamp
      */
     createdAt: string;

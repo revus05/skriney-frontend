@@ -285,3 +285,28 @@
         transform: translate(400px, 200px) rotate(10deg) scale(1.2);
     }
 }
+
+
+.epr-emoji-picker {
+    border-radius: 1rem; /* скруглённые углы */
+    background-color: theme(colors.neutral.900); /* тёмный фон */
+}
+
+.epr-search {
+    border-radius: 8px;
+    background: #222;
+    color: white;
+}
+
+.epr-category-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.epr-emoji {
+    transition: transform 0.1s ease;
+}
+
+.epr-emoji:hover {
+    transform: scale(1.2);
+}

@@ -70,7 +70,10 @@ export const TransactionsList = () => {
                         'text-text-neutral-primary w-[30%] text-sm font-bold'
                       }
                     >
-                      {tx.bankAccount.title}
+                      <EmojiTitle
+                        title={tx.bankAccount.title}
+                        emoji={tx.bankAccount.emoji}
+                      />
                     </span>
                     <span
                       className={'text-text-neutral-primary text-sm font-bold'}

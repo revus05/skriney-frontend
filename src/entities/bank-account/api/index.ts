@@ -5,6 +5,7 @@ import {
   baseQuery,
   CreateBankAccountRequestDTO,
   DeleteBankAccountRequestDTO,
+  UpdateBankAccountRequestDTO,
 } from 'shared/api'
 
 const bankAccountApi = createApi({
@@ -37,6 +38,16 @@ const bankAccountApi = createApi({
         body,
       }),
     }),
+    updateBankAccount: builder.mutation<
+      ApiResponse<BankAccountDTO>,
+      { uuid: string; body: UpdateBankAccountRequestDTO }
+    >({
+      query: ({ uuid, body }) => ({
+        url: `/${uuid}`,
+        method: 'PATCH',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -45,4 +56,5 @@ export const {
   useGetBankAccountsMutation,
   useCreateBankAccountMutation,
   useDeleteBankAccountMutation,
+  useUpdateBankAccountMutation,
 } = bankAccountApi
