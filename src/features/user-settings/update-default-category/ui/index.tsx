@@ -20,7 +20,7 @@ export const UpdateDefaultCategorySelect = () => {
     defaultCategory?.uuid || '',
   )
 
-  const handleSelectCurrencyChange = (keys: SharedSelection) => {
+  const handleSelectCategoryChange = (keys: SharedSelection) => {
     const firstKey = Array.from(keys as Set<Key>)[0] as string
     setSelectedCategory(firstKey || '')
     updateDefaultCategory({ uuid: firstKey })
@@ -45,7 +45,7 @@ export const UpdateDefaultCategorySelect = () => {
       selectorIcon={<Icons.chevronDown />}
       size={'sm'}
       selectedKeys={selectedCategory ? [selectedCategory] : []}
-      onSelectionChange={handleSelectCurrencyChange}
+      onSelectionChange={handleSelectCategoryChange}
     >
       {displayCategories.map((category) => (
         <SelectItem

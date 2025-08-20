@@ -2,7 +2,7 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 import {
   ApiResponse,
   baseQuery,
-  UpdateDefaultCategoryRequestDTO,
+  UpdateDefaultBankAccountRequestDTO,
   UpdateDefaultCurrencyRequestDTO,
   UpdateThemeRequestDTO,
   UserSettingsDTO,
@@ -24,7 +24,7 @@ const userSettingsApi = createApi({
     }),
     updateDefaultCategory: builder.mutation<
       ApiResponse<UserSettingsDTO>,
-      UpdateDefaultCategoryRequestDTO
+      UpdateDefaultBankAccountRequestDTO
     >({
       query: (body) => ({
         url: '/update-default-category',
@@ -42,6 +42,16 @@ const userSettingsApi = createApi({
         body,
       }),
     }),
+    updateDefaultBankAccount: builder.mutation<
+      ApiResponse<UserSettingsDTO>,
+      UpdateDefaultBankAccountRequestDTO
+    >({
+      query: (body) => ({
+        url: '/update-default-bank-account',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -50,4 +60,5 @@ export const {
   useUpdateDefaultCurrencyMutation,
   useUpdateDefaultCategoryMutation,
   useUpdateThemeMutation,
+  useUpdateDefaultBankAccountMutation,
 } = userSettingsApi

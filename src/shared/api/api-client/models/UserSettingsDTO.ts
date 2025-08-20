@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type {BankAccountDTO} from './BankAccountDTO';
 import type {CategoryDTO} from './CategoryDTO';
 
 export type UserSettingsDTO = {
@@ -17,5 +18,9 @@ export type UserSettingsDTO = {
      * User's default category
      */
     defaultCategory: CategoryDTO;
+    /**
+     * User's default bank account
+     */
+    defaultBankAccount: BankAccountDTO;
 };
 

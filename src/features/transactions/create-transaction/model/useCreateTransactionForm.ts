@@ -14,7 +14,7 @@ export const useCreateTransactionForm = () => {
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
       category: userSettings?.defaultCategory?.uuid || '',
-      bankAccount: '',
+      bankAccount: userSettings?.defaultBankAccount?.uuid || '',
       amount: '',
       currency: userSettings?.defaultCurrency,
     },

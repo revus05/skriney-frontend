@@ -5,6 +5,7 @@ import {
   UpdateDefaultCurrencySelect,
   UpdateThemeSegmentControl,
 } from 'features/user-settings'
+import { UpdateDefaultBankAccountSelect } from 'features/user-settings/update-default-bank-account'
 
 export const SettingsList = () => {
   return (
@@ -22,6 +23,10 @@ export const SettingsList = () => {
           Категория по умолчанию
         </span>
         <UpdateDefaultCategorySelect />
+      </div>
+      <div className={'flex items-center justify-between'}>
+        <span className={'text-base font-semibold'}>Счет по умолчанию</span>
+        <UpdateDefaultBankAccountSelect />
       </div>
     </div>
   )

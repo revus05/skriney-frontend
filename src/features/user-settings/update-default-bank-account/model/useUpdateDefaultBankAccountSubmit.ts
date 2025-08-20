@@ -1,17 +1,17 @@
 import { useAppDispatch } from 'shared/hooks'
 import {
   setUserSettings,
-  useUpdateDefaultCategoryMutation,
+  useUpdateDefaultBankAccountMutation,
 } from 'entities/user-settings'
 import { getApiError, UpdateDefaultBankAccountRequestDTO } from 'shared/api'
 
-export const useUpdateDefaultCategorySubmit = () => {
-  const [updateDefaultCategory] = useUpdateDefaultCategoryMutation()
+export const useUpdateDefaultBankAccountSubmit = () => {
+  const [updateDefaultBankAccount] = useUpdateDefaultBankAccountMutation()
   const dispatch = useAppDispatch()
 
   return async (data: UpdateDefaultBankAccountRequestDTO) => {
     try {
-      const res = await updateDefaultCategory(data).unwrap()
+      const res = await updateDefaultBankAccount(data).unwrap()
       if (res && res.data) {
         dispatch(setUserSettings(res.data))
       }
