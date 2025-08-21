@@ -1,5 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
-import { ApiResponse, BalanceSummaryDTO, baseQuery } from 'shared/api'
+import {
+  ApiResponse,
+  BalanceSummaryDTO,
+  baseQuery,
+  DailyBalanceDTO,
+} from 'shared/api'
 
 const dailyBalanceApi = createApi({
   reducerPath: 'balanceApi',
@@ -11,8 +16,15 @@ const dailyBalanceApi = createApi({
         method: 'GET',
       }),
     }),
+    getDailyBalances: builder.mutation<ApiResponse<DailyBalanceDTO[]>, void>({
+      query: () => ({
+        url: '',
+        method: 'GET',
+      }),
+    }),
   }),
 })
 
 export default dailyBalanceApi
-export const { useGetBalanceSummaryMutation } = dailyBalanceApi
+export const { useGetBalanceSummaryMutation, useGetDailyBalancesMutation } =
+  dailyBalanceApi

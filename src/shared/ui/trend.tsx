@@ -8,7 +8,9 @@ type TrendType = {
 
 export const Trend: FC<TrendType> = ({ changePercent, expense = false }) => {
   const formattedPercent =
-    changePercent > 0 ? `+${changePercent}` : `${changePercent}`
+    changePercent > 0
+      ? `+${changePercent.toFixed(2)}`
+      : `${changePercent.toFixed(2)}`
 
   const isPositive = changePercent >= 0
 

@@ -7,7 +7,7 @@ type TotalBalanceType = {
   type: 'balance' | 'income' | 'expenses'
   amount: number
   currency: string
-  changePercent: number
+  changePercent: number | null
 }
 
 const TYPE_CONFIG = {
@@ -43,7 +43,9 @@ export const TotalBalanceCard: FC<TotalBalanceType> = ({
           <Balance balance={amount} currency={currency} />
         </div>
 
-        <Trend changePercent={changePercent} expense={type === 'expenses'} />
+        {changePercent && (
+          <Trend changePercent={changePercent} expense={type === 'expenses'} />
+        )}
       </div>
     </Card>
   )
