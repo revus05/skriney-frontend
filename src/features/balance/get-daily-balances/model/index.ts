@@ -17,7 +17,7 @@ export const useGetDailyBalances = () => {
       dispatch(setDailyBalances(response.data))
     }
 
-    fetchDailyBalances()
+    void fetchDailyBalances()
   }, [dispatch, getDailyBalances])
 
   return dailyBalances

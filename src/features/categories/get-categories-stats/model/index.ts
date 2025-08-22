@@ -18,7 +18,7 @@ export const useGetCategoriesStats = () => {
       dispatch(setCategoriesStats(response.data))
     }
 
-    fetchCategoriesStats()
+    void fetchCategoriesStats()
   }, [dispatch, getCategoriesStats])
 
   return stats

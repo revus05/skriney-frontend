@@ -8,6 +8,12 @@ type BalanceType = {
   withBackground?: boolean
   withColor?: boolean
   signed?: boolean
+  classNames?: {
+    balance?: string
+    currency?: string
+    text?: string
+    wrapper?: string
+  }
 }
 
 export const Balance: FC<BalanceType> = ({
@@ -17,6 +23,7 @@ export const Balance: FC<BalanceType> = ({
   withBackground,
   withColor,
   signed = false,
+  classNames,
 }) => {
   return (
     <div
@@ -28,9 +35,10 @@ export const Balance: FC<BalanceType> = ({
           (balance < 0
             ? 'bg-bg-semantic-error-subtle/70'
             : 'bg-bg-semantic-success-subtle/70'),
+        classNames?.wrapper,
       )}
     >
-      <span className={'leading-5'}>
+      <div className={cn('flex items-end gap-2 !leading-5', classNames?.text)}>
         <span
           className={cn(
             'text-text-neutral-primary text-base leading-5 font-semibold',
@@ -38,6 +46,7 @@ export const Balance: FC<BalanceType> = ({
               (balance < 0
                 ? 'text-text-semantic-error-primary'
                 : 'text-text-semantic-success-primary'),
+            classNames?.balance,
           )}
         >
           {signed && balance > 0 && '+'}
@@ -51,8 +60,13 @@ export const Balance: FC<BalanceType> = ({
             </span>
           </>
         )}
-        <span className="text-text-neutral-tertiary"> {currency}</span>
-      </span>
+        <span
+          className={cn('text-text-neutral-tertiary', classNames?.currency)}
+        >
+          {' '}
+          {currency}
+        </span>
+      </div>
     </div>
   )
 }

@@ -20,7 +20,7 @@ export const useGetBankAccounts = () => {
       dispatch(setBankAccounts(response.data))
     }
 
-    fetchBankAccounts()
+    void fetchBankAccounts()
   }, [dispatch, getBankAccounts])
 
   return bankAccounts

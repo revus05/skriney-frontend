@@ -3,6 +3,7 @@ import {
   ApiResponse,
   baseQuery,
   SignInUserRequestDTO,
+  UpdateUserImageRequestDTO,
   UserDTO,
 } from 'shared/api'
 
@@ -24,8 +25,22 @@ const userApi = createApi({
         body,
       }),
     }),
+    updateUserImage: builder.mutation<
+      ApiResponse<UserDTO>,
+      UpdateUserImageRequestDTO
+    >({
+      query: (body) => ({
+        url: '/update-image',
+        method: 'PATCH',
+        body,
+      }),
+    }),
   }),
 })
 
 export default userApi
-export const { useSignInUserMutation, useSignUpUserMutation } = userApi
+export const {
+  useSignInUserMutation,
+  useSignUpUserMutation,
+  useUpdateUserImageMutation,
+} = userApi

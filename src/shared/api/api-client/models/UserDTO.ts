@@ -14,6 +14,10 @@ export type UserDTO = {
      */
     image: string;
     /**
+     * User color if no image
+     */
+    colour: 'RED' | 'GREEN' | 'BLUE' | 'YELLOW' | 'ORANGE' | 'PINK' | 'CYAN' | 'MAGENTA' | 'GRAY' | 'BLACK';
+    /**
      * Username
      */
     username: string;

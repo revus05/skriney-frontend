@@ -16,7 +16,7 @@ export const TotalBalance = () => {
     dailyBalances.forEach((b, index, balances) => {
       if (!grouped[b.date]) {
         grouped[b.date] = {
-          totalBalance: balances[index - 1].totalBalance || 0,
+          totalBalance: balances[index - 1]?.totalBalance || 0,
           totalIncome: 0,
           totalExpense: 0,
         }
@@ -38,8 +38,6 @@ export const TotalBalance = () => {
 
   // пример использования
   const aggregated = aggregateByDate(dailyBalances)
-
-  console.log(aggregated)
 
   const last = aggregated.at(-1)
   const prev = aggregated[0]

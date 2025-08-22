@@ -6,6 +6,7 @@ import { transactionsApi, transactionSlice } from 'entities/transaction'
 import { bankAccountApi, bankAccountsSlice } from 'entities/bank-account'
 import { userSettingsApi, userSettingsSlice } from 'entities/user-settings'
 import { balanceApi, balanceSlice } from 'entities/balance'
+import { fileApi } from 'features/files/upload-file'
 
 const rootReducer = {
   authSlice: userSlice,
@@ -22,6 +23,7 @@ const rootReducer = {
   [bankAccountApi.reducerPath]: bankAccountApi.reducer,
   [userSettingsApi.reducerPath]: userSettingsApi.reducer,
   [balanceApi.reducerPath]: balanceApi.reducer,
+  [fileApi.reducerPath]: fileApi.reducer,
 }
 
 const mainReducer = combineReducers(rootReducer)
@@ -38,7 +40,8 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
         .concat(transactionsApi.middleware)
         .concat(bankAccountApi.middleware)
         .concat(userSettingsApi.middleware)
-        .concat(balanceApi.middleware),
+        .concat(balanceApi.middleware)
+        .concat(fileApi.middleware),
     preloadedState,
   })
 }

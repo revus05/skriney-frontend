@@ -23,7 +23,7 @@ export const UpdateDefaultCategorySelect = () => {
   const handleSelectCategoryChange = (keys: SharedSelection) => {
     const firstKey = Array.from(keys as Set<Key>)[0] as string
     setSelectedCategory(firstKey || '')
-    updateDefaultCategory({ uuid: firstKey })
+    void updateDefaultCategory({ uuid: firstKey })
   }
 
   const displayCategories =

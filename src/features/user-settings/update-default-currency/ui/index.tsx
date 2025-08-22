@@ -21,7 +21,7 @@ export const UpdateDefaultCurrencySelect = () => {
   const handleSelectCurrencyChange = (keys: SharedSelection) => {
     const firstKey = Array.from(keys as Set<Key>)[0] as CurrencyType
     setSelectedCurrency(firstKey || '')
-    updateDefaultCurrency({ currency: firstKey })
+    void updateDefaultCurrency({ currency: firstKey })
   }
 
   return (

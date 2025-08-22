@@ -23,5 +23,8 @@ export type {UpdateDefaultBankAccountRequestDTO} from './models/UpdateDefaultBan
 export type {UpdateDefaultCategoryRequestDTO} from './models/UpdateDefaultCategoryRequestDTO';
 export type {UpdateDefaultCurrencyRequestDTO} from './models/UpdateDefaultCurrencyRequestDTO';
 export type {UpdateThemeRequestDTO} from './models/UpdateThemeRequestDTO';
+export type {UpdateUserImageRequestDTO} from './models/UpdateUserImageRequestDTO';
+export type {UploadFileRequestDTO} from './models/UploadFileRequestDTO';
+export type {UploadFileResponseDTO} from './models/UploadFileResponseDTO';
 export type { UserDTO } from './models/UserDTO';
 export type {UserSettingsDTO} from './models/UserSettingsDTO';

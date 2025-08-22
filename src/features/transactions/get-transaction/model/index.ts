@@ -20,7 +20,7 @@ export const useGetTransactions = () => {
       dispatch(setTransactions(response.data))
     }
 
-    fetchTransactions()
+    void fetchTransactions()
   }, [dispatch, getTransactions])
 
   return transactions

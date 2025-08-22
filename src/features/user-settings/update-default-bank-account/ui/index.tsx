@@ -23,7 +23,7 @@ export const UpdateDefaultBankAccountSelect = () => {
   const handleSelectBankAccountChange = (keys: SharedSelection) => {
     const firstKey = Array.from(keys as Set<Key>)[0] as string
     setSelectedBankAccount(firstKey || '')
-    updateDefaultBankAccount({ uuid: firstKey })
+    void updateDefaultBankAccount({ uuid: firstKey })
   }
 
   const displayBankAccount =

@@ -20,7 +20,7 @@ export const useGetBalanceSummary = () => {
       dispatch(setBalanceSummary(response.data))
     }
 
-    fetchBalanceSummary()
+    void fetchBalanceSummary()
   }, [dispatch, getBalanceSummary])
 
   return balanceSummary

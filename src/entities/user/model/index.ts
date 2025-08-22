@@ -16,8 +16,15 @@ const userSlice = createSlice({
     signIn: (state, action: PayloadAction<UserDTO>) => {
       state.user = action.payload
     },
+    updateUserImage: (state, action: PayloadAction<string>) => {
+      if (!state.user) {
+        return
+      }
+
+      state.user.image = action.payload
+    },
   },
 })
 
-export const { signIn } = userSlice.actions
+export const { signIn, updateUserImage } = userSlice.actions
 export default userSlice.reducer

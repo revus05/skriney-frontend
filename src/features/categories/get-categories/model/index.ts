@@ -15,7 +15,7 @@ export const useGetCategories = () => {
       dispatch(setCategories(response.data))
     }
 
-    fetchCategories()
+    void fetchCategories()
   }, [dispatch, getCategories])
 
   return categories
