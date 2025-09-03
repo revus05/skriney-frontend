@@ -52,6 +52,7 @@ export const UpdatableUserImage = () => {
         userColor={user?.colour}
         username={user?.username}
         onClick={onOpenChange}
+        editing
       />
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
         <ModalContent

@@ -6,6 +6,7 @@ import { CurrencySymbols, CurrencyType } from 'entities/user-settings'
 import { Key, useState } from 'react'
 import { useUpdateDefaultCurrencySubmit } from '../model'
 import { useAppSelector } from 'shared/hooks'
+import { cn } from 'shared/lib'
 
 export const UpdateDefaultCurrencySelect = () => {
   const updateDefaultCurrency = useUpdateDefaultCurrencySubmit()
@@ -31,11 +32,24 @@ export const UpdateDefaultCurrencySelect = () => {
         trigger:
           'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
         popoverContent: 'bg-bg-neutral-primary',
-        value: '!text-text-neutral-tertiary font-semibold',
+        value: cn(
+          'font-semibold',
+          selectedCurrency
+            ? '!text-text-neutral-primary'
+            : '!text-text-neutral-tertiary',
+        ),
       }}
       className={'w-[150px]'}
       placeholder={'Валюта по умолчанию'}
-      selectorIcon={<Icons.chevronDown />}
+      selectorIcon={
+        <Icons.chevronDown
+          className={cn(
+            selectedCurrency
+              ? '!fill-icon-neutral-primary'
+              : '!fill-icon-neutral-tertiary',
+          )}
+        />
+      }
       size={'sm'}
       selectedKeys={selectedCurrency ? [selectedCurrency] : []}
       onSelectionChange={handleSelectCurrencyChange}

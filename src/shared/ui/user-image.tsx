@@ -6,6 +6,7 @@ interface UserImageType extends ComponentProps<'div'> {
   image?: string
   userColor?: string
   username?: string
+  editing?: boolean
 }
 
 const getGradient = (color?: string) => {
@@ -40,6 +41,7 @@ export const UserImage: FC<UserImageType> = ({
   userColor,
   username,
   className,
+  editing = false,
   ...props
 }) => {
   return (
@@ -68,13 +70,15 @@ export const UserImage: FC<UserImageType> = ({
           )}
         </div>
       )}
-      <div
-        className={
-          'absolute top-1/2 left-1/2 flex h-full w-full -translate-1/2 cursor-pointer items-center justify-center bg-black/50 opacity-0 transition group-hover:opacity-100'
-        }
-      >
-        <Icons.image className={'size-[48px]'} />
-      </div>
+      {editing && (
+        <div
+          className={
+            'absolute top-1/2 left-1/2 flex h-full w-full -translate-1/2 cursor-pointer items-center justify-center bg-black/50 opacity-0 transition group-hover:opacity-100'
+          }
+        >
+          <Icons.image className={'size-[48px] fill-white'} />
+        </div>
+      )}
     </div>
   )
 }
