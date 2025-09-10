@@ -3,6 +3,7 @@
 import {
   UpdateDefaultCategorySelect,
   UpdateDefaultCurrencySelect,
+  UpdateLanguageSelect,
   UpdateThemeSegmentControl,
 } from 'features/user-settings'
 import { UpdateDefaultBankAccountSelect } from 'features/user-settings/update-default-bank-account'
@@ -43,6 +44,10 @@ export const SettingsList = () => {
         >
           <Icons.link /> Привязать
         </Link>
+      </div>
+      <div className={'flex items-center justify-between'}>
+        <span className={'text-base font-semibold'}>Язык</span>
+        <UpdateLanguageSelect />
       </div>
     </div>
   )

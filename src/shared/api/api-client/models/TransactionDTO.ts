@@ -2,9 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type {BankAccountDTO} from './BankAccountDTO';
-import type {CategoryDTO} from './CategoryDTO';
-
+import type { BankAccountDTO } from './BankAccountDTO';
+import type { CategoryDTO } from './CategoryDTO';
 export type TransactionDTO = {
     /**
      * Transaction uuid

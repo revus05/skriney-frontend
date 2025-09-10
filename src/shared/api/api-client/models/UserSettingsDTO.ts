@@ -2,9 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type {BankAccountDTO} from './BankAccountDTO';
-import type {CategoryDTO} from './CategoryDTO';
-
+import type { BankAccountDTO } from './BankAccountDTO';
+import type { CategoryDTO } from './CategoryDTO';
 export type UserSettingsDTO = {
     /**
      * User's ui theme
@@ -22,5 +21,9 @@ export type UserSettingsDTO = {
      * User's default bank account
      */
     defaultBankAccount: BankAccountDTO;
+    /**
+     * User's language
+     */
+    language: 'EN' | 'RU';
 };
 

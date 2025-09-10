@@ -5,5 +5,6 @@ export {
   useUpdateDefaultCurrencyMutation,
   useUpdateDefaultCategoryMutation,
   useUpdateDefaultBankAccountMutation,
+  useUpdateLanguageMutation,
 } from './api'
 export { default as userSettingsSlice, setUserSettings } from './model'

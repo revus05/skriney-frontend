@@ -4,6 +4,7 @@ import {
   baseQuery,
   UpdateDefaultBankAccountRequestDTO,
   UpdateDefaultCurrencyRequestDTO,
+  UpdateLanguageRequestDTO,
   UpdateThemeRequestDTO,
   UserSettingsDTO,
 } from 'shared/api'
@@ -52,6 +53,16 @@ const userSettingsApi = createApi({
         body,
       }),
     }),
+    updateLanguage: builder.mutation<
+      ApiResponse<UserSettingsDTO>,
+      UpdateLanguageRequestDTO
+    >({
+      query: (body) => ({
+        url: '/update-language',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -61,4 +72,5 @@ export const {
   useUpdateDefaultCategoryMutation,
   useUpdateThemeMutation,
   useUpdateDefaultBankAccountMutation,
+  useUpdateLanguageMutation,
 } = userSettingsApi

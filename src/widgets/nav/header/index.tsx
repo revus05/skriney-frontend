@@ -2,7 +2,7 @@
 
 import { Button, Icons, Input, UserImage } from 'shared/ui'
 import Link from 'next/link'
-import { useAppSelector } from 'shared/hooks'
+import { useAppSelector, useLocale } from 'shared/hooks'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
@@ -13,6 +13,7 @@ export const Header = () => {
   const user = useAppSelector((state) => state.authSlice.user)
 
   const router = useRouter()
+  const t = useLocale()
 
   const handleLogout = () => {
     Cookies.remove('jwt')
@@ -45,7 +46,7 @@ export const Header = () => {
       </Link>
       <Input
         className={'bg-bg-neutral-secondary/70 w-[394px]'}
-        placeholder={'Поиск'}
+        placeholder={t.header.search}
         iconStart={'search'}
       />
 
