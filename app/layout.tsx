@@ -3,7 +3,7 @@ import { Roboto } from 'next/font/google'
 import './globals.css'
 import React from 'react'
 import { Providers } from 'app/providers'
-import { getPreloadedUser } from 'entities/user'
+import { getPreloadedState } from 'entities/user'
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -20,13 +20,13 @@ const RootLayout = async ({
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-  const preloadedState = await getPreloadedUser()
-
-  const theme =
-    preloadedState.userSettingsSlice.userSettings?.userTheme || 'SYSTEM'
+  const { theme, ...preloadedState } = await getPreloadedState()
 
   return (
-    <html lang="en" className={theme.toLowerCase()}>
+    <html
+      lang={preloadedState.language.toLowerCase()}
+      className={theme.toLowerCase()}
+    >
       <body
         className={`${roboto.variable} relative z-0 min-h-screen antialiased`}
       >

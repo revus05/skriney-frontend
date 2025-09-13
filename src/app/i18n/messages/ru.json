@@ -1,0 +1,19 @@
+{
+  "header": {
+    "search": "Поиск",
+    "userActions": {
+      "profile": "Профиль",
+      "logout": "Выйти"
+    }
+  },
+  "sidebar": {
+    "home": "Главная",
+    "transaction": "Транзакции",
+    "statistics": "Статистика",
+    "categories": "Категории",
+    "bankAccounts": "Счета",
+    "goals": "Цели и лимиты",
+    "settings": "Настройки"
+  },
+  "test": "Тест"
+}

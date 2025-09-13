@@ -1,2 +1,2 @@
-export { Header } from './header'
+export { Header } from './header/ui'
 export { Aside } from './aside'

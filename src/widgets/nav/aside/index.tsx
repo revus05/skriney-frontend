@@ -1,53 +1,58 @@
+'use client'
+
 import { Icons } from 'shared/ui'
 import { createElement } from 'react'
 import Link from 'next/link'
+import { useTranslation } from 'app/i18n/provider'
 
 export const Aside = () => {
   const navItems = [
     {
       id: 'home',
-      label: 'Главная',
+      label: 'home',
       icon: 'home',
       href: '/',
     },
     {
       id: 'transaction',
-      label: 'Транзакции',
+      label: 'transaction',
       icon: 'transaction',
       href: '/transactions',
     },
     {
-      id: 'graph',
-      label: 'Статистика',
+      id: 'statistics',
+      label: 'statistics',
       icon: 'graph',
       href: '/statistics',
     },
     {
       id: 'categories',
-      label: 'Категории',
+      label: 'categories',
       icon: 'categories',
       href: '/categories',
     },
     {
       id: 'bank-accounts',
-      label: 'Счета',
+      label: 'bankAccounts',
       icon: 'card',
       href: '/bank-accounts',
     },
     {
       id: 'goal',
-      label: 'Цели и лимиты',
+      label: 'goals',
       icon: 'goal',
       href: '/goals',
     },
     'divide',
     {
       id: 'settings',
-      label: 'Настройки',
+      label: 'settings',
       icon: 'settings',
       href: '/settings',
     },
   ]
+
+  const t = useTranslation()
 
   return (
     <aside
@@ -78,7 +83,7 @@ export const Aside = () => {
                       'text-text-neutral-tertiary group-hover:text-text-neutral-primary text-base font-semibold whitespace-nowrap transition select-none'
                     }
                   >
-                    {item.label}
+                    {t(`sidebar.${item.label}`)}
                   </span>
                 </Link>
               </li>

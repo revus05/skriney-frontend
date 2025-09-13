@@ -1,0 +1,19 @@
+{
+  "header": {
+    "search": "Search",
+    "userActions": {
+      "profile": "Profile",
+      "logout": "Log out"
+    }
+  },
+  "sidebar": {
+    "home": "Home",
+    "transaction": "Transaction",
+    "statistics": "Statistics",
+    "categories": "Categories",
+    "bankAccounts": "Bank accounts",
+    "goals": "Goals and limits",
+    "settings": "Settings"
+  },
+  "test": "Test"
+}

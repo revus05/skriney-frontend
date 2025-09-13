@@ -5,4 +5,4 @@ export {
   useSignUpUserMutation,
   useUpdateUserImageMutation,
 } from './api'
-export { getPreloadedUser } from './lib'
+export { getPreloadedState } from './lib'
