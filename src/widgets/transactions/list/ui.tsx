@@ -8,7 +8,7 @@ import { useAppSelector } from 'shared/hooks'
 
 export const TransactionsList = () => {
   const language =
-    useAppSelector((state) => state.authSlice.user?.userSettings.language) ||
+    useAppSelector((state) => state.userSettingsSlice.userSettings?.language) ||
     'EN'
   const transactions = useGetTransactions()
 

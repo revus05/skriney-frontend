@@ -1,7 +1,15 @@
 'use client'
 
-import { createContext, FC, ReactNode, useContext } from 'react'
+import {
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { getValueWithStringKey } from 'shared/lib'
+import { useAppSelector } from 'shared/hooks'
 import en from './messages/en.json'
 import ru from './messages/ru.json'
 
@@ -28,10 +36,32 @@ type I18ProviderProps = {
   language: Language
 }
 
-export const I18Provider: FC<I18ProviderProps> = ({ children, language }) => {
+export const I18Provider: FC<I18ProviderProps> = ({
+  children,
+  language: initialLanguage,
+}) => {
+  const [currentLanguage, setCurrentLanguage] =
+    useState<Language>(initialLanguage)
+
+  const userSettingsLanguage = useAppSelector(
+    (state) => state.userSettingsSlice.userSettings?.language,
+  )
+
+  useEffect(() => {
+    if (userSettingsLanguage) {
+      const normalizedLanguage = userSettingsLanguage.toLowerCase() as Language
+      if (normalizedLanguage !== currentLanguage) {
+        setCurrentLanguage(normalizedLanguage)
+      }
+    }
+  }, [userSettingsLanguage, currentLanguage])
+
   return (
     <I18nContext.Provider
-      value={{ language, messages: languagesMap[language] }}
+      value={{
+        language: currentLanguage,
+        messages: languagesMap[currentLanguage],
+      }}
     >
       {children}
     </I18nContext.Provider>
