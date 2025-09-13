@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Icons, Input } from 'shared/ui'
+import { Button, Icons, Input, Translate } from 'shared/ui'
 import {
   Modal,
   ModalBody,
@@ -15,6 +15,7 @@ import { useCreateBankAccountForm, useCreateBankAccountSubmit } from '../model'
 import { CurrencySymbols } from 'entities/user-settings'
 import { Controller } from 'react-hook-form'
 import { CreateBankAccountFormData } from 'features/bank-accounts/create-bank-account/model/schema'
+import { useTranslation } from 'app/i18n'
 
 export const CreateBankAccountButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -27,6 +28,8 @@ export const CreateBankAccountButton = () => {
   } = useCreateBankAccountForm()
 
   const submitTransaction = useCreateBankAccountSubmit()
+
+  const t = useTranslation()
 
   return (
     <>
@@ -45,7 +48,9 @@ export const CreateBankAccountButton = () => {
             return (
               <div className={'flex flex-col gap-4'}>
                 <ModalHeader className="flex items-center justify-between gap-1 p-0">
-                  <h2>Создать счет:</h2>
+                  <h2>
+                    <Translate value={'bankAccounts.creation.sectionTitle'} />
+                  </h2>
                   <Button variant="icon" iconStart={'x'} onClick={onClose} />
                 </ModalHeader>
                 <form
@@ -56,12 +61,12 @@ export const CreateBankAccountButton = () => {
                     <Input
                       {...register('title')}
                       errorMessage={errors.title?.message}
-                      placeholder={'Название'}
+                      placeholder={t('bankAccounts.creation.title')}
                     />
                     <Input
                       {...register('balance')}
                       errorMessage={errors.balance?.message}
-                      placeholder={'Начальный баланс'}
+                      placeholder={t('bankAccounts.creation.initialBalance')}
                     />
                     <Controller
                       name="currency"
@@ -78,7 +83,7 @@ export const CreateBankAccountButton = () => {
                             errorMessage:
                               'text-text-semantic-error-primary text-sm',
                           }}
-                          placeholder={'Валюта'}
+                          placeholder={t('bankAccounts.creation.currency')}
                           selectorIcon={<Icons.chevronDown />}
                           size={'sm'}
                           isInvalid={!!errors.currency?.message}
@@ -106,7 +111,9 @@ export const CreateBankAccountButton = () => {
                     />
                   </ModalBody>
                   <ModalFooter className={'flex justify-center p-0'}>
-                    <Button type={'submit'}>Создать</Button>
+                    <Button type={'submit'}>
+                      <Translate value={'bankAccounts.creation.create'} />
+                    </Button>
                   </ModalFooter>
                 </form>
               </div>

@@ -38,6 +38,8 @@ export const I18Provider: FC<I18ProviderProps> = ({ children, language }) => {
   )
 }
 
+export type Translate = (key: string, fallback?: string) => string
+
 export const useTranslation = () => {
   const context = useContext(I18nContext)
   if (!context) {
@@ -46,6 +48,8 @@ export const useTranslation = () => {
 
   const { messages } = context
 
-  return (key: string, fallback?: string): string =>
+  const t: Translate = (key: string, fallback?: string): string =>
     (getValueWithStringKey(messages, key) as string) || fallback || key
+
+  return t
 }

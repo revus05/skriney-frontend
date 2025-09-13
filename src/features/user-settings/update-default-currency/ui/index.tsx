@@ -7,6 +7,7 @@ import { Key, useState } from 'react'
 import { useUpdateDefaultCurrencySubmit } from '../model'
 import { useAppSelector } from 'shared/hooks'
 import { cn } from 'shared/lib'
+import { useTranslation } from 'app/i18n'
 
 export const UpdateDefaultCurrencySelect = () => {
   const updateDefaultCurrency = useUpdateDefaultCurrencySubmit()
@@ -25,6 +26,8 @@ export const UpdateDefaultCurrencySelect = () => {
     void updateDefaultCurrency({ currency: firstKey })
   }
 
+  const t = useTranslation()
+
   return (
     <Select
       aria-label={'default-currency'}
@@ -40,7 +43,7 @@ export const UpdateDefaultCurrencySelect = () => {
         ),
       }}
       className={'w-[150px]'}
-      placeholder={'Валюта по умолчанию'}
+      placeholder={t('settings.list.defaultCurrency')}
       selectorIcon={
         <Icons.chevronDown
           className={cn(

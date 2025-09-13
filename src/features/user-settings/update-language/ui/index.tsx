@@ -4,6 +4,7 @@ import { useUpdateLanguage } from '../model'
 import { Key, useState } from 'react'
 import { useAppSelector } from 'shared/hooks'
 import { cn } from 'shared/lib'
+import { useTranslation } from 'app/i18n'
 
 export const UpdateLanguageSelect = () => {
   const updateLanguage = useUpdateLanguage()
@@ -17,8 +18,10 @@ export const UpdateLanguageSelect = () => {
   const handleSelectLanguageChanged = (keys: SharedSelection) => {
     const firstKey = Array.from(keys as Set<Key>)[0] as string
     setSelectedLanguage(firstKey || '')
-    void updateLanguage({ language: firstKey.toUpperCase() })
+    void updateLanguage({ language: firstKey.toUpperCase() as 'EN' | 'RU' })
   }
+
+  const t = useTranslation()
 
   return (
     <Select
@@ -35,7 +38,7 @@ export const UpdateLanguageSelect = () => {
         ),
       }}
       className={'w-[150px]'}
-      placeholder={'Язык'}
+      placeholder={t('settings.list.language')}
       selectorIcon={
         <Icons.chevronDown
           className={cn(

@@ -1,7 +1,7 @@
 'use client'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
-import { Button } from 'shared/ui'
+import { Button, Translate } from 'shared/ui'
 import { useDeleteCategory } from '../model'
 import { FC } from 'react'
 
@@ -28,7 +28,7 @@ export const DeleteCategoryButton: FC<DeleteCategoryButton> = ({ uuid }) => {
             }
             onClick={() => deleteCategory({ uuid })}
           >
-            Удалить
+            <Translate value={'categories.delete'} />
           </Button>
         </div>
       </PopoverContent>

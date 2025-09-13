@@ -6,6 +6,7 @@ import { Key, useState } from 'react'
 import { useUpdateDefaultBankAccountSubmit } from '../model'
 import { useAppSelector } from 'shared/hooks'
 import { useGetBankAccounts } from 'features/bank-accounts'
+import { useTranslation } from 'app/i18n'
 
 export const UpdateDefaultBankAccountSelect = () => {
   const updateDefaultBankAccount = useUpdateDefaultBankAccountSubmit()
@@ -32,6 +33,8 @@ export const UpdateDefaultBankAccountSelect = () => {
       ? [...bankAccounts, defaultBankAccount]
       : bankAccounts
 
+  const t = useTranslation()
+
   return (
     <Select
       aria-label={'default-category'}
@@ -42,7 +45,7 @@ export const UpdateDefaultBankAccountSelect = () => {
         value: '!text-text-neutral-tertiary font-semibold',
       }}
       className={'w-[150px]'}
-      placeholder={'Счет по умолчанию'}
+      placeholder={t('settings.list.defaultBankAccount')}
       selectorIcon={<Icons.chevronDown />}
       size={'sm'}
       selectedKeys={selectedBankAccount ? [selectedBankAccount] : []}

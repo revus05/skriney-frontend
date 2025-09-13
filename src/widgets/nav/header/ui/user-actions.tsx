@@ -7,12 +7,11 @@ import Cookies from 'js-cookie'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import { Button, UserImage } from 'shared/ui'
 import { cn } from 'shared/lib'
-import { useTranslation } from 'app/i18n/provider'
+import { Translate } from 'shared/ui/translate'
 
 export const HeaderUserActions = () => {
   const user = useAppSelector((state) => state.authSlice.user)
 
-  const t = useTranslation()
   const router = useRouter()
 
   const handleLogout = () => {
@@ -67,7 +66,7 @@ export const HeaderUserActions = () => {
               )}
               onClick={menuItem.onClick}
             >
-              {t(`header.userActions.${menuItem.label}`)}
+              <Translate value={`header.userActions.${menuItem.label}`} />
             </Button>
           ))}
         </div>

@@ -1,9 +1,11 @@
 import { z } from 'zod'
 import { passwordSchema } from 'shared/schemas'
+import { Translate } from 'app/i18n'
 
-export const signInSchema = z.object({
-  email: z.string().trim().nonempty('Email пользователя обязателен'),
-  password: passwordSchema,
-})
+export const signInSchema = (t: Translate) =>
+  z.object({
+    email: z.string().trim().nonempty(t('auth.validation.emailRequired')),
+    password: passwordSchema(t),
+  })
 
-export type SignInFormData = z.infer<typeof signInSchema>
+export type SignInFormData = z.infer<ReturnType<typeof signInSchema>>

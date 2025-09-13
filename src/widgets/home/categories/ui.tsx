@@ -6,6 +6,7 @@ import {
   useGetCategoriesStats,
   useUpdateCategory,
 } from 'features/categories'
+import { Translate } from 'shared/ui'
 
 export const CategoriesHome = () => {
   const categories = useGetCategories()
@@ -15,7 +16,9 @@ export const CategoriesHome = () => {
 
   return (
     <div className={'flex flex-col gap-4'}>
-      <h2 className={'text-xl font-bold'}>Категории за 30 дней</h2>
+      <h2 className={'text-xl font-bold'}>
+        <Translate value={'home.categories.title'} />
+      </h2>
       <div className={'flex gap-4'}>
         {categories.map((category) => (
           <CategoryCard

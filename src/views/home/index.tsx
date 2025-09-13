@@ -1,6 +1,7 @@
 import { CategoriesHome, TotalBalance } from 'widgets/home'
 import { GoalCard } from 'entities/goal'
 import { withHomeLayout } from 'widgets/layouts'
+import { Translate } from 'shared/ui'
 
 const HomePage = () => {
   return (
@@ -8,7 +9,9 @@ const HomePage = () => {
       <TotalBalance />
       <CategoriesHome />
       <div className={'flex flex-col gap-4'}>
-        <h2 className={'text-xl font-bold'}>Цели</h2>
+        <h2 className={'text-xl font-bold'}>
+          <Translate value={'home.goals.title'} />
+        </h2>
         <div className={'flex gap-4'}>
           <GoalCard
             title={'Поездка в Италию'}

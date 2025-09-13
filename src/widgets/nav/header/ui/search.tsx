@@ -1,7 +1,7 @@
 'use client'
 
 import { Input } from 'shared/ui'
-import { useTranslation } from 'app/i18n/provider'
+import { useTranslation } from 'app/i18n'
 
 export const HeaderSearch = () => {
   const t = useTranslation()
@@ -9,7 +9,7 @@ export const HeaderSearch = () => {
   return (
     <Input
       className={'bg-bg-neutral-secondary/70 w-[394px]'}
-      placeholder={t('test')}
+      placeholder={t('header.search')}
       iconStart={'search'}
     />
   )

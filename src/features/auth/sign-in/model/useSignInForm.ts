@@ -3,10 +3,13 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SignInFormData, signInSchema } from './schema'
+import { useTranslation } from 'app/i18n'
 
 export const useSignInForm = () => {
+  const t = useTranslation()
+
   return useForm<SignInFormData>({
-    resolver: zodResolver(signInSchema),
+    resolver: zodResolver(signInSchema(t)),
     defaultValues: {
       email: '',
       password: '',

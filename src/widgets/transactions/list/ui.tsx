@@ -1,19 +1,26 @@
 'use client'
 
-import { Balance, Button, Card, EmojiTitle } from 'shared/ui'
+import { Balance, Button, Card, EmojiTitle, Translate } from 'shared/ui'
 import { TransactionDTO } from 'shared/api'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import { useDeleteTransaction, useGetTransactions } from 'features/transactions'
+import { useAppSelector } from 'shared/hooks'
 
 export const TransactionsList = () => {
+  const language =
+    useAppSelector((state) => state.authSlice.user?.userSettings.language) ||
+    'EN'
   const transactions = useGetTransactions()
 
   const grouped = transactions.reduce<Record<string, TransactionDTO[]>>(
     (acc, tx) => {
-      const dateKey = new Date(tx.createdAt).toLocaleDateString('ru-RU', {
-        day: 'numeric',
-        month: 'long',
-      })
+      const dateKey = new Date(tx.createdAt).toLocaleDateString(
+        `${language}-${language.toUpperCase()}`,
+        {
+          day: 'numeric',
+          month: 'long',
+        },
+      )
       if (!acc[dateKey]) acc[dateKey] = []
       acc[dateKey].push(tx)
       return acc
@@ -97,7 +104,7 @@ export const TransactionsList = () => {
                           }
                           onClick={() => deleteTransaction({ uuid: tx.uuid })}
                         >
-                          Удалить
+                          <Translate value={'transactions.delete'} />
                         </Button>
                       </div>
                     </PopoverContent>

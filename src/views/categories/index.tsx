@@ -1,4 +1,4 @@
-import { Icons } from 'shared/ui'
+import { Icons, Translate } from 'shared/ui'
 import { withHomeLayout } from 'widgets/layouts'
 import { CategoriesList } from 'widgets/categories'
 import { CreateCategoryButton } from 'features/categories'
@@ -9,7 +9,7 @@ const CategoriesPage = () => {
       <div className={'flex items-center justify-between'}>
         <div className={'flex items-center gap-2.5'}>
           <h2 className={'text-[32px] leading-8 font-bold'}>
-            Категории транзакций
+            <Translate value={'categories.title'} />
           </h2>
           <Icons.info />
         </div>

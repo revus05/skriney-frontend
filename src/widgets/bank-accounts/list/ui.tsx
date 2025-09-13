@@ -5,7 +5,7 @@ import {
   useGetBankAccounts,
   useUpdateBankAccount,
 } from 'features/bank-accounts'
-import { Balance, Button, Card, EmojiTitle, Trend } from 'shared/ui'
+import { Balance, Button, Card, EmojiTitle, Translate, Trend } from 'shared/ui'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import { useGetChangePercent } from './model'
 import { BankAccountDTO } from 'shared/api'
@@ -76,7 +76,7 @@ const BankAccountItem: FC<BankAccountItemType> = ({ bankAccount }) => {
               }
               onClick={() => deleteBankAccount({ uuid: bankAccount.uuid })}
             >
-              Удалить
+              <Translate value={'bankAccounts.delete'} />
             </Button>
           </div>
         </PopoverContent>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Input } from 'shared/ui'
+import { Button, Input, Translate } from 'shared/ui'
 import {
   Modal,
   ModalBody,
@@ -11,6 +11,7 @@ import {
 } from '@heroui/react'
 import { useCreateCategoryForm, useCreateCategorySubmit } from '../model'
 import { CreateCategoryFormData } from '../model/schema'
+import { useTranslation } from 'app/i18n'
 
 export const CreateCategoryButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -22,6 +23,8 @@ export const CreateCategoryButton = () => {
   } = useCreateCategoryForm()
 
   const submitTransaction = useCreateCategorySubmit()
+
+  const t = useTranslation()
 
   return (
     <>
@@ -40,7 +43,9 @@ export const CreateCategoryButton = () => {
             return (
               <div className={'flex flex-col gap-4'}>
                 <ModalHeader className="flex items-center justify-between gap-1 p-0">
-                  <h2>Создать категорию:</h2>
+                  <h2>
+                    <Translate value={'categories.creation.sectionTitle'} />
+                  </h2>
                   <Button variant="icon" iconStart={'x'} onClick={onClose} />
                 </ModalHeader>
                 <form
@@ -51,11 +56,13 @@ export const CreateCategoryButton = () => {
                     <Input
                       {...register('title')}
                       errorMessage={errors.title?.message}
-                      placeholder={'Название'}
+                      placeholder={t('categories.creation.title')}
                     />
                   </ModalBody>
                   <ModalFooter className={'flex justify-center p-0'}>
-                    <Button type={'submit'}>Создать</Button>
+                    <Button type={'submit'}>
+                      <Translate value={'categories.creation.create'} />
+                    </Button>
                   </ModalFooter>
                 </form>
               </div>

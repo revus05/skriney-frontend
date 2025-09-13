@@ -15,5 +15,97 @@
     "goals": "Цели и лимиты",
     "settings": "Настройки"
   },
-  "test": "Тест"
+  "home": {
+    "totalBalance": {
+      "balance": "Баланс",
+      "income": "Получено",
+      "outcome": "Потрачено"
+    },
+    "categories": {
+      "title": "Категории за 30 дней"
+    },
+    "goals": {
+      "title": "Цели"
+    }
+  },
+  "profile": {
+    "bankAccounts": "Счета",
+    "updateImage": {
+      "sectionTitle": "Обновить изображение профиля:",
+      "dragHere": "Выберите или перетащите изображение сюда",
+      "releaseHere": "Отпустите, чтобы загрузить",
+      "update": "Обновить"
+    }
+  },
+  "categories": {
+    "title": "Категории транзакций",
+    "delete": "Удалить",
+    "creation": {
+      "sectionTitle": "Создать категорию:",
+      "title": "Название",
+      "create": "Создать"
+    }
+  },
+  "bankAccounts": {
+    "title": "Счета",
+    "delete": "Удалить",
+    "creation": {
+      "sectionTitle": "Создать счет:",
+      "title": "Название",
+      "initialBalance": "Начальный баланс",
+      "currency": "Валюта",
+      "create": "Создать"
+    }
+  },
+  "transactions": {
+    "title": "Транзакции",
+    "delete": "Удалить",
+    "creation": {
+      "sectionTitle": "Создать транзакцию:",
+      "amount": "Сумма",
+      "currency": "Валюта",
+      "bankAccount": "Счет",
+      "category": "Категория",
+      "create": "Создать"
+    }
+  },
+  "settings": {
+    "title": "Настройки",
+    "list": {
+      "theme": "Тема",
+      "defaultCurrency": "Валюта по умолчанию",
+      "defaultCategory": "Категория по умолчанию",
+      "defaultBankAccount": "Счет по умолчанию",
+      "connectTelegram": {
+        "title": "Привязать телеграм",
+        "button": "Привязать"
+      },
+      "language": "Язык"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Войти в аккаунт:",
+      "email": "Email",
+      "password": "Пароль",
+      "createAccount": "Создать новый аккаунт",
+      "submit": "Войти"
+    },
+    "signUp": {
+      "title": "Создать новый аккаунт:",
+      "username": "Имя пользователя",
+      "email": "Email",
+      "password": "Пароль",
+      "repeatPassword": "Повторите пароль",
+      "signIn": "Войти в существующий аккаунт",
+      "submit": "Зарегистрироваться"
+    },
+    "validation": {
+      "emailRequired": "Email пользователя обязателен",
+      "usernameRequired": "Имя пользователя обязательно",
+      "passwordMinLength": "Минимальная длина пароля 8 символов",
+      "passwordMaxLength": "Максимальная длина пароля 64 символа",
+      "passwordsNotMatch": "Пароли не совпадают"
+    }
+  }
 }

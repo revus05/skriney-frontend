@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react'
-import { Balance, Card, Icons, Trend } from 'shared/ui'
+import { Balance, Card, Icons, Translate, Trend } from 'shared/ui'
 
 type TotalBalanceType = {
   type: 'balance' | 'income' | 'expenses'
@@ -13,15 +13,15 @@ type TotalBalanceType = {
 const TYPE_CONFIG = {
   balance: {
     icon: <Icons.dollarCircle />,
-    title: 'Баланс',
+    title: <Translate value={'home.totalBalance.balance'} />,
   },
   income: {
     icon: <Icons.arrowBottomLeft />,
-    title: 'Получено',
+    title: <Translate value={'home.totalBalance.income'} />,
   },
   expenses: {
     icon: <Icons.arrowTopRight />,
-    title: 'Потрачено',
+    title: <Translate value={'home.totalBalance.outcome'} />,
   },
 } as const
 

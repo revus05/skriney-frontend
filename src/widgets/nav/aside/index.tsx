@@ -1,9 +1,7 @@
-'use client'
-
 import { Icons } from 'shared/ui'
 import { createElement } from 'react'
 import Link from 'next/link'
-import { useTranslation } from 'app/i18n/provider'
+import { Translate } from 'shared/ui/translate'
 
 export const Aside = () => {
   const navItems = [
@@ -52,11 +50,11 @@ export const Aside = () => {
     },
   ]
 
-  const t = useTranslation()
-
   return (
     <aside
-      className={'bg-bg-neutral-primary/70 h-fit rounded-2xl border px-4 py-2'}
+      className={
+        'bg-bg-neutral-primary/70 h-fit w-[230px] rounded-2xl border px-4 py-2'
+      }
     >
       <nav>
         <ul>
@@ -83,7 +81,7 @@ export const Aside = () => {
                       'text-text-neutral-tertiary group-hover:text-text-neutral-primary text-base font-semibold whitespace-nowrap transition select-none'
                     }
                   >
-                    {t(`sidebar.${item.label}`)}
+                    <Translate value={`sidebar.${item.label}`} />
                   </span>
                 </Link>
               </li>

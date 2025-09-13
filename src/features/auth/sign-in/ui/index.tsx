@@ -1,13 +1,15 @@
 'use client'
 
-import { Button, Input } from 'shared/ui'
+import { Button, Input, Translate } from 'shared/ui'
 import { setShowPassword, useSignInForm, useSignInSubmit } from '../model'
 import { useAppDispatch, useAppSelector } from 'shared/hooks'
 import { paths } from 'shared/navigation'
+import { useTranslation } from 'app/i18n'
 import Link from 'next/link'
 
 export const SignInForm = () => {
   const dispatch = useAppDispatch()
+  const t = useTranslation()
 
   const {
     register,
@@ -26,20 +28,22 @@ export const SignInForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="bg-bg-neutral-primary/70 flex w-[400px] flex-col gap-6 rounded-2xl border p-8 backdrop-blur-[32px]"
     >
-      <h2 className="text-xl font-semibold">Войти в аккаунт:</h2>
+      <h2 className="text-xl font-semibold">
+        <Translate value="auth.signIn.title" />
+      </h2>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
           <Input
             {...register('email')}
             errorMessage={errors.email?.message}
             type="email"
-            placeholder="Email"
+            placeholder={t('auth.signIn.email')}
             iconStart="email"
           />
           <Input
             {...register('password')}
             errorMessage={errors.password?.message}
-            placeholder="Пароль"
+            placeholder={t('auth.signIn.password')}
             iconStart="lock"
             type={showPassword ? 'text' : 'password'}
             iconEnd={showPassword ? 'eyeSlash' : 'eye'}
@@ -53,10 +57,10 @@ export const SignInForm = () => {
           href={paths.signUp}
           className={'text-text-neutral-tertiary font-semibold'}
         >
-          Создать новый аккаунт
+          <Translate value="auth.signIn.createAccount" />
         </Link>
         <Button className={'mx-auto'} type={'submit'}>
-          Войти
+          <Translate value="auth.signIn.submit" />
         </Button>
       </div>
     </form>

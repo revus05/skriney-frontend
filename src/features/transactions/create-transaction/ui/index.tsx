@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Icons, Input } from 'shared/ui'
+import { Button, Icons, Input, Translate } from 'shared/ui'
 import {
   Modal,
   ModalBody,
@@ -18,6 +18,7 @@ import { CurrencySymbols } from 'entities/user-settings'
 import { useGetCategories } from 'features/categories'
 import { cn } from 'shared/lib'
 import { CreateTransactionFormData } from '../model/schema'
+import { useTranslation } from 'app/i18n'
 
 export const CreateTransactionButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -43,6 +44,8 @@ export const CreateTransactionButton = () => {
     label: bankAccount.title,
   }))
 
+  const t = useTranslation()
+
   return (
     <>
       <Button onClick={onOpen} variant={'icon'} iconStart={'plus'} />
@@ -60,7 +63,9 @@ export const CreateTransactionButton = () => {
             return (
               <div className={'flex flex-col gap-4'}>
                 <ModalHeader className="flex items-center justify-between gap-1 p-0">
-                  <h2>Создать транзакцию:</h2>
+                  <h2>
+                    <Translate value={'transactions.creation.sectionTitle'} />
+                  </h2>
                   <Button variant="icon" iconStart={'x'} onClick={onClose} />
                 </ModalHeader>
                 <form
@@ -71,7 +76,7 @@ export const CreateTransactionButton = () => {
                     <Input
                       {...register('amount')}
                       errorMessage={errors.amount?.message}
-                      placeholder={'Сумма'}
+                      placeholder={t('transactions.creation.amount')}
                     />
                     <Controller
                       name="currency"
@@ -91,7 +96,7 @@ export const CreateTransactionButton = () => {
                               'text-text-semantic-error-primary text-sm',
                             mainWrapper: '[&_>_div]:p-0',
                           }}
-                          placeholder={'Валюта'}
+                          placeholder={t('transactions.creation.currency')}
                           selectorIcon={<Icons.chevronDown />}
                           size={'sm'}
                           isInvalid={!!errors.currency?.message}
@@ -135,7 +140,7 @@ export const CreateTransactionButton = () => {
                               'text-text-semantic-error-primary text-sm',
                             mainWrapper: '[&_>_div]:p-0',
                           }}
-                          placeholder={'Счет'}
+                          placeholder={t('transactions.creation.bankAccount')}
                           selectorIcon={<Icons.chevronDown />}
                           size={'sm'}
                           isInvalid={!!errors.bankAccount?.message}
@@ -177,7 +182,7 @@ export const CreateTransactionButton = () => {
                               'text-text-semantic-error-primary text-sm',
                             mainWrapper: '[&_>_div]:p-0',
                           }}
-                          placeholder={'Категория'}
+                          placeholder={t('transactions.creation.category')}
                           selectorIcon={<Icons.chevronDown />}
                           size={'sm'}
                           isInvalid={!!errors.category?.message}
@@ -203,7 +208,9 @@ export const CreateTransactionButton = () => {
                     />
                   </ModalBody>
                   <ModalFooter className={'flex justify-center p-0'}>
-                    <Button type={'submit'}>Создать</Button>
+                    <Button type={'submit'}>
+                      <Translate value={'transactions.creation.create'} />
+                    </Button>
                   </ModalFooter>
                 </form>
               </div>

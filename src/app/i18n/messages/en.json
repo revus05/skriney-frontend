@@ -15,5 +15,97 @@
     "goals": "Goals and limits",
     "settings": "Settings"
   },
-  "test": "Test"
+  "home": {
+    "totalBalance": {
+      "balance": "Balance",
+      "income": "Income",
+      "outcome": "Expenses"
+    },
+    "categories": {
+      "title": "Categories for 30 days"
+    },
+    "goals": {
+      "title": "Goals"
+    }
+  },
+  "profile": {
+    "bankAccounts": "Bank accounts",
+    "updateImage": {
+      "sectionTitle": "Update Profile Picture:",
+      "dragHere": "Choose or drag an image here",
+      "releaseHere": "Release to upload",
+      "update": "Update"
+    }
+  },
+  "categories": {
+    "title": "Transaction categories",
+    "delete": "Delete",
+    "creation": {
+      "sectionTitle": "Create category:",
+      "title": "Title",
+      "create": "Create"
+    }
+  },
+  "bankAccounts": {
+    "title": "Bank accounts",
+    "delete": "Delete",
+    "creation": {
+      "sectionTitle": "Create bank account:",
+      "title": "Title",
+      "initialBalance": "Initial balance",
+      "currency": "Currency",
+      "create": "Create"
+    }
+  },
+  "transactions": {
+    "title": "Transactions",
+    "delete": "Delete",
+    "creation": {
+      "sectionTitle": "Create transaction:",
+      "amount": "Amount",
+      "currency": "Currency",
+      "bankAccount": "Bank account",
+      "category": "Category",
+      "create": "Create"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "list": {
+      "theme": "Theme",
+      "defaultCurrency": "Default currency",
+      "defaultCategory": "Default category",
+      "defaultBankAccount": "Default bank account",
+      "connectTelegram": {
+        "title": "Connect Telegram",
+        "button": "Connect"
+      },
+      "language": "Language"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in to account:",
+      "email": "Email",
+      "password": "Password",
+      "createAccount": "Create new account",
+      "submit": "Sign in"
+    },
+    "signUp": {
+      "title": "Create new account:",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "repeatPassword": "Repeat password",
+      "signIn": "Sign in to existing account",
+      "submit": "Sign up"
+    },
+    "validation": {
+      "emailRequired": "User email is required",
+      "usernameRequired": "Username is required",
+      "passwordMinLength": "Minimum password length is 8 characters",
+      "passwordMaxLength": "Maximum password length is 64 characters",
+      "passwordsNotMatch": "Passwords do not match"
+    }
+  }
 }

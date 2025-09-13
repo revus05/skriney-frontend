@@ -6,6 +6,7 @@ import { Key, useState } from 'react'
 import { useUpdateDefaultCategorySubmit } from '../model'
 import { useAppSelector } from 'shared/hooks'
 import { useGetCategories } from 'features/categories'
+import { useTranslation } from 'app/i18n'
 
 export const UpdateDefaultCategorySelect = () => {
   const updateDefaultCategory = useUpdateDefaultCategorySubmit()
@@ -31,6 +32,8 @@ export const UpdateDefaultCategorySelect = () => {
       ? [...categories, defaultCategory]
       : categories
 
+  const t = useTranslation()
+
   return (
     <Select
       aria-label={'default-category'}
@@ -41,7 +44,7 @@ export const UpdateDefaultCategorySelect = () => {
         value: '!text-text-neutral-tertiary font-semibold',
       }}
       className={'w-[150px]'}
-      placeholder={'Категория по умолчанию'}
+      placeholder={t('settings.list.defaultCategory')}
       selectorIcon={<Icons.chevronDown />}
       size={'sm'}
       selectedKeys={selectedCategory ? [selectedCategory] : []}

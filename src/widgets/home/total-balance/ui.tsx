@@ -36,7 +36,6 @@ export const TotalBalance = () => {
     return ((current - previous) / previous) * 100
   }
 
-  // пример использования
   const aggregated = aggregateByDate(dailyBalances)
 
   const last = aggregated.at(-1)

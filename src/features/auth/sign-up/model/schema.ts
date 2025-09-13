@@ -1,16 +1,21 @@
 import { z } from 'zod'
 import { passwordSchema } from 'shared/schemas'
+import { Translate } from 'app/i18n'
 
-export const signUpSchema = z
-  .object({
-    username: z.string().trim().nonempty('Имя пользователя обязательно'),
-    email: z.string().trim().nonempty('Email пользователя обязателен'),
-    password: passwordSchema,
-    repeatPassword: passwordSchema,
-  })
-  .refine((data) => data.password === data.repeatPassword, {
-    message: 'Пароли не совпадают',
-    path: ['repeatPassword'],
-  })
+export const signUpSchema = (t: Translate) =>
+  z
+    .object({
+      username: z
+        .string()
+        .trim()
+        .nonempty(t('auth.validation.usernameRequired')),
+      email: z.string().trim().nonempty(t('auth.validation.emailRequired')),
+      password: passwordSchema(t),
+      repeatPassword: passwordSchema(t),
+    })
+    .refine((data) => data.password === data.repeatPassword, {
+      message: t('auth.validation.passwordsNotMatch'),
+      path: ['repeatPassword'],
+    })
 
-export type SignUpFormData = z.infer<typeof signUpSchema>
+export type SignUpFormData = z.infer<ReturnType<typeof signUpSchema>>
