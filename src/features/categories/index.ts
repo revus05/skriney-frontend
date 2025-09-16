@@ -1,5 +1,0 @@
-export { CreateCategoryButton } from './create-category'
-export { DeleteCategoryButton } from './delete-category'
-export { useGetCategories } from './get-categories'
-export { useGetCategoriesStats } from './get-categories-stats'
-export { useUpdateCategory } from './update-category'

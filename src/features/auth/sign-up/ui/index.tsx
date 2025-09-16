@@ -7,8 +7,8 @@ import {
   useSignUpForm,
   useSignUpSubmit,
 } from '../model'
-import { useAppDispatch, useAppSelector } from 'shared/hooks'
-import { useTranslation } from 'app/i18n'
+import { useAppDispatch, useAppSelector } from 'shared/lib'
+import { useTranslation } from 'shared/i18n'
 import Link from 'next/link'
 import { paths } from 'shared/navigation'
 

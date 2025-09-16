@@ -1,31 +1,19 @@
 'use client'
 
-import { useAppDispatch } from 'shared/hooks'
-import { getApiError } from 'shared/api'
-import {
-  addBankAccount,
-  useCreateBankAccountMutation,
-} from 'entities/bank-account'
-import { CurrencyType } from 'entities/user-settings'
-import { CreateBankAccountFormData } from 'features/bank-accounts/create-bank-account/model/schema'
+import { CreateBankAccountFormData } from './schema'
+import { useCreateBankAccount } from 'entities/bank-account'
+import { CurrencyType } from 'entities/user-setting'
 
-export const useCreateBankAccountSubmit = () => {
-  const [createBankAccount] = useCreateBankAccountMutation()
-  const dispatch = useAppDispatch()
+export const useCreateBankAccountSubmit = (onSuccess?: () => void) => {
+  const submitBankAccount = useCreateBankAccount()
 
   return async (data: CreateBankAccountFormData) => {
-    try {
-      const res = await createBankAccount({
-        title: data.title,
-        currency: data.currency as CurrencyType,
-        balance: +data.balance,
-      }).unwrap()
-      if (res && res.data) {
-        dispatch(addBankAccount(res.data))
-      }
-    } catch (error) {
-      const err = getApiError<Record<string, string>>(error)
-      console.log(err)
-    }
+    await submitBankAccount({
+      ...data,
+      currency: data.currency as CurrencyType,
+      balance: +data.balance,
+    })
+
+    if (onSuccess) onSuccess()
   }
 }

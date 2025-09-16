@@ -1,7 +1,7 @@
 'use client'
 
 import { signIn, useSignInUserMutation } from 'entities/user'
-import { useAppDispatch } from 'shared/hooks'
+import { useAppDispatch } from 'shared/lib'
 import { useRouter } from 'next/navigation'
 import { getApiError } from 'shared/api'
 import { addToast } from '@heroui/toast'

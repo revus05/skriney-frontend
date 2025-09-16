@@ -1,1 +1,0 @@
-export { useGetTransactions } from './model'

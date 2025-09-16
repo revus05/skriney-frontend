@@ -1,1 +1,1 @@
-export { default } from 'views/transactions'
+export { default } from 'pages/transactions'

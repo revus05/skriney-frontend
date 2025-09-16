@@ -1,1 +1,0 @@
-export { useUpdateBankAccount } from './model'

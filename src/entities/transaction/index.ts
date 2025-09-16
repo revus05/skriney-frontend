@@ -10,3 +10,6 @@ export {
   addTransaction,
   deleteTransaction,
 } from './model'
+export { useCreateTransaction } from './model/useCreateTransaction'
+export { useDeleteTransaction } from './model/useDeleteTransaction'
+export { useGetTransactions } from './model/useGetTransactions'

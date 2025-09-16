@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslation } from 'app/i18n'
+import { useTranslation } from 'shared/i18n'
 import { FC } from 'react'
 
 type TranslateProps = {

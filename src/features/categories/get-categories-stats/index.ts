@@ -1,1 +1,0 @@
-export { useGetCategoriesStats } from './model'

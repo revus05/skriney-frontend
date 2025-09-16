@@ -1,1 +1,0 @@
-export { useDeleteTransaction } from './model'

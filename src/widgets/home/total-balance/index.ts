@@ -1,1 +1,0 @@
-export { TotalBalance } from './ui'

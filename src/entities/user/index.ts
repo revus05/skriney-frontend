@@ -6,3 +6,4 @@ export {
   useUpdateUserImageMutation,
 } from './api'
 export { getPreloadedState } from './lib'
+export { type PreloadedState } from './lib'

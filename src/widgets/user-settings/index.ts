@@ -1,1 +1,0 @@
-export { SettingsList } from './list'

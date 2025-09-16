@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CreateTransactionFormData, createTransactionSchema } from './schema'
-import { useAppSelector } from 'shared/hooks'
+import { useAppSelector } from 'shared/lib'
 
 export const useCreateTransactionForm = () => {
   const userSettings = useAppSelector(
@@ -13,8 +13,8 @@ export const useCreateTransactionForm = () => {
   return useForm<CreateTransactionFormData>({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
-      category: userSettings?.defaultCategory?.uuid || '',
-      bankAccount: userSettings?.defaultBankAccount?.uuid || '',
+      categoryUuid: userSettings?.defaultCategory?.uuid || '',
+      bankAccountUuid: userSettings?.defaultBankAccount?.uuid || '',
       amount: '',
       currency: userSettings?.defaultCurrency,
     },

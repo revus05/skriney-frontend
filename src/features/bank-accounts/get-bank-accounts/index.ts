@@ -1,1 +1,0 @@
-export { useGetBankAccounts } from './model'

@@ -1,1 +1,1 @@
-export { default } from 'views/auth/sign-up'
+export { default } from 'pages/auth/sign-up/ui'

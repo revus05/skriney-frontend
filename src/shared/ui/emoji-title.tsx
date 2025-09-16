@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ComponentProps, FC, useState } from 'react'
-import { Icons } from 'shared/ui/icons'
+import { Icons } from 'shared/ui'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import { cn } from 'shared/lib'
 import Picker from '@emoji-mart/react'

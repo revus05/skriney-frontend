@@ -8,3 +8,6 @@ export {
   setDailyBalances,
   setBalanceSummary,
 } from './model'
+export { useGetBalanceSummary } from './model/useGetBalanceSummary'
+export { useGetDailyBalances } from './model/useGetDailyBalances'
+export { TotalBalanceCard } from './ui/card'

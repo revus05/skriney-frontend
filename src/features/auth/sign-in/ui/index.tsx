@@ -2,9 +2,9 @@
 
 import { Button, Input, Translate } from 'shared/ui'
 import { setShowPassword, useSignInForm, useSignInSubmit } from '../model'
-import { useAppDispatch, useAppSelector } from 'shared/hooks'
+import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { paths } from 'shared/navigation'
-import { useTranslation } from 'app/i18n'
+import { useTranslation } from 'shared/i18n'
 import Link from 'next/link'
 
 export const SignInForm = () => {

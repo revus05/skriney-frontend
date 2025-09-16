@@ -1,12 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { userApi, userSlice } from 'entities/user'
-import { signInFormSlice, signUpFormSlice } from 'features/auth'
+import { signUpFormSlice } from 'features/auth/sign-up'
+import { signInFormSlice } from 'features/auth/sign-in'
 import { categoriesApi, categorySlice } from 'entities/category'
 import { transactionsApi, transactionSlice } from 'entities/transaction'
 import { bankAccountApi, bankAccountsSlice } from 'entities/bank-account'
-import { userSettingsApi, userSettingsSlice } from 'entities/user-settings'
+import { userSettingsApi, userSettingsSlice } from 'entities/user-setting'
 import { balanceApi, balanceSlice } from 'entities/balance'
-import { fileApi } from 'features/files/upload-file'
+import { fileApi } from 'entities/file'
 
 const rootReducer = {
   authSlice: userSlice,

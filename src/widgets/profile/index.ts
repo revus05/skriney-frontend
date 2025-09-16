@@ -1,1 +1,0 @@
-export { ProfileHeadline } from './headline'

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { passwordSchema } from 'shared/schemas'
-import { Translate } from 'app/i18n'
+import { Translate } from 'shared/i18n'
 
 export const signInSchema = (t: Translate) =>
   z.object({

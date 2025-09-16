@@ -1,4 +1,4 @@
-import { Icons } from 'shared/ui/icons'
+import { Icons } from 'shared/ui'
 import { FC } from 'react'
 
 type TrendType = {
@@ -12,7 +12,7 @@ export const Trend: FC<TrendType> = ({ changePercent, expense = false }) => {
       ? `+${changePercent.toFixed(2)}`
       : `${changePercent.toFixed(2)}`
 
-  const isPositive = changePercent >= 0
+  const isPositive = changePercent > 0
 
   const changeIconColor =
     isPositive !== expense
@@ -23,6 +23,10 @@ export const Trend: FC<TrendType> = ({ changePercent, expense = false }) => {
     isPositive !== expense
       ? 'text-text-semantic-success-primary'
       : 'text-text-semantic-error-primary'
+
+  if (changePercent === 0) {
+    return null
+  }
 
   return (
     <div className="flex items-center gap-2">

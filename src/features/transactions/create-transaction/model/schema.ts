@@ -18,8 +18,8 @@ export const createTransactionSchema = z.object({
     }
     return trimmed
   }),
-  category: z.string().trim().nonempty('Категория обязательна'),
-  bankAccount: z.string().trim().nonempty('Счет обязателен'),
+  categoryUuid: z.string().trim().nonempty('Категория обязательна'),
+  bankAccountUuid: z.string().trim().nonempty('Счет обязателен'),
   currency: z.string().trim().nonempty('Валюта обязательна'),
 })
 

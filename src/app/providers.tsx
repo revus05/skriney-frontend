@@ -5,8 +5,8 @@ import { HeroUIProvider } from '@heroui/system'
 import { Provider } from 'react-redux'
 import { AppStore, makeStore } from 'app/store'
 import { ToastProvider } from '@heroui/toast'
-import { I18Provider } from 'app/i18n'
-import { PreloadedState } from 'entities/user/lib'
+import { I18Provider } from 'shared/i18n'
+import { PreloadedState } from 'entities/user'
 
 type ProvidersProps = {
   children: ReactNode

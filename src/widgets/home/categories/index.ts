@@ -1,1 +1,0 @@
-export { CategoriesHome } from './ui'

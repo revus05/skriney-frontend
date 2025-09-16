@@ -1,1 +1,1 @@
-export { default } from 'views/bank-accounts'
+export { default } from 'pages/bank-accounts'

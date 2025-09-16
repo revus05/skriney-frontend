@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SignInFormData, signInSchema } from './schema'
-import { useTranslation } from 'app/i18n'
+import { useTranslation } from 'shared/i18n'
 
 export const useSignInForm = () => {
   const t = useTranslation()

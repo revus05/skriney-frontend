@@ -1,1 +1,1 @@
-export { default } from 'views/user-settings'
+export { default } from 'pages/user-settings'

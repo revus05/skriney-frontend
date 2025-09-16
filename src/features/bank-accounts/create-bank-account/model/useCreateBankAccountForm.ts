@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CreateBankAccountFormData, createBankAccountSchema } from './schema'
-import { useAppSelector } from 'shared/hooks'
+import { useAppSelector } from 'shared/lib'
 
 export const useCreateBankAccountForm = () => {
   const defaultCurrency = useAppSelector(

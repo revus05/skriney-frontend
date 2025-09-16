@@ -1,1 +1,1 @@
-export { default } from 'views/categories'
+export { default } from 'pages/categories'
