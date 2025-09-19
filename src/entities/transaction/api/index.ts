@@ -3,7 +3,6 @@ import {
   ApiResponse,
   baseQuery,
   CreateTransactionRequestDTO,
-  DeleteBankAccountRequestDTO,
   TransactionDTO,
 } from 'shared/api'
 
@@ -22,19 +21,18 @@ const transactionsApi = createApi({
       CreateTransactionRequestDTO
     >({
       query: (body) => ({
-        url: '/create',
+        url: '',
         method: 'POST',
         body,
       }),
     }),
     deleteTransaction: builder.mutation<
       ApiResponse<TransactionDTO>,
-      DeleteBankAccountRequestDTO
+      { uuid: string }
     >({
-      query: (body) => ({
-        url: '/delete',
+      query: ({ uuid }) => ({
+        url: `${uuid}`,
         method: 'DELETE',
-        body,
       }),
     }),
   }),

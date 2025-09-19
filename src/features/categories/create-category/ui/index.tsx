@@ -9,7 +9,11 @@ import {
   ModalHeader,
   useDisclosure,
 } from '@heroui/react'
-import { useCreateCategoryForm, useCreateCategorySubmit } from '../model'
+import {
+  CreateCategoryFormData,
+  useCreateCategoryForm,
+  useCreateCategorySubmit,
+} from '../model'
 import { useTranslation } from 'shared/i18n'
 
 export const CreateCategoryButton = () => {
@@ -19,14 +23,20 @@ export const CreateCategoryButton = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    setFocus,
   } = useCreateCategoryForm()
 
-  const onSubmit = useCreateCategorySubmit(() => {
+  const handleOpenChange = () => {
     onOpenChange()
     reset()
-  })
+  }
+
+  const onSubmit = useCreateCategorySubmit(handleOpenChange)
 
   const t = useTranslation()
+
+  const handleSetFocus = (name: string) =>
+    setFocus(name as keyof CreateCategoryFormData)
 
   return (
     <>
@@ -51,6 +61,7 @@ export const CreateCategoryButton = () => {
                   {...register('title')}
                   errorMessage={errors.title?.message}
                   placeholder={t('categories.creation.title')}
+                  setFocus={handleSetFocus}
                 />
               </ModalBody>
               <ModalFooter className={'flex justify-center p-0'}>

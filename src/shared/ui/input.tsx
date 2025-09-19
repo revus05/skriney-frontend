@@ -1,13 +1,6 @@
 'use client'
 
-import React, {
-  ComponentProps,
-  createElement,
-  FC,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { ComponentProps, createElement, FC, useRef } from 'react'
 import { cn } from 'shared/lib'
 import { Button, Icons } from 'shared/ui'
 
@@ -19,6 +12,7 @@ type InputProps = ComponentProps<'input'> & {
   onIconEndClick?: (e: React.MouseEvent) => void
   inputClassName?: string
   errorMessage?: string | null
+  setFocus?: (name: string) => void
 }
 
 export const Input: FC<InputProps> = ({
@@ -31,25 +25,36 @@ export const Input: FC<InputProps> = ({
   className,
   inputClassName,
   errorMessage,
+  setFocus,
   ...props
 }) => {
-  const [innerValue, setInnerValue] = useState<string>(value || '')
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  const containerRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (onValueChange) {
-      onValueChange(innerValue)
+  const handleContainerClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    } else {
+      if (setFocus) {
+        setFocus(props.name || '')
+      }
     }
-  }, [innerValue, onValueChange])
+  }
+
+  const handleEndButtonMouseDown = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (onIconEndClick) {
+      onIconEndClick(e)
+    }
+  }
 
   return (
     <div>
       <div
-        onClick={() => containerRef.current?.focus()}
+        onClick={handleContainerClick}
         className={cn(
-          'hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border ' +
-            'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold transition will-change-transform active:scale-[0.98]',
+          'hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border shadow-sm ' +
+            'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold transition will-change-transform',
+          'active:scale-[0.98] active:shadow-md',
           iconEnd ? 'py-1' : 'py-2',
           errorMessage && 'border-border-semantic-error-primary',
           className,
@@ -60,26 +65,31 @@ export const Input: FC<InputProps> = ({
             createElement(Icons[iconStart], {
               className: cn(
                 'fill-icon-neutral-tertiary transition size-5',
-                innerValue && 'fill-icon-neutral-primary',
+                value && 'fill-icon-neutral-primary',
               ),
             })}
           <input
-            ref={containerRef}
+            ref={inputRef}
             type={type}
             className={cn(
               'placeholder:text-text-neutral-tertiary grow outline-none',
               inputClassName,
             )}
-            onChange={(e) => setInnerValue(e.target.value)}
+            value={value}
+            onChange={(e) => onValueChange && onValueChange(e.target.value)}
             {...props}
           />
         </div>
         {iconEnd && (
-          <Button variant="icon" onClick={onIconEndClick} tabIndex={-1}>
+          <Button
+            variant="icon"
+            onMouseDown={handleEndButtonMouseDown}
+            tabIndex={-1}
+          >
             {createElement(Icons[iconEnd], {
               className: cn(
                 'fill-icon-neutral-tertiary transition size-5',
-                innerValue && 'fill-icon-neutral-primary',
+                value && 'fill-icon-neutral-primary',
               ),
             })}
           </Button>

@@ -1,8 +1,7 @@
 'use client'
 
-import { Select, SelectItem, SharedSelection } from '@heroui/react'
-import { Icons } from 'shared/ui'
-import { Key, useState } from 'react'
+import { Select, SelectItem } from 'shared/ui'
+import { useState } from 'react'
 import { useUpdateDefaultBankAccountSubmit } from '../model'
 import { useAppSelector } from 'shared/lib'
 import { useTranslation } from 'shared/i18n'
@@ -21,10 +20,9 @@ export const UpdateDefaultBankAccountSelect = () => {
     defaultBankAccount?.uuid || '',
   )
 
-  const handleSelectBankAccountChange = (keys: SharedSelection) => {
-    const firstKey = Array.from(keys as Set<Key>)[0] as string
-    setSelectedBankAccount(firstKey || '')
-    void updateDefaultBankAccount({ uuid: firstKey })
+  const handleSelectBankAccountChange = (newValue: string) => {
+    setSelectedBankAccount(newValue)
+    void updateDefaultBankAccount({ uuid: newValue })
   }
 
   const displayBankAccount =
@@ -37,30 +35,14 @@ export const UpdateDefaultBankAccountSelect = () => {
 
   return (
     <Select
-      aria-label={'default-category'}
-      classNames={{
-        trigger:
-          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
-        popoverContent: 'bg-bg-neutral-primary',
-        value: '!text-text-neutral-tertiary font-semibold',
-      }}
-      className={'w-[150px]'}
+      label={'default-category'}
+      className={'w-[180px]'}
       placeholder={t('settings.list.defaultBankAccount')}
-      selectorIcon={<Icons.chevronDown />}
-      size={'sm'}
-      selectedKeys={selectedBankAccount ? [selectedBankAccount] : []}
-      onSelectionChange={handleSelectBankAccountChange}
+      value={selectedBankAccount}
+      onValueChangeAction={handleSelectBankAccountChange}
     >
       {displayBankAccount.map((category) => (
-        <SelectItem
-          key={category.uuid}
-          className={'outline-none'}
-          classNames={{
-            wrapper: 'hover:bg-red-300 active:bg-red-300',
-          }}
-        >
-          {category.title}
-        </SelectItem>
+        <SelectItem key={category.uuid}>{category.title}</SelectItem>
       ))}
     </Select>
   )

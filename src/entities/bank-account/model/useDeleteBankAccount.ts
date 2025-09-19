@@ -1,13 +1,13 @@
 import { useDeleteBankAccountMutation } from '../api'
 import { deleteBankAccount } from '../model'
 import { useAppDispatch } from 'shared/lib'
-import { DeleteBankAccountRequestDTO, getApiError } from 'shared/api'
+import { getApiError } from 'shared/api'
 
 export const useDeleteBankAccount = () => {
   const [deleteBankAccountFn] = useDeleteBankAccountMutation()
   const dispatch = useAppDispatch()
 
-  return async (data: DeleteBankAccountRequestDTO) => {
+  return async (data: { uuid: string }) => {
     try {
       const res = await deleteBankAccountFn(data).unwrap()
       if (res && res.data) {

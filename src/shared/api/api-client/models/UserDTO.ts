@@ -2,7 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { UserSettingsDTO } from './UserSettingsDTO';
+import type {UserSettingsDTO} from './UserSettingsDTO';
+
 export type UserDTO = {
     /**
      * User uuid
@@ -28,6 +29,10 @@ export type UserDTO = {
      * User settings
      */
     userSettings: UserSettingsDTO;
+    /**
+     * User's telegram id
+     */
+    telegramId: number;
     /**
      * Creation timestamp
      */

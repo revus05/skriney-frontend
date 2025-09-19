@@ -16,9 +16,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-bg-brand-primary/70 hover:bg-bg-brand-secondary hover:text-text-brand-primary',
-        icon: 'p-1 hover:bg-border-neutral-primary rounded-md',
-        ghost: 'bg-none hover:bg-border-neutral-primary',
+          'bg-bg-brand-primary/70 hover:bg-bg-brand-secondary hover:text-text-brand-primary shadow-sm active:shadow-md',
+        icon: 'p-1 hover:bg-border-neutral-primary rounded-md hover:shadow-md active:shadow-xs',
+        ghost:
+          'bg-none hover:bg-border-neutral-primary hover:shadow-sm active:shadow-md',
       },
     },
     defaultVariants: {

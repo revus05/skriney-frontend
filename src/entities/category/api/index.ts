@@ -5,7 +5,6 @@ import {
   CategoryDTO,
   CategoryStatDTO,
   CreateCategoryRequestDTO,
-  DeleteBankAccountRequestDTO,
   UpdateCategoryRequestDTO,
 } from 'shared/api'
 
@@ -24,19 +23,18 @@ const categoriesApi = createApi({
       CreateCategoryRequestDTO
     >({
       query: (body) => ({
-        url: '/create',
+        url: '',
         method: 'POST',
         body,
       }),
     }),
     deleteCategory: builder.mutation<
       ApiResponse<CategoryDTO>,
-      DeleteBankAccountRequestDTO
+      { uuid: string }
     >({
-      query: (body) => ({
-        url: '/delete',
+      query: ({ uuid }) => ({
+        url: uuid,
         method: 'DELETE',
-        body,
       }),
     }),
     getCategoriesStats: builder.mutation<ApiResponse<CategoryStatDTO[]>, void>({
@@ -50,7 +48,7 @@ const categoriesApi = createApi({
       { uuid: string; body: UpdateCategoryRequestDTO }
     >({
       query: ({ uuid, body }) => ({
-        url: `/${uuid}`,
+        url: uuid,
         method: 'PATCH',
         body,
       }),

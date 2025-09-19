@@ -78,7 +78,8 @@
       "defaultBankAccount": "Счет по умолчанию",
       "connectTelegram": {
         "title": "Привязать телеграм",
-        "button": "Привязать"
+        "button": "Привязать",
+        "connected": "Успешно привязан"
       },
       "language": "Язык"
     }

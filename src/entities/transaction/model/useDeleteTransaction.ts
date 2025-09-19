@@ -1,13 +1,13 @@
 import { useDeleteTransactionMutation } from '../api'
 import { deleteTransaction } from '../model'
 import { useAppDispatch } from 'shared/lib'
-import { DeleteBankAccountRequestDTO, getApiError } from 'shared/api'
+import { getApiError } from 'shared/api'
 
 export const useDeleteTransaction = () => {
   const [deleteTransactionFn] = useDeleteTransactionMutation()
   const dispatch = useAppDispatch()
 
-  return async (data: DeleteBankAccountRequestDTO) => {
+  return async (data: { uuid: string }) => {
     try {
       const res = await deleteTransactionFn(data).unwrap()
       if (res && res.data) {

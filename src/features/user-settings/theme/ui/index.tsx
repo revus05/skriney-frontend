@@ -1,31 +1,32 @@
 'use client'
 
-import { Icons } from 'shared/ui'
-import { createElement } from 'react'
+import { Tabs } from 'shared/ui'
 import { useAppSelector } from 'shared/lib'
-import { Tab, Tabs } from '@heroui/react'
 import { useUpdateThemeSubmit } from '../model'
+import { useState } from 'react'
 
 export const UpdateThemeSegmentControl = () => {
-  const theme = useAppSelector(
+  const defaultTheme = useAppSelector(
     (state) => state.userSettingsSlice.userSettings?.userTheme || 'SYSTEM',
   )
+
+  const [theme, setTheme] = useState<string>(defaultTheme.toLowerCase())
 
   const updateTheme = useUpdateThemeSubmit()
 
   const themeOptions = [
     {
-      key: 'LIGHT',
+      value: 'light',
       icon: 'sun',
       onClick: () => updateTheme({ theme: 'LIGHT' }),
     },
     {
-      key: 'SYSTEM',
+      value: 'system',
       icon: 'system',
       onClick: () => updateTheme({ theme: 'SYSTEM' }),
     },
     {
-      key: 'DARK',
+      value: 'dark',
       icon: 'moon',
       onClick: () => updateTheme({ theme: 'DARK' }),
     },
@@ -34,23 +35,11 @@ export const UpdateThemeSegmentControl = () => {
   return (
     <div>
       <Tabs
-        aria-label="Theme"
-        classNames={{
-          tabList:
-            'bg-bg-neutral-primary/70 rounded-xl border p-1 backdrop-blur-[32px] gap-1',
-          cursor: 'bg-bg-neutral-tertiary/70 outline-none',
-          tab: 'p-1 rounded size-7',
-        }}
-        selectedKey={theme}
-      >
-        {themeOptions.map((theme) => (
-          <Tab
-            key={theme.key}
-            onClick={theme.onClick}
-            title={createElement(Icons[theme.icon], { className: 'size-5' })}
-          />
-        ))}
-      </Tabs>
+        label={'Themes'}
+        value={theme}
+        onValueChangeAction={setTheme}
+        options={themeOptions}
+      />
     </div>
   )
 }

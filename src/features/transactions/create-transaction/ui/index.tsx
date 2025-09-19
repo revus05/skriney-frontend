@@ -1,24 +1,24 @@
 'use client'
 
-import { Button, Icons, Input, Translate } from 'shared/ui'
+import { Button, Input, Select, SelectItem, Translate } from 'shared/ui'
 import {
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  Select,
-  SelectItem,
   useDisclosure,
 } from '@heroui/react'
-import { useCreateTransactionForm } from '../model'
+import {
+  CreateTransactionFormData,
+  useCreateTransactionForm,
+  useCreateTransactionSubmit,
+} from '../model'
 import { Controller } from 'react-hook-form'
 import { CurrencySymbols } from 'entities/user-setting'
-import { cn } from 'shared/lib'
 import { useTranslation } from 'shared/i18n'
 import { useGetBankAccounts } from 'entities/bank-account'
 import { useGetCategories } from 'entities/category'
-import { useCreateTransactionSubmit } from '../model'
 
 export const CreateTransactionButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -28,6 +28,7 @@ export const CreateTransactionButton = () => {
     control,
     formState: { errors },
     reset,
+    setFocus,
   } = useCreateTransactionForm()
 
   const categories = useGetCategories().map((category) => ({
@@ -44,15 +45,22 @@ export const CreateTransactionButton = () => {
 
   const t = useTranslation()
 
-  const onSubmit = useCreateTransactionSubmit(() => {
+  const handleOpenChange = () => {
     onOpenChange()
     reset()
-  })
+    if (isOpen) {
+      setFocus('amount')
+    }
+  }
+
+  const onSubmit = useCreateTransactionSubmit(handleOpenChange)
+  const handleSetFocus = (name: string) =>
+    setFocus(name as keyof CreateTransactionFormData)
 
   return (
     <>
       <Button onClick={onOpen} variant={'icon'} iconStart={'plus'} />
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
+      <Modal isOpen={isOpen} onOpenChange={handleOpenChange} hideCloseButton>
         <ModalContent
           className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}
         >
@@ -61,7 +69,11 @@ export const CreateTransactionButton = () => {
               <h2>
                 <Translate value={'transactions.creation.sectionTitle'} />
               </h2>
-              <Button variant="icon" iconStart={'x'} onClick={onOpenChange} />
+              <Button
+                variant="icon"
+                iconStart={'x'}
+                onClick={handleOpenChange}
+              />
             </ModalHeader>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -72,43 +84,22 @@ export const CreateTransactionButton = () => {
                   {...register('amount')}
                   errorMessage={errors.amount?.message}
                   placeholder={t('transactions.creation.amount')}
+                  setFocus={handleSetFocus}
                 />
                 <Controller
                   name="currency"
                   control={control}
                   render={({ field }) => (
                     <Select
-                      aria-label={'currency'}
-                      classNames={{
-                        trigger: cn(
-                          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
-                          !!errors.currency?.message &&
-                            'border-border-semantic-error-primary',
-                        ),
-                        popoverContent: 'bg-bg-neutral-primary',
-                        value: '!text-text-neutral-tertiary font-semibold',
-                        errorMessage:
-                          'text-text-semantic-error-primary text-sm',
-                        mainWrapper: '[&_>_div]:p-0',
-                      }}
+                      label={'currency'}
                       placeholder={t('transactions.creation.currency')}
-                      selectorIcon={<Icons.chevronDown />}
-                      size={'sm'}
                       isInvalid={!!errors.currency?.message}
                       errorMessage={errors.currency?.message}
-                      selectedKeys={field.value ? [field.value] : []}
-                      onSelectionChange={(keys) =>
-                        field.onChange(Array.from(keys)[0] || '')
-                      }
+                      value={field.value}
+                      onValueChangeAction={field.onChange}
                     >
                       {Object.entries(CurrencySymbols).map(([key, symbol]) => (
-                        <SelectItem
-                          key={key}
-                          className={'outline-none'}
-                          classNames={{
-                            wrapper: 'hover:bg-red-300 active:bg-red-300',
-                          }}
-                        >
+                        <SelectItem key={key}>
                           {symbol === key ? key : `${symbol} ${key}`}
                         </SelectItem>
                       ))}
@@ -120,37 +111,15 @@ export const CreateTransactionButton = () => {
                   control={control}
                   render={({ field }) => (
                     <Select
-                      aria-label={'bank-account'}
-                      classNames={{
-                        trigger: cn(
-                          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
-                          !!errors.bankAccountUuid?.message &&
-                            'border-border-semantic-error-primary text-sm',
-                        ),
-                        popoverContent: 'bg-bg-neutral-primary',
-                        value: '!text-text-neutral-tertiary font-semibold',
-                        errorMessage:
-                          'text-text-semantic-error-primary text-sm',
-                        mainWrapper: '[&_>_div]:p-0',
-                      }}
+                      label={'bank-account'}
                       placeholder={t('transactions.creation.bankAccount')}
-                      selectorIcon={<Icons.chevronDown />}
-                      size={'sm'}
                       isInvalid={!!errors.bankAccountUuid?.message}
                       errorMessage={errors.bankAccountUuid?.message}
-                      selectedKeys={field.value ? [field.value] : []}
-                      onSelectionChange={(keys) =>
-                        field.onChange(Array.from(keys)[0] || '')
-                      }
+                      value={field.value}
+                      onValueChangeAction={field.onChange}
                     >
                       {bankAccounts.map((bankAccount) => (
-                        <SelectItem
-                          key={bankAccount.key}
-                          className={'outline-none'}
-                          classNames={{
-                            wrapper: 'hover:bg-red-300 active:bg-red-300',
-                          }}
-                        >
+                        <SelectItem key={bankAccount.key}>
                           {bankAccount.label}
                         </SelectItem>
                       ))}
@@ -162,37 +131,15 @@ export const CreateTransactionButton = () => {
                   control={control}
                   render={({ field }) => (
                     <Select
-                      aria-label={'category'}
-                      classNames={{
-                        trigger: cn(
-                          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
-                          !!errors.categoryUuid?.message &&
-                            'border-border-semantic-error-primary',
-                        ),
-                        popoverContent: 'bg-bg-neutral-primary',
-                        value: '!text-text-neutral-tertiary font-semibold',
-                        errorMessage:
-                          'text-text-semantic-error-primary text-sm',
-                        mainWrapper: '[&_>_div]:p-0',
-                      }}
+                      label={'category'}
                       placeholder={t('transactions.creation.category')}
-                      selectorIcon={<Icons.chevronDown />}
-                      size={'sm'}
                       isInvalid={!!errors.categoryUuid?.message}
                       errorMessage={errors.categoryUuid?.message}
-                      selectedKeys={field.value ? [field.value] : []}
-                      onSelectionChange={(keys) =>
-                        field.onChange(Array.from(keys)[0] || '')
-                      }
+                      value={field.value}
+                      onValueChangeAction={field.onChange}
                     >
                       {categories.map((category) => (
-                        <SelectItem
-                          key={category.key}
-                          className={'outline-none'}
-                          classNames={{
-                            wrapper: 'hover:bg-red-300 active:bg-red-300',
-                          }}
-                        >
+                        <SelectItem key={category.key}>
                           {category.label}
                         </SelectItem>
                       ))}

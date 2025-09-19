@@ -1,7 +1,12 @@
 'use client'
 
 import { Button, Input, Translate } from 'shared/ui'
-import { setShowPassword, useSignInForm, useSignInSubmit } from '../model'
+import {
+  setShowPassword,
+  SignInFormData,
+  useSignInForm,
+  useSignInSubmit,
+} from '../model'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { paths } from 'shared/navigation'
 import { useTranslation } from 'shared/i18n'
@@ -15,6 +20,7 @@ export const SignInForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setFocus,
   } = useSignInForm()
 
   const onSubmit = useSignInSubmit()
@@ -23,10 +29,13 @@ export const SignInForm = () => {
     (state) => state.signInFormSlice.showPassword,
   )
 
+  const handleSetFocus = (name: string) =>
+    setFocus(name as keyof SignInFormData)
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-bg-neutral-primary/70 flex w-[400px] flex-col gap-6 rounded-2xl border p-8 backdrop-blur-[32px]"
+      className="bg-bg-neutral-primary/70 flex w-[400px] flex-col gap-6 rounded-2xl border p-8 shadow-sm backdrop-blur-[32px]"
     >
       <h2 className="text-xl font-semibold">
         <Translate value="auth.signIn.title" />
@@ -39,6 +48,7 @@ export const SignInForm = () => {
             type="email"
             placeholder={t('auth.signIn.email')}
             iconStart="email"
+            setFocus={handleSetFocus}
           />
           <Input
             {...register('password')}
@@ -51,6 +61,7 @@ export const SignInForm = () => {
               e.stopPropagation()
               dispatch(setShowPassword(!showPassword))
             }}
+            setFocus={handleSetFocus}
           />
         </div>
         <Link

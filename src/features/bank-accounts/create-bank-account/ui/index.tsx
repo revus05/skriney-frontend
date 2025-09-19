@@ -1,17 +1,19 @@
 'use client'
 
-import { Button, Icons, Input, Translate } from 'shared/ui'
+import { Button, Input, Select, SelectItem, Translate } from 'shared/ui'
 import {
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  Select,
-  SelectItem,
   useDisclosure,
 } from '@heroui/react'
-import { useCreateBankAccountForm, useCreateBankAccountSubmit } from '../model'
+import {
+  CreateBankAccountFormData,
+  useCreateBankAccountForm,
+  useCreateBankAccountSubmit,
+} from '../model'
 import { CurrencySymbols } from 'entities/user-setting'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
@@ -24,19 +26,25 @@ export const CreateBankAccountButton = () => {
     formState: { errors },
     control,
     reset,
+    setFocus,
   } = useCreateBankAccountForm()
 
-  const onSubmit = useCreateBankAccountSubmit(() => {
+  const handleOpenChange = () => {
     onOpenChange()
     reset()
-  })
+  }
+
+  const onSubmit = useCreateBankAccountSubmit(handleOpenChange)
 
   const t = useTranslation()
+
+  const handleSetFocus = (name: string) =>
+    setFocus(name as keyof CreateBankAccountFormData)
 
   return (
     <>
       <Button onClick={onOpen} variant={'icon'} iconStart={'plus'} />
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
+      <Modal isOpen={isOpen} onOpenChange={handleOpenChange} hideCloseButton>
         <ModalContent
           className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}
         >
@@ -45,7 +53,11 @@ export const CreateBankAccountButton = () => {
               <h2>
                 <Translate value={'bankAccounts.creation.sectionTitle'} />
               </h2>
-              <Button variant="icon" iconStart={'x'} onClick={onOpenChange} />
+              <Button
+                variant="icon"
+                iconStart={'x'}
+                onClick={handleOpenChange}
+              />
             </ModalHeader>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -56,45 +68,28 @@ export const CreateBankAccountButton = () => {
                   {...register('title')}
                   errorMessage={errors.title?.message}
                   placeholder={t('bankAccounts.creation.title')}
+                  setFocus={handleSetFocus}
                 />
                 <Input
                   {...register('balance')}
                   errorMessage={errors.balance?.message}
                   placeholder={t('bankAccounts.creation.initialBalance')}
+                  setFocus={handleSetFocus}
                 />
                 <Controller
                   name="currency"
                   control={control}
                   render={({ field }) => (
                     <Select
-                      aria-label={'currency'}
-                      classNames={{
-                        mainWrapper: 'w-[130px] [&_>_div]:p-0',
-                        trigger:
-                          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
-                        popoverContent: 'bg-bg-neutral-primary',
-                        value: '!text-text-neutral-tertiary font-semibold',
-                        errorMessage:
-                          'text-text-semantic-error-primary text-sm',
-                      }}
+                      label={'currency'}
                       placeholder={t('bankAccounts.creation.currency')}
-                      selectorIcon={<Icons.chevronDown />}
-                      size={'sm'}
                       isInvalid={!!errors.currency?.message}
                       errorMessage={errors.currency?.message}
-                      selectedKeys={field.value ? [field.value] : []}
-                      onSelectionChange={(keys) =>
-                        field.onChange(Array.from(keys)[0] || '')
-                      }
+                      value={field.value}
+                      onValueChangeAction={field.onChange}
                     >
                       {Object.entries(CurrencySymbols).map(([key, symbol]) => (
-                        <SelectItem
-                          key={key}
-                          className={'outline-none'}
-                          classNames={{
-                            wrapper: 'hover:bg-red-300 active:bg-red-300',
-                          }}
-                        >
+                        <SelectItem key={key}>
                           {symbol === key ? key : `${symbol} ${key}`}
                         </SelectItem>
                       ))}

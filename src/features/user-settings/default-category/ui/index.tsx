@@ -1,8 +1,7 @@
 'use client'
 
-import { Select, SelectItem, SharedSelection } from '@heroui/react'
-import { Icons } from 'shared/ui'
-import { Key, useState } from 'react'
+import { Select, SelectItem } from 'shared/ui'
+import { useState } from 'react'
 import { useUpdateDefaultCategorySubmit } from '../model'
 import { useAppSelector } from 'shared/lib'
 import { useTranslation } from 'shared/i18n'
@@ -21,10 +20,9 @@ export const UpdateDefaultCategorySelect = () => {
     defaultCategory?.uuid || '',
   )
 
-  const handleSelectCategoryChange = (keys: SharedSelection) => {
-    const firstKey = Array.from(keys as Set<Key>)[0] as string
-    setSelectedCategory(firstKey || '')
-    void updateDefaultCategory({ uuid: firstKey })
+  const handleSelectCategoryChange = (newValue: string) => {
+    setSelectedCategory(newValue)
+    void updateDefaultCategory({ uuid: newValue })
   }
 
   const displayCategories =
@@ -36,30 +34,14 @@ export const UpdateDefaultCategorySelect = () => {
 
   return (
     <Select
-      aria-label={'default-category'}
-      classNames={{
-        trigger:
-          'hover:!bg-bg-neutral-secondary transition will-change-transform active:scale-[0.98] px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none',
-        popoverContent: 'bg-bg-neutral-primary',
-        value: '!text-text-neutral-tertiary font-semibold',
-      }}
+      label={'default-category'}
       className={'w-[150px]'}
       placeholder={t('settings.list.defaultCategory')}
-      selectorIcon={<Icons.chevronDown />}
-      size={'sm'}
-      selectedKeys={selectedCategory ? [selectedCategory] : []}
-      onSelectionChange={handleSelectCategoryChange}
+      value={selectedCategory}
+      onValueChangeAction={handleSelectCategoryChange}
     >
       {displayCategories.map((category) => (
-        <SelectItem
-          key={category.uuid}
-          className={'outline-none'}
-          classNames={{
-            wrapper: 'hover:bg-red-300 active:bg-red-300',
-          }}
-        >
-          {category.title}
-        </SelectItem>
+        <SelectItem key={category.uuid}>{category.title}</SelectItem>
       ))}
     </Select>
   )

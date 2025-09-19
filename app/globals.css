@@ -90,6 +90,11 @@
     --color-border-semantic-info-inverse: var(--blue-30-100);
     --color-border-neutral-secondary: var(--greyscale-30-70);
     --color-icon-neutral-disabled: var(--tech-0-100);
+
+
+    --shadow-sm: 0px 0px 5px 0px rgba(0, 0, 0, 0.05),
+    0px 2px 10px 0px rgba(0, 0, 0, 0.2),
+    inset 0px 0px 1px 0px rgba(255, 255, 255, 0.15);
 }
 
 :root {

@@ -78,7 +78,8 @@
       "defaultBankAccount": "Default bank account",
       "connectTelegram": {
         "title": "Connect Telegram",
-        "button": "Connect"
+        "button": "Connect",
+        "connected": "Connected successfully"
       },
       "language": "Language"
     }
