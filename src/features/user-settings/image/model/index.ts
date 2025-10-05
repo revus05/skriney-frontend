@@ -14,7 +14,7 @@ export const useUpdateUserImage = () => {
       formData.append('file', file)
       const uploadedFileUrl = await uploadFile(formData).unwrap()
       const res = await updateImage({
-        url: uploadedFileUrl.data.filepath,
+        image: uploadedFileUrl.data.filepath,
       }).unwrap()
       if (res && res.data) {
         dispatch(updateUserImage(res.data.image))

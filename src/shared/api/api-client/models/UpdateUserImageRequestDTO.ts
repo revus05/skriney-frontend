@@ -6,6 +6,6 @@ export type UpdateUserImageRequestDTO = {
     /**
      * Image url
      */
-    url: string;
+    image: string;
 };
 
