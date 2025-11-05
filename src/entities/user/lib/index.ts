@@ -51,7 +51,7 @@ export const getPreloadedState = async (): Promise<PreloadedState> => {
       .json()
       .then((res: ApiResponse<UserSettingsDTO>) => res.data)
 
-    user.userSettings.language = updatedUserSettings.language as 'EN' | 'RU'
+    user.userSettings.language = updatedUserSettings?.language || 'EN'
   }
 
   return {

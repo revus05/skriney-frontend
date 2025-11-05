@@ -23,7 +23,7 @@ export const ConnectTelegramButton = () => {
     <Link
       href={`https://t.me/skriney_bot?start=${userId}`}
       className={
-        'bg-bg-neutral-primary/70 flex items-center gap-2.5 rounded-lg border px-4 py-2 shadow-sm backdrop-blur-[32px] transition will-change-transform active:scale-[0.98] active:shadow-md'
+        'flex items-center gap-2.5 rounded-lg border px-4 py-2 shadow-sm backdrop-blur-[32px] transition will-change-transform active:scale-[0.98] active:shadow-md'
       }
     >
       <Icons.link />{' '}

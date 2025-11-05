@@ -10,3 +10,10 @@ export { UserImage } from './user-image'
 export { Translate } from './translate'
 export { Tabs } from './tabs'
 export { Select, SelectItem } from './select'
+export {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from './modal'

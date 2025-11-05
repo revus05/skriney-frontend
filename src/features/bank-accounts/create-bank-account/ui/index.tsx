@@ -1,14 +1,16 @@
 'use client'
 
-import { Button, Input, Select, SelectItem, Translate } from 'shared/ui'
 import {
-  Modal,
-  ModalBody,
+  Button,
+  Input,
   ModalContent,
-  ModalFooter,
   ModalHeader,
-  useDisclosure,
-} from '@heroui/react'
+  ModalBody,
+  ModalFooter,
+  Select,
+  SelectItem,
+  Translate,
+} from 'shared/ui'
 import {
   CreateBankAccountFormData,
   useCreateBankAccountForm,
@@ -17,6 +19,8 @@ import {
 import { CurrencySymbols } from 'entities/user-setting'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
+import { Modal } from 'shared/ui'
+import { useDisclosure } from '@heroui/react'
 
 export const CreateBankAccountButton = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()

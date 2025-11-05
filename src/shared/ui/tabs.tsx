@@ -35,7 +35,7 @@ export const Tabs: FC<TabsProps> = ({
       aria-label={label}
       classNames={{
         tabList:
-          'bg-bg-neutral-primary/70 rounded-xl border p-1 backdrop-blur-[32px] gap-1 shadow-sm',
+          'bg-transparent rounded-xl border p-1 backdrop-blur-[32px] gap-1 shadow-sm',
         cursor: '!bg-bg-neutral-tertiary/70 outline-none',
         tab: 'p-1 rounded size-7 transition active:scale-[0.95] will-change-transform',
       }}

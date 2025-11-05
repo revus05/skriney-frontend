@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 
-@theme {
+@theme  {
     --color-bg-semantic-success-subtle: var(--green-20-100);
-    --color-bg-semantic-success-bold: var(--green-80-100);
+    --color-bg-semantic-success-bold: var(--green-60-100);
     --color-bg-semantic-warning-subtle: var(--yellow-20-100);
     --color-bg-semantic-warning-bold: var(--yellow-70-100);
     --color-bg-semantic-error-subtle: var(--red-20-100);
