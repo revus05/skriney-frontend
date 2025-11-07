@@ -1,7 +1,5 @@
 import React, { FC, ReactNode } from 'react'
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
-import { paths } from 'shared/navigation'
 
 type AuthLayoutType = {
   children: ReactNode
@@ -13,10 +11,6 @@ const AuthLayout: FC<AuthLayoutType> = async ({ children }) => {
   const jwt = cookiesObj.get('jwt')?.value
 
   console.log('AuthLayout jwt', jwt)
-
-  if (jwt) {
-    redirect(paths.home)
-  }
 
   return <main>{children}</main>
 }

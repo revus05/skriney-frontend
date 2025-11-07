@@ -1,7 +1,5 @@
 import React, { FC, ReactNode } from 'react'
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
-import { paths } from 'shared/navigation'
 import { Header } from './header'
 import { Aside } from './aside'
 
@@ -15,10 +13,6 @@ const HomeLayout: FC<HomeLayoutType> = async ({ children }) => {
   const jwt = cookiesObj.get('jwt')?.value
 
   console.log('HomeLayout jwt', jwt)
-
-  if (!jwt) {
-    redirect(paths.signIn)
-  }
 
   return (
     <main className={'p-2.5'}>
