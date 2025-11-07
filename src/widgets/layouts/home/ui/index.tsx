@@ -14,6 +14,8 @@ const HomeLayout: FC<HomeLayoutType> = async ({ children }) => {
 
   const jwt = cookiesObj.get('jwt')?.value
 
+  console.log('HomeLayout jwt', jwt)
+
   if (!jwt) {
     redirect(paths.signIn)
   }

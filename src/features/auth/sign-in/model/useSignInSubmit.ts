@@ -19,6 +19,7 @@ export const useSignInSubmit = () => {
     try {
       const res = await signInUser(data).unwrap()
       if (res && res.data) {
+        console.log(res)
         dispatch(signIn(res.data))
         router.replace(paths.home)
       }

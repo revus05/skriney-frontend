@@ -12,6 +12,8 @@ const AuthLayout: FC<AuthLayoutType> = async ({ children }) => {
 
   const jwt = cookiesObj.get('jwt')?.value
 
+  console.log('AuthLayout jwt', jwt)
+
   if (jwt) {
     redirect(paths.home)
   }
