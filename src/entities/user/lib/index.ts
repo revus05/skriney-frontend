@@ -14,7 +14,7 @@ export const getPreloadedState = async (): Promise<PreloadedState> => {
   const cookiesObj = await cookies()
   const jwt = cookiesObj.get('jwt')?.value
 
-  console.log('jwt cookie', jwt)
+  console.log('jwt cookie', jwt, cookiesObj)
 
   const language = await getUserLanguage()
 
