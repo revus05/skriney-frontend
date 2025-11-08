@@ -44,7 +44,7 @@ export const HeaderUserActions = () => {
           <UserImage
             image={user?.image}
             username={user?.username}
-            userColor={user?.colour}
+            userColor={user?.color}
             className={'size-8'}
           />
         </div>

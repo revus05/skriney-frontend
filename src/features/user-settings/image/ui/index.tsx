@@ -9,7 +9,7 @@ import {
 import { Button, Icons, Translate, UserImage } from 'shared/ui'
 import React, { createElement, useRef, useState } from 'react'
 import { addToast } from '@heroui/toast'
-import { useAppSelector, cn } from 'shared/lib'
+import { cn, useAppSelector } from 'shared/lib'
 import { useUpdateUserImage } from '../model'
 
 export const UpdatableUserImage = () => {
@@ -48,7 +48,7 @@ export const UpdatableUserImage = () => {
     <>
       <UserImage
         image={user?.image}
-        userColor={user?.colour}
+        userColor={user?.color}
         username={user?.username}
         onClick={onOpenChange}
         editing

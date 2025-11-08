@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint . --fix",
     "lint:steiger": "bunx steiger ./src",
-    "generate-api": "npx openapi-typescript-codegen --input http://localhost:8080/api-docs --output ./src/shared/api/api-client --client axios --exportCore false --exportServices false --useUnionTypes"
+    "generate-api": "npx openapi-typescript-codegen --input http://localhost:8080/v3/api-docs --output ./src/shared/api/api-client --client axios --exportCore false --exportServices false --useUnionTypes"
   },
   "dependencies": {
     "@heroui/modal": "^2.2.21",

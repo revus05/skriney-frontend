@@ -16,7 +16,7 @@ export type UserDTO = {
     /**
      * User color if no image
      */
-    colour: 'RED' | 'GREEN' | 'BLUE' | 'YELLOW' | 'ORANGE' | 'PINK' | 'CYAN' | 'MAGENTA' | 'GRAY' | 'BLACK';
+    color: 'RED' | 'GREEN' | 'BLUE' | 'YELLOW' | 'ORANGE' | 'PINK' | 'CYAN' | 'MAGENTA' | 'GRAY' | 'BLACK';
     /**
      * Username
      */
