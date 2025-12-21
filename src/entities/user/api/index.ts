@@ -25,6 +25,12 @@ const userApi = createApi({
         body,
       }),
     }),
+    signOutUser: builder.mutation<ApiResponse<void>, void>({
+      query: () => ({
+        url: '/sign-out',
+        method: 'POST',
+      }),
+    }),
     updateUserImage: builder.mutation<
       ApiResponse<UserDTO>,
       UpdateUserImageRequestDTO
@@ -43,4 +49,5 @@ export const {
   useSignInUserMutation,
   useSignUpUserMutation,
   useUpdateUserImageMutation,
+  useSignOutUserMutation,
 } = userApi

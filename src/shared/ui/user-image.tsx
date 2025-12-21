@@ -56,7 +56,7 @@ export const UserImage: FC<UserImageType> = ({
         <img
           src={`${process.env.NEXT_PUBLIC_API_URL}${image}`}
           alt="user"
-          className={'object-cover'}
+          className={'h-full w-full object-cover'}
         />
       ) : (
         <div
@@ -64,7 +64,7 @@ export const UserImage: FC<UserImageType> = ({
           style={{ background: getGradient(userColor) }}
         >
           {username && (
-            <span className={'text-4xl font-bold group-hover:opacity-0'}>
+            <span className={'text-4xl font-bold'}>
               {username[0].toUpperCase()}
             </span>
           )}

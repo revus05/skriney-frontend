@@ -14,6 +14,10 @@ export const CategoriesHome = () => {
 
   const updateCategory = useUpdateCategory()
 
+  if (categories.length === 0) {
+    return null
+  }
+
   return (
     <div className={'flex flex-col gap-4'}>
       <h2 className={'text-xl font-bold'}>

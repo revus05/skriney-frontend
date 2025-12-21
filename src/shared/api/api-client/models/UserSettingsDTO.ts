@@ -17,11 +17,11 @@ export type UserSettingsDTO = {
     /**
      * User's default category
      */
-    defaultCategory: CategoryDTO;
+    defaultCategory?: CategoryDTO;
     /**
      * User's default bank account
      */
-    defaultBankAccount: BankAccountDTO;
+    defaultBankAccount?: BankAccountDTO;
     /**
      * User's language
      */

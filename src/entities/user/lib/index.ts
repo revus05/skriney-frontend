@@ -14,8 +14,6 @@ export const getPreloadedState = async (): Promise<PreloadedState> => {
   const cookiesObj = await cookies()
   const jwt = cookiesObj.get('jwt')?.value
 
-  console.log('jwt cookie', jwt, cookiesObj)
-
   const language = await getUserLanguage()
 
   if (!jwt) {
@@ -35,8 +33,6 @@ export const getPreloadedState = async (): Promise<PreloadedState> => {
   })
 
   const user = await res.json().then((res: ApiResponse<UserDTO>) => res.data)
-
-  console.log('getme user', user, jwt)
 
   if (!user.userSettings.language) {
     const res = await fetch(
