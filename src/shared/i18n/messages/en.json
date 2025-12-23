@@ -55,6 +55,12 @@
       "initialBalance": "Initial balance",
       "currency": "Currency",
       "create": "Create"
+    },
+    "update": {
+      "sectionTitle": "Update bank account:",
+      "title": "Title",
+      "currency": "Currency",
+      "update": "Update"
     }
   },
   "transactions": {

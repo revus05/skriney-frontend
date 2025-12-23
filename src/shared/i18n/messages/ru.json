@@ -55,6 +55,12 @@
       "initialBalance": "Начальный баланс",
       "currency": "Валюта",
       "create": "Создать"
+    },
+    "update": {
+      "sectionTitle": "Редактировать счет:",
+      "title": "Название",
+      "currency": "Валюта",
+      "update": "Редактировать"
     }
   },
   "transactions": {

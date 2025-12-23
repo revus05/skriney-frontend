@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { userApi, userSlice } from 'entities/user'
 import { signUpFormSlice } from 'features/auth/sign-up'
 import { signInFormSlice } from 'features/auth/sign-in'
+import { updateBankAccountsSlice } from 'features/bank-accounts/update-bank-account'
 import { categoriesApi, categorySlice } from 'entities/category'
 import { transactionsApi, transactionSlice } from 'entities/transaction'
 import { bankAccountApi, bankAccountsSlice } from 'entities/bank-account'
@@ -17,6 +18,7 @@ const rootReducer = {
   transactionSlice,
   bankAccountsSlice,
   userSettingsSlice,
+  updateBankAccountsSlice,
   dailyBalanceSlice: balanceSlice,
   [userApi.reducerPath]: userApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,
