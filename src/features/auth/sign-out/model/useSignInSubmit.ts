@@ -13,10 +13,10 @@ export const useSignOutSubmit = () => {
 
   return async () => {
     try {
+      router.replace(paths.signIn)
       const res = await signOutUser().unwrap()
       if (res) {
         dispatch(signOut())
-        router.replace(paths.signIn)
       }
     } catch (error) {
       console.error(error)
