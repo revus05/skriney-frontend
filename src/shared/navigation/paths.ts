@@ -5,3 +5,5 @@ export const paths = {
   categories: '/categories',
   profile: '/profile',
 }
+
+export const publicPaths = [paths.signIn, paths.signUp]
