@@ -3,19 +3,16 @@
 import { paths } from 'shared/navigation'
 import { useRouter } from 'next/navigation'
 import { cn, useAppSelector } from 'shared/lib'
-import Cookies from 'js-cookie'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
 import { Button, Translate, UserImage } from 'shared/ui'
+import { useSignOutSubmit } from 'features/auth/sign-out'
 
 export const HeaderUserActions = () => {
   const user = useAppSelector((state) => state.authSlice.user)
 
   const router = useRouter()
 
-  const handleLogout = () => {
-    Cookies.remove('jwt')
-    router.replace(paths.signIn)
-  }
+  const handleLogout = useSignOutSubmit()
 
   const menuItems = [
     {
@@ -45,7 +42,7 @@ export const HeaderUserActions = () => {
             image={user?.image}
             username={user?.username}
             userColor={user?.color}
-            className={'size-8'}
+            className={'size-8 [&_span]:text-sm'}
           />
         </div>
       </PopoverTrigger>

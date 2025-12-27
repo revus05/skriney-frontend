@@ -1,7 +1,7 @@
 'use server'
 
-import { cookies, headers } from 'next/headers'
-import { ApiResponse, UserDTO, UserSettingsDTO } from 'shared/api'
+import { UserDTO, UserSettingsDTO } from 'shared/api'
+import { headers } from 'next/headers'
 
 export type PreloadedState = {
   authSlice: { user: UserDTO | null }
@@ -11,70 +11,16 @@ export type PreloadedState = {
 }
 
 export const getPreloadedState = async (): Promise<PreloadedState> => {
-  const cookiesObj = await cookies()
-  const jwt = cookiesObj.get('jwt')?.value
+  const originalHeaders = await headers()
 
-  console.log('jwt cookie', jwt, cookiesObj)
-
-  const language = await getUserLanguage()
-
-  if (!jwt) {
-    return {
-      authSlice: { user: null },
-      userSettingsSlice: { userSettings: null },
-      language,
-      theme: 'SYSTEM',
-    }
-  }
-
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
+  const res = await fetch(`http://localhost:3000/api/preload`, {
     cache: 'no-store',
-    headers: {
-      Cookie: `jwt=${jwt}`,
-    },
+    headers: originalHeaders,
   })
 
-  const user = await res.json().then((res: ApiResponse<UserDTO>) => res.data)
-
-  console.log('getme user', user, jwt)
-
-  if (!user.userSettings.language) {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/user-settings/update-language`,
-      {
-        method: 'POST',
-        cache: 'no-store',
-        headers: {
-          Cookie: `jwt=${jwt}`,
-        },
-        body: JSON.stringify({ language }),
-      },
-    )
-
-    const updatedUserSettings = await res
-      .json()
-      .then((res: ApiResponse<UserSettingsDTO>) => res.data)
-
-    user.userSettings.language = updatedUserSettings?.language || 'EN'
+  if (!res.ok) {
+    console.error('Failed to preload state')
   }
 
-  return {
-    authSlice: { user },
-    userSettingsSlice: { userSettings: user.userSettings },
-    language: user.userSettings.language,
-    theme: user.userSettings.userTheme,
-  }
-}
-
-export const getUserLanguage = async (): Promise<'EN' | 'RU'> => {
-  const headersList = await headers()
-  const acceptLanguage = headersList.get('accept-language')
-  const language =
-    acceptLanguage?.split(',')[0].split('-')[0].toUpperCase() || 'EN'
-
-  if (language === 'EN' || language === 'RU') {
-    return language
-  }
-
-  return 'EN'
+  return res.json()
 }

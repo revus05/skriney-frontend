@@ -51,6 +51,7 @@ export const UpdatableUserImage = () => {
         userColor={user?.color}
         username={user?.username}
         onClick={onOpenChange}
+        className={'[&_span]:group-hover:opacity-0'}
         editing
       />
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { BankAccountDTO } from 'shared/api'
+import { BankAccountDTO, UpdateBankAccountRequestDTO } from 'shared/api'
 
 type InitialState = {
   bankAccounts: BankAccountDTO[]
@@ -29,6 +29,16 @@ const bankAccountsSlice = createSlice({
         bankAccount.uuid === action.payload.uuid ? action.payload : bankAccount,
       )
     },
+    positiveUpdateBankAccount: (
+      state,
+      action: PayloadAction<UpdateBankAccountRequestDTO & { uuid: string }>,
+    ) => {
+      state.bankAccounts = state.bankAccounts.map((bankAccount) =>
+        bankAccount.uuid === action.payload.uuid
+          ? { ...bankAccount, ...action.payload }
+          : bankAccount,
+      )
+    },
   },
 })
 
@@ -37,5 +47,6 @@ export const {
   addBankAccount,
   deleteBankAccount,
   updateBankAccount,
+  positiveUpdateBankAccount,
 } = bankAccountsSlice.actions
 export default bankAccountsSlice.reducer

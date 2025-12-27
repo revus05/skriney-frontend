@@ -1,1 +1,1 @@
-export { paths } from './paths'
+export { paths, publicPaths } from './paths'

@@ -11,6 +11,7 @@ export {
   addBankAccount,
   deleteBankAccount,
   updateBankAccount,
+  positiveUpdateBankAccount,
 } from './model'
 export { useGetBankAccounts } from './model/useGetBankAccounts'
 export { useDeleteBankAccount } from './model/useDeleteBankAccount'
