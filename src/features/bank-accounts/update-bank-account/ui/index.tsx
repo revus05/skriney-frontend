@@ -2,6 +2,7 @@
 
 import {
   Button,
+  Icons,
   Input,
   Modal,
   ModalBody,
@@ -21,8 +22,10 @@ import {
 import { CurrencySymbols } from 'entities/user-setting'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
+import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
+import Picker from '@emoji-mart/react'
 
 export const UpdateBankAccountModal = () => {
   const updateBankAccountModalOpen = useAppSelector(
@@ -31,6 +34,10 @@ export const UpdateBankAccountModal = () => {
 
   const uuid = useAppSelector(
     (state) => state.updateBankAccountsSlice.bankAccountUuid,
+  )
+
+  const bankAccounts = useAppSelector(
+    (state) => state.bankAccountsSlice.bankAccounts,
   )
 
   const dispatch = useAppDispatch()
@@ -42,7 +49,7 @@ export const UpdateBankAccountModal = () => {
     control,
     reset,
     setFocus,
-    getValues,
+    setValue,
   } = useUpdateBankAccountForm()
 
   const handleClose = () => {
@@ -54,10 +61,35 @@ export const UpdateBankAccountModal = () => {
 
   const t = useTranslation()
 
+  const updateBankAccount = bankAccounts.find(
+    (bankAccount) => bankAccount.uuid === uuid,
+  )
+
   const handleSetFocus = (name: string) =>
     setFocus(name as keyof UpdateBankAccountFormData)
 
-  console.log(getValues('title'))
+  useEffect(() => {
+    if (!updateBankAccount) {
+      return
+    }
+
+    setValue('title', updateBankAccount.title)
+    setValue('emoji', updateBankAccount.emoji)
+    setValue('currency', updateBankAccount.currency)
+  }, [setValue, updateBankAccount, uuid, updateBankAccountModalOpen])
+
+  const [displayedEmoji, setDisplayedEmoji] = useState('')
+
+  useEffect(() => {
+    setDisplayedEmoji(updateBankAccount?.emoji || '')
+  }, [updateBankAccount])
+
+  const handleEmojiSelect = ({ native }: { native: string }) => {
+    setValue('emoji', native)
+    setDisplayedEmoji(native)
+  }
+
+  if (!updateBankAccount) return null
 
   return (
     <Modal
@@ -80,12 +112,42 @@ export const UpdateBankAccountModal = () => {
             className={'flex flex-col gap-4'}
           >
             <ModalBody className={'p-0'}>
-              <Input
-                {...register('title')}
-                errorMessage={errors.title?.message}
-                placeholder={t('bankAccounts.update.title')}
-                setFocus={handleSetFocus}
-              />
+              <div className={'flex items-center gap-2'}>
+                <Popover placement="right">
+                  <PopoverTrigger>
+                    {displayedEmoji ? (
+                      <span className={'cursor-pointer pr-1 pl-2'}>
+                        {displayedEmoji}
+                      </span>
+                    ) : (
+                      <Icons.emojiPlaceholder
+                        className={'shrink-0 cursor-pointer'}
+                      />
+                    )}
+                  </PopoverTrigger>
+                  <PopoverContent className={'bg-transparent p-0'}>
+                    <Picker
+                      data={async () => {
+                        const response = await fetch(
+                          'https://cdn.jsdelivr.net/npm/@emoji-mart/data',
+                        )
+                        return response.json()
+                      }}
+                      onEmojiSelect={handleEmojiSelect}
+                      previewPosition="none"
+                      skinTonePosition="none"
+                    />
+                  </PopoverContent>
+                </Popover>
+                <div className={'grow [&_>_div]:grow'}>
+                  <Input
+                    {...register('title')}
+                    errorMessage={errors.title?.message}
+                    placeholder={t('bankAccounts.update.title')}
+                    setFocus={handleSetFocus}
+                  />
+                </div>
+              </div>
               <Controller
                 name="currency"
                 control={control}

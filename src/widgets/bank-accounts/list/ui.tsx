@@ -13,19 +13,14 @@ import {
   UpdateBankAccountModal,
   updateBankAccountModalOpenFn,
 } from 'features/bank-accounts/update-bank-account'
-import { useAppDispatch, useAppSelector } from 'shared/lib'
+import { useAppDispatch } from 'shared/lib'
 import { useState } from 'react'
 import { updateBankAccountUuid } from 'features/bank-accounts/update-bank-account/model/slice'
 
 export const BankAccountsList = () => {
   const dispatch = useAppDispatch()
 
-  const bankAccountUuid = useAppSelector(
-    (state) => state.updateBankAccountsSlice.bankAccountUuid,
-  )
-
-  const [updateUuid, setUpdateUuid] = useState<string>('')
-  const [popoverOpen, setPopoverOpen] = useState<boolean>(false)
+  const [openPopoverUuid, setOpenPopoverUuid] = useState<string | null>(null)
 
   const bankAccounts = useGetBankAccounts()
 
@@ -37,8 +32,7 @@ export const BankAccountsList = () => {
   const handleEditClicked = (uuid: string) => {
     dispatch(updateBankAccountModalOpenFn(true))
     dispatch(updateBankAccountUuid(uuid))
-    setUpdateUuid(uuid)
-    setPopoverOpen(false)
+    setOpenPopoverUuid(null)
   }
 
   const handleDelete = (uuid: string) => {
@@ -78,15 +72,20 @@ export const BankAccountsList = () => {
           </div>
 
           <Popover
+            isOpen={openPopoverUuid === bankAccount.uuid}
+            onOpenChange={(open) => {
+              setOpenPopoverUuid(open ? bankAccount.uuid : null)
+            }}
             placement="bottom-end"
-            isOpen={popoverOpen}
-            onOpenChange={setPopoverOpen}
           >
             <PopoverTrigger>
               <Button
                 variant={'icon'}
                 iconStart={'moreVertical'}
                 className={'absolute top-3.5 right-3.5'}
+                onClick={() => {
+                  updateBankAccountUuid(bankAccount.uuid)
+                }}
               />
             </PopoverTrigger>
             <PopoverContent
