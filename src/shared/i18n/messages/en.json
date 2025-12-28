@@ -40,6 +40,11 @@
   "categories": {
     "title": "Transaction categories",
     "delete": "Delete",
+    "update": {
+      "sectionTitle": "Update category:",
+      "title": "Title",
+      "update": "Update"
+    },
     "creation": {
       "sectionTitle": "Create category:",
       "title": "Title",

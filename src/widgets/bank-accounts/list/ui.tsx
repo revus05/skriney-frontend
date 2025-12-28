@@ -12,10 +12,10 @@ import { useGetDailyBalances } from 'entities/balance'
 import {
   UpdateBankAccountModal,
   updateBankAccountModalOpenFn,
+  updateBankAccountUuid,
 } from 'features/bank-accounts/update-bank-account'
 import { useAppDispatch } from 'shared/lib'
 import { useState } from 'react'
-import { updateBankAccountUuid } from 'features/bank-accounts/update-bank-account/model/slice'
 
 export const BankAccountsList = () => {
   const dispatch = useAppDispatch()
@@ -101,7 +101,7 @@ export const BankAccountsList = () => {
                   'text-text-neutral-tertiary w-full rounded-xl px-3 py-2 font-bold'
                 }
               >
-                Редактировать
+                <Translate value={'bankAccounts.update.update'} />
               </Button>
               <Button
                 variant={'ghost'}

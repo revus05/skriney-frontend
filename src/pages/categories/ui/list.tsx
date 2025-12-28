@@ -9,12 +9,29 @@ import {
   useUpdateCategory,
 } from 'entities/category'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
+import {
+  UpdateCategoryModal,
+  updateCategoryModalOpenFn,
+  updateCategoryUuid,
+} from 'features/categories/update-category'
+import { useAppDispatch } from 'shared/lib'
+import { useState } from 'react'
 
 export const CategoriesList = () => {
+  const dispatch = useAppDispatch()
+
   const categories = useGetCategories()
   const categoriesStats = useGetCategoriesStats()
   const updateCategory = useUpdateCategory()
   const deleteCategory = useDeleteCategory()
+
+  const [openPopoverUuid, setOpenPopoverUuid] = useState<string | null>(null)
+
+  const handleEditClicked = (uuid: string) => {
+    dispatch(updateCategoryModalOpenFn(true))
+    dispatch(updateCategoryUuid(uuid))
+    setOpenPopoverUuid(null)
+  }
 
   return (
     <div className={'flex flex-col gap-2.5'}>
@@ -47,19 +64,35 @@ export const CategoriesList = () => {
               currency={CurrencySymbols.BYN}
             />
           </div>
-          <Popover placement="bottom-end">
+          <Popover
+            placement="bottom-end"
+            isOpen={openPopoverUuid === category.uuid}
+            onOpenChange={(open) => {
+              setOpenPopoverUuid(open ? category.uuid : null)
+            }}
+          >
             <PopoverTrigger>
               <Button variant="icon" iconStart="moreVertical" />
             </PopoverTrigger>
             <PopoverContent
               className={'bg-bg-neutral-primary rounded-2xl border p-1'}
             >
-              <div className="flex items-center gap-2.5">
+              <div className="flex flex-col items-center gap-2.5">
+                <Button
+                  variant={'ghost'}
+                  iconStart={'edit'}
+                  className={
+                    'text-text-neutral-tertiary w-full rounded-xl px-3 py-2 font-bold'
+                  }
+                  onClick={() => handleEditClicked(category.uuid)}
+                >
+                  <Translate value={'categories.update.update'} />
+                </Button>
                 <Button
                   variant={'ghost'}
                   iconStart={'trashBin'}
                   className={
-                    '[&_svg]:fill-icon-semantic-error-primary text-text-semantic-error-primary rounded-xl px-3 py-2 font-bold'
+                    '[&_svg]:fill-icon-semantic-error-primary text-text-semantic-error-primary w-full rounded-xl px-3 py-2 font-bold'
                   }
                   onClick={() => deleteCategory({ uuid: category.uuid })}
                 >
@@ -70,6 +103,8 @@ export const CategoriesList = () => {
           </Popover>
         </Card>
       ))}
+
+      <UpdateCategoryModal />
     </div>
   )
 }

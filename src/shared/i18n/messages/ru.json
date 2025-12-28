@@ -40,6 +40,11 @@
   "categories": {
     "title": "Категории транзакций",
     "delete": "Удалить",
+    "update": {
+      "sectionTitle": "Редактировать категорию:",
+      "title": "Название",
+      "update": "Редактировать"
+    },
     "creation": {
       "sectionTitle": "Создать категорию:",
       "title": "Название",
