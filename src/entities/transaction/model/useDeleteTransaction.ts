@@ -9,10 +9,8 @@ export const useDeleteTransaction = () => {
 
   return async (data: { uuid: string }) => {
     try {
-      const res = await deleteTransactionFn(data).unwrap()
-      if (res && res.data) {
-        dispatch(deleteTransaction(res.data))
-      }
+      dispatch(deleteTransaction(data.uuid))
+      deleteTransactionFn(data)
     } catch (error) {
       const err = getApiError<Record<string, string>>(error)
       console.log(err)

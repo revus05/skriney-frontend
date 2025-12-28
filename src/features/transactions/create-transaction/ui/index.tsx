@@ -53,7 +53,7 @@ export const CreateTransactionButton = () => {
     }
   }
 
-  const onSubmit = useCreateTransactionSubmit(handleOpenChange)
+  const { onSubmit, isLoading } = useCreateTransactionSubmit(handleOpenChange)
   const handleSetFocus = (name: string) =>
     setFocus(name as keyof CreateTransactionFormData)
 
@@ -148,7 +148,7 @@ export const CreateTransactionButton = () => {
                 />
               </ModalBody>
               <ModalFooter className={'flex justify-center p-0'}>
-                <Button type={'submit'}>
+                <Button type={'submit'} loading={isLoading}>
                   <Translate value={'transactions.creation.create'} />
                 </Button>
               </ModalFooter>

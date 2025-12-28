@@ -44,7 +44,7 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
       inputRef.current.focus()
       inputRef.current.setSelectionRange(tempValue.length, tempValue.length)
     }
-  }, [isEditing])
+  }, [isEditing, tempValue.length])
 
   useLayoutEffect(() => {
     if (isEditing && measurerRef.current && inputRef.current) {

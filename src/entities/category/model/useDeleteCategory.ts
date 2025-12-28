@@ -12,15 +12,13 @@ export const useDeleteCategory = () => {
 
   return async (data: { uuid: string }) => {
     try {
-      const res = await deleteCategoryFn(data).unwrap()
-      if (res && res.data) {
-        dispatch(deleteCategory(res.data))
-        if (userSettings?.defaultCategory?.uuid === data.uuid) {
-          dispatch(
-            setUserSettings({ ...userSettings, defaultCategory: undefined }),
-          )
-        }
+      dispatch(deleteCategory(data.uuid))
+      if (userSettings?.defaultCategory?.uuid === data.uuid) {
+        dispatch(
+          setUserSettings({ ...userSettings, defaultCategory: undefined }),
+        )
       }
+      deleteCategoryFn(data)
     } catch (error) {
       const err = getApiError<Record<string, string>>(error)
       console.log(err)

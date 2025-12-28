@@ -19,9 +19,9 @@ const bankAccountsSlice = createSlice({
     addBankAccount: (state, action: PayloadAction<BankAccountDTO>) => {
       state.bankAccounts.push(action.payload)
     },
-    deleteBankAccount: (state, action: PayloadAction<BankAccountDTO>) => {
+    deleteBankAccount: (state, action: PayloadAction<string>) => {
       state.bankAccounts = state.bankAccounts.filter(
-        (bankAccount) => bankAccount.uuid !== action.payload.uuid,
+        (bankAccount) => bankAccount.uuid !== action.payload,
       )
     },
     updateBankAccount: (state, action: PayloadAction<BankAccountDTO>) => {

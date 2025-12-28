@@ -17,3 +17,4 @@ export {
   ModalBody,
   ModalFooter,
 } from './modal'
+export { Loader } from './loader/loader'

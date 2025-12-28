@@ -19,9 +19,9 @@ const transactionSlice = createSlice({
     addTransaction: (state, action: PayloadAction<TransactionDTO>) => {
       state.transactions = [action.payload, ...state.transactions]
     },
-    deleteTransaction: (state, action: PayloadAction<TransactionDTO>) => {
+    deleteTransaction: (state, action: PayloadAction<string>) => {
       state.transactions = state.transactions.filter(
-        (transaction) => transaction.uuid !== action.payload.uuid,
+        (transaction) => transaction.uuid !== action.payload,
       )
     },
   },

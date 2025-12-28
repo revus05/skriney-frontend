@@ -13,15 +13,13 @@ export const useDeleteBankAccount = () => {
 
   return async (data: { uuid: string }) => {
     try {
-      const res = await deleteBankAccountFn(data).unwrap()
-      if (res && res.data) {
-        dispatch(deleteBankAccount(res.data))
-        if (userSettings?.defaultBankAccount?.uuid === data.uuid) {
-          dispatch(
-            setUserSettings({ ...userSettings, defaultBankAccount: undefined }),
-          )
-        }
+      dispatch(deleteBankAccount(data.uuid))
+      if (userSettings?.defaultBankAccount?.uuid === data.uuid) {
+        dispatch(
+          setUserSettings({ ...userSettings, defaultBankAccount: undefined }),
+        )
       }
+      deleteBankAccountFn(data)
     } catch (error) {
       const err = getApiError<Record<string, string>>(error)
       console.log(err)

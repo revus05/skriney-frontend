@@ -2,21 +2,22 @@ import { ComponentProps, createElement, FC } from 'react'
 import type { VariantProps } from 'tailwind-variants'
 import { cva } from 'class-variance-authority'
 import { cn } from 'shared/lib'
-import { Icons } from 'shared/ui'
+import { Icons, Loader } from 'shared/ui'
 
 type ButtonProps = ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     iconStart?: string
     iconEnd?: string
+    loading?: boolean
   }
 
 const buttonVariants = cva(
-  'cursor-pointer w-fit rounded-lg py-2 px-8 font-semibold text-text-brand-inverse transition active:scale-[0.98] will-change-transform flex gap-2.5 items-center',
+  'relative cursor-pointer w-fit rounded-lg py-2 px-8 font-semibold text-text-brand-inverse transition active:scale-[0.98] flex gap-2.5 items-center disabled:active:scale-100 disabled:cursor-default',
   {
     variants: {
       variant: {
         primary:
-          'bg-bg-brand-primary/70 hover:bg-bg-brand-secondary hover:text-text-brand-primary shadow-sm active:shadow-md',
+          'bg-bg-brand-primary/70 hover:bg-bg-brand-secondary disabled:hover:bg-bg-brand-primary/70 hover:text-text-brand-primary shadow-sm active:shadow-md disabled:shadow-md',
         icon: 'p-1 hover:bg-border-neutral-primary rounded-md hover:shadow-md active:shadow-xs',
         ghost:
           'bg-none hover:bg-border-neutral-primary hover:shadow-sm active:shadow-md',
@@ -35,23 +36,35 @@ export const Button: FC<ButtonProps> = ({
   variant,
   className,
   children,
+  disabled,
+  loading = false,
   ...props
 }) => {
   return (
     <button
       type={type}
       className={cn(buttonVariants({ variant }), className)}
+      disabled={disabled || loading}
       {...props}
     >
       {iconStart &&
         createElement(Icons[iconStart], {
-          className: 'fill-icon-neutral-tertiary size-5',
+          className: cn(
+            'fill-icon-neutral-tertiary size-5',
+            loading && 'opacity-0',
+          ),
         })}
-      {children}
+      {children && (
+        <span className={cn(loading && 'opacity-0')}>{children}</span>
+      )}
       {iconEnd &&
         createElement(Icons[iconEnd], {
-          className: 'fill-icon-neutral-tertiary size-5',
+          className: cn(
+            'fill-icon-neutral-tertiary size-5',
+            loading && 'opacity-0',
+          ),
         })}
+      {loading && <Loader />}
     </button>
   )
 }

@@ -31,7 +31,7 @@ export const CreateCategoryButton = () => {
     reset()
   }
 
-  const onSubmit = useCreateCategorySubmit(handleOpenChange)
+  const { onSubmit, isLoading } = useCreateCategorySubmit(handleOpenChange)
 
   const t = useTranslation()
 
@@ -65,7 +65,7 @@ export const CreateCategoryButton = () => {
                 />
               </ModalBody>
               <ModalFooter className={'flex justify-center p-0'}>
-                <Button type={'submit'}>
+                <Button type={'submit'} loading={isLoading}>
                   <Translate value={'categories.creation.create'} />
                 </Button>
               </ModalFooter>

@@ -3,7 +3,7 @@
 import { useAppDispatch } from 'shared/lib'
 import { getApiError, UpdateCategoryRequestDTO } from 'shared/api'
 import { useUpdateCategoryMutation } from '../api'
-import { updateCategory } from '../model'
+import { positiveUpdateCategory, updateCategory } from '../model'
 
 export const useUpdateCategory = () => {
   const [updateCategoryFn] = useUpdateCategoryMutation()
@@ -11,6 +11,7 @@ export const useUpdateCategory = () => {
 
   return async (uuid: string, body: UpdateCategoryRequestDTO) => {
     try {
+      dispatch(positiveUpdateCategory({ ...body, uuid }))
       const res = await updateCategoryFn({ uuid, body }).unwrap()
       if (res && res.data) {
         dispatch(updateCategory(res.data))

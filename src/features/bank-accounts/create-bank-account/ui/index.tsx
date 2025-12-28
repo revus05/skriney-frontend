@@ -38,7 +38,7 @@ export const CreateBankAccountButton = () => {
     reset()
   }
 
-  const onSubmit = useCreateBankAccountSubmit(handleOpenChange)
+  const { onSubmit, isLoading } = useCreateBankAccountSubmit(handleOpenChange)
 
   const t = useTranslation()
 
@@ -102,7 +102,7 @@ export const CreateBankAccountButton = () => {
                 />
               </ModalBody>
               <ModalFooter className={'flex justify-center p-0'}>
-                <Button type={'submit'}>
+                <Button type={'submit'} loading={isLoading}>
                   <Translate value={'bankAccounts.creation.create'} />
                 </Button>
               </ModalFooter>
