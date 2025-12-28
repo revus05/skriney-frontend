@@ -1,13 +1,13 @@
 import { deleteCategory, useDeleteCategoryMutation } from 'entities/category'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { getApiError } from 'shared/api'
-import { setUserSettings } from 'entities/user-setting'
+import { setUserSettings } from 'entities/user'
 
 export const useDeleteCategory = () => {
   const [deleteCategoryFn] = useDeleteCategoryMutation()
   const dispatch = useAppDispatch()
   const userSettings = useAppSelector(
-    (state) => state.userSettingsSlice.userSettings,
+    (state) => state.authSlice.user?.userSettings,
   )
 
   return async (data: { uuid: string }) => {

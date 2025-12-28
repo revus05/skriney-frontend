@@ -32,10 +32,10 @@ export type TransactionDTO = {
     /**
      * Connection to bank account
      */
-    bankAccount: BankAccountDTO;
+    bankAccount?: BankAccountDTO;
     /**
      * transaction category
      */
-    category: CategoryDTO;
+    category?: CategoryDTO;
 };
 

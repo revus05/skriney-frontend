@@ -1,6 +1,7 @@
 import { useAppDispatch } from 'shared/lib'
-import { setUserSettings, useUpdateThemeMutation } from 'entities/user-setting'
+import { useUpdateThemeMutation } from 'entities/user-setting'
 import { getApiError, UpdateThemeRequestDTO } from 'shared/api'
+import { setUserSettings } from 'entities/user'
 
 export const useUpdateThemeSubmit = () => {
   const [updateTheme] = useUpdateThemeMutation()

@@ -15,8 +15,17 @@ import {
   useCreateCategorySubmit,
 } from '../model'
 import { useTranslation } from 'shared/i18n'
+import { FC } from 'react'
 
-export const CreateCategoryButton = () => {
+type CreateCategoryButtonProps = {
+  className?: string
+  variant?: 'primary' | 'ghost' | 'icon'
+}
+
+export const CreateCategoryButton: FC<CreateCategoryButtonProps> = ({
+  className,
+  variant = 'icon',
+}) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const {
     register,
@@ -40,10 +49,15 @@ export const CreateCategoryButton = () => {
 
   return (
     <>
-      <Button onClick={onOpen} variant={'icon'} iconStart={'plus'} />
+      <Button
+        onClick={onOpen}
+        variant={variant}
+        iconStart={'plus'}
+        className={className}
+      />
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
         <ModalContent
-          className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}
+          className={'bg-bg-neutral-tertiary w-[340px] rounded-3xl border p-4'}
         >
           <div className={'flex flex-col gap-4'}>
             <ModalHeader className="flex items-center justify-between gap-1 p-0">
@@ -53,7 +67,10 @@ export const CreateCategoryButton = () => {
               <Button variant="icon" iconStart={'x'} onClick={onOpenChange} />
             </ModalHeader>
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={(e) => {
+                e.stopPropagation()
+                handleSubmit(onSubmit)(e)
+              }}
               className={'flex flex-col gap-4'}
             >
               <ModalBody className={'p-0'}>

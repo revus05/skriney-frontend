@@ -10,6 +10,7 @@ export const useUpdateCategorySubmit = (
   const updateCategory = useUpdateCategory()
 
   return async (data: UpdateCategoryFormData) => {
+    console.log('here')
     await updateCategory(uuid, data)
 
     if (onSuccess) onSuccess()

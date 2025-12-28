@@ -35,7 +35,7 @@ const RootLayout = async ({
           <div className={'relative h-full w-full overflow-hidden'}>
             <div
               className={
-                'absolute top-1/4 left-[20vw] h-[70svh] w-[70vw] -translate-1/2 rotate-[-33deg] rounded-[50%] bg-[#CC9766] opacity-10 blur-[50vw]'
+                'absolute top-1/4 left-[20vw] h-[50svh] w-[50vw] -translate-1/2 rotate-[-33deg] rounded-[50%] bg-[#CC9766] opacity-100 blur-[50vw]'
               }
               style={{ animation: 'fly 200s linear infinite' }}
             />

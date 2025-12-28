@@ -21,6 +21,7 @@ export type { UpdateDefaultCategoryRequestDTO } from './models/UpdateDefaultCate
 export type { UpdateDefaultCurrencyRequestDTO } from './models/UpdateDefaultCurrencyRequestDTO';
 export type { UpdateLanguageRequestDTO } from './models/UpdateLanguageRequestDTO';
 export type { UpdateThemeRequestDTO } from './models/UpdateThemeRequestDTO';
+export type { UpdateTransactionRequestDTO } from './models/UpdateTransactionRequestDTO';
 export type { UpdateUserImageRequestDTO } from './models/UpdateUserImageRequestDTO';
 export type { UploadFileRequestDTO } from './models/UploadFileRequestDTO';
 export type { UploadFileResponseDTO } from './models/UploadFileResponseDTO';

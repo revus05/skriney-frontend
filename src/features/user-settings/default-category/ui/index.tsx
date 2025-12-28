@@ -13,7 +13,7 @@ export const UpdateDefaultCategorySelect = () => {
 
   const defaultCategory =
     useAppSelector(
-      (state) => state.userSettingsSlice.userSettings?.defaultCategory,
+      (state) => state.authSlice.user?.userSettings?.defaultCategory,
     ) || null
 
   const [selectedCategory, setSelectedCategory] = useState<string>(

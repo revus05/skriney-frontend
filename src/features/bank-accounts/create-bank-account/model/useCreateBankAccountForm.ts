@@ -7,7 +7,7 @@ import { useAppSelector } from 'shared/lib'
 
 export const useCreateBankAccountForm = () => {
   const defaultCurrency = useAppSelector(
-    (state) => state.userSettingsSlice.userSettings?.defaultCurrency,
+    (state) => state.authSlice.user?.userSettings?.defaultCurrency,
   )
 
   return useForm<CreateBankAccountFormData>({

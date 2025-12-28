@@ -2,12 +2,12 @@ import { useDeleteBankAccountMutation } from '../api'
 import { deleteBankAccount } from '../model'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { getApiError } from 'shared/api'
-import { setUserSettings } from 'entities/user-setting'
+import { setUserSettings } from 'entities/user'
 
 export const useDeleteBankAccount = () => {
   const [deleteBankAccountFn] = useDeleteBankAccountMutation()
   const userSettings = useAppSelector(
-    (state) => state.userSettingsSlice.userSettings,
+    (state) => state.authSlice.user?.userSettings,
   )
   const dispatch = useAppDispatch()
 

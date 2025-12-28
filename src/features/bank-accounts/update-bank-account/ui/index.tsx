@@ -19,7 +19,7 @@ import {
   useUpdateBankAccountForm,
   useUpdateBankAccountSubmit,
 } from '../model'
-import { CurrencySymbols } from 'entities/user-setting'
+import { CurrencySymbols } from 'shared/currencies'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
 import React, { useEffect, useState } from 'react'

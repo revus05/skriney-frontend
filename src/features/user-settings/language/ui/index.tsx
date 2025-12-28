@@ -10,7 +10,7 @@ export const UpdateLanguageSelect = () => {
   const updateLanguage = useUpdateLanguage()
 
   const language =
-    useAppSelector((state) => state.userSettingsSlice.userSettings?.language) ||
+    useAppSelector((state) => state.authSlice.user?.userSettings?.language) ||
     ''
 
   const [selectedLanguage, setSelectedLanguage] = useState<string>(language)

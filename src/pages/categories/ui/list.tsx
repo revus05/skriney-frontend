@@ -1,7 +1,7 @@
 'use client'
 
 import { Balance, Button, Card, EmojiTitle, Translate } from 'shared/ui'
-import { CurrencySymbols } from 'entities/user-setting'
+import { CurrencySymbols } from 'shared/currencies'
 import {
   useGetCategories,
   useDeleteCategory,
@@ -16,6 +16,7 @@ import {
 } from 'features/categories/update-category'
 import { useAppDispatch } from 'shared/lib'
 import { useState } from 'react'
+import { ConfirmDeleteCategoryModal } from 'features/categories/confirm-delete-category'
 
 export const CategoriesList = () => {
   const dispatch = useAppDispatch()
@@ -26,10 +27,21 @@ export const CategoriesList = () => {
   const deleteCategory = useDeleteCategory()
 
   const [openPopoverUuid, setOpenPopoverUuid] = useState<string | null>(null)
+  const [openCategoryDeleteConfirm, setOpenCategoryDeleteConfirm] =
+    useState(false)
+  const [deleteCategoryUuid, setDeleteCategoryUuid] = useState<string | null>(
+    null,
+  )
 
   const handleEditClicked = (uuid: string) => {
     dispatch(updateCategoryModalOpenFn(true))
     dispatch(updateCategoryUuid(uuid))
+    setOpenPopoverUuid(null)
+  }
+
+  const handleDeleteClicked = (uuid: string) => {
+    setOpenCategoryDeleteConfirm(true)
+    setDeleteCategoryUuid(uuid)
     setOpenPopoverUuid(null)
   }
 
@@ -94,7 +106,7 @@ export const CategoriesList = () => {
                   className={
                     '[&_svg]:fill-icon-semantic-error-primary text-text-semantic-error-primary w-full rounded-xl px-3 py-2 font-bold'
                   }
-                  onClick={() => deleteCategory({ uuid: category.uuid })}
+                  onClick={() => handleDeleteClicked(category.uuid)}
                 >
                   <Translate value={'categories.delete'} />
                 </Button>
@@ -105,6 +117,13 @@ export const CategoriesList = () => {
       ))}
 
       <UpdateCategoryModal />
+      <ConfirmDeleteCategoryModal
+        open={openCategoryDeleteConfirm}
+        openChangedAction={setOpenCategoryDeleteConfirm}
+        onSubmitAction={() =>
+          deleteCategoryUuid && deleteCategory({ uuid: deleteCategoryUuid })
+        }
+      />
     </div>
   )
 }

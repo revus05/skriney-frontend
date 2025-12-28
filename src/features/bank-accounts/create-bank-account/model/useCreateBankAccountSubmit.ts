@@ -2,7 +2,7 @@
 
 import { CreateBankAccountFormData } from './schema'
 import { useCreateBankAccount } from 'entities/bank-account'
-import { CurrencyType } from 'entities/user-setting'
+import { CurrencyType } from 'shared/currencies'
 
 export const useCreateBankAccountSubmit = (onSuccess?: () => void) => {
   const { onSubmit, isLoading } = useCreateBankAccount()

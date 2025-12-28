@@ -6,10 +6,11 @@ import { updateBankAccountsSlice } from 'features/bank-accounts/update-bank-acco
 import { categoriesApi, categorySlice } from 'entities/category'
 import { transactionsApi, transactionSlice } from 'entities/transaction'
 import { bankAccountApi, bankAccountsSlice } from 'entities/bank-account'
-import { userSettingsApi, userSettingsSlice } from 'entities/user-setting'
+import { userSettingsApi } from 'entities/user-setting'
 import { balanceApi, balanceSlice } from 'entities/balance'
 import { fileApi } from 'entities/file'
 import { updateCategoriesSlice } from 'features/categories/update-category'
+import { updateTransactionSlice } from 'features/transactions/update-transaction'
 
 const rootReducer = {
   authSlice: userSlice,
@@ -18,9 +19,9 @@ const rootReducer = {
   categorySlice,
   transactionSlice,
   bankAccountsSlice,
-  userSettingsSlice,
   updateBankAccountsSlice,
   updateCategoriesSlice,
+  updateTransactionSlice,
   dailyBalanceSlice: balanceSlice,
   [userApi.reducerPath]: userApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,

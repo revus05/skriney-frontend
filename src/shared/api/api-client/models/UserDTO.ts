@@ -2,8 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type {UserSettingsDTO} from './UserSettingsDTO';
-
+import type { UserSettingsDTO } from './UserSettingsDTO';
 export type UserDTO = {
     /**
      * User uuid

@@ -134,7 +134,7 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
         </div>
       ) : (
         <span
-          className="h-5 cursor-text font-semibold whitespace-nowrap"
+          className="h-5 cursor-text truncate font-semibold whitespace-nowrap"
           onDoubleClick={handleDoubleClick}
         >
           {title}

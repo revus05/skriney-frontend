@@ -13,7 +13,7 @@ export const UpdateDefaultBankAccountSelect = () => {
 
   const defaultBankAccount =
     useAppSelector(
-      (state) => state.userSettingsSlice.userSettings?.defaultBankAccount,
+      (state) => state.authSlice.user?.userSettings?.defaultBankAccount,
     ) || null
 
   const [selectedBankAccount, setSelectedBankAccount] = useState<string>(

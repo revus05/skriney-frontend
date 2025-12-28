@@ -1,12 +1,14 @@
 import { Icons } from './icons'
 import React, { ComponentProps, FC } from 'react'
 import { cn } from 'shared/lib'
+import Image from 'next/image'
 
 interface UserImageType extends ComponentProps<'div'> {
   image?: string
   userColor?: string
   username?: string
   editing?: boolean
+  size: number
 }
 
 const getGradient = (color?: string) => {
@@ -42,6 +44,7 @@ export const UserImage: FC<UserImageType> = ({
   username,
   className,
   editing = false,
+  size,
   ...props
 }) => {
   return (
@@ -53,9 +56,11 @@ export const UserImage: FC<UserImageType> = ({
       {...props}
     >
       {image ? (
-        <img
+        <Image
           src={`${process.env.NEXT_PUBLIC_API_URL}${image}`}
           alt="user"
+          width={size}
+          height={size}
           className={'h-full w-full object-cover'}
         />
       ) : (

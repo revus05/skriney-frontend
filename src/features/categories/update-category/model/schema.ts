@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const updateCategorySchema = z.object({
   title: z.string().trim().nonempty('Название счета обязательно'),
-  emoji: z.string(),
+  emoji: z.string().optional(),
 })
 
 export type UpdateCategoryFormData = z.infer<typeof updateCategorySchema>

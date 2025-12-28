@@ -4,13 +4,13 @@ import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { CreateBankAccountRequestDTO, getApiError } from 'shared/api'
 import { useCreateBankAccountMutation } from '../api'
 import { addBankAccount } from '../model'
-import { setUserSettings } from 'entities/user-setting'
+import { setUserSettings } from 'entities/user'
 
 export const useCreateBankAccount = () => {
   const [createBankAccount, { isLoading }] = useCreateBankAccountMutation()
   const dispatch = useAppDispatch()
   const userSettings = useAppSelector(
-    (state) => state.userSettingsSlice.userSettings,
+    (state) => state.authSlice.user?.userSettings,
   )
 
   return {

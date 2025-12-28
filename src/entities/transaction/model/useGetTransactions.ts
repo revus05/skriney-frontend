@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { useEffect } from 'react'
 
 export const useGetTransactions = () => {
-  const [getTransactions] = useGetTransactionsMutation()
+  const [getTransactions, { isLoading }] = useGetTransactionsMutation()
   const dispatch = useAppDispatch()
   const transactions = useAppSelector(
     (state) => state.transactionSlice.transactions,
@@ -19,5 +19,5 @@ export const useGetTransactions = () => {
     void fetchTransactions()
   }, [dispatch, getTransactions])
 
-  return transactions
+  return { transactions, isLoading }
 }

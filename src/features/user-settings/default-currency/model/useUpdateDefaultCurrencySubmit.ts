@@ -1,5 +1,5 @@
 import { useAppDispatch } from 'shared/lib'
-import { setUserSettings } from 'entities/user-setting'
+import { setUserSettings } from 'entities/user'
 import { getApiError, UpdateDefaultCurrencyRequestDTO } from 'shared/api'
 import { useUpdateDefaultCurrencyMutation } from 'entities/user-setting'
 

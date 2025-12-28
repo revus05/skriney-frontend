@@ -17,8 +17,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-bg-brand-primary/70 hover:bg-bg-brand-secondary disabled:hover:bg-bg-brand-primary/70 hover:text-text-brand-primary shadow-sm active:shadow-md disabled:shadow-md',
-        icon: 'p-1 hover:bg-border-neutral-primary rounded-md hover:shadow-md active:shadow-xs',
+          'bg-bg-brand-primary/70 hover:bg-bg-brand-secondary disabled:hover:bg-bg-brand-primary/70 hover:text-text-brand-primary [&_svg]:fill-icon-brand-inverse hover:[&_svg]:fill-icon-brand-primary shadow-sm active:shadow-md disabled:shadow-md',
+        icon: 'p-1 hover:bg-border-neutral-primary rounded-md hover:shadow-md active:shadow-xs active:scale-[0.95]',
         ghost:
           'bg-none hover:bg-border-neutral-primary hover:shadow-sm active:shadow-md',
       },
@@ -50,7 +50,7 @@ export const Button: FC<ButtonProps> = ({
       {iconStart &&
         createElement(Icons[iconStart], {
           className: cn(
-            'fill-icon-neutral-tertiary size-5',
+            'fill-icon-neutral-tertiary size-5 transition',
             loading && 'opacity-0',
           ),
         })}
@@ -60,7 +60,7 @@ export const Button: FC<ButtonProps> = ({
       {iconEnd &&
         createElement(Icons[iconEnd], {
           className: cn(
-            'fill-icon-neutral-tertiary size-5',
+            'fill-icon-neutral-tertiary size-5 transition',
             loading && 'opacity-0',
           ),
         })}

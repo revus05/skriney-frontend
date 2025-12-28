@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { UserDTO } from 'shared/api'
+import { UserDTO, UserSettingsDTO } from 'shared/api'
 
 type InitialState = {
   user: UserDTO | null
@@ -26,8 +26,24 @@ const userSlice = createSlice({
 
       state.user.image = action.payload
     },
+    setUserSettings: (state, action: PayloadAction<UserSettingsDTO>) => {
+      if (state.user) {
+        state.user.userSettings = action.payload
+      }
+    },
+    updateUserLanguage: (state, action: PayloadAction<'EN' | 'RU'>) => {
+      if (state.user) {
+        state.user.userSettings.language = action.payload
+      }
+    },
   },
 })
 
-export const { signIn, updateUserImage, signOut } = userSlice.actions
+export const {
+  signIn,
+  updateUserImage,
+  signOut,
+  setUserSettings,
+  updateUserLanguage,
+} = userSlice.actions
 export default userSlice.reducer

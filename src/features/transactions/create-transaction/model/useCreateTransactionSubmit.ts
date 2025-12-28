@@ -1,5 +1,5 @@
 import { CreateTransactionFormData } from './schema'
-import { CurrencyType } from 'entities/user-setting'
+import { CurrencyType } from 'shared/currencies'
 import { useCreateTransaction } from 'entities/transaction'
 
 export const useCreateTransactionSubmit = (onSuccess?: () => void) => {
@@ -9,7 +9,12 @@ export const useCreateTransactionSubmit = (onSuccess?: () => void) => {
     onSubmit: async (data: CreateTransactionFormData) => {
       await onSubmit({
         ...data,
-        amount: +data.amount,
+        amount:
+          data.amount[0] === '+'
+            ? +data.amount
+            : data.amount[0] === '-'
+              ? +data.amount
+              : +`-${data.amount}`,
         currency: data.currency as CurrencyType,
       })
 
