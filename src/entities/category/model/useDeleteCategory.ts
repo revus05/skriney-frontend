@@ -9,13 +9,19 @@ export const useDeleteCategory = () => {
   const userSettings = useAppSelector(
     (state) => state.authSlice.user?.userSettings,
   )
+  const categories = useAppSelector((state) => state.categorySlice.categories)
 
   return async (data: { uuid: string }) => {
     try {
       dispatch(deleteCategory(data.uuid))
       if (userSettings?.defaultCategory?.uuid === data.uuid) {
         dispatch(
-          setUserSettings({ ...userSettings, defaultCategory: undefined }),
+          setUserSettings({
+            ...userSettings,
+            defaultCategory: categories.filter(
+              (category) => category.uuid !== data.uuid,
+            )[0],
+          }),
         )
       }
       deleteCategoryFn(data)
