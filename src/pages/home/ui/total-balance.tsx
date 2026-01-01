@@ -1,7 +1,7 @@
 'use client'
 
 import { TotalBalanceCard } from 'entities/balance'
-import { CurrencySymbols } from 'shared/currencies'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { BalanceSummaryDTO, DailyBalanceDTO } from 'shared/api'
 import { useGetBalanceSummary, useGetDailyBalances } from 'entities/balance'
 

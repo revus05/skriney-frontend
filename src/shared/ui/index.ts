@@ -18,3 +18,4 @@ export {
   ModalFooter,
 } from './modal'
 export { Loader } from './loader/loader'
+export { Switch } from './switch'

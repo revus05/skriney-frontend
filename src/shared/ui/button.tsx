@@ -1,7 +1,7 @@
 import { ComponentProps, createElement, FC } from 'react'
 import type { VariantProps } from 'tailwind-variants'
 import { cva } from 'class-variance-authority'
-import { cn } from 'shared/lib'
+import { cn, useAppSelector } from 'shared/lib'
 import { Icons, Loader } from 'shared/ui'
 
 type ButtonProps = ComponentProps<'button'> &
@@ -12,7 +12,7 @@ type ButtonProps = ComponentProps<'button'> &
   }
 
 const buttonVariants = cva(
-  'relative cursor-pointer w-fit rounded-lg py-2 px-8 font-semibold text-text-brand-inverse transition active:scale-[0.98] flex gap-2.5 items-center disabled:active:scale-100 disabled:cursor-default',
+  'relative cursor-pointer w-fit rounded-lg py-2 px-8 font-semibold text-text-brand-inverse active:scale-[0.98] flex gap-2.5 items-center disabled:active:scale-100 disabled:cursor-default',
   {
     variants: {
       variant: {
@@ -21,6 +21,12 @@ const buttonVariants = cva(
         icon: 'p-1 hover:bg-border-neutral-primary rounded-md hover:shadow-md active:shadow-xs active:scale-[0.95]',
         ghost:
           'bg-none hover:bg-border-neutral-primary hover:shadow-sm active:shadow-md',
+        danger:
+          'bg-bg-semantic-error-bold text-text-semantic-error-inverse hover:bg-bg-semantic-error-subtle hover:text-text-semantic-error-primary',
+      },
+      animationEnabled: {
+        true: 'transition duration-150 motion-reduce:transition-none',
+        false: 'transition-none duration-0',
       },
     },
     defaultVariants: {
@@ -40,10 +46,15 @@ export const Button: FC<ButtonProps> = ({
   loading = false,
   ...props
 }) => {
+  const animationEnabled =
+    useAppSelector(
+      (state) => state.authSlice.user?.userSettings.animationEnabled,
+    ) ?? true
+
   return (
     <button
       type={type}
-      className={cn(buttonVariants({ variant }), className)}
+      className={cn(buttonVariants({ variant, animationEnabled }), className)}
       disabled={disabled || loading}
       {...props}
     >
@@ -52,6 +63,9 @@ export const Button: FC<ButtonProps> = ({
           className: cn(
             'fill-icon-neutral-tertiary size-5 transition',
             loading && 'opacity-0',
+            animationEnabled
+              ? 'transition duration-150 motion-reduce:transition-none'
+              : 'duration-0 transition-none',
           ),
         })}
       {children && (
@@ -62,6 +76,9 @@ export const Button: FC<ButtonProps> = ({
           className: cn(
             'fill-icon-neutral-tertiary size-5 transition',
             loading && 'opacity-0',
+            animationEnabled
+              ? 'transition duration-150 motion-reduce:transition-none'
+              : 'duration-0 transition-none',
           ),
         })}
       {loading && <Loader />}

@@ -14,6 +14,7 @@ export type { DailyBalanceDTO } from './models/DailyBalanceDTO';
 export type { SignInUserRequestDTO } from './models/SignInUserRequestDTO';
 export type { SignUpUserRequestDTO } from './models/SignUpUserRequestDTO';
 export type { TransactionDTO } from './models/TransactionDTO';
+export type { UpdateAnimationEnabledRequestDTO } from './models/UpdateAnimationEnabledRequestDTO';
 export type { UpdateBankAccountRequestDTO } from './models/UpdateBankAccountRequestDTO';
 export type { UpdateCategoryRequestDTO } from './models/UpdateCategoryRequestDTO';
 export type { UpdateDefaultBankAccountRequestDTO } from './models/UpdateDefaultBankAccountRequestDTO';

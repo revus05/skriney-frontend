@@ -11,6 +11,7 @@ import {
   updateTransactionUuid,
 } from 'features/transactions/update-transaction'
 import { useState } from 'react'
+import { ConfirmDeleteTransactionModal } from 'features/transactions/confirm-delete-transaction'
 
 export const TransactionsList = () => {
   const dispatch = useAppDispatch()
@@ -37,12 +38,23 @@ export const TransactionsList = () => {
   )
 
   const [openPopoverUuid, setOpenPopoverUuid] = useState<string | null>(null)
+  const [openTransactionDeleteConfirm, setOpenTransactionDeleteConfirm] =
+    useState(false)
+  const [deleteTransactionUuid, setDeleteTransactionUuid] = useState<
+    string | null
+  >(null)
 
   const deleteTransaction = useDeleteTransaction()
 
   const handleEditClicked = (uuid: string) => {
     dispatch(updateTransactionModalOpenFn(true))
     dispatch(updateTransactionUuid(uuid))
+    setOpenPopoverUuid(null)
+  }
+
+  const handleDeleteClicked = (uuid: string) => {
+    setOpenTransactionDeleteConfirm(true)
+    setDeleteTransactionUuid(uuid)
     setOpenPopoverUuid(null)
   }
 
@@ -164,7 +176,7 @@ export const TransactionsList = () => {
                           className={
                             '[&_svg]:fill-icon-semantic-error-primary text-text-semantic-error-primary w-full rounded-xl px-3 py-2 font-bold'
                           }
-                          onClick={() => deleteTransaction({ uuid: tx.uuid })}
+                          onClick={() => handleDeleteClicked(tx.uuid)}
                         >
                           <Translate value={'transactions.delete'} />
                         </Button>
@@ -179,6 +191,14 @@ export const TransactionsList = () => {
       })}
 
       <UpdateTransactionModal />
+      <ConfirmDeleteTransactionModal
+        open={openTransactionDeleteConfirm}
+        openChangedAction={setOpenTransactionDeleteConfirm}
+        onSubmitAction={() =>
+          deleteTransactionUuid &&
+          deleteTransaction({ uuid: deleteTransactionUuid })
+        }
+      />
     </Card>
   )
 }

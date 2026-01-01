@@ -2,7 +2,7 @@
 
 import { UpdateTransactionFormData } from 'features/transactions/update-transaction/model/schema'
 import { useUpdateTransaction } from 'entities/transaction'
-import { CurrencyType } from 'shared/currencies'
+import { Currency } from 'shared/constants/currencies'
 
 export const useUpdateTransactionSubmit = (
   uuid: string,
@@ -19,7 +19,7 @@ export const useUpdateTransactionSubmit = (
           : data.amount[0] === '-'
             ? +data.amount
             : +`-${data.amount}`,
-      currency: data.currency as CurrencyType,
+      currency: data.currency as keyof typeof Currency,
     })
 
     if (onSuccess) onSuccess()

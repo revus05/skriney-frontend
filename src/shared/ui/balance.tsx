@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { cn } from 'shared/lib'
+import { formatMoney } from 'shared/lib/format-money'
 
 type BalanceType = {
   balance: number
@@ -25,6 +26,10 @@ export const Balance: FC<BalanceType> = ({
   signed = false,
   classNames,
 }) => {
+  const formattedBalance = formatMoney(balance)
+  const formattedGoal =
+    goalAmount !== undefined ? formatMoney(goalAmount) : undefined
+
   return (
     <div
       className={cn(
@@ -50,13 +55,13 @@ export const Balance: FC<BalanceType> = ({
           )}
         >
           {signed && balance > 0 && '+'}
-          {balance.toFixed(2)}
+          {formattedBalance}
         </span>
         {goalAmount && (
           <>
             <span className="text-text-neutral-tertiary leading-5"> / </span>
             <span className="text-text-neutral-primary text-base leading-5 font-bold">
-              {goalAmount.toFixed(2)}
+              {formattedGoal}
             </span>
           </>
         )}

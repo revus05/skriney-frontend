@@ -79,6 +79,10 @@ export const UpdateCategoryModal = () => {
     setDisplayedEmoji(native)
   }
 
+  useEffect(() => {
+    if (updateCategoryModalOpen) setFocus('title')
+  }, [updateCategoryModalOpen, setFocus])
+
   if (!updateCategory) return null
 
   return (
@@ -87,7 +91,9 @@ export const UpdateCategoryModal = () => {
       onOpenChange={(newValue) => dispatch(updateCategoryModalOpenFn(newValue))}
       hideCloseButton
     >
-      <ModalContent className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}>
+      <ModalContent
+        className={'bg-bg-neutral-tertiary w-[340px] rounded-3xl border p-4'}
+      >
         <div className={'flex flex-col gap-4'}>
           <ModalHeader className="flex items-center justify-between gap-1 p-0">
             <h2>

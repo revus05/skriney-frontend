@@ -19,7 +19,7 @@ import {
   useUpdateBankAccountForm,
   useUpdateBankAccountSubmit,
 } from '../model'
-import { CurrencySymbols } from 'shared/currencies'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
 import React, { useEffect, useState } from 'react'
@@ -89,6 +89,10 @@ export const UpdateBankAccountModal = () => {
     setDisplayedEmoji(native)
   }
 
+  useEffect(() => {
+    if (updateBankAccountModalOpen) setFocus('title')
+  }, [updateBankAccountModalOpen, setFocus])
+
   if (!updateBankAccount) return null
 
   return (
@@ -99,7 +103,9 @@ export const UpdateBankAccountModal = () => {
       }
       hideCloseButton
     >
-      <ModalContent className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}>
+      <ModalContent
+        className={'bg-bg-neutral-tertiary w-[340px] rounded-3xl border p-4'}
+      >
         <div className={'flex flex-col gap-4'}>
           <ModalHeader className="flex items-center justify-between gap-1 p-0">
             <h2>

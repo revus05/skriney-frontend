@@ -103,6 +103,11 @@
       "description": "Description",
       "update": "Update"
     },
+    "confirmDelete": {
+      "title": "Confirm transaction delete",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
     "validation": {
       "amountRequired": "Amount required",
       "amountMustBeNumber": "Amount must be a number",
@@ -125,7 +130,8 @@
         "button": "Connect",
         "connected": "Connected successfully"
       },
-      "language": "Language"
+      "language": "Language",
+      "animationEnabled": "Animation enabled"
     }
   },
   "auth": {

@@ -103,6 +103,11 @@
       "description": "Описание",
       "update": "Редактировать"
     },
+    "confirmDelete": {
+      "title": "Подтвердите удаление транзакции",
+      "cancel": "Отмена",
+      "delete": "Удалить"
+    },
     "validation": {
       "amountRequired": "Сумма обязательна",
       "amountMustBeNumber": "Сумма должна быть числом",
@@ -125,7 +130,8 @@
         "button": "Привязать",
         "connected": "Успешно привязан"
       },
-      "language": "Язык"
+      "language": "Язык",
+      "animationEnabled": "Включить анимации"
     }
   },
   "auth": {

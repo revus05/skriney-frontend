@@ -15,7 +15,7 @@ import {
   useCreateCategorySubmit,
 } from '../model'
 import { useTranslation } from 'shared/i18n'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 type CreateCategoryButtonProps = {
   className?: string
@@ -46,6 +46,10 @@ export const CreateCategoryButton: FC<CreateCategoryButtonProps> = ({
 
   const handleSetFocus = (name: string) =>
     setFocus(name as keyof CreateCategoryFormData)
+
+  useEffect(() => {
+    if (isOpen) setFocus('title')
+  }, [isOpen, setFocus])
 
   return (
     <>

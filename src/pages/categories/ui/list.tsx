@@ -1,7 +1,7 @@
 'use client'
 
 import { Balance, Button, Card, EmojiTitle, Translate } from 'shared/ui'
-import { CurrencySymbols } from 'shared/currencies'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import {
   useGetCategories,
   useDeleteCategory,

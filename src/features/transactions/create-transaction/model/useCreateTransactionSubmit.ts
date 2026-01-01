@@ -1,5 +1,5 @@
 import { CreateTransactionFormData } from './schema'
-import { CurrencyType } from 'shared/currencies'
+import { Currency } from 'shared/constants/currencies'
 import { useCreateTransaction } from 'entities/transaction'
 
 export const useCreateTransactionSubmit = (onSuccess?: () => void) => {
@@ -15,7 +15,7 @@ export const useCreateTransactionSubmit = (onSuccess?: () => void) => {
             : data.amount[0] === '-'
               ? +data.amount
               : +`-${data.amount}`,
-        currency: data.currency as CurrencyType,
+        currency: data.currency as keyof typeof Currency,
       })
 
       if (onSuccess) onSuccess()

@@ -4,11 +4,13 @@ import { SettingsList } from './list'
 
 const SettingsPage = () => {
   return (
-    <div className={'flex flex-col gap-6'}>
-      <h2 className={'text-[32px] leading-8 font-bold'}>
-        <Translate value={'settings.title'} />
-      </h2>
-      <SettingsList />
+    <div className={'flex w-full justify-center'}>
+      <div className={'flex w-[540px] flex-col gap-6'}>
+        <h2 className={'text-[32px] leading-8 font-bold'}>
+          <Translate value={'settings.title'} />
+        </h2>
+        <SettingsList />
+      </div>
     </div>
   )
 }

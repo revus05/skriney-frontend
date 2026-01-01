@@ -1,4 +1,4 @@
-enum Currency {
+export enum Currency {
   USD = 'USD', // Доллар США
   EUR = 'EUR', // Евро
   JPY = 'JPY', // Японская иена
@@ -79,5 +79,3 @@ export const CurrencySymbols: Record<Currency, string> = {
   BGN: 'лв', // Болгарский лев
   KZT: '₸', // Казахстанский тенге
 }
-
-export type CurrencyType = `${Currency}`

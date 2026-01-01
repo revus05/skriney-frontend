@@ -2,7 +2,7 @@
 
 import { CreateBankAccountFormData } from './schema'
 import { useCreateBankAccount } from 'entities/bank-account'
-import { CurrencyType } from 'shared/currencies'
+import { Currency } from 'shared/constants/currencies'
 
 export const useCreateBankAccountSubmit = (onSuccess?: () => void) => {
   const { onSubmit, isLoading } = useCreateBankAccount()
@@ -11,7 +11,7 @@ export const useCreateBankAccountSubmit = (onSuccess?: () => void) => {
     onSubmit: async (data: CreateBankAccountFormData) => {
       await onSubmit({
         ...data,
-        currency: data.currency as CurrencyType,
+        currency: data.currency as keyof typeof Currency,
         balance: +data.balance,
       })
 

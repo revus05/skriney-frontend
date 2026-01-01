@@ -19,7 +19,9 @@ export const ConfirmDeleteBankAccountModal: FC<
 
   return (
     <Modal isOpen={open} onOpenChange={openChangedAction} hideCloseButton>
-      <ModalContent className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}>
+      <ModalContent
+        className={'bg-bg-neutral-tertiary w-[300px] rounded-3xl border p-4'}
+      >
         <div className={'flex flex-col gap-4'}>
           <ModalHeader className="flex items-center justify-between gap-1 p-0">
             <h2>
@@ -35,12 +37,7 @@ export const ConfirmDeleteBankAccountModal: FC<
             <Button onClick={() => openChangedAction(false)}>
               <Translate value={'bankAccounts.confirmDelete.cancel'} />
             </Button>
-            <Button
-              onClick={handleSubmit}
-              className={
-                'bg-bg-semantic-error-bold text-text-semantic-error-inverse'
-              }
-            >
+            <Button onClick={handleSubmit} variant={'danger'}>
               <Translate value={'bankAccounts.confirmDelete.delete'} />
             </Button>
           </div>

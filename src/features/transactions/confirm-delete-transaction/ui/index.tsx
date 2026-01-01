@@ -3,14 +3,14 @@
 import { Button, Modal, ModalContent, ModalHeader, Translate } from 'shared/ui'
 import React, { FC } from 'react'
 
-type ConfirmCategoryDeleteModalProps = {
+type ConfirmTransactionDeleteModalProps = {
   open: boolean
   openChangedAction: (value: boolean) => void
   onSubmitAction: () => void
 }
 
-export const ConfirmDeleteCategoryModal: FC<
-  ConfirmCategoryDeleteModalProps
+export const ConfirmDeleteTransactionModal: FC<
+  ConfirmTransactionDeleteModalProps
 > = ({ open, openChangedAction, onSubmitAction }) => {
   const handleSubmit = () => {
     openChangedAction(false)
@@ -25,7 +25,7 @@ export const ConfirmDeleteCategoryModal: FC<
         <div className={'flex flex-col gap-4'}>
           <ModalHeader className="flex items-center justify-between gap-1 p-0">
             <h2>
-              <Translate value={'categories.confirmDelete.title'} />
+              <Translate value={'transactions.confirmDelete.title'} />
             </h2>
             <Button
               variant="icon"
@@ -35,10 +35,10 @@ export const ConfirmDeleteCategoryModal: FC<
           </ModalHeader>
           <div className={'mx-auto flex gap-4'}>
             <Button onClick={() => openChangedAction(false)}>
-              <Translate value={'categories.confirmDelete.cancel'} />
+              <Translate value={'transactions.confirmDelete.cancel'} />
             </Button>
             <Button onClick={handleSubmit} variant={'danger'}>
-              <Translate value={'categories.confirmDelete.delete'} />
+              <Translate value={'transactions.confirmDelete.delete'} />
             </Button>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 import {
   ApiResponse,
   baseQuery,
+  UpdateAnimationEnabledRequestDTO,
   UpdateDefaultBankAccountRequestDTO,
   UpdateDefaultCurrencyRequestDTO,
   UpdateLanguageRequestDTO,
@@ -63,6 +64,16 @@ const userSettingsApi = createApi({
         body,
       }),
     }),
+    updateAnimationEnabled: builder.mutation<
+      ApiResponse<UserSettingsDTO>,
+      UpdateAnimationEnabledRequestDTO
+    >({
+      query: (body) => ({
+        url: '/update-animation-enabled',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -73,4 +84,5 @@ export const {
   useUpdateThemeMutation,
   useUpdateDefaultBankAccountMutation,
   useUpdateLanguageMutation,
+  useUpdateAnimationEnabledMutation,
 } = userSettingsApi

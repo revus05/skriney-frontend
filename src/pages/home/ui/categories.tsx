@@ -23,7 +23,7 @@ export const CategoriesHome = () => {
       <h2 className={'text-xl font-bold'}>
         <Translate value={'home.categories.title'} />
       </h2>
-      <div className={'flex gap-4'}>
+      <div className={'flex flex-wrap gap-4'}>
         {categories.map((category) => (
           <CategoryCard
             key={category.uuid}

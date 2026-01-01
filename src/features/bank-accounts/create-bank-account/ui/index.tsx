@@ -16,12 +16,12 @@ import {
   useCreateBankAccountForm,
   useCreateBankAccountSubmit,
 } from '../model'
-import { CurrencySymbols } from 'shared/currencies'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
 import { Modal } from 'shared/ui'
 import { useDisclosure } from '@heroui/react'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 type CreateBankAccountButtonProps = {
   className?: string
@@ -54,6 +54,10 @@ export const CreateBankAccountButton: FC<CreateBankAccountButtonProps> = ({
   const handleSetFocus = (name: string) =>
     setFocus(name as keyof CreateBankAccountFormData)
 
+  useEffect(() => {
+    if (isOpen) setFocus('title')
+  }, [isOpen, setFocus])
+
   return (
     <>
       <Button
@@ -64,7 +68,7 @@ export const CreateBankAccountButton: FC<CreateBankAccountButtonProps> = ({
       />
       <Modal isOpen={isOpen} onOpenChange={handleOpenChange} hideCloseButton>
         <ModalContent
-          className={'bg-bg-neutral-tertiary w-[380px] rounded-3xl border p-4'}
+          className={'bg-bg-neutral-tertiary w-[340px] rounded-3xl border p-4'}
         >
           <div className={'flex flex-col gap-4'}>
             <ModalHeader className="flex items-center justify-between gap-1 p-0">
@@ -107,6 +111,7 @@ export const CreateBankAccountButton: FC<CreateBankAccountButtonProps> = ({
                       <Select
                         label={'currency'}
                         placeholder={t('bankAccounts.creation.currency')}
+                        className={'!w-[128px]'}
                         isInvalid={!!errors.currency?.message}
                         errorMessage={errors.currency?.message}
                         value={field.value}

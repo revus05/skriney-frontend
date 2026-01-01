@@ -21,7 +21,7 @@ const HomeLayout: FC<HomeLayoutType> = async ({ children }) => {
   return (
     <main className={'p-2.5'}>
       <Header />
-      <div className="mt-8 flex gap-8">
+      <div className="mt-8 flex gap-8 pr-8">
         <Aside />
         {children}
       </div>

@@ -22,7 +22,7 @@ import { useTranslation } from 'shared/i18n'
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { Controller } from 'react-hook-form'
-import { CurrencySymbols } from 'shared/currencies'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { CreateBankAccountButton } from 'features/bank-accounts/create-bank-account'
 import { CreateCategoryButton } from 'features/categories/create-category'
 import { useGetBankAccounts } from 'entities/bank-account'
@@ -74,7 +74,12 @@ export const UpdateTransactionModal = () => {
       return
     }
 
-    setValue('amount', `${updateTransaction.amount}`)
+    setValue(
+      'amount',
+      updateTransaction.amount > 0
+        ? `+${updateTransaction.amount}`
+        : `${updateTransaction.amount}`,
+    )
     setValue('bankAccountUuid', updateTransaction.bankAccount?.uuid || '')
     setValue('categoryUuid', updateTransaction.category?.uuid || '')
     setValue('currency', updateTransaction.currency)
@@ -86,7 +91,9 @@ export const UpdateTransactionModal = () => {
 
   const bankAccountOptions = bankAccountsData.map((bankAccount) => ({
     key: bankAccount.uuid,
-    label: bankAccount.title,
+    label: bankAccount.emoji
+      ? `${bankAccount.emoji} ${bankAccount.title}`
+      : bankAccount.title,
   }))
 
   const categoryOptions = categoriesData.map((category) => ({
@@ -95,6 +102,10 @@ export const UpdateTransactionModal = () => {
       ? `${category.emoji} ${category.title}`
       : category.title,
   }))
+
+  useEffect(() => {
+    if (updateTransactionModalOpen) setFocus('amount')
+  }, [updateTransactionModalOpen, setFocus])
 
   if (!updateTransaction) return null
 

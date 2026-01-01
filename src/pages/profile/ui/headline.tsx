@@ -2,7 +2,7 @@
 
 import { useAppSelector } from 'shared/lib'
 import { Balance } from 'shared/ui'
-import { CurrencySymbols } from 'shared/currencies'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { useGetBalanceSummary } from 'entities/balance'
 import { UpdatableUserImage } from 'features/user-settings/image'
 

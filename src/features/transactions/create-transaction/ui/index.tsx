@@ -1,21 +1,25 @@
 'use client'
 
-import { Button, Input, Select, SelectItem, Translate } from 'shared/ui'
 import {
+  Button,
+  Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  useDisclosure,
-} from '@heroui/react'
+  Select,
+  SelectItem,
+  Translate,
+} from 'shared/ui'
+import { useDisclosure } from '@heroui/react'
 import {
   CreateTransactionFormData,
   useCreateTransactionForm,
   useCreateTransactionSubmit,
 } from '../model'
 import { Controller } from 'react-hook-form'
-import { CurrencySymbols } from 'shared/currencies'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { useTranslation } from 'shared/i18n'
 import { useGetBankAccounts } from 'entities/bank-account'
 import { useGetCategories } from 'entities/category'
@@ -40,7 +44,9 @@ export const CreateTransactionButton = () => {
 
   const bankAccountOptions = bankAccountsData.map((bankAccount) => ({
     key: bankAccount.uuid,
-    label: bankAccount.title,
+    label: bankAccount.emoji
+      ? `${bankAccount.emoji} ${bankAccount.title}`
+      : bankAccount.title,
   }))
 
   const categoryOptions = categoriesData.map((category) => ({
@@ -55,9 +61,6 @@ export const CreateTransactionButton = () => {
   const handleOpenChange = () => {
     onOpenChange()
     reset()
-    if (isOpen) {
-      setFocus('amount')
-    }
   }
 
   const { onSubmit, isLoading } = useCreateTransactionSubmit(handleOpenChange)
@@ -77,6 +80,10 @@ export const CreateTransactionButton = () => {
       setValue('categoryUuid', categoriesData[0].uuid, { shouldValidate: true })
     }
   }, [categoriesData, isOpen, setValue])
+
+  useEffect(() => {
+    if (isOpen) setFocus('amount')
+  }, [isOpen, setFocus])
 
   return (
     <>
