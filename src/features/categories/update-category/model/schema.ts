@@ -1,8 +1,12 @@
 import { z } from 'zod'
+import { Translate } from 'shared/i18n'
 
-export const updateCategorySchema = z.object({
-  title: z.string().trim().nonempty('Название счета обязательно'),
-  emoji: z.string().optional(),
-})
+export const updateCategorySchema = (t: Translate) =>
+  z.object({
+    title: z.string().trim().nonempty(t('categories.validation.titleRequired')),
+    emoji: z.string().optional(),
+  })
 
-export type UpdateCategoryFormData = z.infer<typeof updateCategorySchema>
+export type UpdateCategoryFormData = z.infer<
+  ReturnType<typeof updateCategorySchema>
+>

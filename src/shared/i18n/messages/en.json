@@ -76,6 +76,11 @@
       "title": "Confirm bank account delete",
       "cancel": "Cancel",
       "delete": "Delete"
+    },
+    "validation": {
+      "titleRequired": "Bank account title required",
+      "initialBalanceMustBeNumber": "Initial balance must be a number",
+      "currencyRequired": "Currency required"
     }
   },
   "transactions": {

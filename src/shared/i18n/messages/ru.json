@@ -54,6 +54,9 @@
       "title": "Подтвердите удаление категории",
       "cancel": "Отмена",
       "delete": "Удалить"
+    },
+    "validation": {
+      "titleRequired": "Название категории обязательно"
     }
   },
   "bankAccounts": {
@@ -76,6 +79,11 @@
       "title": "Подтвердите удаление счета",
       "cancel": "Отмена",
       "delete": "Удалить"
+    },
+    "validation": {
+      "titleRequired": "Название счета обязательно",
+      "initialBalanceMustBeNumber": "Начальный баланс должен быть числом",
+      "currencyRequired": "Валюта обязательна"
     }
   },
   "transactions": {
