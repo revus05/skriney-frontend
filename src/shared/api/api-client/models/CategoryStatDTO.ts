@@ -10,6 +10,6 @@ export type CategoryStatDTO = {
     /**
      * Category total spent
      */
-    totalSpent: number;
+    totalExpenses: number;
 };
 

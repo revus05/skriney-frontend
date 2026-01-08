@@ -9,6 +9,7 @@ type BalanceType = {
   withBackground?: boolean
   withColor?: boolean
   signed?: boolean
+  isExpense?: boolean
   classNames?: {
     balance?: string
     currency?: string
@@ -25,6 +26,7 @@ export const Balance: FC<BalanceType> = ({
   withColor,
   signed = false,
   classNames,
+  isExpense = false,
 }) => {
   const formattedBalance = formatMoney(balance)
   const formattedGoal =
@@ -37,9 +39,13 @@ export const Balance: FC<BalanceType> = ({
         withBackground &&
           'flex w-fit shrink-0 flex-nowrap rounded-md px-1 py-0.5 backdrop-blur-[32px]',
         withBackground &&
-          (balance < 0
-            ? 'bg-bg-semantic-error-subtle/70'
-            : 'bg-bg-semantic-success-subtle/70'),
+          (isExpense
+            ? balance <= 0
+              ? 'bg-bg-semantic-success-subtle/70'
+              : 'bg-bg-semantic-error-subtle/70'
+            : balance <= 0
+              ? 'bg-bg-semantic-error-subtle/70'
+              : 'bg-bg-semantic-success-subtle/70'),
         classNames?.wrapper,
       )}
     >
@@ -48,9 +54,13 @@ export const Balance: FC<BalanceType> = ({
           className={cn(
             'text-text-neutral-primary text-base leading-5 font-semibold',
             (withBackground || withColor) &&
-              (balance < 0
-                ? 'text-text-semantic-error-primary'
-                : 'text-text-semantic-success-primary'),
+              (isExpense
+                ? balance <= 0
+                  ? 'text-text-semantic-success-primary'
+                  : 'text-text-semantic-error-primary'
+                : balance <= 0
+                  ? 'text-text-semantic-error-primary'
+                  : 'text-text-semantic-success-primary'),
             classNames?.balance,
           )}
         >

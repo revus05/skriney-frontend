@@ -87,7 +87,7 @@ export const UpdateTransactionModal = () => {
   }, [setValue, updateTransaction, uuid, updateTransactionModalOpen])
 
   const bankAccountsData = useGetBankAccounts()
-  const categoriesData = useGetCategories()
+  const { categories: categoriesData } = useGetCategories()
 
   const bankAccountOptions = bankAccountsData.map((bankAccount) => ({
     key: bankAccount.uuid,

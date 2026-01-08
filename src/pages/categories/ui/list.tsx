@@ -21,8 +21,8 @@ import { ConfirmDeleteCategoryModal } from 'features/categories/confirm-delete-c
 export const CategoriesList = () => {
   const dispatch = useAppDispatch()
 
-  const categories = useGetCategories()
-  const categoriesStats = useGetCategoriesStats()
+  const { categories } = useGetCategories()
+  const { categoriesStats } = useGetCategoriesStats()
   const updateCategory = useUpdateCategory()
   const deleteCategory = useDeleteCategory()
 
@@ -54,7 +54,7 @@ export const CategoriesList = () => {
         >
           <div className={'flex items-center gap-2.5'}>
             <EmojiTitle
-              emoji={category.emoji}
+              emoji={category.emoji || undefined}
               title={category.title}
               onEmojiChange={(emoji) =>
                 updateCategory(category.uuid, { emoji })
@@ -71,7 +71,7 @@ export const CategoriesList = () => {
               withColor
               balance={
                 categoriesStats.find((stat) => stat.uuid === category.uuid)
-                  ?.totalSpent || 0
+                  ?.totalExpenses ?? 0
               }
               currency={CurrencySymbols.BYN}
             />

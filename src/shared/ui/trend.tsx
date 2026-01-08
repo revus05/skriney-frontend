@@ -2,11 +2,11 @@ import { Icons } from 'shared/ui'
 import { FC } from 'react'
 
 type TrendType = {
-  expense?: boolean
+  isExpense?: boolean
   changePercent: number
 }
 
-export const Trend: FC<TrendType> = ({ changePercent, expense = false }) => {
+export const Trend: FC<TrendType> = ({ changePercent, isExpense = false }) => {
   const formattedPercent =
     changePercent > 0
       ? `+${changePercent.toFixed(2)}`
@@ -15,12 +15,12 @@ export const Trend: FC<TrendType> = ({ changePercent, expense = false }) => {
   const isPositive = changePercent > 0
 
   const changeIconColor =
-    isPositive !== expense
+    isPositive !== isExpense
       ? 'fill-icon-semantic-success-primary'
       : 'fill-icon-semantic-error-primary'
 
   const changeTextColor =
-    isPositive !== expense
+    isPositive !== isExpense
       ? 'text-text-semantic-success-primary'
       : 'text-text-semantic-error-primary'
 

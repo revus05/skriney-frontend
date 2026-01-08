@@ -316,8 +316,8 @@
 
 
 .epr-emoji-picker {
-    border-radius: 1rem; /* скруглённые углы */
-    background-color: theme(colors.neutral.900); /* тёмный фон */
+    border-radius: 1rem;
+    background-color: theme(colors.neutral.900);
 }
 
 .epr-search {
@@ -337,4 +337,9 @@
 
 .epr-emoji:hover {
     transform: scale(1.2);
+}
+
+.recharts-wrapper * {
+    outline: none !important;
+    tab-index: -1;
 }

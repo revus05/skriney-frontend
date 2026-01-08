@@ -166,5 +166,29 @@
       "passwordMaxLength": "Максимальная длина пароля 64 символа",
       "passwordsNotMatch": "Пароли не совпадают"
     }
+  },
+  "statistics": {
+    "title": "Статистика",
+    "transactionDynamic": "Динамика транзакций",
+    "period": {
+      "title": "Выберите период",
+      "LAST_7_DAYS": "7 дней",
+      "LAST_30_DAYS": "30 дней",
+      "LAST_3_MONTHS": "3 месяца",
+      "LAST_1_YEAR": "1 год",
+      "ALL_TIME": "Максимум"
+    },
+    "bankAccount": {
+      "title": "Выберите счет",
+      "all": "Все"
+    },
+    "chartType": {
+      "balance": "Баланс",
+      "incomeAndExpenses": "Доходы и расходы"
+    },
+    "incomeTitle": "Доходы",
+    "expensesTitle": "Расходы",
+    "noExpensesYet": "Нет расходов",
+    "noIncomeYet": "Нет доходов"
   }
 }

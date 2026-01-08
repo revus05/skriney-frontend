@@ -44,7 +44,10 @@ export const TotalBalanceCard: FC<TotalBalanceType> = ({
         </div>
 
         {changePercent && (
-          <Trend changePercent={changePercent} expense={type === 'expenses'} />
+          <Trend
+            changePercent={changePercent}
+            isExpense={type === 'expenses'}
+          />
         )}
       </div>
     </Card>

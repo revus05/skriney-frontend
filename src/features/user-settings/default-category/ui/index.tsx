@@ -9,7 +9,7 @@ import { useGetCategories } from 'entities/category'
 
 export const UpdateDefaultCategorySelect = () => {
   const updateDefaultCategory = useUpdateDefaultCategorySubmit()
-  const categories = useGetCategories()
+  const { categories } = useGetCategories()
 
   const defaultCategory =
     useAppSelector(

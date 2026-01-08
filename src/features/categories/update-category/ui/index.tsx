@@ -43,6 +43,7 @@ export const UpdateCategoryModal = () => {
     reset,
     setFocus,
     setValue,
+    getValues,
   } = useUpdateCategoryForm()
 
   const handleClose = () => {
@@ -65,7 +66,7 @@ export const UpdateCategoryModal = () => {
     }
 
     setValue('title', updateCategory.title)
-    setValue('emoji', updateCategory.emoji)
+    setValue('emoji', updateCategory.emoji || '')
   }, [setValue, updateCategory, uuid, updateCategoryModalOpen])
 
   const [displayedEmoji, setDisplayedEmoji] = useState('')

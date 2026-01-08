@@ -8,7 +8,7 @@ export const Switch: FC<SwitchProps> = (props) => {
     <HeroUiSwitch
       classNames={{
         wrapper:
-          'rounded-lg border shadow-sm bg-transparent backdrop-blur-[32px]',
+          'rounded-lg border shadow-sm !bg-transparent backdrop-blur-[32px]',
         thumb: 'rounded-[6px] bg-bg-neutral-inverse-primary',
       }}
       {...props}

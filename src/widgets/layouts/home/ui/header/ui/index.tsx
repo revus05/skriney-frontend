@@ -10,7 +10,7 @@ export const Header = () => {
         'bg-bg-neutral-primary/70 flex items-center justify-between rounded-2xl border px-8 py-3 shadow-sm'
       }
     >
-      <Link href={'/'}>
+      <Link href={'/'} tabIndex={-1}>
         <Icons.logo />
       </Link>
       <HeaderSearch />

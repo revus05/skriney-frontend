@@ -33,7 +33,7 @@ export const BankAccountsList = () => {
   const deleteBankAccount = useDeleteBankAccount()
   const updateBankAccount = useUpdateBankAccount()
 
-  const dailyBalances = useGetDailyBalances()
+  const { dailyBalances } = useGetDailyBalances()
 
   const handleEditClicked = (uuid: string) => {
     dispatch(updateBankAccountModalOpenFn(true))

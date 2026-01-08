@@ -40,7 +40,7 @@ export const CreateTransactionButton = () => {
   } = useCreateTransactionForm()
 
   const bankAccountsData = useGetBankAccounts()
-  const categoriesData = useGetCategories()
+  const { categories: categoriesData } = useGetCategories()
 
   const bankAccountOptions = bankAccountsData.map((bankAccount) => ({
     key: bankAccount.uuid,

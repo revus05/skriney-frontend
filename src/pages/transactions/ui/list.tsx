@@ -104,7 +104,7 @@ export const TransactionsList = () => {
                     {tx.category ? (
                       <EmojiTitle
                         title={tx.category.title}
-                        emoji={tx.category.emoji}
+                        emoji={tx.category.emoji ?? undefined}
                         className={'w-[20%] text-sm'}
                       />
                     ) : (

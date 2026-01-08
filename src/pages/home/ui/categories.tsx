@@ -9,8 +9,8 @@ import {
 import { Translate } from 'shared/ui'
 
 export const CategoriesHome = () => {
-  const categories = useGetCategories()
-  const categoriesStats = useGetCategoriesStats()
+  const { categories } = useGetCategories()
+  const { categoriesStats } = useGetCategoriesStats()
 
   const updateCategory = useUpdateCategory()
 
@@ -28,10 +28,10 @@ export const CategoriesHome = () => {
           <CategoryCard
             key={category.uuid}
             title={category.title}
-            emoji={category.emoji}
+            emoji={category.emoji || undefined}
             amount={
               categoriesStats.find((stat) => stat.uuid === category.uuid)
-                ?.totalSpent || 0
+                ?.totalExpenses ?? 0
             }
             currency={'BYN'}
             onEmojiChange={(emoji) => updateCategory(category.uuid, { emoji })}

@@ -163,5 +163,29 @@
       "passwordMaxLength": "Maximum password length is 64 characters",
       "passwordsNotMatch": "Passwords do not match"
     }
+  },
+  "statistics": {
+    "title": "Statistics",
+    "transactionDynamic": "Transaction dynamic",
+    "period": {
+      "title": "Select period",
+      "LAST_7_DAYS": "7 days",
+      "LAST_30_DAYS": "30 days",
+      "LAST_3_MONTHS": "3 months",
+      "LAST_1_YEAR": "1 year",
+      "ALL_TIME": "Maximum"
+    },
+    "bankAccount": {
+      "title": "Select bank account",
+      "all": "All"
+    },
+    "chartType": {
+      "balance": "Balance",
+      "incomeAndExpenses": "Income and expenses"
+    },
+    "incomeTitle": "Income",
+    "expensesTitle": "Expenses",
+    "noExpensesYet": "No expenses yet",
+    "noIncomeYet": "No income yet"
   }
 }

@@ -7,7 +7,7 @@ import { useGetBalanceSummary, useGetDailyBalances } from 'entities/balance'
 
 export const TotalBalance = () => {
   const balanceSummary = useGetBalanceSummary()
-  const dailyBalances = useGetDailyBalances()
+  const { dailyBalances } = useGetDailyBalances()
 
   function aggregateByDate(dailyBalances: DailyBalanceDTO[]) {
     const grouped: Record<string, BalanceSummaryDTO> = {}

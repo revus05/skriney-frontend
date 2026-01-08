@@ -10,7 +10,7 @@ import { Key, ReactNode, useState } from 'react'
 import { cn, useAppSelector } from 'shared/lib'
 import { Icons } from 'shared/ui/icons'
 
-type SelectProps<T extends string> = {
+type SelectProps<T extends string | null> = {
   label: string
   value: T
   onValueChangeAction: (value: T) => void
@@ -22,7 +22,7 @@ type SelectProps<T extends string> = {
   'selectedKeys' | 'onSelectionChange' | 'value' | 'onValueChange'
 >
 
-export const Select = <T extends string>({
+export const Select = <T extends string | null>({
   label,
   classNames,
   children,
@@ -55,7 +55,7 @@ export const Select = <T extends string>({
       aria-label={label}
       classNames={{
         trigger: cn(
-          'hover:!bg-bg-neutral-secondary backdrop-blur-[32px] active:scale-[0.98]',
+          'hover:!bg-bg-neutral-secondary focus-within:!bg-bg-neutral-secondary backdrop-blur-[32px] active:scale-[0.98]',
           'px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none shadow-sm active:shadow-md',
           animationEnabled &&
             'transition duration-150 motion-reduce:transition-none',
