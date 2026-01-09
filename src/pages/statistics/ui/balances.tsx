@@ -63,7 +63,7 @@ export const Balances = () => {
           </h2>
           <Select
             label={'period'}
-            className={'w-[150px]'}
+            className={'w-37.5'}
             placeholder={'Тип'}
             value={type}
             onValueChangeAction={setType}
@@ -75,7 +75,7 @@ export const Balances = () => {
             ))}
           </Select>
         </div>
-        <div className={'h-[150px]'}>
+        <div className={'h-37.5'}>
           <ResponsiveContainer width={'100%'} height={'100%'}>
             <BarChart data={dailyBalances} tabIndex={-1}>
               <XAxis

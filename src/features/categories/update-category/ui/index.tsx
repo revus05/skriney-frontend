@@ -43,7 +43,6 @@ export const UpdateCategoryModal = () => {
     reset,
     setFocus,
     setValue,
-    getValues,
   } = useUpdateCategoryForm()
 
   const handleClose = () => {

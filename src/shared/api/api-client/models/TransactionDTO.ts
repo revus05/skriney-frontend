@@ -2,8 +2,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BankAccountDTO } from './BankAccountDTO';
-import type { CategoryDTO } from './CategoryDTO';
+// noinspection ES6PreferShortImport
+
+import type {BankAccountDTO} from './BankAccountDTO';
+import type {CategoryDTO} from './CategoryDTO';
+
 export type TransactionDTO = {
     /**
      * Transaction uuid

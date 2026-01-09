@@ -8,7 +8,7 @@ import { CategoriesPieChart } from 'pages/statistics/ui/categories'
 const StatisticsPage = () => {
   return (
     <div className={'flex w-full justify-center'}>
-      <div className={'flex w-[980px] flex-col gap-6'}>
+      <div className={'flex w-245 flex-col gap-6'}>
         <div className={'flex items-center justify-between gap-2.5'}>
           <h2 className={'text-[32px] leading-8 font-bold'}>
             <Translate value={'statistics.title'} />

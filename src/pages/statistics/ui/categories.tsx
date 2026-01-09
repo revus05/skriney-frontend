@@ -1,7 +1,7 @@
 'use client'
 
 import { useGetCategories, useGetCategoriesStats } from 'entities/category'
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { Balance, Card, Loader, Translate } from 'shared/ui'
 import { cn, useAppSelector } from 'shared/lib'
 import { Currency } from 'shared/constants/currencies'
@@ -150,7 +150,7 @@ export const CategoriesPieChart = () => {
           </div>
 
           {!hasIncomeCategoriesData ? (
-            <div className="text-text-neutral-tertiary flex h-[182px] items-center justify-center">
+            <div className="text-text-neutral-tertiary flex h-45.5 items-center justify-center">
               <Translate value="statistics.noIncomeYet" />
             </div>
           ) : (
@@ -185,7 +185,7 @@ export const CategoriesPieChart = () => {
                   <Tooltip content={<CustomTooltip />} />
                 </PieChart>
               </ResponsiveContainer>
-              <div className="flex w-[calc(100%_-_182px_-_32px)] flex-col gap-2">
+              <div className="flex w-[calc(100%-182px-32px)] flex-col gap-2">
                 {incomeCategoriesData.map((item, index) => (
                   <div
                     key={item.uuid}
@@ -259,7 +259,7 @@ export const CategoriesPieChart = () => {
           </div>
 
           {!hasExpensesCategoriesData ? (
-            <div className="text-text-neutral-tertiary flex h-[182px] items-center justify-center">
+            <div className="text-text-neutral-tertiary flex h-45.5 items-center justify-center">
               <Translate value="statistics.noExpensesYet" />
             </div>
           ) : (
@@ -294,7 +294,7 @@ export const CategoriesPieChart = () => {
                   <Tooltip content={<CustomTooltip expenses />} />
                 </PieChart>
               </ResponsiveContainer>
-              <div className="flex w-[calc(100%_-_182px_-_32px)] flex-col gap-2">
+              <div className="flex w-[calc(100%-182px-32px)] flex-col gap-2">
                 {expensesCategoriesData.map((item, index) => (
                   <div
                     key={item.uuid}
