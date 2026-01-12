@@ -7,7 +7,7 @@ import { setUserSettings } from 'entities/user'
 export const useDeleteBankAccount = () => {
   const [deleteBankAccountFn] = useDeleteBankAccountMutation()
   const userSettings = useAppSelector(
-    (state) => state.authSlice.user?.userSettings,
+    (state) => state.userSlice.user?.userSettings,
   )
   const dispatch = useAppDispatch()
   const bankAccounts = useAppSelector(

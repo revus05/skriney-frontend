@@ -10,9 +10,9 @@ export const useGetCategoriesStats = () => {
     useGetCategoriesStatsMutation()
   const dispatch = useAppDispatch()
   const categoriesStats = useAppSelector((state) => state.categorySlice.stats)
-  const period = useAppSelector((state) => state.dailyBalanceSlice.period)
+  const period = useAppSelector((state) => state.balanceSlice.period)
   const bankAccountUuid = useAppSelector(
-    (state) => state.dailyBalanceSlice.bankAccountUuid,
+    (state) => state.balanceSlice.bankAccountUuid,
   )
 
   useEffect(() => {

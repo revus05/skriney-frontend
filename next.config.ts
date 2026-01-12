@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       {
         protocol: url.protocol.slice(0, -1) as 'http' | 'https',
         hostname: url.hostname,
-        port: process.env.NODE_ENV === 'development' ? url.port || '8080' : '',
+        port: url.port,
       },
     ],
   },

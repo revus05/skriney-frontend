@@ -11,7 +11,7 @@ export const PeriodSelect = () => {
 
   const dispatch = useAppDispatch()
 
-  const period = useAppSelector((state) => state.dailyBalanceSlice.period)
+  const period = useAppSelector((state) => state.balanceSlice.period)
 
   const handlePeriodChange = (period: BalancePeriod) => {
     dispatch(setBalancePeriod(period))

@@ -48,7 +48,7 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   const animationEnabled =
     useAppSelector(
-      (state) => state.authSlice.user?.userSettings.animationEnabled,
+      (state) => state.userSlice.user?.userSettings.animationEnabled,
     ) ?? true
 
   return (

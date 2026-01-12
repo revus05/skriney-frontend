@@ -2,19 +2,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export type BankAccountDTO = {
+export type BankAccountVisualDTO = {
     /**
      * Bank Account uuid
      */
     uuid: string;
-    /**
-     * Money on the bank account
-     */
-    balanceInUsd: number;
-    /**
-     * Each currency balance
-     */
-    currencyBalances: Record<string, number>;
     /**
      * Bank Account title
      */

@@ -9,7 +9,7 @@ import { useSignOutSubmit } from 'features/auth/sign-out'
 import { useEffect, useState } from 'react'
 
 export const HeaderUserActions = () => {
-  const user = useAppSelector((state) => state.authSlice.user)
+  const user = useAppSelector((state) => state.userSlice.user)
 
   const router = useRouter()
 

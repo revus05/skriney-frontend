@@ -16,7 +16,7 @@ export const UpdatableUserImage = () => {
   const [isDragging, setIsDragging] = useState(false)
   const { isOpen, onOpenChange } = useDisclosure()
 
-  const user = useAppSelector((state) => state.authSlice.user)
+  const user = useAppSelector((state) => state.userSlice.user)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 

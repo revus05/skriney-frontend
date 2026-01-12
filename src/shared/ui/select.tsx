@@ -36,7 +36,7 @@ export const Select = <T extends string | null>({
 
   const animationEnabled =
     useAppSelector(
-      (state) => state.authSlice.user?.userSettings.animationEnabled,
+      (state) => state.userSlice.user?.userSettings.animationEnabled,
     ) ?? true
 
   const handleSelectionChange = (keys: SharedSelection) => {

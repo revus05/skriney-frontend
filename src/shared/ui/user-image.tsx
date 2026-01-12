@@ -50,7 +50,7 @@ export const UserImage: FC<UserImageType> = ({
   return (
     <div
       className={cn(
-        'group relative flex size-[120px] items-center justify-center overflow-hidden rounded-full',
+        'group relative flex size-30 items-center justify-center overflow-hidden rounded-full',
         className,
       )}
       {...props}
@@ -81,7 +81,7 @@ export const UserImage: FC<UserImageType> = ({
             'absolute top-1/2 left-1/2 flex h-full w-full -translate-1/2 cursor-pointer items-center justify-center bg-black/50 opacity-0 transition group-hover:opacity-100'
           }
         >
-          <Icons.image className={'size-[48px] fill-white'} />
+          <Icons.image className={'size-12 fill-white'} />
         </div>
       )}
     </div>

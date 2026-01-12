@@ -5,6 +5,7 @@
 
 export type { BalanceSummaryDTO } from './models/BalanceSummaryDTO';
 export type { BankAccountDTO } from './models/BankAccountDTO';
+export type {BankAccountVisualDTO} from './models/BankAccountVisualDTO';
 export type { CategoryDTO } from './models/CategoryDTO';
 export type { CategoryStatDTO } from './models/CategoryStatDTO';
 export type { CreateBankAccountRequestDTO } from './models/CreateBankAccountRequestDTO';

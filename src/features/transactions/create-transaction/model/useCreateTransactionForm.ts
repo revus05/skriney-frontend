@@ -8,7 +8,7 @@ import { useTranslation } from 'shared/i18n'
 
 export const useCreateTransactionForm = () => {
   const userSettings = useAppSelector(
-    (state) => state.authSlice.user?.userSettings,
+    (state) => state.userSlice.user?.userSettings,
   )
 
   const t = useTranslation()

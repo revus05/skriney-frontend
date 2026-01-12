@@ -3,7 +3,7 @@ import { cookies, headers } from 'next/headers'
 import type { ApiResponse, UserDTO, UserSettingsDTO } from 'shared/api'
 
 type PreloadedState = {
-  authSlice: { user: UserDTO | null }
+  userSlice: { user: UserDTO | null }
   language: 'EN' | 'RU'
   theme: 'DARK' | 'LIGHT' | 'SYSTEM'
 }
@@ -26,7 +26,7 @@ const getPreloadedObject: GetPreloadedObject = (
   user = null,
   theme = 'SYSTEM',
 ) => ({
-  authSlice: { user },
+  userSlice: { user },
   language,
   theme,
 })

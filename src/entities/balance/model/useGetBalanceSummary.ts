@@ -8,9 +8,7 @@ import { setBalanceSummary } from '../model'
 export const useGetBalanceSummary = () => {
   const [getBalanceSummary] = useGetBalanceSummaryMutation()
   const dispatch = useAppDispatch()
-  const balanceSummary = useAppSelector(
-    (state) => state.dailyBalanceSlice.summary,
-  )
+  const balanceSummary = useAppSelector((state) => state.balanceSlice.summary)
 
   useEffect(() => {
     const fetchBalanceSummary = async () => {

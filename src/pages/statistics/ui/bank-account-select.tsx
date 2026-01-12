@@ -17,7 +17,7 @@ export const BalanceBankAccountSelect = () => {
   const bankAccounts = useGetBankAccounts()
 
   const selectedBankAccount = useAppSelector(
-    (state) => state.dailyBalanceSlice.bankAccountUuid,
+    (state) => state.balanceSlice.bankAccountUuid,
   )
 
   const handleBankAccountUuidChange = (uuid: string) => {

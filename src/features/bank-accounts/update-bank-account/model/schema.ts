@@ -7,10 +7,6 @@ export const updateBankAccountSchema = (t: Translate) =>
       .string()
       .trim()
       .nonempty(t('bankAccounts.validation.titleRequired')),
-    currency: z
-      .string()
-      .trim()
-      .nonempty(t('bankAccounts.validation.currencyRequired')),
     emoji: z.string(),
   })
 

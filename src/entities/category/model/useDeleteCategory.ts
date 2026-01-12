@@ -7,7 +7,7 @@ export const useDeleteCategory = () => {
   const [deleteCategoryFn] = useDeleteCategoryMutation()
   const dispatch = useAppDispatch()
   const userSettings = useAppSelector(
-    (state) => state.authSlice.user?.userSettings,
+    (state) => state.userSlice.user?.userSettings,
   )
   const categories = useAppSelector((state) => state.categorySlice.categories)
 

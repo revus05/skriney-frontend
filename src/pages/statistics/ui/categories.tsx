@@ -39,7 +39,7 @@ export const CategoriesPieChart = () => {
   const isLoading = isCategoriesLoading || isCategoriesStatsLoading
 
   const getCategoryTotalExpenses = (uuid: string): number =>
-    categoriesStats.find((stat) => stat.uuid === uuid)?.totalExpenses ?? 0
+    categoriesStats.find((stat) => stat.uuid === uuid)?.totalBalanceInUsd ?? 0
 
   const incomeCategoriesData = categories
     .filter(({ uuid }) => getCategoryTotalExpenses(uuid) > 0)
@@ -66,7 +66,7 @@ export const CategoriesPieChart = () => {
 
   const animationEnabled =
     useAppSelector(
-      (state) => state.authSlice.user?.userSettings.animationEnabled,
+      (state) => state.userSlice.user?.userSettings.animationEnabled,
     ) ?? true
 
   type CustomTooltipProps = {
@@ -95,7 +95,7 @@ export const CategoriesPieChart = () => {
           </p>
           <Balance
             balance={payload[0].payload.value}
-            currency={Currency.BYN}
+            currency={Currency.USD}
             withColor
             withBackground
             classNames={{
@@ -141,7 +141,7 @@ export const CategoriesPieChart = () => {
                     (sum, item) => sum + item.value,
                     0,
                   )}
-                  currency={Currency.BYN}
+                  currency={Currency.USD}
                   withColor
                   withBackground
                 />
@@ -209,7 +209,7 @@ export const CategoriesPieChart = () => {
                     <div className="shrink-0">
                       <Balance
                         balance={item.value}
-                        currency={Currency.BYN}
+                        currency={Currency.USD}
                         withColor
                         withBackground
                       />

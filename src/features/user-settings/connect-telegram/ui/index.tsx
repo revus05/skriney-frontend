@@ -5,8 +5,8 @@ import { Icons, Translate } from 'shared/ui'
 import { useAppSelector } from 'shared/lib'
 
 export const ConnectTelegramButton = () => {
-  const userId = useAppSelector((state) => state.authSlice.user?.uuid) || ''
-  const telegramId = useAppSelector((state) => state.authSlice.user?.telegramId)
+  const userId = useAppSelector((state) => state.userSlice.user?.uuid) || ''
+  const telegramId = useAppSelector((state) => state.userSlice.user?.telegramId)
 
   if (telegramId) {
     return (

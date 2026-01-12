@@ -14,7 +14,7 @@ export type CategoryDTO = {
     /**
      * Category emoji
      */
-    emoji: string | null;
+    emoji: string;
     /**
      * Creation timestamp
      */

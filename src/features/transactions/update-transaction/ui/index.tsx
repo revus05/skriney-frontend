@@ -80,7 +80,7 @@ export const UpdateTransactionModal = () => {
         ? `+${updateTransaction.amount}`
         : `${updateTransaction.amount}`,
     )
-    setValue('bankAccountUuid', updateTransaction.bankAccount?.uuid || '')
+    setValue('bankAccountUuid', updateTransaction.bankAccountUuid || '')
     setValue('categoryUuid', updateTransaction.category?.uuid || '')
     setValue('currency', updateTransaction.currency)
     setValue('description', updateTransaction.description)
@@ -118,7 +118,7 @@ export const UpdateTransactionModal = () => {
       hideCloseButton
     >
       <ModalContent
-        className={'bg-bg-neutral-tertiary w-[380px] rounded-3xl border p-4'}
+        className={'bg-bg-neutral-tertiary w-95 rounded-3xl border p-4'}
       >
         <div className={'flex flex-col gap-4'}>
           <ModalHeader className="flex items-center justify-between gap-1 p-0">
@@ -152,7 +152,7 @@ export const UpdateTransactionModal = () => {
                       errorMessage={errors.currency?.message}
                       value={field.value}
                       onValueChangeAction={field.onChange}
-                      className={'w-[128px]'}
+                      className={'w-32'}
                     >
                       {Object.entries(CurrencySymbols).map(([key, symbol]) => (
                         <SelectItem key={key}>

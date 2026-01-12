@@ -4,7 +4,7 @@ import { UserDTO } from 'shared/api'
 import { headers } from 'next/headers'
 
 export type PreloadedState = {
-  authSlice: { user: UserDTO | null }
+  userSlice: { user: UserDTO | null }
   language: 'EN' | 'RU'
   theme: 'DARK' | 'LIGHT' | 'SYSTEM'
 }

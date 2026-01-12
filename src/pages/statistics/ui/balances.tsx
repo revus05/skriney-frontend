@@ -22,12 +22,12 @@ import { useTranslation } from 'shared/i18n'
 
 export const Balances = () => {
   const language =
-    useAppSelector((state) => state.authSlice.user?.userSettings?.language) ||
+    useAppSelector((state) => state.userSlice.user?.userSettings?.language) ||
     'EN'
 
   const animationEnabled =
     useAppSelector(
-      (state) => state.authSlice.user?.userSettings?.animationEnabled,
+      (state) => state.userSlice.user?.userSettings?.animationEnabled,
     ) ?? true
 
   const formatDate = (dateStr: string) =>

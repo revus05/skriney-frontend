@@ -10,7 +10,7 @@ export const useCreateCategory = () => {
   const [createCategory, { isLoading }] = useCreateCategoryMutation()
   const dispatch = useAppDispatch()
   const userSettings = useAppSelector(
-    (state) => state.authSlice.user?.userSettings,
+    (state) => state.userSlice.user?.userSettings,
   )
 
   return {

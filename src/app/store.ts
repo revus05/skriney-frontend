@@ -13,7 +13,7 @@ import { updateCategoriesSlice } from 'features/categories/update-category'
 import { updateTransactionSlice } from 'features/transactions/update-transaction'
 
 const rootReducer = {
-  authSlice: userSlice,
+  userSlice,
   signUpFormSlice,
   signInFormSlice,
   categorySlice,
@@ -22,7 +22,7 @@ const rootReducer = {
   updateBankAccountsSlice,
   updateCategoriesSlice,
   updateTransactionSlice,
-  dailyBalanceSlice: balanceSlice,
+  balanceSlice,
   [userApi.reducerPath]: userApi.reducer,
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [transactionsApi.reducerPath]: transactionsApi.reducer,

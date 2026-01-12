@@ -68,7 +68,7 @@ export const CreateBankAccountButton: FC<CreateBankAccountButtonProps> = ({
       />
       <Modal isOpen={isOpen} onOpenChange={handleOpenChange} hideCloseButton>
         <ModalContent
-          className={'bg-bg-neutral-tertiary w-[340px] rounded-3xl border p-4'}
+          className={'bg-bg-neutral-tertiary w-85 rounded-3xl border p-4'}
         >
           <div className={'flex flex-col gap-4'}>
             <ModalHeader className="flex items-center justify-between gap-1 p-0">
@@ -98,8 +98,8 @@ export const CreateBankAccountButton: FC<CreateBankAccountButtonProps> = ({
                 <div className={'flex items-start gap-4'}>
                   <div className={'grow'}>
                     <Input
-                      {...register('balance')}
-                      errorMessage={errors.balance?.message}
+                      {...register('initialBalance')}
+                      errorMessage={errors.initialBalance?.message}
                       placeholder={t('bankAccounts.creation.initialBalance')}
                       setFocus={handleSetFocus}
                     />
@@ -111,7 +111,7 @@ export const CreateBankAccountButton: FC<CreateBankAccountButtonProps> = ({
                       <Select
                         label={'currency'}
                         placeholder={t('bankAccounts.creation.currency')}
-                        className={'!w-[128px]'}
+                        className={'w-32'}
                         isInvalid={!!errors.currency?.message}
                         errorMessage={errors.currency?.message}
                         value={field.value}

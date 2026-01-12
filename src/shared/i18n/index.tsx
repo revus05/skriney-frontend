@@ -43,7 +43,7 @@ export const I18Provider: FC<I18ProviderProps> = ({
     useState<Language>(initialLanguage)
 
   const userSettingsLanguage = useAppSelector(
-    (state) => state.authSlice.user?.userSettings?.language,
+    (state) => state.userSlice.user?.userSettings?.language,
   )
 
   useEffect(() => {

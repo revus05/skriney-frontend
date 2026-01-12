@@ -8,7 +8,7 @@ import { useTranslation } from 'shared/i18n'
 
 export const useCreateBankAccountForm = () => {
   const defaultCurrency = useAppSelector(
-    (state) => state.authSlice.user?.userSettings?.defaultCurrency,
+    (state) => state.userSlice.user?.userSettings?.defaultCurrency,
   )
 
   const t = useTranslation()
@@ -17,7 +17,7 @@ export const useCreateBankAccountForm = () => {
     resolver: zodResolver(createBankAccountSchema(t)),
     defaultValues: {
       title: '',
-      balance: '0',
+      initialBalance: '0',
       currency: defaultCurrency || '',
     },
     mode: 'onSubmit',

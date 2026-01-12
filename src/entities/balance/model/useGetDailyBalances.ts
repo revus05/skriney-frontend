@@ -11,11 +11,11 @@ export const useGetDailyBalances = () => {
   const dispatch = useAppDispatch()
 
   const dailyBalances = useAppSelector(
-    (state) => state.dailyBalanceSlice.dailyBalances,
+    (state) => state.balanceSlice.dailyBalances,
   )
-  const period = useAppSelector((state) => state.dailyBalanceSlice.period)
+  const period = useAppSelector((state) => state.balanceSlice.period)
   const bankAccountUuid = useAppSelector(
-    (state) => state.dailyBalanceSlice.bankAccountUuid,
+    (state) => state.balanceSlice.bankAccountUuid,
   )
 
   const [isLoading, setIsLoading] = useState(false)

@@ -6,7 +6,7 @@ export type CreateBankAccountRequestDTO = {
     /**
      * Initial bank account balance
      */
-    balance?: number;
+    initialBalance?: number;
     /**
      * Bank account currency
      */
@@ -15,18 +15,5 @@ export type CreateBankAccountRequestDTO = {
      * Bank account title
      */
     title: string;
-    /**
-     * Bank account's card color
-     */
-    color?: string;
-    /**
-     * Optional user's description
-     */
-    description?: string;
-    /**
-     * Optional user's image
-     */
-    image?: string;
-    inTotalBalance?: boolean;
 };
 

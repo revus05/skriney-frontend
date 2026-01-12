@@ -13,7 +13,7 @@ export const UpdateDefaultBankAccountSelect = () => {
 
   const defaultBankAccount =
     useAppSelector(
-      (state) => state.authSlice.user?.userSettings?.defaultBankAccount,
+      (state) => state.userSlice.user?.userSettings?.defaultBankAccount,
     ) || null
 
   const [selectedBankAccount, setSelectedBankAccount] = useState<string>(
@@ -36,13 +36,17 @@ export const UpdateDefaultBankAccountSelect = () => {
   return (
     <Select
       label={'default-category'}
-      className={'w-[180px]'}
+      className={'w-45'}
       placeholder={t('settings.list.defaultBankAccount')}
       value={selectedBankAccount}
       onValueChangeAction={handleSelectBankAccountChange}
     >
-      {displayBankAccount.map((category) => (
-        <SelectItem key={category.uuid}>{category.title}</SelectItem>
+      {displayBankAccount.map((bankAccount) => (
+        <SelectItem key={bankAccount.uuid}>
+          {bankAccount.emoji
+            ? `${bankAccount.emoji} ${bankAccount.title}`
+            : bankAccount.title}
+        </SelectItem>
       ))}
     </Select>
   )

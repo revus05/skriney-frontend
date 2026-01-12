@@ -71,9 +71,9 @@ export const CategoriesList = () => {
               withColor
               balance={
                 categoriesStats.find((stat) => stat.uuid === category.uuid)
-                  ?.totalExpenses ?? 0
+                  ?.totalBalanceInUsd ?? 0
               }
-              currency={CurrencySymbols.BYN}
+              currency={CurrencySymbols.USD}
             />
           </div>
           <Popover

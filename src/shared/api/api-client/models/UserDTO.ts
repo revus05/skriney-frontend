@@ -2,10 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-// noinspection ES6PreferShortImport
-
 import type {UserSettingsDTO} from './UserSettingsDTO';
-
 export type UserDTO = {
     /**
      * User uuid

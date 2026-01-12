@@ -12,7 +12,7 @@ export const useCreateBankAccountSubmit = (onSuccess?: () => void) => {
       await onSubmit({
         ...data,
         currency: data.currency as keyof typeof Currency,
-        balance: +data.balance,
+        initialBalance: +data.initialBalance,
       })
 
       if (onSuccess) onSuccess()

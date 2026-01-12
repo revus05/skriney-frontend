@@ -7,7 +7,7 @@ export const useUpdateAnimationEnabledSubmit = () => {
   const [updateAnimationEnabled] = useUpdateAnimationEnabledMutation()
   const dispatch = useAppDispatch()
   const userSettings = useAppSelector(
-    (state) => state.authSlice.user?.userSettings,
+    (state) => state.userSlice.user?.userSettings,
   )
 
   return async (data: UpdateAnimationEnabledRequestDTO) => {

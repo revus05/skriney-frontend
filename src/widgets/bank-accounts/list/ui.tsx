@@ -2,13 +2,11 @@
 
 import { Balance, Button, Card, EmojiTitle, Translate, Trend } from 'shared/ui'
 import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react'
-import { getChangePercent } from './lib'
 import {
   useDeleteBankAccount,
   useGetBankAccounts,
   useUpdateBankAccount,
 } from 'entities/bank-account'
-import { useGetDailyBalances } from 'entities/balance'
 import {
   UpdateBankAccountModal,
   updateBankAccountModalOpenFn,
@@ -17,6 +15,7 @@ import {
 import { useAppDispatch } from 'shared/lib'
 import { useState } from 'react'
 import { ConfirmDeleteBankAccountModal } from 'features/bank-accounts/confirm-delete-bank-account'
+import { Currency } from 'shared/constants/currencies'
 
 export const BankAccountsList = () => {
   const dispatch = useAppDispatch()
@@ -32,8 +31,6 @@ export const BankAccountsList = () => {
 
   const deleteBankAccount = useDeleteBankAccount()
   const updateBankAccount = useUpdateBankAccount()
-
-  const { dailyBalances } = useGetDailyBalances()
 
   const handleEditClicked = (uuid: string) => {
     dispatch(updateBankAccountModalOpenFn(true))
@@ -66,17 +63,11 @@ export const BankAccountsList = () => {
           />
           <div className={'flex items-center gap-2.5'}>
             <Balance
-              balance={bankAccount.balance}
-              currency={bankAccount.currency}
+              currencyBalances={bankAccount.currencyBalances}
+              balanceInUsd={bankAccount.balanceInUsd}
+              currency={Currency.USD}
             />
-            {
-              <Trend
-                changePercent={getChangePercent(
-                  dailyBalances,
-                  bankAccount.uuid,
-                )}
-              />
-            }
+            {<Trend changePercent={0} />}
           </div>
 
           <Popover

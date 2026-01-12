@@ -2,11 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-// noinspection ES6PreferShortImport
-
-import type {BankAccountDTO} from './BankAccountDTO';
+import type {BankAccountVisualDTO} from './BankAccountVisualDTO';
 import type {CategoryDTO} from './CategoryDTO';
-
 export type UserSettingsDTO = {
     /**
      * User's ui theme
@@ -27,7 +24,7 @@ export type UserSettingsDTO = {
     /**
      * User's default bank account
      */
-    defaultBankAccount?: BankAccountDTO;
+    defaultBankAccount?: BankAccountVisualDTO;
     /**
      * User's language
      */

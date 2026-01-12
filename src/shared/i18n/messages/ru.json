@@ -72,7 +72,6 @@
     "update": {
       "sectionTitle": "Редактировать счет:",
       "title": "Название",
-      "currency": "Валюта",
       "update": "Редактировать"
     },
     "confirmDelete": {

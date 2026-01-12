@@ -12,7 +12,6 @@ export const useUpdateBankAccountForm = () => {
     resolver: zodResolver(updateBankAccountSchema(t)),
     defaultValues: {
       title: '',
-      currency: '',
       emoji: '',
     },
     mode: 'onSubmit',

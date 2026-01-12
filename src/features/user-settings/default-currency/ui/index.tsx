@@ -12,7 +12,7 @@ export const UpdateDefaultCurrencySelect = () => {
 
   const defaultCurrency =
     useAppSelector(
-      (state) => state.authSlice.user?.userSettings.defaultCurrency,
+      (state) => state.userSlice.user?.userSettings.defaultCurrency,
     ) || Currency.USD
 
   const [selectedCurrency, setSelectedCurrency] =

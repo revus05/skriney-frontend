@@ -92,7 +92,7 @@ export const UpdateCategoryModal = () => {
       hideCloseButton
     >
       <ModalContent
-        className={'bg-bg-neutral-tertiary w-[340px] rounded-3xl border p-4'}
+        className={'bg-bg-neutral-tertiary w-85 rounded-3xl border p-4'}
       >
         <div className={'flex flex-col gap-4'}>
           <ModalHeader className="flex items-center justify-between gap-1 p-0">
@@ -106,9 +106,9 @@ export const UpdateCategoryModal = () => {
             className={'flex flex-col gap-4'}
           >
             <ModalBody className={'p-0'}>
-              <div className={'flex items-center gap-2'}>
+              <div className={'flex items-start gap-2'}>
                 <Popover placement="right">
-                  <PopoverTrigger>
+                  <PopoverTrigger className={'h-9'}>
                     {displayedEmoji ? (
                       <span className={'cursor-pointer pr-1 pl-2'}>
                         {displayedEmoji}

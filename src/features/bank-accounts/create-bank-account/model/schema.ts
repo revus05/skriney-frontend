@@ -7,7 +7,7 @@ export const createBankAccountSchema = (t: Translate) =>
       .string()
       .trim()
       .nonempty(t('bankAccounts.validation.titleRequired')),
-    balance: z.string().transform((str, ctx) => {
+    initialBalance: z.string().transform((str, ctx) => {
       const trimmed = str.trim()
       if (trimmed === '') {
         return '0'

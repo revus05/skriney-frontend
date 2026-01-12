@@ -7,6 +7,7 @@ import {
   useUpdateCategory,
 } from 'entities/category'
 import { Translate } from 'shared/ui'
+import { Currency } from 'shared/constants/currencies'
 
 export const CategoriesHome = () => {
   const { categories } = useGetCategories()
@@ -31,9 +32,9 @@ export const CategoriesHome = () => {
             emoji={category.emoji || undefined}
             amount={
               categoriesStats.find((stat) => stat.uuid === category.uuid)
-                ?.totalExpenses ?? 0
+                ?.totalBalanceInUsd ?? 0
             }
-            currency={'BYN'}
+            currency={Currency.USD}
             onEmojiChange={(emoji) => updateCategory(category.uuid, { emoji })}
             onTitleChange={(title) => updateCategory(category.uuid, { title })}
           />
