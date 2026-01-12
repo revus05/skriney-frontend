@@ -7,6 +7,7 @@ import {
   CreateCategoryRequestDTO,
   UpdateCategoryRequestDTO,
 } from 'shared/api'
+import { BalancePeriod } from 'shared/constants/balancePeriod'
 
 const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
@@ -37,10 +38,14 @@ const categoriesApi = createApi({
         method: 'DELETE',
       }),
     }),
-    getCategoriesStats: builder.mutation<ApiResponse<CategoryStatDTO[]>, void>({
-      query: () => ({
+    getCategoriesStats: builder.mutation<
+      ApiResponse<CategoryStatDTO[]>,
+      { period?: keyof typeof BalancePeriod; bankAccountUuid?: string }
+    >({
+      query: (params) => ({
         url: '/stats',
         method: 'GET',
+        params,
       }),
     }),
     updateCategory: builder.mutation<

@@ -5,6 +5,7 @@ import {
   baseQuery,
   DailyBalanceDTO,
 } from 'shared/api'
+import { BalancePeriod } from 'shared/constants/balancePeriod'
 
 const dailyBalanceApi = createApi({
   reducerPath: 'balanceApi',
@@ -16,10 +17,14 @@ const dailyBalanceApi = createApi({
         method: 'GET',
       }),
     }),
-    getDailyBalances: builder.mutation<ApiResponse<DailyBalanceDTO[]>, void>({
-      query: () => ({
+    getDailyBalances: builder.mutation<
+      ApiResponse<DailyBalanceDTO[]>,
+      { period?: keyof typeof BalancePeriod; bankAccountUuid?: string }
+    >({
+      query: (params) => ({
         url: '',
         method: 'GET',
+        params,
       }),
     }),
   }),

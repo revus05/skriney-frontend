@@ -1,12 +1,12 @@
 'use client'
 
 import { FC, ReactNode, useRef } from 'react'
-import { HeroUIProvider } from '@heroui/system'
 import { Provider } from 'react-redux'
 import { AppStore, makeStore } from 'app/store'
 import { ToastProvider } from '@heroui/toast'
 import { I18Provider } from 'shared/i18n'
 import { PreloadedState } from 'entities/user'
+import { HeroUIProviderWrapper } from 'shared/ui/heroUIProviderWrapper'
 
 type ProvidersProps = {
   children: ReactNode
@@ -26,7 +26,7 @@ export const Providers: FC<ProvidersProps> = ({ children, preloadedState }) => {
     <div className={'z-[1]'}>
       <Provider store={storeRef.current}>
         <I18Provider language={language.toLowerCase() as 'en' | 'ru'}>
-          <HeroUIProvider>
+          <HeroUIProviderWrapper>
             <ToastProvider
               placement={'bottom-center'}
               toastProps={{
@@ -36,7 +36,7 @@ export const Providers: FC<ProvidersProps> = ({ children, preloadedState }) => {
               }}
             />
             {children}
-          </HeroUIProvider>
+          </HeroUIProviderWrapper>
         </I18Provider>
       </Provider>
     </div>

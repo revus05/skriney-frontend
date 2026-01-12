@@ -1,7 +1,11 @@
 import { z } from 'zod'
+import { Translate } from 'shared/i18n'
 
-export const createCategorySchema = z.object({
-  title: z.string().trim().nonempty('Название категории обязательно'),
-})
+export const createCategorySchema = (t: Translate) =>
+  z.object({
+    title: z.string().trim().nonempty(t('categories.validation.titleRequired')),
+  })
 
-export type CreateCategoryFormData = z.infer<typeof createCategorySchema>
+export type CreateCategoryFormData = z.infer<
+  ReturnType<typeof createCategorySchema>
+>

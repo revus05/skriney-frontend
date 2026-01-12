@@ -2,15 +2,12 @@
 
 import { useAppSelector } from 'shared/lib'
 import { Balance } from 'shared/ui'
-import { CurrencySymbols } from 'entities/user-setting'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { useGetBalanceSummary } from 'entities/balance'
 import { UpdatableUserImage } from 'features/user-settings/image'
 
 export const ProfileHeadline = () => {
-  const user = useAppSelector((state) => state.authSlice.user)
-  const defaultCurrency = useAppSelector(
-    (state) => state.userSettingsSlice.userSettings?.defaultCurrency,
-  )
+  const user = useAppSelector((state) => state.userSlice.user)
 
   const summaryBalance = useGetBalanceSummary()
 
@@ -21,8 +18,8 @@ export const ProfileHeadline = () => {
         <span className={'text-[32px] font-bold'}>{user?.username}</span>
         <span className={'text-[32px] font-bold'}>
           <Balance
-            balance={summaryBalance?.totalBalance || 0}
-            currency={defaultCurrency || CurrencySymbols.BYN}
+            balanceInUsd={summaryBalance?.totalBalanceInUsd || 0}
+            currency={CurrencySymbols.USD}
             classNames={{
               balance: 'text-xl font-bold',
               currency: 'text-sm font-normal',

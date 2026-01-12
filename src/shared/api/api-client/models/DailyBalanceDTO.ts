@@ -4,10 +4,6 @@
 /* eslint-disable */
 export type DailyBalanceDTO = {
     /**
-     * Daily balance uuid
-     */
-    uuid: string;
-    /**
      * Day date
      */
     date: string;
@@ -27,9 +23,5 @@ export type DailyBalanceDTO = {
      * Total daily expenses
      */
     dailyExpenses: number;
-    /**
-     * Bank account uuid
-     */
-    bankAccountUuid: string;
 };
 

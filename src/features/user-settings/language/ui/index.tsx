@@ -5,19 +5,21 @@ import { useUpdateLanguage } from '../model'
 import { useState } from 'react'
 import { useAppSelector } from 'shared/lib'
 import { useTranslation } from 'shared/i18n'
+import { Languages } from 'shared/constants/languages'
 
 export const UpdateLanguageSelect = () => {
   const updateLanguage = useUpdateLanguage()
 
   const language =
-    useAppSelector((state) => state.userSettingsSlice.userSettings?.language) ||
-    ''
+    useAppSelector((state) => state.userSlice.user?.userSettings?.language) ||
+    Languages.EN
 
-  const [selectedLanguage, setSelectedLanguage] = useState<string>(language)
+  const [selectedLanguage, setSelectedLanguage] =
+    useState<keyof typeof Languages>(language)
 
-  const handleSelectLanguageChanged = (newValue: string) => {
-    setSelectedLanguage(newValue)
-    void updateLanguage({ language: newValue.toUpperCase() as 'EN' | 'RU' })
+  const handleSelectLanguageChanged = (language: keyof typeof Languages) => {
+    setSelectedLanguage(language)
+    void updateLanguage({ language })
   }
 
   const t = useTranslation()
@@ -30,7 +32,7 @@ export const UpdateLanguageSelect = () => {
       onValueChangeAction={handleSelectLanguageChanged}
       value={selectedLanguage}
     >
-      {['RU', 'EN'].map((lang) => (
+      {Object.keys(Languages).map((lang) => (
         <SelectItem key={lang} className={'outline-none'}>
           {lang}
         </SelectItem>

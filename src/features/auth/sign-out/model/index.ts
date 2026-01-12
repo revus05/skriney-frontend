@@ -1,1 +1,1 @@
-export { useSignOutSubmit } from './useSignInSubmit'
+export { useSignOutSubmit } from './useSignOutSubmit'

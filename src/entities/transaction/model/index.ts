@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TransactionDTO } from 'shared/api'
+import { TransactionDTO, UpdateTransactionRequestDTO } from 'shared/api'
 
 type InitialState = {
   transactions: TransactionDTO[]
@@ -19,14 +19,38 @@ const transactionSlice = createSlice({
     addTransaction: (state, action: PayloadAction<TransactionDTO>) => {
       state.transactions = [action.payload, ...state.transactions]
     },
-    deleteTransaction: (state, action: PayloadAction<TransactionDTO>) => {
+    deleteTransaction: (state, action: PayloadAction<string>) => {
       state.transactions = state.transactions.filter(
-        (transaction) => transaction.uuid !== action.payload.uuid,
+        (transaction) => transaction.uuid !== action.payload,
+      )
+    },
+    updateTransaction: (state, action: PayloadAction<TransactionDTO>) => {
+      state.transactions = state.transactions.map(
+        (transaction: TransactionDTO) =>
+          transaction.uuid === action.payload.uuid
+            ? action.payload
+            : transaction,
+      )
+    },
+    positiveUpdateTransaction: (
+      state,
+      action: PayloadAction<UpdateTransactionRequestDTO & { uuid: string }>,
+    ) => {
+      state.transactions = state.transactions.map(
+        (transaction: TransactionDTO) =>
+          transaction.uuid === action.payload.uuid
+            ? { ...transaction, ...action.payload }
+            : transaction,
       )
     },
   },
 })
 
-export const { setTransactions, addTransaction, deleteTransaction } =
-  transactionSlice.actions
+export const {
+  setTransactions,
+  addTransaction,
+  deleteTransaction,
+  updateTransaction,
+  positiveUpdateTransaction,
+} = transactionSlice.actions
 export default transactionSlice.reducer

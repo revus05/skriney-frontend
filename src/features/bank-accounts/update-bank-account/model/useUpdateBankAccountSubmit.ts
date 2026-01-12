@@ -2,7 +2,6 @@
 
 import { UpdateBankAccountFormData } from './schema'
 import { useUpdateBankAccount } from 'entities/bank-account'
-import { CurrencyType } from 'entities/user-setting'
 
 export const useUpdateBankAccountSubmit = (
   uuid: string,
@@ -11,10 +10,7 @@ export const useUpdateBankAccountSubmit = (
   const updateBankAccount = useUpdateBankAccount()
 
   return async (data: UpdateBankAccountFormData) => {
-    await updateBankAccount(uuid, {
-      ...data,
-      currency: data.currency as CurrencyType,
-    })
+    await updateBankAccount(uuid, data)
 
     if (onSuccess) onSuccess()
   }

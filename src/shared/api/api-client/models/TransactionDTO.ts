@@ -2,8 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BankAccountDTO } from './BankAccountDTO';
-import type { CategoryDTO } from './CategoryDTO';
+import type {CategoryDTO} from './CategoryDTO';
 export type TransactionDTO = {
     /**
      * Transaction uuid
@@ -13,6 +12,10 @@ export type TransactionDTO = {
      * Transaction amount
      */
     amount: number;
+    /**
+     * Transaction amount in USD
+     */
+    amountInUsd: number;
     /**
      * Transaction category
      */
@@ -32,10 +35,10 @@ export type TransactionDTO = {
     /**
      * Connection to bank account
      */
-    bankAccount: BankAccountDTO;
+    bankAccountUuid?: string;
     /**
      * transaction category
      */
-    category: CategoryDTO;
+    category?: CategoryDTO;
 };
 

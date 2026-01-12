@@ -3,8 +3,7 @@ import { cookies, headers } from 'next/headers'
 import type { ApiResponse, UserDTO, UserSettingsDTO } from 'shared/api'
 
 type PreloadedState = {
-  authSlice: { user: UserDTO | null }
-  userSettingsSlice: { userSettings: UserSettingsDTO | null }
+  userSlice: { user: UserDTO | null }
   language: 'EN' | 'RU'
   theme: 'DARK' | 'LIGHT' | 'SYSTEM'
 }
@@ -19,18 +18,15 @@ async function getUserLanguageFromHeaders(): Promise<'EN' | 'RU'> {
 type GetPreloadedObject = (
   language?: 'EN' | 'RU',
   user?: UserDTO | null,
-  userSettings?: UserSettingsDTO | null,
   theme?: 'DARK' | 'LIGHT' | 'SYSTEM',
 ) => PreloadedState
 
 const getPreloadedObject: GetPreloadedObject = (
   language = 'EN',
   user = null,
-  userSettings = null,
   theme = 'SYSTEM',
 ) => ({
-  authSlice: { user },
-  userSettingsSlice: { userSettings },
+  userSlice: { user },
   language,
   theme,
 })
@@ -90,7 +86,6 @@ export async function GET() {
     getPreloadedObject(
       user.userSettings?.language || language,
       user,
-      user.userSettings,
       user.userSettings?.userTheme,
     ),
   )

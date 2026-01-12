@@ -4,29 +4,50 @@ import {
   Select as HeroUiSelect,
   SelectItem as HeroUiSelectItem,
   SharedSelection,
+  SelectProps as HeroUiSelectProps,
 } from '@heroui/react'
-import { ComponentProps, FC, Key } from 'react'
-import { cn } from 'shared/lib'
+import { Key, ReactNode, useState } from 'react'
+import { cn, useAppSelector } from 'shared/lib'
 import { Icons } from 'shared/ui/icons'
 
-interface SelectProps extends ComponentProps<typeof HeroUiSelect> {
+type SelectProps<T extends string | null> = {
   label: string
-  value: string
-  onValueChangeAction: (value: string) => void
-}
+  value: T
+  onValueChangeAction: (value: T) => void
+  children: ReactNode
+  disallowEmptySelection?: boolean
+  classNames?: HeroUiSelectProps['classNames']
+} & Omit<
+  HeroUiSelectProps,
+  'selectedKeys' | 'onSelectionChange' | 'value' | 'onValueChange'
+>
 
-export const Select: FC<SelectProps> = ({
+export const Select = <T extends string | null>({
   label,
   classNames,
   children,
   onValueChangeAction,
   value,
   disallowEmptySelection = true,
+  isOpen,
   ...props
-}) => {
-  const handleSelectCategoryChange = (keys: SharedSelection) => {
-    const firstKey = Array.from(keys as Set<Key>)[0] as string
-    onValueChangeAction(firstKey || '')
+}: SelectProps<T>) => {
+  const [open, setOpen] = useState(isOpen)
+
+  const animationEnabled =
+    useAppSelector(
+      (state) => state.userSlice.user?.userSettings.animationEnabled,
+    ) ?? true
+
+  const handleSelectionChange = (keys: SharedSelection) => {
+    if (keys === 'all') return
+
+    const selectedKey = Array.from(keys as Set<Key>)[0]
+    if (selectedKey !== undefined) {
+      onValueChangeAction(selectedKey as T)
+    } else if (!disallowEmptySelection) {
+      onValueChangeAction('' as T)
+    }
   }
 
   return (
@@ -34,8 +55,11 @@ export const Select: FC<SelectProps> = ({
       aria-label={label}
       classNames={{
         trigger: cn(
-          'hover:!bg-bg-neutral-secondary backdrop-blur-[32px] transition will-change-transform active:scale-[0.98]',
+          'hover:!bg-bg-neutral-secondary focus-within:!bg-bg-neutral-secondary backdrop-blur-[32px] active:scale-[0.98]',
           'px-4 !h-9 !min-h-9 border bg-transparent cursor-pointer outline-none shadow-sm active:shadow-md',
+          animationEnabled &&
+            'transition duration-150 motion-reduce:transition-none',
+          open && 'scale-[0.98]',
           classNames?.trigger,
         ),
         popoverContent: cn('bg-bg-neutral-primary', classNames?.popoverContent),
@@ -56,9 +80,11 @@ export const Select: FC<SelectProps> = ({
       }}
       size={'sm'}
       selectedKeys={value ? [value] : []}
-      onSelectionChange={handleSelectCategoryChange}
+      onSelectionChange={handleSelectionChange}
       selectorIcon={<Icons.chevronDown />}
       disallowEmptySelection={disallowEmptySelection}
+      isOpen={open}
+      onOpenChange={setOpen}
       {...props}
     >
       {children}

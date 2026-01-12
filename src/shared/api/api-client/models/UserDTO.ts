@@ -3,7 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import type {UserSettingsDTO} from './UserSettingsDTO';
-
 export type UserDTO = {
     /**
      * User uuid

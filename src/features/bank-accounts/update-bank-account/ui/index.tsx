@@ -9,8 +9,6 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  Select,
-  SelectItem,
   Translate,
 } from 'shared/ui'
 import {
@@ -19,8 +17,6 @@ import {
   useUpdateBankAccountForm,
   useUpdateBankAccountSubmit,
 } from '../model'
-import { CurrencySymbols } from 'entities/user-setting'
-import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
@@ -46,7 +42,6 @@ export const UpdateBankAccountModal = () => {
     register,
     handleSubmit,
     formState: { errors },
-    control,
     reset,
     setFocus,
     setValue,
@@ -74,8 +69,7 @@ export const UpdateBankAccountModal = () => {
     }
 
     setValue('title', updateBankAccount.title)
-    setValue('emoji', updateBankAccount.emoji)
-    setValue('currency', updateBankAccount.currency)
+    setValue('emoji', updateBankAccount.emoji ?? '')
   }, [setValue, updateBankAccount, uuid, updateBankAccountModalOpen])
 
   const [displayedEmoji, setDisplayedEmoji] = useState('')
@@ -89,6 +83,10 @@ export const UpdateBankAccountModal = () => {
     setDisplayedEmoji(native)
   }
 
+  useEffect(() => {
+    if (updateBankAccountModalOpen) setFocus('title')
+  }, [updateBankAccountModalOpen, setFocus])
+
   if (!updateBankAccount) return null
 
   return (
@@ -99,7 +97,9 @@ export const UpdateBankAccountModal = () => {
       }
       hideCloseButton
     >
-      <ModalContent className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}>
+      <ModalContent
+        className={'bg-bg-neutral-tertiary w-85 rounded-3xl border p-4'}
+      >
         <div className={'flex flex-col gap-4'}>
           <ModalHeader className="flex items-center justify-between gap-1 p-0">
             <h2>
@@ -148,26 +148,6 @@ export const UpdateBankAccountModal = () => {
                   />
                 </div>
               </div>
-              <Controller
-                name="currency"
-                control={control}
-                render={({ field }) => (
-                  <Select
-                    label={'currency'}
-                    placeholder={t('bankAccounts.update.currency')}
-                    isInvalid={!!errors.currency?.message}
-                    errorMessage={errors.currency?.message}
-                    value={field.value}
-                    onValueChangeAction={field.onChange}
-                  >
-                    {Object.entries(CurrencySymbols).map(([key, symbol]) => (
-                      <SelectItem key={key}>
-                        {symbol === key ? key : `${symbol} ${key}`}
-                      </SelectItem>
-                    ))}
-                  </Select>
-                )}
-              />
             </ModalBody>
             <ModalFooter className={'flex justify-center p-0'}>
               <Button type={'submit'}>

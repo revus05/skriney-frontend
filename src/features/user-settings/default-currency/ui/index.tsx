@@ -1,7 +1,7 @@
 'use client'
 
 import { Select, SelectItem } from 'shared/ui'
-import { CurrencySymbols, CurrencyType } from 'entities/user-setting'
+import { Currency, CurrencySymbols } from 'shared/constants/currencies'
 import { useState } from 'react'
 import { useUpdateDefaultCurrencySubmit } from '../model'
 import { useAppSelector } from 'shared/lib'
@@ -12,14 +12,13 @@ export const UpdateDefaultCurrencySelect = () => {
 
   const defaultCurrency =
     useAppSelector(
-      (state) => state.userSettingsSlice.userSettings?.defaultCurrency,
-    ) || ''
+      (state) => state.userSlice.user?.userSettings.defaultCurrency,
+    ) || Currency.USD
 
   const [selectedCurrency, setSelectedCurrency] =
-    useState<string>(defaultCurrency)
+    useState<keyof typeof Currency>(defaultCurrency)
 
-  const handleSelectCurrencyChange = (newValue: string) => {
-    const currency = newValue as CurrencyType
+  const handleSelectCurrencyChange = (currency: keyof typeof Currency) => {
     setSelectedCurrency(currency)
     void updateDefaultCurrency({ currency })
   }

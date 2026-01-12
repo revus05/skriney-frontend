@@ -8,7 +8,7 @@
   },
   "sidebar": {
     "home": "Home",
-    "transaction": "Transaction",
+    "transaction": "Transactions",
     "statistics": "Statistics",
     "categories": "Categories",
     "bankAccounts": "Bank accounts",
@@ -40,10 +40,20 @@
   "categories": {
     "title": "Transaction categories",
     "delete": "Delete",
+    "update": {
+      "sectionTitle": "Update category:",
+      "title": "Title",
+      "update": "Update"
+    },
     "creation": {
       "sectionTitle": "Create category:",
       "title": "Title",
       "create": "Create"
+    },
+    "confirmDelete": {
+      "title": "Confirm category delete",
+      "cancel": "Cancel",
+      "delete": "Delete"
     }
   },
   "bankAccounts": {
@@ -61,18 +71,56 @@
       "title": "Title",
       "currency": "Currency",
       "update": "Update"
+    },
+    "confirmDelete": {
+      "title": "Confirm bank account delete",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "validation": {
+      "titleRequired": "Bank account title required",
+      "initialBalanceMustBeNumber": "Initial balance must be a number",
+      "currencyRequired": "Currency required"
     }
   },
   "transactions": {
     "title": "Transactions",
     "delete": "Delete",
+    "noCategory": "No category",
+    "noBankAccount": "No bank account",
+    "noTransactionsYet": "You don't have transactions yet",
+    "howToCreateTransaction": "To create transaction click \"+\" in headline",
     "creation": {
       "sectionTitle": "Create transaction:",
       "amount": "Amount",
       "currency": "Currency",
       "bankAccount": "Bank account",
       "category": "Category",
+      "description": "Description",
       "create": "Create"
+    },
+    "update": {
+      "sectionTitle": "Update transaction:",
+      "amount": "Amount",
+      "currency": "Currency",
+      "bankAccount": "Bank account",
+      "category": "Category",
+      "description": "Description",
+      "update": "Update"
+    },
+    "confirmDelete": {
+      "title": "Confirm transaction delete",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "validation": {
+      "amountRequired": "Amount required",
+      "amountMustBeNumber": "Amount must be a number",
+      "amountCantBeZero": "Amount can't be 0",
+      "categoryRequired": "Category required",
+      "bankAccountRequired": "Bank account required",
+      "currencyRequired": "Currency required",
+      "descriptionMaxLength128": "Max length is 128"
     }
   },
   "settings": {
@@ -87,7 +135,8 @@
         "button": "Connect",
         "connected": "Connected successfully"
       },
-      "language": "Language"
+      "language": "Language",
+      "animationEnabled": "Animation enabled"
     }
   },
   "auth": {
@@ -114,5 +163,29 @@
       "passwordMaxLength": "Maximum password length is 64 characters",
       "passwordsNotMatch": "Passwords do not match"
     }
+  },
+  "statistics": {
+    "title": "Statistics",
+    "transactionDynamic": "Transaction dynamic",
+    "period": {
+      "title": "Select period",
+      "LAST_7_DAYS": "7 days",
+      "LAST_30_DAYS": "30 days",
+      "LAST_3_MONTHS": "3 months",
+      "LAST_1_YEAR": "1 year",
+      "ALL_TIME": "Maximum"
+    },
+    "bankAccount": {
+      "title": "Select bank account",
+      "all": "All"
+    },
+    "chartType": {
+      "balance": "Balance",
+      "incomeAndExpenses": "Income and expenses"
+    },
+    "incomeTitle": "Income",
+    "expensesTitle": "Expenses",
+    "noExpensesYet": "No expenses yet",
+    "noIncomeYet": "No income yet"
   }
 }

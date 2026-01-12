@@ -34,12 +34,12 @@ export const Aside = () => {
       icon: 'card',
       href: '/bank-accounts',
     },
-    {
+    /*{
       id: 'goal',
       label: 'goals',
       icon: 'goal',
       href: '/goals',
-    },
+    },*/
     'divide',
     {
       id: 'settings',
@@ -52,7 +52,7 @@ export const Aside = () => {
   return (
     <aside
       className={
-        'bg-bg-neutral-primary/70 h-fit w-[230px] rounded-2xl border px-4 py-2 shadow-sm'
+        'bg-bg-neutral-primary/70 h-fit w-57.5 rounded-2xl border px-4 py-2 shadow-sm'
       }
     >
       <nav>
@@ -60,7 +60,7 @@ export const Aside = () => {
           {navItems.map((item) =>
             typeof item === 'string' ? (
               <div
-                className={'bg-border-neutral-primary my-2 h-[1px]'}
+                className={'bg-border-neutral-primary my-2 h-px'}
                 key={item}
               ></div>
             ) : (

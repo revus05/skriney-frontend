@@ -1,4 +1,10 @@
-export { default as userSlice, signIn, updateUserImage } from './model'
+export {
+  default as userSlice,
+  signIn,
+  updateUserImage,
+  setUserSettings,
+  updateUserLanguage,
+} from './model'
 export {
   default as userApi,
   useSignInUserMutation,

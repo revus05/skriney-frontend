@@ -44,7 +44,7 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
       inputRef.current.focus()
       inputRef.current.setSelectionRange(tempValue.length, tempValue.length)
     }
-  }, [isEditing])
+  }, [isEditing, tempValue.length])
 
   useLayoutEffect(() => {
     if (isEditing && measurerRef.current && inputRef.current) {
@@ -134,7 +134,7 @@ export const EmojiTitle: FC<EmojiTitleType> = ({
         </div>
       ) : (
         <span
-          className="h-5 cursor-text font-semibold whitespace-nowrap"
+          className="h-5 cursor-text truncate font-semibold whitespace-nowrap"
           onDoubleClick={handleDoubleClick}
         >
           {title}

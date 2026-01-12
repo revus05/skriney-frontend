@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 export const UpdateThemeSegmentControl = () => {
   const defaultTheme = useAppSelector(
-    (state) => state.userSettingsSlice.userSettings?.userTheme || 'SYSTEM',
+    (state) => state.userSlice.user?.userSettings?.userTheme || 'SYSTEM',
   )
 
   const [theme, setTheme] = useState<string>(defaultTheme.toLowerCase())

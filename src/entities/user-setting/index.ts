@@ -1,5 +1,3 @@
-export { CurrencySymbols } from './model/enums'
-export type { CurrencyType } from './model/enums'
 export {
   default as userSettingsApi,
   useUpdateDefaultCurrencyMutation,
@@ -8,4 +6,3 @@ export {
   useUpdateLanguageMutation,
   useUpdateThemeMutation,
 } from './api'
-export { default as userSettingsSlice, setUserSettings } from './model'

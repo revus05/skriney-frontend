@@ -10,11 +10,11 @@ export type BankAccountDTO = {
     /**
      * Money on the bank account
      */
-    balance: number;
+    balanceInUsd: number;
     /**
-     * Bank Account currency
+     * Each currency balance
      */
-    currency: 'USD' | 'EUR' | 'JPY' | 'GBP' | 'AUD' | 'CAD' | 'CHF' | 'CNY' | 'HKD' | 'NZD' | 'SEK' | 'KRW' | 'SGD' | 'NOK' | 'MXN' | 'INR' | 'RUB' | 'ZAR' | 'TRY' | 'BRL' | 'TWD' | 'DKK' | 'PLN' | 'THB' | 'MYR' | 'IDR' | 'HUF' | 'CZK' | 'ILS' | 'CLP' | 'PHP' | 'AED' | 'COP' | 'SAR' | 'RON' | 'BGN' | 'KZT' | 'BYN';
+    currencyBalances: Record<string, number>;
     /**
      * Bank Account title
      */
@@ -31,6 +31,5 @@ export type BankAccountDTO = {
      * Last update timestamp
      */
     updatedAt: string;
-    inTotalBalance?: boolean;
 };
 

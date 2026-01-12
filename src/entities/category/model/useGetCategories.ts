@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
 
 export const useGetCategories = () => {
-  const [getCategories] = useGetCategoriesMutation()
+  const [getCategories, { isLoading }] = useGetCategoriesMutation()
   const dispatch = useAppDispatch()
   const categories = useAppSelector((state) => state.categorySlice.categories)
 
@@ -19,5 +19,5 @@ export const useGetCategories = () => {
     void fetchCategories()
   }, [dispatch, getCategories])
 
-  return categories
+  return { categories, isLoading }
 }

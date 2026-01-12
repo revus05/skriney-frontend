@@ -4,6 +4,7 @@ import {
   baseQuery,
   CreateTransactionRequestDTO,
   TransactionDTO,
+  UpdateTransactionRequestDTO,
 } from 'shared/api'
 
 const transactionsApi = createApi({
@@ -35,6 +36,16 @@ const transactionsApi = createApi({
         method: 'DELETE',
       }),
     }),
+    updateTransaction: builder.mutation<
+      ApiResponse<TransactionDTO>,
+      { uuid: string; body: UpdateTransactionRequestDTO }
+    >({
+      query: ({ uuid, body }) => ({
+        url: `${uuid}`,
+        method: 'PATCH',
+        body,
+      }),
+    }),
   }),
 })
 
@@ -43,4 +54,5 @@ export const {
   useGetTransactionsMutation,
   useCreateTransactionMutation,
   useDeleteTransactionMutation,
+  useUpdateTransactionMutation,
 } = transactionsApi

@@ -1,9 +1,7 @@
 import { useAppDispatch } from 'shared/lib'
-import {
-  setUserSettings,
-  useUpdateLanguageMutation,
-} from 'entities/user-setting'
+import { useUpdateLanguageMutation } from 'entities/user-setting'
 import { getApiError, UpdateLanguageRequestDTO } from 'shared/api'
+import { setUserSettings, updateUserLanguage } from 'entities/user'
 
 export const useUpdateLanguage = () => {
   const [updateLanguage] = useUpdateLanguageMutation()
@@ -11,6 +9,7 @@ export const useUpdateLanguage = () => {
 
   return async (data: UpdateLanguageRequestDTO) => {
     try {
+      dispatch(updateUserLanguage(data.language))
       const res = await updateLanguage(data).unwrap()
       if (res && res.data) {
         dispatch(setUserSettings(res.data))

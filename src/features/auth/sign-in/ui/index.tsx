@@ -11,6 +11,8 @@ import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { paths } from 'shared/navigation'
 import { useTranslation } from 'shared/i18n'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { signOut } from 'entities/user/model'
 
 export const SignInForm = () => {
   const dispatch = useAppDispatch()
@@ -23,7 +25,7 @@ export const SignInForm = () => {
     setFocus,
   } = useSignInForm()
 
-  const onSubmit = useSignInSubmit()
+  const { onSubmit, isLoading } = useSignInSubmit()
 
   const showPassword = useAppSelector(
     (state) => state.signInFormSlice.showPassword,
@@ -32,10 +34,25 @@ export const SignInForm = () => {
   const handleSetFocus = (name: string) =>
     setFocus(name as keyof SignInFormData)
 
+  useEffect(() => {
+    if (sessionStorage.getItem('pending-sign-out') === 'true') {
+      dispatch(signOut())
+      sessionStorage.removeItem('pending-sign-out')
+    }
+  }, [dispatch])
+
+  const [isRedirecting, setIsRedirecting] = useState(false)
+
+  useEffect(() => {
+    if (sessionStorage.getItem('pending-sign-in') === 'true') {
+      setIsRedirecting(true)
+    }
+  }, [isLoading])
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-bg-neutral-primary/70 flex w-[400px] flex-col gap-6 rounded-2xl border p-8 shadow-sm backdrop-blur-[32px]"
+      className="bg-bg-neutral-primary/70 flex w-100 flex-col gap-6 rounded-2xl border p-8 shadow-sm backdrop-blur-[32px]"
     >
       <h2 className="text-xl font-semibold">
         <Translate value="auth.signIn.title" />
@@ -70,7 +87,11 @@ export const SignInForm = () => {
         >
           <Translate value="auth.signIn.createAccount" />
         </Link>
-        <Button className={'mx-auto'} type={'submit'}>
+        <Button
+          className={'mx-auto'}
+          type={'submit'}
+          loading={isLoading || isRedirecting}
+        >
           <Translate value="auth.signIn.submit" />
         </Button>
       </div>

@@ -16,13 +16,22 @@ import {
   useCreateBankAccountForm,
   useCreateBankAccountSubmit,
 } from '../model'
-import { CurrencySymbols } from 'entities/user-setting'
+import { CurrencySymbols } from 'shared/constants/currencies'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'shared/i18n'
 import { Modal } from 'shared/ui'
 import { useDisclosure } from '@heroui/react'
+import { FC, useEffect } from 'react'
 
-export const CreateBankAccountButton = () => {
+type CreateBankAccountButtonProps = {
+  className?: string
+  variant?: 'primary' | 'icon'
+}
+
+export const CreateBankAccountButton: FC<CreateBankAccountButtonProps> = ({
+  variant = 'icon',
+  className,
+}) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const {
     register,
@@ -38,19 +47,28 @@ export const CreateBankAccountButton = () => {
     reset()
   }
 
-  const onSubmit = useCreateBankAccountSubmit(handleOpenChange)
+  const { onSubmit, isLoading } = useCreateBankAccountSubmit(handleOpenChange)
 
   const t = useTranslation()
 
   const handleSetFocus = (name: string) =>
     setFocus(name as keyof CreateBankAccountFormData)
 
+  useEffect(() => {
+    if (isOpen) setFocus('title')
+  }, [isOpen, setFocus])
+
   return (
     <>
-      <Button onClick={onOpen} variant={'icon'} iconStart={'plus'} />
+      <Button
+        onClick={onOpen}
+        variant={variant}
+        iconStart={'plus'}
+        className={className}
+      />
       <Modal isOpen={isOpen} onOpenChange={handleOpenChange} hideCloseButton>
         <ModalContent
-          className={'bg-bg-neutral-tertiary rounded-3xl border p-4'}
+          className={'bg-bg-neutral-tertiary w-85 rounded-3xl border p-4'}
         >
           <div className={'flex flex-col gap-4'}>
             <ModalHeader className="flex items-center justify-between gap-1 p-0">
@@ -64,7 +82,10 @@ export const CreateBankAccountButton = () => {
               />
             </ModalHeader>
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={(e) => {
+                e.stopPropagation()
+                handleSubmit(onSubmit)(e)
+              }}
               className={'flex flex-col gap-4'}
             >
               <ModalBody className={'p-0'}>
@@ -74,35 +95,42 @@ export const CreateBankAccountButton = () => {
                   placeholder={t('bankAccounts.creation.title')}
                   setFocus={handleSetFocus}
                 />
-                <Input
-                  {...register('balance')}
-                  errorMessage={errors.balance?.message}
-                  placeholder={t('bankAccounts.creation.initialBalance')}
-                  setFocus={handleSetFocus}
-                />
-                <Controller
-                  name="currency"
-                  control={control}
-                  render={({ field }) => (
-                    <Select
-                      label={'currency'}
-                      placeholder={t('bankAccounts.creation.currency')}
-                      isInvalid={!!errors.currency?.message}
-                      errorMessage={errors.currency?.message}
-                      value={field.value}
-                      onValueChangeAction={field.onChange}
-                    >
-                      {Object.entries(CurrencySymbols).map(([key, symbol]) => (
-                        <SelectItem key={key}>
-                          {symbol === key ? key : `${symbol} ${key}`}
-                        </SelectItem>
-                      ))}
-                    </Select>
-                  )}
-                />
+                <div className={'flex items-start gap-4'}>
+                  <div className={'grow'}>
+                    <Input
+                      {...register('initialBalance')}
+                      errorMessage={errors.initialBalance?.message}
+                      placeholder={t('bankAccounts.creation.initialBalance')}
+                      setFocus={handleSetFocus}
+                    />
+                  </div>
+                  <Controller
+                    name="currency"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        label={'currency'}
+                        placeholder={t('bankAccounts.creation.currency')}
+                        className={'w-32'}
+                        isInvalid={!!errors.currency?.message}
+                        errorMessage={errors.currency?.message}
+                        value={field.value}
+                        onValueChangeAction={field.onChange}
+                      >
+                        {Object.entries(CurrencySymbols).map(
+                          ([key, symbol]) => (
+                            <SelectItem key={key}>
+                              {symbol === key ? key : `${symbol} ${key}`}
+                            </SelectItem>
+                          ),
+                        )}
+                      </Select>
+                    )}
+                  />
+                </div>
               </ModalBody>
               <ModalFooter className={'flex justify-center p-0'}>
-                <Button type={'submit'}>
+                <Button type={'submit'} loading={isLoading}>
                   <Translate value={'bankAccounts.creation.create'} />
                 </Button>
               </ModalFooter>

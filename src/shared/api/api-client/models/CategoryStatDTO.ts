@@ -8,8 +8,12 @@ export type CategoryStatDTO = {
      */
     uuid: string;
     /**
-     * Category total spent
+     * Category total balance
      */
-    totalSpent: number;
+    totalBalanceInUsd: number;
+    /**
+     * Each currency balance
+     */
+    currencyBalances: Record<string, number>;
 };
 

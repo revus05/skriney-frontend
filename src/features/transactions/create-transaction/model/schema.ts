@@ -1,26 +1,52 @@
 import { z } from 'zod'
+import { Translate } from 'shared/i18n'
 
-export const createTransactionSchema = z.object({
-  amount: z.string().transform((str, ctx) => {
-    const trimmed = str.trim()
-    if (trimmed === '') {
-      ctx.addIssue({ code: 'custom', message: 'Сумма обязательна' })
-      return z.NEVER
-    }
-    const num = Number(trimmed)
-    if (isNaN(num)) {
-      ctx.addIssue({ code: 'custom', message: 'Сумма должна быть числом' })
-      return z.NEVER
-    }
-    if (num === 0) {
-      ctx.addIssue({ code: 'custom', message: 'Сумма не может быть равна 0' })
-      return z.NEVER
-    }
-    return trimmed
-  }),
-  categoryUuid: z.string().trim().nonempty('Категория обязательна'),
-  bankAccountUuid: z.string().trim().nonempty('Счет обязателен'),
-  currency: z.string().trim().nonempty('Валюта обязательна'),
-})
+export const createTransactionSchema = (t: Translate) =>
+  z.object({
+    amount: z.string().transform((str, ctx) => {
+      const trimmed = str.trim()
+      if (trimmed === '') {
+        ctx.addIssue({
+          code: 'custom',
+          message: t('transactions.validation.amountRequired'),
+        })
+        return z.NEVER
+      }
+      const num = Number(trimmed)
+      if (isNaN(num)) {
+        ctx.addIssue({
+          code: 'custom',
+          message: t('transactions.validation.amountMustBeNumber'),
+        })
+        return z.NEVER
+      }
+      if (num === 0) {
+        ctx.addIssue({
+          code: 'custom',
+          message: t('transactions.validation.amountCantBeZero'),
+        })
+        return z.NEVER
+      }
+      return trimmed
+    }),
+    categoryUuid: z
+      .string()
+      .trim()
+      .nonempty(t('transactions.validation.categoryRequired')),
+    bankAccountUuid: z
+      .string()
+      .trim()
+      .nonempty(t('transactions.validation.bankAccountRequired')),
+    currency: z
+      .string()
+      .trim()
+      .nonempty(t('transactions.validation.currencyRequired')),
+    description: z
+      .string()
+      .trim()
+      .max(128, t('transactions.validation.descriptionMaxLength128')),
+  })
 
-export type CreateTransactionFormData = z.infer<typeof createTransactionSchema>
+export type CreateTransactionFormData = z.infer<
+  ReturnType<typeof createTransactionSchema>
+>

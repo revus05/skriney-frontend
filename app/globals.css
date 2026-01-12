@@ -95,6 +95,11 @@
     --shadow-sm: 0px 0px 5px 0px rgba(0, 0, 0, 0.05),
     0px 2px 10px 0px rgba(0, 0, 0, 0.2),
     inset 0px 0px 1px 0px rgba(255, 255, 255, 0.15);
+
+    --animate-fly-circle: fly-circle 150s linear infinite;
+    --animate-gradient-pulse: gradient-pulse 150s ease-in-out infinite;
+
+    --color-primary: var(--greyscale-10-100);
 }
 
 :root {
@@ -284,17 +289,35 @@
     }
 }
 
-@keyframes fly {
-  from {transform: translate(0, 0) rotate(-10deg) }
-    to {
-        transform: translate(400px, 200px) rotate(10deg) scale(1.2);
+@keyframes fly-circle {
+    0% {
+        transform: rotate(0deg) translateX(20vw) rotate(0deg);
+        transform-origin: center center;
+    }
+    50% {
+        transform: rotate(180deg) translateX(20vw) rotate(-180deg) scale(0.8);
+    }
+    100% {
+        transform: rotate(360deg) translateX(20vw) rotate(-360deg);
+        transform-origin: center center;
+    }
+}
+@keyframes gradient-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
 
 .epr-emoji-picker {
-    border-radius: 1rem; /* скруглённые углы */
-    background-color: theme(colors.neutral.900); /* тёмный фон */
+    border-radius: 1rem;
+    background-color: theme(colors.neutral.900);
 }
 
 .epr-search {
@@ -314,4 +337,9 @@
 
 .epr-emoji:hover {
     transform: scale(1.2);
+}
+
+.recharts-wrapper * {
+    outline: none !important;
+    tab-index: -1;
 }

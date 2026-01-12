@@ -9,13 +9,14 @@
     "start": "next start",
     "lint": "eslint . --fix",
     "lint:steiger": "bunx steiger ./src",
-    "generate-api": "npx openapi-typescript-codegen --input http://localhost:8080/v3/api-docs --output ./src/shared/api/api-client --client axios --exportCore false --exportServices false --useUnionTypes"
+    "generate-api": "curl -s http://localhost:8080/v3/api-docs > temp-api.json && bunx openapi-typescript-codegen --input ./temp-api.json --output ./src/shared/api/api-client --client axios --exportCore false --exportServices false --useUnionTypes && rm temp-api.json"
   },
   "dependencies": {
     "@heroui/modal": "^2.2.26",
     "@heroui/popover": "^2.3.29",
     "@heroui/react": "^2.8.7",
     "@heroui/select": "^2.4.30",
+    "@heroui/switch": "^2.2.26",
     "@heroui/system": "^2.4.25",
     "@heroui/theme": "^2.4.25",
     "@heroui/toast": "^2.0.19",
@@ -31,6 +32,7 @@
     "react-dom": "19.2.3",
     "react-hook-form": "^7.69.0",
     "react-redux": "^9.2.0",
+    "recharts": "^3.6.0",
     "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^1.0.0",
     "zod": "^4.2.1"

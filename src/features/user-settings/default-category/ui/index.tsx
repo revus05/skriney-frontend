@@ -9,11 +9,11 @@ import { useGetCategories } from 'entities/category'
 
 export const UpdateDefaultCategorySelect = () => {
   const updateDefaultCategory = useUpdateDefaultCategorySubmit()
-  const categories = useGetCategories()
+  const { categories } = useGetCategories()
 
   const defaultCategory =
     useAppSelector(
-      (state) => state.userSettingsSlice.userSettings?.defaultCategory,
+      (state) => state.userSlice.user?.userSettings?.defaultCategory,
     ) || null
 
   const [selectedCategory, setSelectedCategory] = useState<string>(
@@ -35,13 +35,17 @@ export const UpdateDefaultCategorySelect = () => {
   return (
     <Select
       label={'default-category'}
-      className={'w-[150px]'}
+      className={'w-37.5'}
       placeholder={t('settings.list.defaultCategory')}
       value={selectedCategory}
       onValueChangeAction={handleSelectCategoryChange}
     >
       {displayCategories.map((category) => (
-        <SelectItem key={category.uuid}>{category.title}</SelectItem>
+        <SelectItem key={category.uuid}>
+          {category.emoji
+            ? `${category.emoji} ${category.title}`
+            : category.title}
+        </SelectItem>
       ))}
     </Select>
   )

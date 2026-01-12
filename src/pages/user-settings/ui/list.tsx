@@ -5,10 +5,11 @@ import { UpdateDefaultCurrencySelect } from 'features/user-settings/default-curr
 import { UpdateDefaultCategorySelect } from 'features/user-settings/default-category'
 import { UpdateLanguageSelect } from 'features/user-settings/language'
 import { ConnectTelegramButton } from 'features/user-settings/connect-telegram'
+import { UpdateAnimationEnabledSwitch } from 'features/user-settings/animation-enabled'
 
 export const SettingsList = () => {
   return (
-    <div className={'flex w-[540px] flex-col gap-4'}>
+    <div className={'flex flex-col gap-4'}>
       <div className={'flex items-center justify-between'}>
         <span className={'text-base font-semibold'}>
           <Translate value={'settings.list.theme'} />
@@ -44,6 +45,12 @@ export const SettingsList = () => {
           <Translate value={'settings.list.language'} />
         </span>
         <UpdateLanguageSelect />
+      </div>
+      <div className={'flex items-center justify-between'}>
+        <span className={'text-base font-semibold'}>
+          <Translate value={'settings.list.animationEnabled'} />
+        </span>
+        <UpdateAnimationEnabledSwitch />
       </div>
     </div>
   )

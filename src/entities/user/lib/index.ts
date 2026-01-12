@@ -1,11 +1,10 @@
 'use server'
 
-import { UserDTO, UserSettingsDTO } from 'shared/api'
+import { UserDTO } from 'shared/api'
 import { headers } from 'next/headers'
 
 export type PreloadedState = {
-  authSlice: { user: UserDTO | null }
-  userSettingsSlice: { userSettings: UserSettingsDTO | null }
+  userSlice: { user: UserDTO | null }
   language: 'EN' | 'RU'
   theme: 'DARK' | 'LIGHT' | 'SYSTEM'
 }

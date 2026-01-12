@@ -1,9 +1,7 @@
 import { useAppDispatch } from 'shared/lib'
-import {
-  setUserSettings,
-  useUpdateDefaultBankAccountMutation,
-} from 'entities/user-setting'
+import { useUpdateDefaultBankAccountMutation } from 'entities/user-setting'
 import { getApiError, UpdateDefaultBankAccountRequestDTO } from 'shared/api'
+import { setUserSettings } from 'entities/user'
 
 export const useUpdateDefaultBankAccountSubmit = () => {
   const [updateDefaultBankAccount] = useUpdateDefaultBankAccountMutation()

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ComponentProps, createElement, FC, useRef } from 'react'
-import { cn } from 'shared/lib'
+import { cn, useAppSelector } from 'shared/lib'
 import { Button, Icons } from 'shared/ui'
 
 type InputProps = ComponentProps<'input'> & {
@@ -47,16 +47,23 @@ export const Input: FC<InputProps> = ({
     }
   }
 
+  const animationEnabled =
+    useAppSelector(
+      (state) => state.userSlice.user?.userSettings.animationEnabled,
+    ) ?? true
+
   return (
     <div>
       <div
         onClick={handleContainerClick}
         className={cn(
-          'hover:bg-bg-neutral-secondary flex w-full items-center justify-between gap-4 rounded-lg border shadow-sm ' +
-            'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold transition will-change-transform',
+          'hover:bg-bg-neutral-secondary flex h-9 w-full items-center justify-between gap-4 rounded-lg border shadow-sm ' +
+            'focus-within:!bg-bg-brand-tertiary/70 cursor-text px-4 font-semibold',
           'active:scale-[0.98] active:shadow-md',
           iconEnd ? 'py-1' : 'py-2',
           errorMessage && 'border-border-semantic-error-primary',
+          animationEnabled &&
+            'transition duration-150 motion-reduce:transition-none',
           className,
         )}
       >
@@ -72,7 +79,7 @@ export const Input: FC<InputProps> = ({
             ref={inputRef}
             type={type}
             className={cn(
-              'placeholder:text-text-neutral-tertiary grow outline-none',
+              'placeholder:text-text-neutral-tertiary w-full grow outline-none',
               inputClassName,
             )}
             value={value}

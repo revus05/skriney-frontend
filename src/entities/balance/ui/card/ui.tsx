@@ -40,11 +40,14 @@ export const TotalBalanceCard: FC<TotalBalanceType> = ({
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-1">
           <span className="text-text-neutral-tertiary">{title}</span>
-          <Balance balance={amount} currency={currency} />
+          <Balance balanceInUsd={amount} currency={currency} />
         </div>
 
-        {changePercent && (
-          <Trend changePercent={changePercent} expense={type === 'expenses'} />
+        {!!changePercent && (
+          <Trend
+            changePercent={changePercent}
+            isExpense={type === 'expenses'}
+          />
         )}
       </div>
     </Card>

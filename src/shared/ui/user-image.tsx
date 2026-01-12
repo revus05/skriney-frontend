@@ -1,12 +1,14 @@
 import { Icons } from './icons'
 import React, { ComponentProps, FC } from 'react'
 import { cn } from 'shared/lib'
+import Image from 'next/image'
 
 interface UserImageType extends ComponentProps<'div'> {
   image?: string
   userColor?: string
   username?: string
   editing?: boolean
+  size: number
 }
 
 const getGradient = (color?: string) => {
@@ -42,20 +44,23 @@ export const UserImage: FC<UserImageType> = ({
   username,
   className,
   editing = false,
+  size,
   ...props
 }) => {
   return (
     <div
       className={cn(
-        'group relative flex size-[120px] items-center justify-center overflow-hidden rounded-full',
+        'group relative flex size-30 items-center justify-center overflow-hidden rounded-full',
         className,
       )}
       {...props}
     >
       {image ? (
-        <img
+        <Image
           src={`${process.env.NEXT_PUBLIC_API_URL}${image}`}
           alt="user"
+          width={size}
+          height={size}
           className={'h-full w-full object-cover'}
         />
       ) : (
@@ -76,7 +81,7 @@ export const UserImage: FC<UserImageType> = ({
             'absolute top-1/2 left-1/2 flex h-full w-full -translate-1/2 cursor-pointer items-center justify-center bg-black/50 opacity-0 transition group-hover:opacity-100'
           }
         >
-          <Icons.image className={'size-[48px] fill-white'} />
+          <Icons.image className={'size-12 fill-white'} />
         </div>
       )}
     </div>

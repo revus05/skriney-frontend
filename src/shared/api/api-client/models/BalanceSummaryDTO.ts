@@ -4,16 +4,16 @@
 /* eslint-disable */
 export type BalanceSummaryDTO = {
     /**
-     * Total sum for this day
+     * User balance
      */
-    totalBalance: number;
+    totalBalanceInUsd: number;
     /**
-     * Sum of income for last 30 days
+     * Sum of income
      */
-    totalIncome: number;
+    totalIncomeInUsd: number;
     /**
-     * Sum of expenses for last 30 days
+     * Sum of expenses
      */
-    totalExpense: number;
+    totalExpenseInUsd: number;
 };
 

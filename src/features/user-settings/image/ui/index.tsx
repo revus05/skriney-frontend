@@ -16,7 +16,7 @@ export const UpdatableUserImage = () => {
   const [isDragging, setIsDragging] = useState(false)
   const { isOpen, onOpenChange } = useDisclosure()
 
-  const user = useAppSelector((state) => state.authSlice.user)
+  const user = useAppSelector((state) => state.userSlice.user)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 
@@ -53,6 +53,7 @@ export const UpdatableUserImage = () => {
         onClick={onOpenChange}
         className={'[&_span]:group-hover:opacity-0'}
         editing
+        size={120}
       />
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
         <ModalContent
